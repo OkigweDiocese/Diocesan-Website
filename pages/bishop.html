@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Meet the Bishop of the Catholic Diocese of Okigwe — his biography, pastoral letters, homilies, and messages to the faithful."
+    />
+    <meta
+      property="og:title"
+      content="Our Bishop — Catholic Diocese of Okigwe"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      /* ---- Page-specific styles ---- */
+      .bishop-profile {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        gap: var(--space-3xl);
+        align-items: start;
+      }
+      .bishop-profile__sidebar {
+        position: sticky;
+        top: calc(var(--navbar-height) + 2rem);
+      }
+      .bishop-profile__portrait {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: linear-gradient(
+          160deg,
+          var(--color-navy-mid),
+          var(--color-navy-deep)
+        );
+        border-radius: var(--radius-md);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-sm);
+        color: rgba(255, 255, 255, 0.4);
+        font-size: var(--text-sm);
+        letter-spacing: 0.08em;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+      }
+      .bishop-profile__portrait::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: var(--space-lg);
+        right: var(--space-lg);
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--color-gold),
+          var(--color-gold-light)
+        );
+      }
+      .bishop-profile__portrait svg {
+        width: 130px;
+        height: 130px;
+      }
+      .bishop-profile__info-card {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        margin-top: var(--space-md);
+        box-shadow: var(--shadow-sm);
+      }
+      .bishop-profile__info-card h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        color: var(--color-navy-deep);
+        margin-bottom: var(--space-xs);
+      }
+      .bishop-profile__info-card .role-label {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        display: block;
+        margin-bottom: var(--space-sm);
+      }
+      .bishop-detail-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--color-gray-border);
+        font-size: var(--text-sm);
+      }
+      .bishop-detail-row:last-child {
+        border-bottom: none;
+      }
+      .bishop-detail-row strong {
+        color: var(--color-navy-deep);
+        font-weight: 600;
+      }
+      .bishop-detail-row span {
+        color: var(--color-text-muted);
+        text-align: right;
+      }
+      .bishop-profile__content h2.section-title {
+        margin-top: 0;
+      }
+      .bishop-message-tabs {
+        display: flex;
+        gap: var(--space-xs);
+        border-bottom: 2px solid var(--color-gray-border);
+        margin-bottom: var(--space-xl);
+        flex-wrap: wrap;
+      }
+      .msg-tab {
+        padding: 0.625rem 1.25rem;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--color-text-muted);
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -2px;
+        background: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        transition:
+          color var(--transition-base),
+          border-color var(--transition-base);
+      }
+      .msg-tab.is-active,
+      .msg-tab:hover {
+        color: var(--color-navy-deep);
+        border-bottom-color: var(--color-gold);
+      }
+      .msg-tab.is-active {
+        color: var(--color-navy-deep);
+      }
+      .tab-panel {
+        display: none;
+      }
+      .tab-panel.is-active {
+        display: block;
+      }
+      .pastoral-letter-card {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        margin-bottom: var(--space-md);
+        display: flex;
+        gap: var(--space-md);
+        align-items: flex-start;
+        box-shadow: var(--shadow-sm);
+        transition:
+          box-shadow var(--transition-base),
+          transform var(--transition-base);
+      }
+      .pastoral-letter-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+      }
+      .pastoral-letter-card__icon {
+        width: 52px;
+        height: 52px;
+        background: var(--color-navy-deep);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+      }
+      .pastoral-letter-card__date {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+      .pastoral-letter-card__title {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        margin-bottom: var(--space-xs);
+      }
+      .pastoral-letter-card__excerpt {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        line-height: 1.7;
+        margin-bottom: var(--space-sm);
+      }
+      .pastoral-letter-card__link {
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--color-gold);
+        transition: color var(--transition-base);
+      }
+      .pastoral-letter-card__link:hover {
+        color: var(--color-navy-deep);
+      }
+      .coat-of-arms {
+        background: var(--color-navy-deep);
+        border-radius: var(--radius-md);
+        padding: var(--space-xl);
+        text-align: center;
+        margin-top: var(--space-xl);
+      }
+      .coat-of-arms__placeholder {
+        width: 140px;
+        height: 180px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 2px dashed rgba(184, 148, 46, 0.4);
+        border-radius: var(--radius-sm);
+        margin: 0 auto var(--space-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--text-xs);
+        color: rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.1em;
+        flex-direction: column;
+        gap: var(--space-xs);
+      }
+      .coat-of-arms__placeholder span {
+        font-size: 2rem;
+      }
+      .coat-of-arms h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        color: var(--color-gold-light);
+        margin-bottom: var(--space-xs);
+      }
+      .coat-of-arms p {
+        font-size: var(--text-sm);
+        color: rgba(255, 255, 255, 0.6);
+        font-style: italic;
+      }
+      @media (max-width: 900px) {
+        .bishop-profile {
+          grid-template-columns: 1fr;
+        }
+        .bishop-profile__sidebar {
+          position: static;
+          max-width: 340px;
+        }
+      }
+    </style>
+    <title>Our Bishop — Catholic Diocese of Okigwe</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar__inner">
+          <a href="../index.html" class="navbar__brand">
+            <div class="navbar__logo" aria-hidden="true">
+              <div class="logo-cross">
+                <span class="cross-v"></span><span class="cross-h"></span>
+              </div>
+            </div>
+            <div class="navbar__title">
+              <span class="navbar__title--main">Diocese of Okigwe</span>
+              <span class="navbar__title--sub">Catholic Diocese</span>
+            </div>
+          </a>
+          <ul class="navbar__links" id="navbar-links" role="list">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li>
+              <a href="bishop.html" class="nav-link active">Our Bishop</a>
+            </li>
+            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
+            <li><a href="ministries.html" class="nav-link">Ministries</a></li>
+            <li><a href="news.html" class="nav-link">News</a></li>
+            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navbar-links"
+          >
+            <span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-label="Our Bishop hero">
+        <div class="container page-hero__inner">
+          <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a> <span>›</span>
+            <span>Our Bishop</span>
+          </nav>
+          <h1 class="page-hero__title">Our <em>Bishop</em></h1>
+          <p class="page-hero__subtitle">
+            Meet the shepherd of the Catholic Diocese of Okigwe — his life,
+            ministry, pastoral letters, and messages to the faithful.
+          </p>
+        </div>
+      </section>
+
+      <!-- BISHOP PROFILE -->
+      <section class="section" aria-label="Bishop profile">
+        <div class="container">
+          <div class="bishop-profile reveal-up">
+            <!-- Sidebar: portrait + quick facts -->
+            <aside class="bishop-profile__sidebar">
+              <!-- TODO: Replace placeholder with official bishop portrait photograph -->
+              <div
+                class="bishop-profile__portrait"
+                role="img"
+                aria-label="Bishop portrait placeholder"
+              >
+                <svg
+                  viewBox="0 0 200 200"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="100"
+                    cy="78"
+                    r="48"
+                    fill="var(--color-gold-light)"
+                    opacity="0.25"
+                  />
+                  <ellipse
+                    cx="100"
+                    cy="170"
+                    rx="62"
+                    ry="34"
+                    fill="var(--color-gold-light)"
+                    opacity="0.15"
+                  />
+                  <rect
+                    x="93"
+                    y="114"
+                    width="14"
+                    height="30"
+                    fill="var(--color-gold)"
+                    opacity="0.5"
+                  />
+                  <rect
+                    x="85"
+                    y="123"
+                    width="30"
+                    height="10"
+                    fill="var(--color-gold)"
+                    opacity="0.5"
+                  />
+                  <circle
+                    cx="100"
+                    cy="78"
+                    r="10"
+                    fill="var(--color-gold)"
+                    opacity="0.3"
+                  />
+                </svg>
+                <span>Official Portrait</span>
+              </div>
+
+              <div class="bishop-profile__info-card">
+                <span class="role-label">Most Reverend</span>
+                <!-- TODO: Replace with actual Bishop's name -->
+                <h3>[Bishop's Full Name]</h3>
+                <p
+                  style="
+                    font-size: var(--text-sm);
+                    color: var(--color-text-muted);
+                    margin-bottom: var(--space-md);
+                  "
+                >
+                  Bishop of Okigwe Diocese<br />Suffragan, Province of Owerri
+                </p>
+                <div class="bishop-detail-row">
+                  <strong>Ordained Priest</strong><span>[Year]</span>
+                </div>
+                <div class="bishop-detail-row">
+                  <strong>Episcopal Ordination</strong><span>[Year]</span>
+                </div>
+                <div class="bishop-detail-row">
+                  <strong>Appointed Bishop</strong><span>[Date]</span>
+                </div>
+                <div class="bishop-detail-row">
+                  <strong>Enthroned</strong><span>[Date]</span>
+                </div>
+                <div class="bishop-detail-row">
+                  <strong>Episcopal Motto</strong
+                  ><span style="font-style: italic; color: var(--color-gold)"
+                    >[Motto in Latin]</span
+                  >
+                </div>
+                <div class="bishop-detail-row">
+                  <strong>Ordaining Bishop</strong><span>[Name]</span>
+                </div>
+              </div>
+
+              <!-- Coat of Arms -->
+              <div class="coat-of-arms">
+                <!-- TODO: Replace placeholder with actual Bishop's coat of arms image -->
+                <div class="coat-of-arms__placeholder">
+                  <span>✦</span>
+                  Coat of Arms
+                </div>
+                <h3>Episcopal Coat of Arms</h3>
+                <p>"[Episcopal Motto in Latin]"</p>
+              </div>
+            </aside>
+
+            <!-- Main Content: bio + tabs -->
+            <div class="bishop-profile__content">
+              <div class="section-label">Shepherd &amp; Teacher</div>
+              <h2 class="section-title">Biography of <em>Our Bishop</em></h2>
+
+              <p>
+                Most Reverend [Bishop's Full Name] was appointed as the Bishop
+                of the Catholic Diocese of Okigwe by His Holiness Pope [Name].
+                He was ordained to the episcopate on [Date], bringing with him
+                decades of priestly ministry, theological expertise, and
+                pastoral dedication to the people of God.
+              </p>
+              <p>
+                Born in [Place of Birth], he pursued his early education at
+                [School Name] before entering [Seminary Name] for his
+                philosophical and theological formation. He was ordained a
+                priest for the Diocese of [Diocese] on [Date]. Over the years of
+                his priestly ministry, he served in various capacities including
+                parish priest, seminary lecturer, diocesan chancellor, and vicar
+                general, before his appointment to the episcopate.
+              </p>
+              <p>
+                As a theologian, he holds advanced degrees from [Institution],
+                where he specialised in [Field of Theology]. His pastoral
+                approach is characterised by a deep love for the Eucharist, a
+                commitment to the poorest members of society, and a strong
+                emphasis on Catholic education and family life.
+              </p>
+              <p>
+                Since assuming leadership of the Diocese of Okigwe, he has
+                prioritised evangelisation, the strengthening of parish
+                communities, integral human development through Caritas, and the
+                formation of the laity. He serves on several committees of the
+                Catholic Bishops' Conference of Nigeria (CBCN).
+                <!-- TODO: Expand with fully researched official biography from the Diocesan Chancery -->
+              </p>
+
+              <!-- Tabs: Letters | Homilies | Gallery -->
+              <div style="margin-top: var(--space-2xl)">
+                <div
+                  class="bishop-message-tabs"
+                  role="tablist"
+                  aria-label="Bishop's content tabs"
+                >
+                  <button
+                    class="msg-tab is-active"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="tab-letters"
+                    id="btn-letters"
+                  >
+                    Pastoral Letters
+                  </button>
+                  <button
+                    class="msg-tab"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="tab-homilies"
+                    id="btn-homilies"
+                  >
+                    Homilies
+                  </button>
+                  <button
+                    class="msg-tab"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="tab-speeches"
+                    id="btn-speeches"
+                  >
+                    Speeches &amp; Addresses
+                  </button>
+                  <button
+                    class="msg-tab"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="tab-news"
+                    id="btn-news"
+                  >
+                    In the News
+                  </button>
+                </div>
+
+                <!-- Pastoral Letters -->
+                <div
+                  class="tab-panel is-active"
+                  id="tab-letters"
+                  role="tabpanel"
+                  aria-labelledby="btn-letters"
+                >
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">📜</div>
+                    <div>
+                      <span class="pastoral-letter-card__date"
+                        >Easter 2025</span
+                      >
+                      <h3 class="pastoral-letter-card__title">
+                        Easter Pastoral Letter: "He is Risen — Go and Witness!"
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        In his Easter message to the faithful of Okigwe Diocese,
+                        the Bishop calls the Church to a renewed commitment to
+                        the proclamation of the Resurrection — in families,
+                        workplaces, and communities...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Full Letter →</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">📜</div>
+                    <div>
+                      <span class="pastoral-letter-card__date"
+                        >Advent 2024</span
+                      >
+                      <h3 class="pastoral-letter-card__title">
+                        Advent Letter: "Waiting in Hope — A Call to Joyful
+                        Expectation"
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        As we begin the season of Advent, the Bishop invites the
+                        faithful to embrace waiting as a spiritual discipline
+                        and to prepare their hearts for the coming of Christ in
+                        Word, Sacrament, and the poor...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Full Letter →</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">📜</div>
+                    <div>
+                      <span class="pastoral-letter-card__date"
+                        >October 2024</span
+                      >
+                      <h3 class="pastoral-letter-card__title">
+                        Letter on the Family: "Domestic Church — Rebuilding the
+                        Christian Home"
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        On the occasion of World Mission Sunday, the Bishop
+                        addresses the crisis of the family in contemporary
+                        Nigerian society and calls Catholic families to be
+                        living witnesses of God's love...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Full Letter →</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">📜</div>
+                    <div>
+                      <span class="pastoral-letter-card__date"
+                        >January 2024</span
+                      >
+                      <h3 class="pastoral-letter-card__title">
+                        New Year Letter: "Stewards of God's Creation — Care for
+                        Our Common Home"
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        Drawing on Pope Francis' Laudato Si', the Bishop
+                        challenges the Diocese to take seriously our vocation as
+                        stewards of creation and to live more sustainably for
+                        the sake of future generations...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Full Letter →</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Homilies -->
+                <div
+                  class="tab-panel"
+                  id="tab-homilies"
+                  role="tabpanel"
+                  aria-labelledby="btn-homilies"
+                >
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">🎙</div>
+                    <div>
+                      <span class="pastoral-letter-card__date"
+                        >Pentecost Sunday, 2025</span
+                      >
+                      <h3 class="pastoral-letter-card__title">
+                        Homily: "The Spirit of Truth Will Guide You Into All
+                        Truth"
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        At the Pentecost Sunday Mass at the Cathedral of the
+                        Sacred Heart, the Bishop reflects on the gifts of the
+                        Holy Spirit and their relevance to Christian life in
+                        modern Nigeria...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Homily →</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">🎙</div>
+                    <div>
+                      <span class="pastoral-letter-card__date"
+                        >Chrism Mass, Holy Week 2025</span
+                      >
+                      <h3 class="pastoral-letter-card__title">
+                        Chrism Mass Homily: "The Anointed Ones — Priests,
+                        Prophets, and Kings"
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        At the annual Chrism Mass, the Bishop speaks to the
+                        priests of the Diocese on the dignity and demands of the
+                        priesthood, calling them to be shepherds who smell of
+                        the sheep...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Homily →</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">🎙</div>
+                    <div>
+                      <span class="pastoral-letter-card__date"
+                        >Ordination Mass, November 2024</span
+                      >
+                      <h3 class="pastoral-letter-card__title">
+                        Ordination Homily: "You Did Not Choose Me — I Chose You"
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        At the ordination of new priests for the Diocese, the
+                        Bishop meditates on the mystery of the priestly vocation
+                        and exhorts the newly ordained to serve with joy and
+                        fidelity...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Homily →</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Speeches -->
+                <div
+                  class="tab-panel"
+                  id="tab-speeches"
+                  role="tabpanel"
+                  aria-labelledby="btn-speeches"
+                >
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">🗣</div>
+                    <div>
+                      <span class="pastoral-letter-card__date">May 2025</span>
+                      <h3 class="pastoral-letter-card__title">
+                        Address at the CBCN Plenary: "The Church and Good
+                        Governance in Nigeria"
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        At the Catholic Bishops' Conference of Nigeria plenary
+                        session, the Bishop speaks on the responsibility of
+                        Catholics in holding public servants accountable and
+                        promoting the common good...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Address →</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">🗣</div>
+                    <div>
+                      <span class="pastoral-letter-card__date">March 2025</span>
+                      <h3 class="pastoral-letter-card__title">
+                        Commencement Address: "Faith, Excellence &amp; Service"
+                        — Catholic Secondary Schools
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        At the joint graduation ceremony of Catholic secondary
+                        schools in the Diocese, the Bishop challenges graduating
+                        students to pursue excellence as an act of faith and
+                        service to God...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Address →</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- In the News -->
+                <div
+                  class="tab-panel"
+                  id="tab-news"
+                  role="tabpanel"
+                  aria-labelledby="btn-news"
+                >
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">📰</div>
+                    <div>
+                      <span class="pastoral-letter-card__date"
+                        >June 2025 — Vanguard</span
+                      >
+                      <h3 class="pastoral-letter-card__title">
+                        Bishop of Okigwe Calls for Peace in Imo State
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        In an exclusive interview with Vanguard Newspaper, the
+                        Bishop of Okigwe Diocese urges political leaders and
+                        communities in Imo State to embrace dialogue and
+                        peaceful coexistence...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Article →</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="pastoral-letter-card reveal-up">
+                    <div class="pastoral-letter-card__icon">📰</div>
+                    <div>
+                      <span class="pastoral-letter-card__date"
+                        >April 2025 — Catholic Herald</span
+                      >
+                      <h3 class="pastoral-letter-card__title">
+                        Diocese of Okigwe Launches New Healthcare Initiative for
+                        Rural Communities
+                      </h3>
+                      <p class="pastoral-letter-card__excerpt">
+                        The Catholic Herald reports on the Diocese of Okigwe's
+                        landmark community health programme, inaugurated by the
+                        Bishop, which aims to provide free medical care to over
+                        10,000 rural families...
+                      </p>
+                      <a href="#" class="pastoral-letter-card__link"
+                        >Read Article →</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAST BISHOPS -->
+      <section
+        class="section section--cream"
+        aria-labelledby="past-bishops-heading"
+      >
+        <div class="container">
+          <div class="section-header reveal-up">
+            <div class="section-label">Our Heritage</div>
+            <h2 class="section-title" id="past-bishops-heading">
+              Past <em>Bishops</em>
+            </h2>
+            <p class="section-subtitle">
+              The men who built the foundations of faith in our Diocese.
+            </p>
+          </div>
+          <div class="team-grid reveal-up">
+            <div class="team-card">
+              <div class="team-card__photo">
+                <!-- TODO: Historical portrait --><span>Portrait</span>
+              </div>
+              <div class="team-card__body">
+                <p class="team-card__role">1st Bishop · [Year]–[Year]</p>
+                <h4 class="team-card__name">Most Rev. [Name]</h4>
+                <p class="team-card__parish">
+                  Founding Bishop of Okigwe Diocese
+                </p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><span>Portrait</span></div>
+              <div class="team-card__body">
+                <p class="team-card__role">2nd Bishop · [Year]–[Year]</p>
+                <h4 class="team-card__name">Most Rev. [Name]</h4>
+                <p class="team-card__parish">Bishop Emeritus of Okigwe</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><span>Portrait</span></div>
+              <div class="team-card__body">
+                <p class="team-card__role">3rd Bishop · [Year]–[Year]</p>
+                <h4 class="team-card__name">Most Rev. [Name]</h4>
+                <p class="team-card__parish">Bishop Emeritus of Okigwe</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="navbar__logo footer__logo" aria-hidden="true">
+            <div class="logo-cross logo-cross--light">
+              <span class="cross-v"></span><span class="cross-h"></span>
+            </div>
+          </div>
+          <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
+          <p class="footer__tagline">
+            "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
+          </p>
+          <div class="footer__social">
+            <a href="#" class="social-link" aria-label="Facebook"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="Twitter"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="YouTube"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                />
+                <polygon
+                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                  fill="var(--color-navy-deep)"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="Instagram"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                width="20"
+                height="20"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                /></svg
+            ></a>
+          </div>
+        </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h3 class="footer__links-title">Quick Links</h3>
+          <ul role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About the Diocese</a></li>
+            <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="parishes.html">Parish Directory</a></li>
+            <li><a href="news.html">News &amp; Events</a></li>
+            <li><a href="gallery.html">Media Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer__links">
+          <h3 class="footer__links-title">Ministries</h3>
+          <ul role="list">
+            <li>
+              <a href="ministries.html#caritas">Caritas &amp; Development</a>
+            </li>
+            <li><a href="ministries.html#youth">Youth Ministry</a></li>
+            <li>
+              <a href="ministries.html#cwo">Catholic Women Organisation</a>
+            </li>
+            <li><a href="ministries.html#cmo">Catholic Men Organisation</a></li>
+            <li><a href="ministries.html#schools">Catholic Schools</a></li>
+            <li><a href="ministries.html#liturgy">Liturgy &amp; Worship</a></li>
+          </ul>
+        </div>
+        <address class="footer__address">
+          <h3 class="footer__links-title">Contact</h3>
+          <p>Bishop's House, Okigwe<br />Imo State, Nigeria</p>
+          <p><a href="tel:+2340000000000">+234 (0) 000 000 0000</a></p>
+          <p>
+            <a href="mailto:info@dioceseofokigwe.org"
+              >info@dioceseofokigwe.org</a
+            >
+          </p>
+        </address>
+      </div>
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copyright">
+            &copy; <span id="footer-year"></span> Catholic Diocese of Okigwe.
+            All rights reserved.
+          </p>
+          <p class="footer__legal">
+            <a href="#">Privacy Policy</a> &nbsp;&bull;&nbsp;
+            <a href="#">Terms of Use</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="../script.js"></script>
+    <script>
+      /* Tab switching for Bishop page */
+      const tabs = document.querySelectorAll(".msg-tab");
+      const panels = document.querySelectorAll(".tab-panel");
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => {
+            t.classList.remove("is-active");
+            t.setAttribute("aria-selected", "false");
+          });
+          panels.forEach((p) => p.classList.remove("is-active"));
+          tab.classList.add("is-active");
+          tab.setAttribute("aria-selected", "true");
+          document
+            .getElementById(tab.getAttribute("aria-controls"))
+            .classList.add("is-active");
+        });
+      });
+    </script>
+  </body>
+</html>

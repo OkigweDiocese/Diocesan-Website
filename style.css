@@ -1,0 +1,2528 @@
+/* ================================================================
+   CATHOLIC DIOCESE OF OKIGWE — STYLESHEET
+   style.css
+   
+   Table of Contents:
+   1.  CSS Custom Properties (Design Tokens)
+   2.  CSS Reset & Base
+   3.  Typography
+   4.  Utility Classes
+   5.  Layout & Container
+   6.  Buttons
+   7.  Animations & Reveal
+   8.  Header & Navbar
+   9.  Hero Section
+   10. Bishop's Message Section
+   11. About Section
+   12. Parish Directory Section
+   13. News & Events Section
+   14. Gallery Section
+   15. Contact Section
+   16. Footer
+   17. Back to Top Button
+   18. Media Queries (Responsive)
+================================================================ */
+
+/* ================================================================
+   1. CSS CUSTOM PROPERTIES (Design Tokens)
+================================================================ */
+:root {
+  /* --- Color Palette --- */
+  --color-navy-deep: #0f1d3b; /* Deep navy — primary dark */
+  --color-navy-mid: #1b2f5c; /* Mid navy */
+  --color-navy-light: #234080; /* Lighter navy accent */
+  --color-gold: #b8942e; /* Diocesan gold */
+  --color-gold-light: #d4af5a; /* Lighter gold for hover/highlights */
+  --color-gold-pale: #f4e8c1; /* Pale gold tint for backgrounds */
+  --color-cream: #f8f5ee; /* Warm cream background */
+  --color-white: #ffffff;
+  --color-gray-dark: #2c2c2c;
+  --color-gray-mid: #555555;
+  --color-gray-light: #999999;
+  --color-gray-border: #e0dcd4;
+  --color-text-main: #1e1e1e;
+  --color-text-muted: #666666;
+
+  /* --- Typography --- */
+  --font-display: "Cormorant Garamond", Georgia, serif; /* Elegant headings */
+  --font-body: "Montserrat", "Segoe UI", sans-serif; /* Clean body text */
+
+  /* --- Font Sizes (fluid scale) --- */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-md: 1.125rem; /* 18px */
+  --text-lg: 1.25rem; /* 20px */
+  --text-xl: 1.5rem; /* 24px */
+  --text-2xl: 2rem; /* 32px */
+  --text-3xl: 2.75rem; /* 44px */
+  --text-4xl: 3.5rem; /* 56px */
+  --text-5xl: 4.5rem; /* 72px */
+
+  /* --- Spacing --- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+  --space-3xl: 8rem;
+
+  /* --- Layout --- */
+  --container-max: 1200px;
+  --container-pad: 1.5rem;
+  --navbar-height: 80px;
+
+  /* --- Borders & Radii --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 2px 8px rgba(15, 29, 59, 0.08);
+  --shadow-md: 0 6px 24px rgba(15, 29, 59, 0.12);
+  --shadow-lg: 0 16px 48px rgba(15, 29, 59, 0.16);
+
+  /* --- Transitions --- */
+  --transition-fast: 150ms ease;
+  --transition-base: 280ms ease;
+  --transition-slow: 500ms ease;
+}
+
+/* ================================================================
+   2. CSS RESET & BASE
+================================================================ */
+
+/* Box sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles where applied via class */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Smooth scrolling — applied globally */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Body base styles */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text-main);
+  background-color: var(--color-white);
+  overflow-x: hidden;
+}
+
+/* Improve media defaults */
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove default form styles */
+input,
+textarea,
+button,
+select {
+  font: inherit;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Placeholder image base */
+.img-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-gold-pale);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(184, 148, 46, 0.05) 10px,
+    rgba(184, 148, 46, 0.05) 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px dashed var(--color-gold-light);
+  min-height: 220px;
+}
+
+/* ================================================================
+   3. TYPOGRAPHY
+================================================================ */
+
+/* Display / heading font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-navy-deep);
+}
+
+h1 {
+  font-size: var(--text-4xl);
+}
+h2 {
+  font-size: var(--text-3xl);
+}
+h3 {
+  font-size: var(--text-xl);
+}
+h4 {
+  font-size: var(--text-lg);
+}
+
+p {
+  margin-bottom: var(--space-sm);
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+em,
+i {
+  font-style: italic;
+  color: var(--color-navy-mid);
+}
+
+address {
+  font-style: normal;
+}
+
+blockquote {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--color-navy-mid);
+  position: relative;
+  padding-left: var(--space-lg);
+  border-left: 3px solid var(--color-gold);
+}
+
+blockquote p + p {
+  margin-top: var(--space-sm);
+}
+
+/* ================================================================
+   4. UTILITY CLASSES
+================================================================ */
+
+/* Section label (small eyebrow text above headings) */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-xs);
+}
+
+/* Section title reusable */
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: var(--space-md);
+}
+
+/* Section subtitle */
+.section-subtitle {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section header block (centers headers) */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+/* Section CTA (centered button below grid) */
+.section-cta {
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+/* Decorative gold divider line */
+.gold-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--color-gold);
+  margin: var(--space-sm) auto var(--space-md);
+  border: none;
+}
+
+/* ================================================================
+   5. LAYOUT & CONTAINER
+================================================================ */
+
+/* Main centered container */
+.container {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* Standard section spacing */
+.section {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+}
+
+/* Cream background sections */
+.section--cream {
+  background-color: var(--color-cream);
+}
+
+/* ================================================================
+   6. BUTTONS
+================================================================ */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.875rem 2.25rem;
+  border-radius: 2px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-fast),
+    box-shadow var(--transition-base);
+  white-space: nowrap;
+}
+
+/* Primary: gold fill */
+.btn--primary {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  border-color: var(--color-gold);
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background-color: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(184, 148, 46, 0.3);
+}
+
+/* Secondary: navy fill */
+.btn--secondary {
+  background-color: var(--color-navy-deep);
+  color: var(--color-white);
+  border-color: var(--color-navy-deep);
+}
+
+.btn--secondary:hover,
+.btn--secondary:focus-visible {
+  background-color: var(--color-navy-mid);
+  border-color: var(--color-navy-mid);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Outline: transparent with gold border */
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.btn--outline:hover,
+.btn--outline:focus-visible {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+/* Full width variant */
+.btn--full {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* ================================================================
+   7. ANIMATIONS & REVEAL
+================================================================ */
+
+/* Fade-up reveal for scroll-triggered sections */
+.reveal-up,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal-up {
+  transform: translateY(40px);
+}
+.reveal-left {
+  transform: translateX(-40px);
+}
+.reveal-right {
+  transform: translateX(40px);
+}
+
+/* When JS adds .is-visible */
+.reveal-up.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Hero entrance animation */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Counter number animation placeholder (handled by JS) */
+@keyframes countUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ================================================================
+   8. HEADER & NAVBAR
+================================================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-border);
+  transition: box-shadow var(--transition-base);
+}
+
+/* Adds shadow when page is scrolled */
+.site-header.is-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.navbar {
+  height: var(--navbar-height);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--space-lg);
+}
+
+/* ---- Brand / Logo ---- */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+/* CSS-drawn cross logo */
+.navbar__logo {
+  width: 44px;
+  height: 44px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.logo-cross {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cross-v {
+  position: absolute;
+  width: 6px;
+  height: 36px;
+  background: var(--color-navy-deep);
+  border-radius: 2px;
+}
+
+.cross-h {
+  position: absolute;
+  width: 28px;
+  height: 6px;
+  background: var(--color-navy-deep);
+  border-radius: 2px;
+  top: 10px;
+}
+
+/* Light version for footer */
+.logo-cross--light .cross-v,
+.logo-cross--light .cross-h {
+  background: var(--color-gold);
+}
+
+.navbar__logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-gold);
+  border-radius: var(--radius-sm);
+}
+
+.navbar__title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.navbar__title--main {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  white-space: nowrap;
+}
+
+.navbar__title--sub {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* ---- Navigation Links ---- */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0.5rem 0.875rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-gray-dark);
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base);
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 2px;
+  background-color: var(--color-gold);
+  border-radius: 1px;
+  transition: transform var(--transition-base);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--color-navy-deep);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav-link.active {
+  color: var(--color-navy-deep);
+  font-weight: 600;
+}
+
+/* ---- Hamburger Button ---- */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-navy-deep);
+  border-radius: 2px;
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base);
+}
+
+/* Open state — X shape */
+.navbar__hamburger.is-open .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__hamburger.is-open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.navbar__hamburger.is-open .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ================================================================
+   9. HERO SECTION
+================================================================ */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--navbar-height));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--color-navy-deep);
+}
+
+/* Background — replace with actual image via inline style or JS */
+.hero__background {
+  position: absolute;
+  inset: 0;
+  /* TODO: Replace with: background-image: url('images/hero-bg.jpg'); */
+  background-color: var(--color-navy-deep);
+  background-image:
+    radial-gradient(
+      ellipse at 20% 50%,
+      var(--color-navy-mid) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(184, 148, 46, 0.15) 0%,
+      transparent 50%
+    );
+}
+
+/* Subtle cross/grid pattern overlay */
+.hero__pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 29, 59, 0.92) 0%,
+    rgba(15, 29, 59, 0.75) 60%,
+    rgba(184, 148, 46, 0.08) 100%
+  );
+}
+
+/* Hero content */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.hero__text {
+  max-width: 720px;
+  animation: heroFadeUp 1s ease 0.2s both;
+}
+
+.hero__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-md);
+}
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, var(--text-5xl));
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+
+.hero__headline em {
+  color: var(--color-gold-light);
+  font-style: italic;
+}
+
+.hero__mission {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 300;
+  margin-bottom: var(--space-xl);
+  letter-spacing: 0.02em;
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Scroll cue */
+.hero__scroll-cue {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  animation: heroFadeUp 1s ease 1.2s both;
+}
+
+.scroll-line {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--color-gold));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.scroll-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* ================================================================
+   10. BISHOP'S MESSAGE SECTION
+================================================================ */
+
+.bishop-message {
+  background-color: var(--color-white);
+}
+
+.bishop-message__layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+/* Portrait frame */
+.portrait-frame {
+  position: relative;
+}
+
+.portrait-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: var(--color-navy-deep);
+  background-image: linear-gradient(
+    160deg,
+    var(--color-navy-mid) 0%,
+    var(--color-navy-deep) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.portrait-placeholder svg {
+  width: 120px;
+  height: 120px;
+}
+
+/* Decorative gold bar at top of portrait */
+.portrait-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold),
+    var(--color-gold-light)
+  );
+  border-radius: 0 0 4px 4px;
+  z-index: 1;
+}
+
+.bishop-message__name-tag {
+  margin-top: var(--space-md);
+  text-align: center;
+  padding: var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--color-gray-border);
+}
+
+.bishop-message__title {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.25rem;
+}
+
+.bishop-message__name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: 0.25rem;
+}
+
+.bishop-message__role {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.bishop-message__quote {
+  margin: var(--space-lg) 0 var(--space-xl);
+}
+
+/* ================================================================
+   11. ABOUT SECTION
+================================================================ */
+
+.about__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+  align-items: start;
+}
+
+.about__history h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-sm);
+  color: var(--color-navy-deep);
+}
+
+.about__history p {
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+.about__mission-vision {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.about__card {
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-gold);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.section--cream .about__card {
+  background-color: var(--color-white);
+}
+
+.about__card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.about__card-icon {
+  font-size: var(--text-xl);
+  color: var(--color-gold);
+  margin-bottom: var(--space-xs);
+}
+
+.about__card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-xs);
+  color: var(--color-navy-deep);
+}
+
+.about__card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+/* Statistics Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.stat-card {
+  background: var(--color-navy-deep);
+  padding: var(--space-xl) var(--space-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold),
+    var(--color-gold-light)
+  );
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-card__number {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+.stat-card__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ================================================================
+   12. PARISH DIRECTORY SECTION
+================================================================ */
+
+.parishes__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.parish-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-gray-border);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.parish-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.parish-card__image {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.parish-card__image .img-placeholder {
+  height: 100%;
+  min-height: unset;
+}
+
+.parish-card__badge {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  background: var(--color-gold);
+  color: var(--color-white);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.parish-card__body {
+  padding: var(--space-md);
+}
+
+.parish-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: var(--space-xs);
+  line-height: 1.3;
+}
+
+.parish-card__location {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.parish-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+.parish-card__link {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-gold);
+  transition:
+    color var(--transition-base),
+    letter-spacing var(--transition-base);
+}
+
+.parish-card__link:hover {
+  color: var(--color-navy-deep);
+  letter-spacing: 0.05em;
+}
+
+/* ================================================================
+   13. NEWS & EVENTS SECTION
+================================================================ */
+
+.news__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.news-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-gray-border);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.news-card__image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.news-card__image .img-placeholder {
+  height: 100%;
+  min-height: unset;
+}
+
+.news-card__category {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: var(--color-navy-deep);
+  color: var(--color-white);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.news-card__body {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.news-card__date {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-xs);
+}
+
+.news-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: var(--space-sm);
+  line-height: 1.3;
+  flex: 1;
+}
+
+.news-card__excerpt {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+.news-card__link {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-gold);
+  align-self: flex-start;
+  transition:
+    color var(--transition-base),
+    letter-spacing var(--transition-base);
+}
+
+.news-card__link:hover {
+  color: var(--color-navy-deep);
+  letter-spacing: 0.05em;
+}
+
+/* ================================================================
+   14. GALLERY SECTION
+================================================================ */
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 240px 240px;
+  gap: var(--space-sm);
+}
+
+/* Wide item spans 2 columns */
+.gallery__item--wide {
+  grid-column: span 2;
+}
+
+/* Tall item spans 2 rows */
+.gallery__item--tall {
+  grid-row: span 2;
+}
+
+.gallery__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.gallery__placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: unset;
+  transition: transform var(--transition-slow);
+}
+
+.gallery__item:hover .gallery__placeholder {
+  transform: scale(1.06);
+}
+
+/* Hover overlay */
+.gallery__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 29, 59, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-base);
+}
+
+.gallery__item:hover .gallery__overlay {
+  background: rgba(15, 29, 59, 0.6);
+}
+
+.gallery__icon {
+  font-size: 2rem;
+  color: var(--color-white);
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+}
+
+.gallery__item:hover .gallery__icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ================================================================
+   15. CONTACT SECTION
+================================================================ */
+
+.contact__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.contact__item {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.contact__icon {
+  width: 44px;
+  height: 44px;
+  background: var(--color-navy-deep);
+  color: var(--color-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+}
+
+.contact__item strong {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-navy-deep);
+  margin-bottom: 0.25rem;
+}
+
+.contact__item p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.contact__item a {
+  color: var(--color-gold);
+  transition: color var(--transition-base);
+}
+
+.contact__item a:hover {
+  color: var(--color-navy-deep);
+}
+
+/* Map placeholder */
+.map-placeholder {
+  height: 260px;
+  background-color: var(--color-gold-pale);
+  border: 1px dashed var(--color-gold-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.map-placeholder__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: var(--space-xs);
+  color: var(--color-gold);
+}
+
+.map-placeholder__inner span {
+  font-size: 2.5rem;
+}
+.map-placeholder__inner p {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  margin: 0;
+}
+.map-placeholder__inner small {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+/* Contact Form */
+.contact__form-wrapper {
+  background: var(--color-white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-gray-border);
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+.form-label span {
+  color: var(--color-gold);
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 0.875rem var(--space-md);
+  font-size: var(--text-sm);
+  color: var(--color-text-main);
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--color-navy-mid);
+  box-shadow: 0 0 0 3px rgba(27, 47, 92, 0.1);
+  background-color: var(--color-white);
+}
+
+.form-input.is-invalid {
+  border-color: #c0392b;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-error {
+  display: block;
+  font-size: var(--text-xs);
+  color: #c0392b;
+  margin-top: 0.35rem;
+  min-height: 1rem;
+}
+
+.form-feedback {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-align: center;
+  display: none;
+}
+
+.form-feedback.success {
+  display: block;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.form-feedback.error {
+  display: block;
+  background-color: #ffebee;
+  color: #c0392b;
+  border: 1px solid #ef9a9a;
+}
+
+/* ================================================================
+   16. FOOTER
+================================================================ */
+
+.site-footer {
+  background-color: var(--color-navy-deep);
+  color: rgba(255, 255, 255, 0.75);
+  padding-top: var(--space-3xl);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Footer Brand Column */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__logo {
+  margin-bottom: var(--space-md);
+}
+
+.footer__name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-white);
+  line-height: 1.3;
+  margin-bottom: var(--space-sm);
+}
+
+.footer__tagline {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-gold-light);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.footer__social {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: auto;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.social-link:hover {
+  background: var(--color-gold);
+  color: var(--color-white);
+  border-color: var(--color-gold);
+  transform: translateY(-3px);
+}
+
+/* Footer Links Columns */
+.footer__links-title {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-md);
+}
+
+.footer__links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer__links a {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.65);
+  transition:
+    color var(--transition-base),
+    padding-left var(--transition-base);
+}
+
+.footer__links a:hover {
+  color: var(--color-gold-light);
+  padding-left: 4px;
+}
+
+/* Footer Address */
+.footer__address {
+  font-style: normal;
+}
+
+.footer__address p {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+}
+
+.footer__address a {
+  color: rgba(255, 255, 255, 0.65);
+  transition: color var(--transition-base);
+}
+
+.footer__address a:hover {
+  color: var(--color-gold-light);
+}
+
+/* Footer Bottom Bar */
+.footer__bottom {
+  padding: var(--space-md) 0;
+}
+
+.footer__bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.footer__copyright,
+.footer__legal {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer__legal a {
+  color: rgba(255, 255, 255, 0.4);
+  transition: color var(--transition-base);
+}
+
+.footer__legal a:hover {
+  color: var(--color-gold-light);
+}
+
+/* ================================================================
+   17. BACK TO TOP BUTTON
+================================================================ */
+
+.back-to-top {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  z-index: 900;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-navy-deep);
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  font-size: var(--text-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base),
+    background var(--transition-base);
+  pointer-events: none;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: var(--color-gold);
+  color: var(--color-white);
+}
+
+/* ================================================================
+   18. MEDIA QUERIES (Responsive)
+================================================================ */
+
+/* ---- Large Desktop (1280px+) ---- */
+@media (min-width: 1280px) {
+  .hero__headline {
+    font-size: var(--text-5xl);
+  }
+}
+
+/* ---- Tablet / Small Desktop (up to 1024px) ---- */
+@media (max-width: 1024px) {
+  :root {
+    --space-3xl: 5rem;
+  }
+
+  .parishes__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .bishop-message__layout {
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+/* ---- Tablet (up to 768px) ---- */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 68px;
+    --space-3xl: 4rem;
+    --space-2xl: 3rem;
+  }
+
+  /* ---- Navbar: mobile layout ---- */
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__title--main {
+    font-size: var(--text-base);
+  }
+
+  .navbar__links {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-sm) var(--container-pad) var(--space-lg);
+    border-bottom: 2px solid var(--color-gold);
+    box-shadow: var(--shadow-lg);
+    gap: 0;
+    /* Hidden by default */
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform var(--transition-base),
+      opacity var(--transition-base);
+  }
+
+  .navbar__links.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid var(--color-gray-border);
+    font-size: var(--text-base);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  /* ---- Hero ---- */
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__scroll-cue {
+    display: none;
+  }
+
+  /* ---- Bishop ---- */
+  .bishop-message__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .portrait-frame {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  /* ---- About ---- */
+  .about__content {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* ---- Parishes ---- */
+  .parishes__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ---- News ---- */
+  .news__grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---- Gallery ---- */
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 200px);
+  }
+
+  .gallery__item--wide {
+    grid-column: span 2;
+  }
+
+  .gallery__item--tall {
+    grid-row: span 1;
+  }
+
+  /* ---- Contact ---- */
+  .contact__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* ---- Footer ---- */
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer__bottom-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ---- Mobile (up to 480px) ---- */
+@media (max-width: 480px) {
+  :root {
+    --text-3xl: 2.2rem;
+    --text-4xl: 2.75rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .hero__headline {
+    font-size: 2.4rem;
+  }
+
+  /* ---- Parishes ---- */
+  .parishes__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- Stats ---- */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ---- Gallery ---- */
+  .gallery__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 200px);
+  }
+
+  .gallery__item--wide {
+    grid-column: span 1;
+  }
+
+  /* ---- Footer ---- */
+  .footer__inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- Contact Form ---- */
+  .contact__form-wrapper {
+    padding: var(--space-md);
+  }
+}
+
+/* ================================================================
+   19. PAGE HERO BANNER (inner pages)
+================================================================ */
+
+.page-hero {
+  background-color: var(--color-navy-deep);
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(15, 29, 59, 0.97) 0%,
+      rgba(27, 47, 92, 0.92) 100%
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(184, 148, 46, 0.03) 30px,
+      rgba(184, 148, 46, 0.03) 60px
+    );
+  padding: 5rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold),
+    var(--color-gold-light),
+    var(--color-gold)
+  );
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.page-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: var(--space-md);
+}
+
+.page-hero__breadcrumb a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color var(--transition-base);
+}
+
+.page-hero__breadcrumb a:hover {
+  color: var(--color-gold-light);
+}
+
+.page-hero__breadcrumb span {
+  color: var(--color-gold);
+}
+
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  color: var(--color-white);
+  line-height: 1.15;
+  margin-bottom: var(--space-sm);
+}
+
+.page-hero__title em {
+  color: var(--color-gold-light);
+}
+
+.page-hero__subtitle {
+  font-size: var(--text-md);
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 300;
+  max-width: 580px;
+}
+
+/* ================================================================
+   20. FILTER / SEARCH BAR (parishes, news, gallery)
+================================================================ */
+
+.filter-bar {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-bar__search {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-sm);
+  padding: 0.625rem var(--space-sm);
+  background: var(--color-cream);
+}
+
+.filter-bar__search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: var(--text-sm);
+  color: var(--color-text-main);
+}
+
+.filter-bar__search input::placeholder {
+  color: var(--color-gray-light);
+}
+
+.filter-bar__search-icon {
+  color: var(--color-gray-light);
+  flex-shrink: 0;
+  font-size: var(--text-md);
+}
+
+.filter-bar__tabs {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 0.5rem 1.125rem;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-gray-border);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.filter-tab:hover {
+  border-color: var(--color-navy-mid);
+  color: var(--color-navy-deep);
+}
+
+.filter-tab.is-active {
+  background: var(--color-navy-deep);
+  border-color: var(--color-navy-deep);
+  color: var(--color-white);
+}
+
+/* ================================================================
+   21. TEAM / LEADERSHIP CARDS
+================================================================ */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.team-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-gray-border);
+  text-align: center;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.team-card__photo {
+  height: 220px;
+  background: linear-gradient(
+    160deg,
+    var(--color-navy-mid),
+    var(--color-navy-deep)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+  position: relative;
+}
+
+.team-card__photo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold),
+    var(--color-gold-light)
+  );
+}
+
+.team-card__body {
+  padding: var(--space-md);
+}
+
+.team-card__role {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.3rem;
+}
+
+.team-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: var(--space-xs);
+}
+
+.team-card__parish {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ================================================================
+   22. MINISTRY CARDS
+================================================================ */
+
+.ministry-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-gray-border);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.ministry-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.ministry-card__icon-wrap {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-navy-deep);
+  font-size: 2.75rem;
+  position: relative;
+}
+
+.ministry-card__icon-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold),
+    var(--color-gold-light)
+  );
+}
+
+.ministry-card__body {
+  padding: var(--space-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ministry-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: var(--space-xs);
+}
+
+.ministry-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  flex: 1;
+  margin-bottom: var(--space-md);
+}
+
+.ministry-card__link {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-gold);
+  align-self: flex-start;
+  transition:
+    color var(--transition-base),
+    letter-spacing var(--transition-base);
+}
+
+.ministry-card__link:hover {
+  color: var(--color-navy-deep);
+  letter-spacing: 0.04em;
+}
+
+/* ================================================================
+   23. TIMELINE (History page)
+================================================================ */
+
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-gold),
+    var(--color-navy-light)
+  );
+}
+
+.timeline__item {
+  position: relative;
+  padding-bottom: var(--space-xl);
+}
+
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem;
+  top: 0.35rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  border: 3px solid var(--color-white);
+  box-shadow: 0 0 0 2px var(--color-gold);
+  transform: translateX(-6px);
+}
+
+.timeline__year {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.35rem;
+}
+
+.timeline__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: var(--space-xs);
+}
+
+.timeline__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+/* ================================================================
+   24. PAGINATION
+================================================================ */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-2xl);
+}
+
+.pagination__btn {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-white);
+  cursor: pointer;
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base);
+  padding: 0 0.75rem;
+}
+
+.pagination__btn:hover {
+  border-color: var(--color-navy-mid);
+  color: var(--color-navy-deep);
+}
+
+.pagination__btn.is-active {
+  background: var(--color-navy-deep);
+  border-color: var(--color-navy-deep);
+  color: var(--color-white);
+}
+
+/* ================================================================
+   25. LIGHTBOX OVERLAY (Gallery)
+================================================================ */
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.lightbox-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox__inner {
+  position: relative;
+  max-width: 900px;
+  width: 90%;
+  text-align: center;
+}
+
+.lightbox__image-wrap {
+  background: var(--color-navy-deep);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.lightbox__caption {
+  margin-top: var(--space-sm);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-sm);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.75rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.lightbox__close:hover {
+  color: var(--color-gold);
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: var(--text-xl);
+  transition: background var(--transition-base);
+}
+
+.lightbox__nav:hover {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+.lightbox__nav--prev {
+  left: -4rem;
+}
+.lightbox__nav--next {
+  right: -4rem;
+}
+
+/* ================================================================
+   26. SIDEBAR LAYOUT (News, Blog)
+================================================================ */
+
+.content-with-sidebar {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.sidebar-widget {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-widget__title {
+  background: var(--color-navy-deep);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.sidebar-widget__body {
+  padding: var(--space-md);
+}
+
+.sidebar-widget__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-widget__list li a {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--color-gray-border);
+  transition: color var(--transition-base);
+}
+
+.sidebar-widget__list li:last-child a {
+  border-bottom: none;
+}
+
+.sidebar-widget__list li a:hover {
+  color: var(--color-gold);
+}
+
+.sidebar-widget__list li a span {
+  background: var(--color-gold-pale);
+  color: var(--color-gold);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+}
+
+/* ================================================================
+   27. RESPONSIVE OVERRIDES FOR INNER PAGES
+================================================================ */
+
+@media (max-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .content-with-sidebar {
+    grid-template-columns: 1fr;
+  }
+  .lightbox__nav--prev {
+    left: -2rem;
+  }
+  .lightbox__nav--next {
+    right: -2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .page-hero {
+    padding: 3.5rem 0 3rem;
+  }
+  .lightbox__nav {
+    display: none;
+  }
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-bar__search {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}

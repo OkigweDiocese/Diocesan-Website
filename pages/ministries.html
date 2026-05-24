@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore the ministries and apostolates of the Catholic Diocese of Okigwe — Caritas, Youth, Women, Men, Education, Liturgy, and more."
+    />
+    <meta
+      property="og:title"
+      content="Ministries — Catholic Diocese of Okigwe"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .ministries-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+      }
+      .ministry-anchor {
+        scroll-margin-top: calc(var(--navbar-height) + 2rem);
+      }
+      .ministry-detail {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-2xl);
+        align-items: center;
+        padding: var(--space-2xl) 0;
+        border-bottom: 1px solid var(--color-gray-border);
+      }
+      .ministry-detail:last-child {
+        border-bottom: none;
+      }
+      .ministry-detail--reverse .ministry-detail__image {
+        order: 2;
+      }
+      .ministry-detail--reverse .ministry-detail__text {
+        order: 1;
+      }
+      .ministry-detail__image {
+        aspect-ratio: 4/3;
+        background: linear-gradient(
+          145deg,
+          var(--color-navy-mid),
+          var(--color-navy-deep)
+        );
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: rgba(255, 255, 255, 0.15);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+      .ministry-detail__image span {
+        font-size: 4rem;
+      }
+      .ministry-detail__image::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--color-gold),
+          var(--color-gold-light)
+        );
+      }
+      /* TODO: Replace emoji icon with actual ministry photograph above */
+      .ministry-detail__text h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        color: var(--color-navy-deep);
+        margin-bottom: var(--space-sm);
+      }
+      .ministry-detail__text p {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        line-height: 1.85;
+        margin-bottom: var(--space-sm);
+      }
+      .ministry-detail__text h2 em {
+        color: var(--color-gold);
+      }
+      .ministry-activities {
+        list-style: none;
+        margin: var(--space-sm) 0 var(--space-lg);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .ministry-activities li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.625rem;
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+      }
+      .ministry-activities li::before {
+        content: "✦";
+        color: var(--color-gold);
+        font-size: 0.7rem;
+        margin-top: 0.25rem;
+        flex-shrink: 0;
+      }
+      .ministry-contact-box {
+        background: var(--color-cream);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-sm);
+        padding: var(--space-md);
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        margin-top: var(--space-sm);
+      }
+      .ministry-contact-box strong {
+        color: var(--color-navy-deep);
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+      @media (max-width: 900px) {
+        .ministries-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ministry-detail {
+          grid-template-columns: 1fr;
+          gap: var(--space-lg);
+        }
+        .ministry-detail--reverse .ministry-detail__image {
+          order: 0;
+        }
+        .ministry-detail--reverse .ministry-detail__text {
+          order: 0;
+        }
+      }
+      @media (max-width: 540px) {
+        .ministries-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <title>Ministries — Catholic Diocese of Okigwe</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar__inner">
+          <a href="../index.html" class="navbar__brand">
+            <div class="navbar__logo" aria-hidden="true">
+              <div class="logo-cross">
+                <span class="cross-v"></span><span class="cross-h"></span>
+              </div>
+            </div>
+            <div class="navbar__title">
+              <span class="navbar__title--main">Diocese of Okigwe</span>
+              <span class="navbar__title--sub">Catholic Diocese</span>
+            </div>
+          </a>
+          <ul class="navbar__links" id="navbar-links" role="list">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
+            <li>
+              <a href="ministries.html" class="nav-link active">Ministries</a>
+            </li>
+            <li><a href="news.html" class="nav-link">News</a></li>
+            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navbar-links"
+          >
+            <span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-label="Ministries hero">
+        <div class="container page-hero__inner">
+          <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a> <span>›</span>
+            <span>Ministries</span>
+          </nav>
+          <h1 class="page-hero__title">Diocesan <em>Ministries</em></h1>
+          <p class="page-hero__subtitle">
+            The apostolates, departments, and lay movements through which the
+            Diocese of Okigwe serves God and humanity.
+          </p>
+        </div>
+      </section>
+
+      <!-- MINISTRIES OVERVIEW CARDS -->
+      <section class="section" aria-labelledby="ministries-overview-heading">
+        <div class="container">
+          <div class="section-header reveal-up">
+            <div class="section-label">Our Apostolates</div>
+            <h2 class="section-title" id="ministries-overview-heading">
+              How We <em>Serve</em>
+            </h2>
+            <p class="section-subtitle">
+              The Diocese works through many departments and movements to reach
+              every soul in our care.
+            </p>
+          </div>
+          <div class="ministries-grid reveal-up">
+            <div class="ministry-card">
+              <div class="ministry-card__icon-wrap">❤️</div>
+              <div class="ministry-card__body">
+                <h3 class="ministry-card__title">Caritas &amp; Development</h3>
+                <p class="ministry-card__desc">
+                  Bringing the love of Christ to the poorest — through food,
+                  health, education, and emergency relief across the Diocese.
+                </p>
+                <a href="#caritas" class="ministry-card__link">Learn More →</a>
+              </div>
+            </div>
+            <div class="ministry-card">
+              <div class="ministry-card__icon-wrap">✊</div>
+              <div class="ministry-card__body">
+                <h3 class="ministry-card__title">Youth Ministry</h3>
+                <p class="ministry-card__desc">
+                  Forming, energising, and empowering the young people of the
+                  Diocese as the next generation of faith leaders.
+                </p>
+                <a href="#youth" class="ministry-card__link">Learn More →</a>
+              </div>
+            </div>
+            <div class="ministry-card">
+              <div class="ministry-card__icon-wrap">🌹</div>
+              <div class="ministry-card__body">
+                <h3 class="ministry-card__title">
+                  Catholic Women Organisation
+                </h3>
+                <p class="ministry-card__desc">
+                  Uniting Catholic women in prayer, service, and advocacy —
+                  building the domestic church and serving the wider community.
+                </p>
+                <a href="#cwo" class="ministry-card__link">Learn More →</a>
+              </div>
+            </div>
+            <div class="ministry-card">
+              <div class="ministry-card__icon-wrap">🛡</div>
+              <div class="ministry-card__body">
+                <h3 class="ministry-card__title">Catholic Men Organisation</h3>
+                <p class="ministry-card__desc">
+                  Forming Catholic men as faith-filled husbands, fathers, and
+                  leaders who build the Kingdom of God at home and in society.
+                </p>
+                <a href="#cmo" class="ministry-card__link">Learn More →</a>
+              </div>
+            </div>
+            <div class="ministry-card">
+              <div class="ministry-card__icon-wrap">📚</div>
+              <div class="ministry-card__body">
+                <h3 class="ministry-card__title">Catholic Schools</h3>
+                <p class="ministry-card__desc">
+                  Providing quality, values-centred education through a network
+                  of primary, secondary, and vocational schools across the
+                  Diocese.
+                </p>
+                <a href="#schools" class="ministry-card__link">Learn More →</a>
+              </div>
+            </div>
+            <div class="ministry-card">
+              <div class="ministry-card__icon-wrap">🕊</div>
+              <div class="ministry-card__body">
+                <h3 class="ministry-card__title">Liturgy &amp; Worship</h3>
+                <p class="ministry-card__desc">
+                  Celebrating the sacred mysteries with beauty and reverence —
+                  formation in sacramental life, sacred music, and liturgical
+                  arts.
+                </p>
+                <a href="#liturgy" class="ministry-card__link">Learn More →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAILED MINISTRY SECTIONS -->
+      <section class="section section--cream" aria-label="Ministry details">
+        <div class="container">
+          <!-- CARITAS -->
+          <div id="caritas" class="ministry-detail ministry-anchor reveal-up">
+            <div class="ministry-detail__image"><span>❤️</span></div>
+            <!-- TODO: Replace icon with Caritas programme photograph -->
+            <div class="ministry-detail__text">
+              <div class="section-label">Serving the Poor</div>
+              <h2>Caritas &amp; <em>Development</em></h2>
+              <p>
+                Caritas Okigwe is the official social service and development
+                arm of the Diocese. Inspired by Catholic Social Teaching, we
+                believe that every human person — made in the image and likeness
+                of God — deserves dignity, justice, and access to the basic
+                necessities of life.
+              </p>
+              <p>
+                Our programmes span food security, primary health care, clean
+                water, emergency relief, peacebuilding, and support for persons
+                with disabilities.
+              </p>
+              <ul class="ministry-activities">
+                <li>
+                  Annual food distribution to vulnerable families across 6
+                  deaneries
+                </li>
+                <li>Free medical outreach clinics in rural communities</li>
+                <li>School feeding programme for underprivileged children</li>
+                <li>
+                  Emergency relief response to natural disasters and conflict
+                </li>
+                <li>Advocacy for justice, human rights, and good governance</li>
+              </ul>
+              <div class="ministry-contact-box">
+                <strong>Contact Caritas Okigwe</strong>
+                <!-- TODO: Replace with actual Caritas director contact -->
+                Director: Rev. Fr. [Name] &nbsp;|&nbsp;
+                caritas@dioceseofokigwe.org
+              </div>
+            </div>
+          </div>
+
+          <!-- YOUTH MINISTRY -->
+          <div
+            id="youth"
+            class="ministry-detail ministry-detail--reverse ministry-anchor reveal-up"
+          >
+            <div class="ministry-detail__text">
+              <div class="section-label">The Future of the Church</div>
+              <h2>Youth <em>Ministry</em></h2>
+              <p>
+                The Diocesan Youth Ministry exists to accompany the young people
+                of Okigwe Diocese on their journey of faith — meeting them where
+                they are and guiding them toward a personal encounter with Jesus
+                Christ.
+              </p>
+              <p>
+                Through retreats, leadership formation programmes, annual youth
+                rallies, and Catholic Action movements, we equip young Catholics
+                to be bold witnesses of the Gospel in their schools, families,
+                and communities.
+              </p>
+              <ul class="ministry-activities">
+                <li>Annual Diocesan Youth Rally and Conference</li>
+                <li>Youth retreats and recollections</li>
+                <li>
+                  Catholic Youth Organisation (CYO) at parish and diocesan
+                  levels
+                </li>
+                <li>Vocation discernment and seminary accompaniment</li>
+                <li>
+                  Youth-led community development and social justice initiatives
+                </li>
+              </ul>
+              <div class="ministry-contact-box">
+                <strong>Contact Youth Ministry</strong>
+                Director: Rev. Fr. [Name] &nbsp;|&nbsp;
+                youth@dioceseofokigwe.org
+              </div>
+            </div>
+            <div class="ministry-detail__image"><span>✊</span></div>
+          </div>
+
+          <!-- CWO -->
+          <div id="cwo" class="ministry-detail ministry-anchor reveal-up">
+            <div class="ministry-detail__image"><span>🌹</span></div>
+            <div class="ministry-detail__text">
+              <div class="section-label">Women of Faith</div>
+              <h2>Catholic Women <em>Organisation</em></h2>
+              <p>
+                The Catholic Women Organisation (CWO) of the Diocese of Okigwe
+                is a vibrant association of Catholic women united in faith,
+                prayer, and service. The CWO seeks to form women as disciples of
+                Christ and leaders in the Church and in society.
+              </p>
+              <p>
+                At parish and diocesan levels, CWO members are involved in works
+                of charity, advocacy for women and children, fundraising for
+                diocesan projects, and promoting the sanctity of family life.
+              </p>
+              <ul class="ministry-activities">
+                <li>Annual CWO Diocesan Convention and Congress</li>
+                <li>
+                  Formation programmes: spirituality, leadership, and skills
+                </li>
+                <li>Support for widows and orphans across the Diocese</li>
+                <li>Advocacy against gender-based violence and trafficking</li>
+                <li>Marian devotion and Rosary apostolate</li>
+              </ul>
+              <div class="ministry-contact-box">
+                <strong>Contact CWO Diocesan Secretariat</strong>
+                President: [Name] &nbsp;|&nbsp; cwo@dioceseofokigwe.org
+              </div>
+            </div>
+          </div>
+
+          <!-- CMO -->
+          <div
+            id="cmo"
+            class="ministry-detail ministry-detail--reverse ministry-anchor reveal-up"
+          >
+            <div class="ministry-detail__text">
+              <div class="section-label">Men of the Church</div>
+              <h2>Catholic Men <em>Organisation</em></h2>
+              <p>
+                The Catholic Men Organisation (CMO) is the association of lay
+                Catholic men in the Diocese committed to living out their
+                baptismal calling in the home, workplace, and public square. CMO
+                challenges men to be servant-leaders inspired by the example of
+                St. Joseph.
+              </p>
+              <p>
+                CMO members are involved in community development, supporting
+                diocesan works, mentoring boys and young men, and promoting
+                responsible fatherhood and ethical leadership.
+              </p>
+              <ul class="ministry-activities">
+                <li>Annual CMO Congress and Diocesan Rally</li>
+                <li>Mentorship and fatherhood formation programme</li>
+                <li>Community development and infrastructural projects</li>
+                <li>Advocacy for ethics and integrity in public life</li>
+                <li>Support for diocesan fundraising and capital projects</li>
+              </ul>
+              <div class="ministry-contact-box">
+                <strong>Contact CMO Diocesan Secretariat</strong>
+                President: [Name] &nbsp;|&nbsp; cmo@dioceseofokigwe.org
+              </div>
+            </div>
+            <div class="ministry-detail__image"><span>🛡</span></div>
+          </div>
+
+          <!-- SCHOOLS -->
+          <div id="schools" class="ministry-detail ministry-anchor reveal-up">
+            <div class="ministry-detail__image"><span>📚</span></div>
+            <div class="ministry-detail__text">
+              <div class="section-label">Education for Life</div>
+              <h2>Catholic <em>Schools</em></h2>
+              <p>
+                The Diocese of Okigwe operates a network of Catholic schools
+                committed to the integral formation of young people — in
+                academic excellence, moral character, and spiritual depth. Our
+                schools are among the finest in the region.
+              </p>
+              <p>
+                Rooted in the principle that "Education is the most powerful
+                weapon for changing the world," we provide quality education
+                that develops the whole person: mind, body, and soul.
+              </p>
+              <ul class="ministry-activities">
+                <li>
+                  35 Catholic primary and secondary schools across the Diocese
+                </li>
+                <li>
+                  Annual Catholic Schools Day and inter-school competitions
+                </li>
+                <li>
+                  Catholic Social Teaching integrated into school curricula
+                </li>
+                <li>
+                  Scholarships for academically gifted but financially needy
+                  students
+                </li>
+                <li>
+                  Teacher formation and professional development programmes
+                </li>
+              </ul>
+              <div class="ministry-contact-box">
+                <strong>Contact the Schools Board</strong>
+                Director of Education: Rev. Fr. [Name] &nbsp;|&nbsp;
+                schools@dioceseofokigwe.org
+              </div>
+            </div>
+          </div>
+
+          <!-- LITURGY -->
+          <div
+            id="liturgy"
+            class="ministry-detail ministry-detail--reverse ministry-anchor reveal-up"
+          >
+            <div class="ministry-detail__text">
+              <div class="section-label">The Source &amp; Summit</div>
+              <h2>Liturgy &amp; <em>Worship</em></h2>
+              <p>
+                The Liturgy and Worship Commission of the Diocese oversees the
+                sacred worship life of all parishes — ensuring that the
+                Eucharist and the other sacraments are celebrated with dignity,
+                beauty, and faithful adherence to the norms of the universal
+                Church.
+              </p>
+              <p>
+                We provide formation for priests, deacons, lay ministers,
+                cantors, choirs, and altar servers, and promote authentic
+                inculturation of the liturgy within the rich cultural heritage
+                of our people.
+              </p>
+              <ul class="ministry-activities">
+                <li>
+                  Liturgical formation workshops for clergy and lay ministers
+                </li>
+                <li>Diocesan Choir and Sacred Music festivals</li>
+                <li>
+                  Preparation and distribution of liturgical calendars and
+                  resources
+                </li>
+                <li>Formation for Extraordinary Ministers of Holy Communion</li>
+                <li>Eucharistic adoration and devotional programmes</li>
+              </ul>
+              <div class="ministry-contact-box">
+                <strong>Contact Liturgy Commission</strong>
+                Director: Rev. Fr. [Name] &nbsp;|&nbsp;
+                liturgy@dioceseofokigwe.org
+              </div>
+            </div>
+            <div class="ministry-detail__image"><span>🕊</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GET INVOLVED CTA -->
+      <section
+        style="
+          background: var(--color-navy-deep);
+          padding: var(--space-2xl) 0;
+          text-align: center;
+        "
+      >
+        <div class="container">
+          <div class="section-label" style="color: var(--color-gold)">
+            Join a Ministry
+          </div>
+          <h2
+            style="
+              font-family: var(--font-display);
+              font-size: var(--text-3xl);
+              color: var(--color-white);
+              margin-bottom: var(--space-sm);
+            "
+          >
+            Every Catholic is
+            <em style="color: var(--color-gold-light)">Called to Serve</em>
+          </h2>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.65);
+              max-width: 520px;
+              margin: 0 auto var(--space-lg);
+              font-size: var(--text-sm);
+            "
+          >
+            Find a ministry that matches your gifts and your calling. Speak to
+            your parish priest or contact the Diocesan Secretariat to get
+            involved.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: 1rem;
+              justify-content: center;
+              flex-wrap: wrap;
+            "
+          >
+            <a href="contact.html" class="btn btn--primary"
+              >Contact the Diocese</a
+            >
+            <a href="parishes.html" class="btn btn--outline"
+              >Find Your Parish</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="navbar__logo footer__logo" aria-hidden="true">
+            <div class="logo-cross logo-cross--light">
+              <span class="cross-v"></span><span class="cross-h"></span>
+            </div>
+          </div>
+          <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
+          <p class="footer__tagline">
+            "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
+          </p>
+          <div class="footer__social">
+            <a href="#" class="social-link" aria-label="Facebook"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="Twitter"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="YouTube"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                />
+                <polygon
+                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                  fill="var(--color-navy-deep)"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="Instagram"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                width="20"
+                height="20"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                /></svg
+            ></a>
+          </div>
+        </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h3 class="footer__links-title">Quick Links</h3>
+          <ul role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About the Diocese</a></li>
+            <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="parishes.html">Parish Directory</a></li>
+            <li><a href="news.html">News &amp; Events</a></li>
+            <li><a href="gallery.html">Media Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer__links">
+          <h3 class="footer__links-title">Ministries</h3>
+          <ul role="list">
+            <li><a href="#caritas">Caritas &amp; Development</a></li>
+            <li><a href="#youth">Youth Ministry</a></li>
+            <li><a href="#cwo">Catholic Women Organisation</a></li>
+            <li><a href="#cmo">Catholic Men Organisation</a></li>
+            <li><a href="#schools">Catholic Schools</a></li>
+            <li><a href="#liturgy">Liturgy &amp; Worship</a></li>
+          </ul>
+        </div>
+        <address class="footer__address">
+          <h3 class="footer__links-title">Contact</h3>
+          <p>Bishop's House, Okigwe<br />Imo State, Nigeria</p>
+          <p><a href="tel:+2340000000000">+234 (0) 000 000 0000</a></p>
+          <p>
+            <a href="mailto:info@dioceseofokigwe.org"
+              >info@dioceseofokigwe.org</a
+            >
+          </p>
+        </address>
+      </div>
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copyright">
+            &copy; <span id="footer-year"></span> Catholic Diocese of Okigwe.
+            All rights reserved.
+          </p>
+          <p class="footer__legal">
+            <a href="#">Privacy Policy</a> &nbsp;&bull;&nbsp;
+            <a href="#">Terms of Use</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="../script.js"></script>
+  </body>
+</html>
