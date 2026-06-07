@@ -28,31 +28,37 @@
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container navbar__inner">
+          <!-- Logo + Diocese Name -->
           <a
-            href="../index.html"
+            href="index.html"
             class="navbar__brand"
             aria-label="Catholic Diocese of Okigwe Homepage"
           >
+            <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
-              <div class="logo-cross">
-                <span class="cross-v"></span><span class="cross-h"></span>
-              </div>
+              <img src="images/logo-transperent.png" alt="" />
             </div>
             <div class="navbar__title">
-              <span class="navbar__title--main">Diocese of Okigwe</span>
-              <span class="navbar__title--sub">Catholic Diocese</span>
+              <span class="navbar__title--main">OKIGWE CATHOLIC</span>
+              <span class="navbar__title--sub">Diocese</span>
             </div>
           </a>
+
+          <!-- Desktop Navigation Links -->
           <ul class="navbar__links" id="navbar-links" role="list">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="about.html" class="nav-link active">About</a></li>
-            <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
-            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
-            <li><a href="ministries.html" class="nav-link">Ministries</a></li>
-            <li><a href="news.html" class="nav-link">News</a></li>
-            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="pages/about.html" class="nav-link">About</a></li>
+            <li><a href="pages/bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="pages/parishes.html" class="nav-link">Parishes</a></li>
+            <!-- <li>
+              <a href="pages/ministries.html" class="nav-link">Ministries</a>
+            </li>
+            <li><a href="pages/news.html" class="nav-link">News</a></li>
+            <li><a href="pages/gallery.html" class="nav-link">Gallery</a></li> -->
+            <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
           </ul>
+
+          <!-- Mobile Hamburger Toggle -->
           <button
             class="navbar__hamburger"
             id="hamburger-btn"
@@ -60,9 +66,9 @@
             aria-expanded="false"
             aria-controls="navbar-links"
           >
-            <span class="hamburger-bar"></span
-            ><span class="hamburger-bar"></span
-            ><span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
           </button>
         </div>
       </nav>
