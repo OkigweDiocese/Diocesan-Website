@@ -1,0 +1,2940 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browse the full Parish Directory of the Catholic Diocese of Okigwe — find parishes by deanery, location, or name."
+    />
+    <meta
+      property="og:title"
+      content="Parish Directory — Catholic Diocese of Okigwe"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .deanery-section {
+        margin-bottom: var(--space-3xl);
+      }
+      .deanery-section:last-child {
+        margin-bottom: 0;
+      }
+      .deanery-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        padding: var(--space-sm) var(--space-lg);
+        background: var(--color-navy-deep);
+        border-radius: var(--radius-sm);
+        margin-bottom: var(--space-lg);
+      }
+      .deanery-header__title {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: 600;
+        color: var(--color-white);
+      }
+      .deanery-header__count {
+        margin-left: auto;
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        background: rgba(184, 148, 46, 0.15);
+        padding: 0.25rem 0.875rem;
+        border-radius: 20px;
+      }
+      .parishes-full-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+      }
+      .parish-card--list {
+        display: flex;
+        gap: var(--space-md);
+        align-items: flex-start;
+        padding: var(--space-md);
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        transition:
+          box-shadow var(--transition-base),
+          transform var(--transition-base);
+      }
+      .parish-card--list:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-3px);
+      }
+      .parish-card--list .parish-icon {
+        width: 48px;
+        height: 48px;
+        background: var(--color-navy-deep);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+      }
+      .parish-card--list h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        margin-bottom: 0.2rem;
+        line-height: 1.3;
+      }
+      .parish-card--list .parish-meta {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        margin-bottom: var(--space-xs);
+      }
+      .parish-card--list .parish-feast {
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+      }
+      /* hidden by JS search */
+      .parish-card--list.is-hidden {
+        display: none;
+      }
+      .no-results {
+        grid-column: 1/-1;
+        text-align: center;
+        padding: var(--space-2xl);
+        color: var(--color-text-muted);
+        font-size: var(--text-md);
+        display: none;
+      }
+      .no-results.is-visible {
+        display: block;
+      }
+      @media (max-width: 900px) {
+        .parishes-full-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .parishes-full-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <title>Catholic Diocese of Okigwe</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar__inner">
+          <!-- Logo + Diocese Name -->
+          <a
+            href="../index.html"
+            class="navbar__brand"
+            aria-label="Catholic Diocese of Okigwe Homepage"
+          >
+            <!-- TODO: Replace with actual diocesan logo image -->
+            <div class="navbar__logo" aria-hidden="true">
+              <img src="../images/logo-transperent.png" alt="" />
+            </div>
+            <div class="navbar__title">
+              <span class="navbar__title--main">OKIGWE CATHOLIC</span>
+              <span class="navbar__title--sub">Diocese</span>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <ul class="navbar__links" id="navbar-links" role="list">
+            <li><a href="../index.html" class="nav-link active">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
+            <!-- <li>
+              <a href="pages/ministries.html" class="nav-link">Ministries</a>
+            </li>
+            <li><a href="pages/news.html" class="nav-link">News</a></li>
+            <li><a href="pages/gallery.html" class="nav-link">Gallery</a></li> -->
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="navbar-links"
+          >
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-label="Parish Directory hero">
+        <div class="container page-hero__inner">
+          <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a> <span>›</span>
+            <span>Parishes</span>
+          </nav>
+          <h1 class="page-hero__title">Parish <em>Directory</em></h1>
+          <p class="page-hero__subtitle">
+            Find a Catholic parish community across the Diocese of Okigwe —
+            organised by deanery and searchable by name or location.
+          </p>
+        </div>
+      </section>
+
+      <!-- DIRECTORY -->
+      <section class="section" aria-label="Parish directory listing">
+        <div class="container">
+          <!-- Search & Filter Bar -->
+          <div
+            class="filter-bar reveal-up"
+            role="search"
+            aria-label="Search parishes"
+          >
+            <div class="filter-bar__search">
+              <span class="filter-bar__search-icon" aria-hidden="true">🔍</span>
+              <input
+                type="text"
+                id="parish-search"
+                placeholder="Search parishes by name or location…"
+                aria-label="Search parishes"
+              />
+            </div>
+            <div
+              class="filter-bar__tabs"
+              role="group"
+              aria-label="Filter by deanery"
+            >
+              <button class="filter-tab is-active" data-deanery="all">
+                All Deaneries
+              </button>
+              <button class="filter-tab" data-deanery="okigwe">Okigwe</button>
+              <button class="filter-tab" data-deanery="uturu">Uturu</button>
+              <button class="filter-tab" data-deanery="isuikwuato">
+                Isuikwuato
+              </button>
+              <button class="filter-tab" data-deanery="obowo-east">
+                Obowo East
+              </button>
+              <button class="filter-tab" data-deanery="obowo-west">
+                Obowo West
+              </button>
+              <button class="filter-tab" data-deanery="uboma">Uboma</button>
+              <button class="filter-tab" data-deanery="ihitte">Ihitte</button>
+              <button class="filter-tab" data-deanery="ehime-east">
+                Ehime East
+              </button>
+              <button class="filter-tab" data-deanery="ehime-west">
+                Ehime West
+              </button>
+              <button class="filter-tab" data-deanery="ugiri-mbama">
+                Ugiri/Mbama
+              </button>
+              <button class="filter-tab" data-deanery="osu">Osu</button>
+              <button class="filter-tab" data-deanery="onuimo">Onuimo</button>
+              <button class="filter-tab" data-deanery="umunneochi">
+                Umunneochi
+              </button>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 1: Okigwe  ===== -->
+          <div class="deanery-section reveal-up" data-deanery="okigwe">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Okigwe Deanery</h2>
+              <span class="deanery-header__count">22 Parishes</span>
+            </div>
+            <!-- TODO: Populate with verified parish data from diocesan records -->
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="St. Mary's Pro-Cathedral Parish, Okigwe"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Mary's Pro-Cathedral Parish, Okigwe</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sacred Heart of Jesus · June
+                  </p> -->
+                </div>
+              </div>
+
+              <div
+                class="parish-card--list"
+                data-name="St. Mary's Parish, Arondizuogu"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Mary's Paarish, Arondizuogu</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: St. Michael the Archangel · Sept. 29
+                  </p> -->
+                </div>
+              </div>
+
+              <div
+                class="parish-card--list"
+                data-name="Good Shepherd Parish, Ibube"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Good Shepherd Parish, Ibube</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: Holy Family · December</p> -->
+                </div>
+              </div>
+
+              <div
+                class="parish-card--list"
+                data-name="Holy Family Parish, Mbato Amosu"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Holy Family Parish, Mbato Amosu</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Joseph · March 19</p> -->
+                </div>
+              </div>
+
+              <div
+                class="parish-card--list"
+                data-name="Holy Family Parish, Umualumoke"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Holy Family Parish, Umualumoke</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Immaculate Conception · Dec. 8
+                  </p> -->
+                </div>
+              </div>
+
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Arondizuogu"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Michael's Parish, Arondizuogu</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+
+              <div
+                class="parish-card--list"
+                data-name="Chrit the King Parish, Ezinnachi/Ugwaku"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Christ the King Parish, Ezinnachi/Ugwaku</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Anthony's Parish, Umuka Okigwe"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Anthony's Parish, Umuka Okigwe</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="All Saints Parish, Ogii"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>All Saints Parish, Ogii</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Parish, Ikpaeke Okigwe"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Joseph's Parish, Ikpaeke Okigwe</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Innocent Parish, Aku"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Innocent Parish, Aku</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Parish, Aro-Umuele"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Joseph's Parish, Aro-Umuele</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Vincent de Paul Parish, Umuowa Ibu"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Vincent de Paul Parish, Umuowa Ibu</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. John's Parish, Ikpatu/Ikpaebi/Ndiekwuru"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. John's Parish, Ikpatu/Ikpaebi/Ndiekwuru</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Christ the King Parish, Agbobu"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Christ the King Parish, Agbobu</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Immaculate Conception Parish-in-Building, Okigwe"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Immaculate Conception Parish-in-Building, Okigwe</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Aro-Ogii Okigwe"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Michael's Parish, Aro-Ogii Okigwe</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish-in-Building, Abo-Umulolo"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Peter's Parish-in-Building, Abo-Umulolo</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish-in-Building, Umuokpara Okigwe"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Peter's Parish-in-Building, Umuokpara Okigwe</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Mary's Chaplaincy Ndinjoku/Ndiakaeme"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Mary's Chaplaincy Ndinjoku/Ndiakaeme</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Francis of Asisi Parish, Okigwe Low Cost"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Francis of Asisi Parish, Okigwe Low Cost</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Mary's Chaplaincy, Akaeme Umunwizuzu"
+                data-deanery="okigwe"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Mary's Chaplaincy, Akaeme Umunwizuzu</h3>
+                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 2: Uturu ===== -->
+          <div class="deanery-section reveal-up" data-deanery="uturu">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Uturu Deanery</h2>
+              <span class="deanery-header__count">9 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="Holy Cross Parish, Uturu"
+                data-deanery="uturu"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Holy Cross Parish, Uturu</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sts. Peter &amp; Paul · June 29
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Bridgid's Parish, Uturu"
+                data-deanery="uturu"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Bridgid's Parish, Uturu</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sts. Peter &amp; Paul · June 29
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Assumption Parish-in-Building, Ukwunwangwu Uturu"
+                data-deanery="uturu"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Assumption Parish-in-Building, Ukwunwangwu Uturu</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sts. Peter &amp; Paul · June 29
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Anthony's Parish, Isunabo Uturu"
+                data-deanery="uturu"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Anthony's Parish, Isunabo Uturu</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sts. Peter &amp; Paul · June 29
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Anthony's Parish, Ndundu Uturu"
+                data-deanery="uturu"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Anthony's Parish, Ndundu Uturu</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sts. Peter &amp; Paul · June 29
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Achara Uturu"
+                data-deanery="uturu"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Michael's Parish, Achara Uturu</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sts. Peter &amp; Paul · June 29
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Augustine's Chaplaincy, ABSU Uturu"
+                data-deanery="uturu"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Augustine's Chaplaincy, ABSU Uturu</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sts. Peter &amp; Paul · June 29
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Marist Brothers Chaplaincy, Uturu"
+                data-deanery="uturu"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Marist Brothers Chaplaincy, Uturu</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sts. Peter &amp; Paul · June 29
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Gregory University Chaplaincy, Uturu"
+                data-deanery="uturu"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Gregory University Chaplaincy, Uturu</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Sts. Peter &amp; Paul · June 29
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 3: Isuikwuato ===== -->
+          <div class="deanery-section reveal-up" data-deanery="isuikwuato">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Isuikwuato Deanery</h2>
+              <span class="deanery-header__count">8 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="Our Lady of Fatima Parish, Isuikwuato"
+                data-deanery="isuikwuato"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Our Lady of Fatima Parish, Isuikwuato</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+
+              <div
+                class="parish-card--list"
+                data-name="St. Ann's Parish, Eluama"
+                data-deanery="isuikwuato"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Ann's Parish, Eluama</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Martin's Parish, Acha"
+                data-deanery="isuikwuato"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Martin's Parish, Acha</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Paul's Parish, Nunya"
+                data-deanery="isuikwuato"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Paul's Parish, Nunya</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Agnes' Parish-in-Building, Ozara Isuikwuato"
+                data-deanery="isuikwuato"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Agnes' Parish-in-Building, Ozara Isuikwuato</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Francis' Parish, Umuobiala Isuikwuato"
+                data-deanery="isuikwuato"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Francis' Parish, Umuobiala Isuikwuato</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish Ovim"
+                data-deanery="isuikwuato"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Peter's Parish Ovim</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Mgbaelu/Umunnekwu/Obilohia"
+                data-deanery="isuikwuato"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Mgbaelu/ Umunnekwu/ Obilohia</h3>
+                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 4: Obowo East ===== -->
+          <div class="deanery-section reveal-up" data-deanery="obowo-east">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Obowo East Deanery</h2>
+              <span class="deanery-header__count">9 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="All Saints Parish, Avutu"
+                data-deanery="obowo-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>All Saints Parish, Avutu</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Queen of Peace Parish, Umuariam Obowo"
+                data-deanery="obowo-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Queen of Peace Parish, Umuariam Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St.Anthony's Parish, Amanze/Umuagu Obowo"
+                data-deanery="obowo-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St.Anthony's Parish, Amanze/ Umuagu Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Parish, Achara Obowo"
+                data-deanery="obowo-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Joseph's Parish, Achara Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Our Lady of Assumption Parish Umuariam Obowo"
+                data-deanery="obowo-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Our Lady of Assumption Parish Umuariam Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Patrick's Parish, Umunachi Obowo"
+                data-deanery="obowo-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Patrick's Parish, Umunachi Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Damian Parish, Umungwa Obowo"
+                data-deanery="obowo-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Damian Parish, Umungwa Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Regina Caeli Parish, Ehume/ Umueze"
+                data-deanery="obowo-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Regina Caeli Parish, Ehume/ Umueze</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Jude's Parish, Umuifem"
+                data-deanery="obowo-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Jude's Parish, Umuifem</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 5: Obowo West ===== -->
+          <div class="deanery-section reveal-up" data-deanery="obowo-west">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Obowo West Deanery</h2>
+              <span class="deanery-header__count">11 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="Immaculate Heart Parish, Alike Obowo"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Immaculate Heart Parish, Alike Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="SS. Peter & Paul Parish, Amato Alike"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>SS. Peter & Paul Parish, Amato Alike</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Mary's Parish, Amuzi Obowo"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Mary's Parish, Amuzi Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish, Umulogho"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Peter's Parish, Umulogho</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Christ the King Parish, Umuokeh, Obowo"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Christ the King Parish, Umuokeh, Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Thomas Aquinas Parish, Umuosochie"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Thomas Aquinas Parish, Umuosochie</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Trinity Parish, Umukpa Alike Obowo"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Holy Trinity Parish, Umukpa Alike Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Bridget's Parish, Okwohia Obowo"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Bridget's Parish, Okwohia Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Odenkume Obowo"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Odenkume Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Christ the King Parish, Umuezigwe Amuzi Obowo"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Christ the King Parish, Umuezigwe Amuzi Obowo</h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Mercy Hospital and College of Nursing Sciences Chaplaincy, Umulogho Obowo"
+                data-deanery="obowo-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>
+                    Mercy Hospital and College of Nursing Sciences Chaplaincy,
+                    Umulogho Obowo
+                  </h3>
+                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 6: Uboma ===== -->
+          <div class="deanery-section reveal-up" data-deanery="uboma">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Uboma Deanery</h2>
+              <span class="deanery-header__count">8 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="St. Anthony's Parish, Uboma"
+                data-deanery="uboma"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Anthony's Parish, Uboma</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: Uganda Martyrs · June 3</p> -->
+                </div>
+              </div>
+
+              <div
+                class="parish-card--list"
+                data-name="Holy Trinity Parish, Uboma"
+                data-deanery="uboma"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Holy Trinity Parish, Uboma</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: Uganda Martyrs · June 3</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Ghost Parish, Abueke Uboma"
+                data-deanery="uboma"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Holy Ghost Parish, Abueke Uboma</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: Uganda Martyrs · June 3</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Corpus Christi Parish, Dimnaeze Uboma"
+                data-deanery="uboma"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Corpus Christi Parish, Dimnaeze Uboma</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: Uganda Martyrs · June 3</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Christ the King Parish, Ikperejere"
+                data-deanery="uboma"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Christ the King Parish, Ikperejere</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: Uganda Martyrs · June 3</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Patrick's Parish, Lowa"
+                data-deanery="uboma"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>St. Patrick's Parish, Lowa</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: Uganda Martyrs · June 3</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Trinity Parish, Uzinomi Uboma"
+                data-deanery="uboma"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Holy Trinity Parish, Uzinomi Uboma</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: Uganda Martyrs · June 3</p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Our Lady of Lourdes Parish, Umuoma Uboma"
+                data-deanery="uboma"
+              >
+                <div class="parish-icon">✝</div>
+                <div>
+                  <h3>Our Lady of Lourdes Parish, Umuoma Uboma</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">Feast: Uganda Martyrs · June 3</p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 7: Ihitte ===== -->
+          <div class="deanery-section reveal-up" data-deanery="ihitte">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Ihitte Deanery</h2>
+              <span class="deanery-header__count">11 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="Mater Dolorosa Parish, Ihitte"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Mater Dolorosa Parish, Ihitte</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish, Umunohu"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Peter's Parish, Umunohu</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Amanyinta"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Amanyinta</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Mary's Parish, Umuihi Ihitte"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Mary's Parish, Umuihi Ihitte</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Theresa's Parish, Nkumeato"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Theresa's Parish, Nkumeato</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Theresa's Parish, Amainyiukwu (Chibugwumba)"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Theresa's Parish, Amainyiukwu (Chibugwumba)</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Patrick's Parish Ndiowerre Umuezegwu"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Patrick's Parish Ndiowerre Umuezegwu</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Francis Parish, Umuezegwu"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Francis Parish, Umuezegwu</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish, Umuderim Ihitte"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Peter's Parish, Umuderim Ihitte</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Paul's Parish, Amainyi"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Paul's Parish, Amainyi</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Thomas Aquinas' Seminary Ihitte"
+                data-deanery="ihitte"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Thomas Aquinas' Seminary Ihitte</h3>
+                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 8: Ehime East ===== -->
+          <div class="deanery-section reveal-up" data-deanery="ehime-east">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Ehime East Deanery</h2>
+              <span class="deanery-header__count">15 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="St. Columba's Parish, Nsu"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Columba's Parish, Nsu</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Our Lady of Fatima Parish, Umuakagu Nsu"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Our Lady of Fatima Parish, Umuakagu Nsu</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Ghost Parish, Umuanunu Nsu"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Holy Ghost Parish, Umuanunu Nsu</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Charles Parish, Umunumo"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Charles Parish, Umunumo</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Ignatius Parish, Umunumo"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Ignatius Parish, Umunumo</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Trinity Parish, Nzerem"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Holy Trinity Parish, Nzerem</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Lawrence Parish, Umuduru Umuokpara Nsu"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Lawrence Parish, Umuduru Umuokpara Nsu</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Paul's Parish, Ikpem"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Paul's Parish, Ikpem</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Rosary Parish, Dioka Nzerem"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Holy Rosary Parish, Dioka Nzerem</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Anthony's Parish, Umuezeala Nsu"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Anthony's Parish, Umuezeala Nsu</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Madonna Parish, Umukabia"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Madonna Parish, Umukabia</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Theresa's Parish, Umuoma Nzerem"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Theresa's Parish, Umuoma Nzerem</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Umukabia (Ode na Ezeala)"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Umukabia (Ode na Ezeala)</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Rosary Parish, Umunohu Nsu"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Holy Rosary Parish, Umunohu Nsu</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Columba's Parish, Nsu"
+                data-deanery="ehime-east"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Umuaro Umunumo</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 9: Ehime West ===== -->
+          <div class="deanery-section reveal-up" data-deanery="ehime-west">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Ehime West Deanery</h2>
+              <span class="deanery-header__count">15 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="St. Patrick's Parish, Umuzezeala Owerre"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Patrick's Parish, Umuzezeala Owerre</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Umuezeala Ogwara"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Umuezeala Ogwara</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Theresa's Parish, Umunakanu Owerre"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Theresa's Parish, Umunakanu Owerre</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Umueleke"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Umueleke</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Umueze I"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Umueze I</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Thomas Aquinas' Parish, Ibeowerre Agbaja"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Thomas Aquinas' Parish, Ibeowerre Agbaja</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Our Lady of Victory Parish, Agbaja"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Our Lady of Victory Parish, Agbaja</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish-in-Building, Umuduruebo Mgbam Agbaja"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>
+                    St. Peter's Parish-in-Building, Umuduruebo Mgbam Agbaja
+                  </h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Jude's Parish, Umueze II (Omaeke)"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Jude's Parish, Umueze II (Omaeke)</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Christopher's Parish, Umueze II"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Christopher's Parish, Umueze II</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Paul's Parish, Umuezeala Ama"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Paul's Parish, Umuezeala Ama</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Immaculate Conception Parish, Umunakanu Ama"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Immaculate Conception Parish, Umunakanu Ama</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Parish, Umualumaku"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Joseph's Parish, Umualumaku</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Divine Mercy Chaplaincy, Imo Polytechnic Mbano Campus"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Divine Mercy Chaplaincy, Imo Polytechnic Mbano Campus</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Charles Borromeo Spiritual Year Seminary"
+                data-deanery="ehime-west"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Charles Borromeo Spiritual Year Seminary</h3>
+                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 10: Ugiri/Mbama ===== -->
+          <div class="deanery-section reveal-up" data-deanery="ugiri-mbama">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Ugiri/Mbama Deanery</h2>
+              <span class="deanery-header__count">14 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="St. Patrick's Parish, Ogbor Ugiri"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Patrick's Parish, Ogbor Ugiri</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Ita's Parish, Ibeme"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Ita's Parish, Ibeme</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Mater Dei Parish, Amaukwu Obollo"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Mater Dei Parish, Amaukwu Obollo</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Anthony's Parish, Mbama Umunkwo"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Anthony's Parish, Mbama Umunkwo</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Benedict's Parish, Amaraku"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Benedict's Parish, Amaraku</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Benedict's Parish, Oka Ugiri"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Benedict's Parish, Oka Ugiri</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Theresa's Parish, Obollo"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Theresa's Parish, Obollo</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Theresa's Parish, Amauzari"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Theresa's Parish, Amauzari</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. John's Parish, Umunkwo"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. John's Parish, Umunkwo</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish-in-Building, Umuopara Ugirinna"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish-in-Building, Umuopara Ugirinna</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Ugirinna"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Ugirinna</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Archangel's Parish, Umuebie"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Archangel's Parish, Umuebie</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Anthony's Parish, Umuozu"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Anthony's Parish, Umuozu</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Philomena's Parish, Umuneke"
+                data-deanery="ugiri-mbama"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Philomena's Parish, Umuneke</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 11: Osu ===== -->
+          <div class="deanery-section reveal-up" data-deanery="osu">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Osu Deanery</h2>
+              <span class="deanery-header__count">21 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="St. Paul's Parish, Osu"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Paul's Parish, Osu</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Jude's Parish, Mbano HQ"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Jude's Parish, Mbano HQ</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Theresa's Parish, Osuachara"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Theresa's Parish, Osuachara</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Christ the King Parish, Umunchi"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Christ the King Parish, Osuachara</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Christ the King Parish, Anara"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Christ the King Parish, Anara</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Umuekebi Umunchi"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Umuekebi Umunchi</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Anthony's Parish, Umunachi Osu"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Anthony's Parish, Umunachi Osu</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Rosary Parish, Umuehie Anara"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Holy Rosary Parish, Umuehie Anara</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Parish, Oboh Osuama"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Joseph's Parish, Oboh Osuama</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Mary's Parish, Eziama"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Mary's Parish, Eziama</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish, Mbeke"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Peter's Parish, Mbeke</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Christ the King Parish, Ezumoha"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Christ the King Parish, Ezumoha</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Mary's Parish, Isiama Osuowerre"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Mary's Parish, Isiama Osuowerre</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. John's Parish, Anara"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. John's Parish, Anara</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Christopher's Parish, Umuluwe Ajirija"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Christopher's Parish, Umuluwe Ajirija</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Francis Parish, Umuaro II Osu"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Francis Parish, Umuaro II Osu</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Francis Parish, Dikenofeiyi Anara"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Francis Parish, Dikenofeiyi Anara</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Andrew's Parish, Isiebu"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Andrew's Parish, Isiebu</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="SS. Patrick and Peter's Parish-in-Building, Obiohuru Osuachara"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>
+                    SS. Patrick and Peter's Parish-in-Building, Obiohuru
+                    Osuachara
+                  </h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish, Umuduru Isiala Mbano"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Peter's Parish, Umuduru Isiala Mbano</h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Chaplaincy, Mbano Joint Hospital and College of Nursing Sciences"
+                data-deanery="osu"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>
+                    St. Joseph's Chaplaincy, Mbano Joint Hospital and College of
+                    Nursing Sciences
+                  </h3>
+                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 12: Onuimo ===== -->
+          <div class="deanery-section reveal-up" data-deanery="onuimo">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Onuimo Deanery</h2>
+              <span class="deanery-header__count">9 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="Our Lady of Perpetual Succour, Okwe"
+                data-deanery="onuimo"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Our Lady of Perpetual Succour, Okwe</h3>
+                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Charles Parish, Okwelle"
+                data-deanery="onuimo"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Charles Parish, Okwelle</h3>
+                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Sacred Heart Parish, Umuna"
+                data-deanery="onuimo"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Sacred Heart Parish, Umuna</h3>
+                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Our Lady of Lourdes Parish, Umuduru Egbeaguru"
+                data-deanery="onuimo"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Our Lady of Lourdes Parish, Umuduru Egbeaguru</h3>
+                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Parish, Umucheke Okwe"
+                data-deanery="onuimo"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Joseph's Parish, Umucheke Okwe</h3>
+                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Parish, Uwakaonye Aniche/ Akpakwu"
+                data-deanery="onuimo"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Joseph's Parish, Uwakaonye Aniche/ Akpakwu</h3>
+                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Parish-in-Building, Umuna"
+                data-deanery="onuimo"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Joseph's Parish-in-Building, Umuna</h3>
+                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Patrick's Parish-in-Building, Ichiribe Okwe"
+                data-deanery="onuimo"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Patrick's Parish-in-Building, Ichiribe Okwe</h3>
+                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Joseph's Parish-in-Building, Ezelu Okwe"
+                data-deanery="onuimo"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Joseph's Parish-in-Building, Ezelu Okwe</h3>
+                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEANERY 13: Umunneochi ===== -->
+          <div class="deanery-section reveal-up" data-deanery="umunneochi">
+            <div class="deanery-header">
+              <span style="font-size: 1.4rem" aria-hidden="true">⛪</span>
+              <h2 class="deanery-header__title">Umunneochi Deanery</h2>
+              <span class="deanery-header__count">12 Parishes</span>
+            </div>
+            <div class="parishes-full-grid">
+              <div
+                class="parish-card--list"
+                data-name="Queen of Apostles Parish, Umuchieze"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Queen of Apostles Parish, Umuchieze</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Trinity Parish, Isuochi"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Holy Trinity Parish, Isuochi</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Maria Assumpta Parish, Nneato"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Maria Assumpta Parish, Nneato</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Holy Family Parish, Eziama Nneato"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Holy Family Parish, Eziama Nneato</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Sacred Heart Parish, Ngodo Isuochi"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Sacred Heart Parish, Ngodo Isuochi</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Philip's Parish, Lokpanta"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Philip's Parish, Lokpanta</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="Immaculate Heart Parish, Umuaku/ Mbala Isuochi"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>Immaculate Heart Parish, Umuaku/ Mbala Isuochi</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Philomena's Parish, Lekwesi"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Philomena's Parish, Lekwesi</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Gregory's Parish, Ngodo Isuochi"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Gregory's Parish, Ngodo Isuochi</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Peter's Parish, Lomara Isuochi"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Peter's Parish, Lomara Isuochi</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Michael's Parish, Obulo Eziama Nneato"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Michael's Parish, Obulo Eziama Nneato</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+              <div
+                class="parish-card--list"
+                data-name="St. Luke's Parish, Umuelem Isuochi"
+                data-deanery="umunneochi"
+              >
+                <div class="parish-icon">⛪</div>
+                <div>
+                  <h3>St. Luke's Parish, Umuelem Isuochi</h3>
+                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <!-- <p class="parish-feast">
+                    Feast: Our Lady of Perpetual Help · June 27
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- No results message -->
+          <div
+            class="no-results"
+            id="no-results"
+            role="status"
+            aria-live="polite"
+          >
+            <p>
+              No parishes found matching your search. Please try a different
+              term.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA banner -->
+      <section
+        style="
+          background: var(--color-navy-deep);
+          padding: var(--space-xl) 0;
+          text-align: center;
+        "
+      >
+        <div class="container">
+          <p
+            style="
+              font-size: var(--text-xs);
+              font-weight: 700;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: var(--color-gold);
+              margin-bottom: 0.5rem;
+            "
+          >
+            Is Your Parish Missing?
+          </p>
+          <h2
+            style="
+              font-family: var(--font-display);
+              font-size: var(--text-2xl);
+              color: var(--color-white);
+              margin-bottom: var(--space-sm);
+            "
+          >
+            Help Us Keep the Directory
+            <em style="color: var(--color-gold-light)">Up to Date</em>
+          </h2>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.6);
+              max-width: 480px;
+              margin: 0 auto var(--space-lg);
+              font-size: var(--text-sm);
+            "
+          >
+            If your parish details are incorrect or your parish is not listed,
+            please contact the Diocesan Chancery.
+          </p>
+          <a href="contact.html" class="btn btn--primary"
+            >Contact the Chancery</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer__inner">
+        <!-- Footer Brand -->
+        <div class="footer__brand">
+          <!-- TODO: Replace with actual diocesan logo (light/white version) -->
+          <div class="navbar__logo footer__logo" aria-hidden="true">
+            <img src="../images/logo-transperent.png" alt="Diocesan Logo" />
+          </div>
+          <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
+          <p class="footer__tagline">
+            "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
+          </p>
+          <!-- Social Media Links -->
+          <!-- TODO: Replace # with actual social media URLs -->
+          <div class="footer__social" aria-label="Diocese social media links">
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese Facebook page"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese YouTube channel"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                />
+                <polygon
+                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                  fill="var(--color-navy-deep)"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese Instagram page"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h3 class="footer__links-title">Quick Links</h3>
+          <ul role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About the Diocese</a></li>
+            <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="parishes.html">Parish Directory</a></li>
+            <!-- <li><a href="pages/news.html">News &amp; Events</a></li>
+            <li><a href="pages/gallery.html">Media Gallery</a></li> -->
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Ministries Links -->
+        <!-- <div class="footer__links">
+          <h3 class="footer__links-title">Ministries</h3>
+          <ul role="list">
+            <li>
+              <a href="pages/ministries.html#caritas"
+                >Caritas &amp; Development</a
+              >
+            </li>
+            <li><a href="pages/ministries.html#youth">Youth Ministry</a></li>
+            <li>
+              <a href="pages/ministries.html#cwo"
+                >Catholic Women Organisation</a
+              >
+            </li>
+            <li>
+              <a href="pages/ministries.html#cmo">Catholic Men Organisation</a>
+            </li>
+            <li>
+              <a href="pages/ministries.html#schools">Catholic Schools</a>
+            </li>
+            <li>
+              <a href="pages/ministries.html#liturgy">Liturgy &amp; Worship</a>
+            </li>
+          </ul>
+        </div> -->
+
+        <!-- Contact Info -->
+        <address class="footer__address">
+          <h3 class="footer__links-title">Contact</h3>
+          <!-- TODO: Replace with verified diocesan contact details -->
+          <p>
+            Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
+            <br />Imo State, <br />
+            Nigeria
+          </p>
+          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
+          <p>
+            <a href="mailto:okigwecathdiocese@yahoo.com"
+              >okigwecathdiocese@yahoo.com</a
+            >
+          </p>
+        </address>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copyright">
+            &copy; <span id="footer-year"></span> Catholic Diocese of Okigwe.
+            All rights reserved.
+          </p>
+          <p class="footer__legal">
+            <!-- TODO: Add Privacy Policy and Terms of Use pages when built -->
+            <!-- <a href="#">Privacy Policy</a> &nbsp;&bull;&nbsp; -->
+            <!-- <a href="#">Terms of Use</a> -->
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="../script.js"></script>
+    <script>
+      /* ---- Parish search + deanery filter ---- */
+      const searchInput = document.getElementById("parish-search");
+      const filterTabs = document.querySelectorAll(".filter-tab");
+      const deanerySecs = document.querySelectorAll(".deanery-section");
+      const parishCards = document.querySelectorAll(".parish-card--list");
+      const noResults = document.getElementById("no-results");
+      let activeDeanery = "all";
+
+      function applyFilters() {
+        const query = searchInput.value.trim().toLowerCase();
+        let any = false;
+
+        // Show/hide deanery sections based on active tab
+        deanerySecs.forEach((sec) => {
+          const match =
+            activeDeanery === "all" || sec.dataset.deanery === activeDeanery;
+          sec.style.display = match ? "" : "none";
+        });
+
+        // Filter parish cards by search within visible deaneries
+        parishCards.forEach((card) => {
+          const deaneryMatch =
+            activeDeanery === "all" || card.dataset.deanery === activeDeanery;
+          const nameMatch =
+            !query || card.dataset.name.toLowerCase().includes(query);
+          const show = deaneryMatch && nameMatch;
+          card.classList.toggle("is-hidden", !show);
+          if (show) any = true;
+        });
+
+        noResults.classList.toggle("is-visible", !any);
+      }
+
+      searchInput.addEventListener("input", applyFilters);
+
+      filterTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          filterTabs.forEach((t) => t.classList.remove("is-active"));
+          tab.classList.add("is-active");
+          activeDeanery = tab.dataset.deanery;
+          applyFilters();
+        });
+      });
+    </script>
+  </body>
+</html>

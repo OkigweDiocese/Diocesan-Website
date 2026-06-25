@@ -2047,6 +2047,8 @@ blockquote p + p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .team-card {
