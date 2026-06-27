@@ -21,6 +21,7 @@
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
   initNavbar();
+  initActiveNavLink();
   initScrollSpy();
   initSmoothScroll();
   initRevealAnimations();
@@ -84,7 +85,38 @@ function initNavbar() {
 }
 
 /* ============================================================
-   2. ACTIVE NAVIGATION LINK (SCROLL SPY)
+   2. ACTIVE NAVIGATION LINK (CURRENT PAGE)
+   ============================================================ */
+function initActiveNavLink() {
+  const navLinks = document.querySelectorAll(".navbar__links .nav-link");
+  if (!navLinks.length) return;
+
+  const currentPage = getNavPageName(window.location.pathname);
+
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("#")) return;
+
+    let linkPage;
+    try {
+      linkPage = getNavPageName(new URL(href, window.location.href).pathname);
+    } catch {
+      return;
+    }
+
+    link.classList.toggle("active", linkPage === currentPage);
+  });
+}
+
+function getNavPageName(pathname) {
+  const parts = pathname.split("/").filter(Boolean);
+  const file = parts[parts.length - 1] || "index.html";
+  if (!file.includes(".")) return "index.html";
+  return file.toLowerCase();
+}
+
+/* ============================================================
+   3. ACTIVE NAVIGATION LINK (SCROLL SPY)
    ============================================================ */
 function initScrollSpy() {
   const sections = document.querySelectorAll("section[id]");
@@ -120,7 +152,7 @@ function initScrollSpy() {
 }
 
 /* ============================================================
-   3. SMOOTH SCROLLING
+   4. SMOOTH SCROLLING
    ============================================================ */
 function initSmoothScroll() {
   const navHeight =
@@ -156,7 +188,7 @@ function initSmoothScroll() {
 }
 
 /* ============================================================
-   4. SCROLL REVEAL ANIMATIONS
+   5. SCROLL REVEAL ANIMATIONS
    ============================================================ */
 function initRevealAnimations() {
   const revealElements = document.querySelectorAll(
@@ -185,7 +217,7 @@ function initRevealAnimations() {
 }
 
 /* ============================================================
-   5. STATISTICS COUNTER ANIMATION
+   6. STATISTICS COUNTER ANIMATION
    ============================================================ */
 function initStatCounters() {
   const counters = document.querySelectorAll(".stat-card__number[data-target]");
@@ -244,7 +276,7 @@ function initStatCounters() {
 }
 
 /* ============================================================
-   6. CONTACT FORM VALIDATION & FEEDBACK
+   7. CONTACT FORM VALIDATION & FEEDBACK
    ============================================================ */
 function initContactForm() {
   const form = document.getElementById("contact-form");
@@ -368,7 +400,7 @@ function initContactForm() {
 }
 
 /* ============================================================
-   7. BACK TO TOP BUTTON
+   8. BACK TO TOP BUTTON
    ============================================================ */
 function initBackToTop() {
   const btn = document.getElementById("back-to-top");
@@ -395,7 +427,7 @@ function initBackToTop() {
 }
 
 /* ============================================================
-   8. FOOTER YEAR — AUTO-UPDATE
+   9. FOOTER YEAR — AUTO-UPDATE
    ============================================================ */
 function initFooterYear() {
   const yearEl = document.getElementById("footer-year");

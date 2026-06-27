@@ -12,7 +12,7 @@
       content="Parish Directory — Catholic Diocese of Okigwe"
     />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -110,6 +110,29 @@
       .parish-card--list.is-hidden {
         display: none;
       }
+      .parish-card--list.is-collapsed {
+        display: none;
+      }
+      .deanery-section.is-expanded .parish-card--list.is-collapsed,
+      .deanery-section.is-filter-active .parish-card--list.is-collapsed {
+        display: flex;
+      }
+      .deanery-section.is-expanded .parish-card--list.is-collapsed.is-hidden,
+      .deanery-section.is-filter-active
+        .parish-card--list.is-collapsed.is-hidden {
+        display: none;
+      }
+      .deanery-show-more-wrap {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--space-lg);
+      }
+      .deanery-show-more-wrap.is-hidden {
+        display: none;
+      }
+      .deanery-show-more {
+        min-width: 220px;
+      }
       .no-results {
         grid-column: 1/-1;
         text-align: center;
@@ -157,7 +180,7 @@
 
           <!-- Desktop Navigation Links -->
           <ul class="navbar__links" id="navbar-links" role="list">
-            <li><a href="../index.html" class="nav-link active">Home</a></li>
+            <li><a href="../index.html" class="nav-link">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
             <li><a href="parishes.html" class="nav-link">Parishes</a></li>
@@ -166,6 +189,7 @@
             </li>
             <li><a href="pages/news.html" class="nav-link">News</a></li>
             <li><a href="pages/gallery.html" class="nav-link">Gallery</a></li> -->
+            <li><a href="archives.html" class="nav-link">Archives</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
 
@@ -2892,7 +2916,8 @@
     </button>
     <script src="../script.js"></script>
     <script>
-      /* ---- Parish search + deanery filter ---- */
+      /* ---- Parish search, deanery filter, and show-more ---- */
+      const INITIAL_VISIBLE = 5;
       const searchInput = document.getElementById("parish-search");
       const filterTabs = document.querySelectorAll(".filter-tab");
       const deanerySecs = document.querySelectorAll(".deanery-section");
@@ -2900,18 +2925,90 @@
       const noResults = document.getElementById("no-results");
       let activeDeanery = "all";
 
+      function initDeaneryShowMore() {
+        deanerySecs.forEach((sec) => {
+          const grid = sec.querySelector(".parishes-full-grid");
+          const allCards = sec.querySelectorAll(".parish-card--list");
+          const hiddenCount = Math.max(0, allCards.length - INITIAL_VISIBLE);
+
+          if (grid && !grid.id) {
+            grid.id = `deanery-grid-${sec.dataset.deanery}`;
+          }
+
+          if (hiddenCount === 0) return;
+
+          allCards.forEach((card, index) => {
+            if (index >= INITIAL_VISIBLE) {
+              card.classList.add("is-collapsed");
+            }
+          });
+
+          const wrap = document.createElement("div");
+          wrap.className = "deanery-show-more-wrap";
+
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "btn btn--secondary deanery-show-more";
+          btn.textContent = `Show more (${hiddenCount} more)`;
+          btn.setAttribute("aria-expanded", "false");
+          btn.setAttribute(
+            "aria-controls",
+            `deanery-grid-${sec.dataset.deanery}`,
+          );
+
+          btn.addEventListener("click", () => {
+            sec.classList.add("is-expanded");
+            btn.setAttribute("aria-expanded", "true");
+            updateDeaneryCollapse(sec);
+          });
+
+          wrap.appendChild(btn);
+          sec.appendChild(wrap);
+        });
+      }
+
+      function updateDeaneryCollapse(sec) {
+        const cards = sec.querySelectorAll(".parish-card--list");
+        const showMoreWrap = sec.querySelector(".deanery-show-more-wrap");
+        const forceShowAll =
+          sec.classList.contains("is-filter-active") ||
+          sec.classList.contains("is-expanded");
+        const hiddenCount = Math.max(0, cards.length - INITIAL_VISIBLE);
+
+        cards.forEach((card, index) => {
+          if (forceShowAll || index < INITIAL_VISIBLE) {
+            card.classList.remove("is-collapsed");
+          } else if (!card.classList.contains("is-hidden")) {
+            card.classList.add("is-collapsed");
+          }
+        });
+
+        if (showMoreWrap) {
+          showMoreWrap.classList.toggle(
+            "is-hidden",
+            forceShowAll || hiddenCount === 0,
+          );
+          const btn = showMoreWrap.querySelector(".deanery-show-more");
+          if (btn) {
+            btn.textContent = `Show more (${hiddenCount} more)`;
+          }
+        }
+      }
+
       function applyFilters() {
         const query = searchInput.value.trim().toLowerCase();
         let any = false;
 
-        // Show/hide deanery sections based on active tab
         deanerySecs.forEach((sec) => {
-          const match =
+          const deaneryMatch =
             activeDeanery === "all" || sec.dataset.deanery === activeDeanery;
-          sec.style.display = match ? "" : "none";
+          sec.style.display = deaneryMatch ? "" : "none";
+
+          const showAllInDeanery =
+            deaneryMatch && (activeDeanery !== "all" || query.length > 0);
+          sec.classList.toggle("is-filter-active", showAllInDeanery);
         });
 
-        // Filter parish cards by search within visible deaneries
         parishCards.forEach((card) => {
           const deaneryMatch =
             activeDeanery === "all" || card.dataset.deanery === activeDeanery;
@@ -2922,8 +3019,16 @@
           if (show) any = true;
         });
 
+        deanerySecs.forEach((sec) => {
+          if (sec.style.display === "none") return;
+          updateDeaneryCollapse(sec);
+        });
+
         noResults.classList.toggle("is-visible", !any);
       }
+
+      initDeaneryShowMore();
+      applyFilters();
 
       searchInput.addEventListener("input", applyFilters);
 

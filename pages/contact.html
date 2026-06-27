@@ -12,7 +12,7 @@
       content="Contact Us — Catholic Diocese of Okigwe"
     />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -233,6 +233,27 @@
         color: var(--color-navy-deep);
       }
 
+      .contact-social-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+      }
+
+      .contact-social-buttons .btn {
+        white-space: normal;
+        text-align: center;
+      }
+
+      @media (max-width: 480px) {
+        .contact-social-buttons {
+          flex-direction: column;
+        }
+
+        .contact-social-buttons .btn {
+          width: 100%;
+        }
+      }
+
       /* ---- Contact Form card ---- */
       .contact-form-card {
         background: var(--color-white);
@@ -395,12 +416,54 @@
         }
       }
 
+      @media (max-width: 768px) {
+        .contact-form-card__head,
+        .contact-form-card__body {
+          padding-left: var(--space-lg);
+          padding-right: var(--space-lg);
+        }
+
+        .contact-info-card__body {
+          padding: var(--space-md);
+        }
+
+        .faq-question__text {
+          font-size: var(--text-base);
+        }
+
+        .faq-question {
+          padding: var(--space-sm) var(--space-md);
+        }
+      }
+
       @media (max-width: 600px) {
         .dept-grid {
           grid-template-columns: 1fr;
         }
         .form-row {
           grid-template-columns: 1fr;
+        }
+
+        .contact-row {
+          flex-direction: column;
+          gap: var(--space-sm);
+        }
+
+        .contact-row__value {
+          overflow-wrap: anywhere;
+          word-break: break-word;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .contact-form-card__head,
+        .contact-form-card__body {
+          padding-left: var(--space-md);
+          padding-right: var(--space-md);
+        }
+
+        .contact-form-card__head h2 {
+          font-size: var(--text-lg);
         }
       }
     </style>
@@ -429,7 +492,7 @@
 
           <!-- Desktop Navigation Links -->
           <ul class="navbar__links" id="navbar-links" role="list">
-            <li><a href="../index.html" class="nav-link active">Home</a></li>
+            <li><a href="../index.html" class="nav-link">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
             <li><a href="parishes.html" class="nav-link">Parishes</a></li>
@@ -438,6 +501,7 @@
             </li>
             <li><a href="pages/news.html" class="nav-link">News</a></li>
             <li><a href="pages/gallery.html" class="nav-link">Gallery</a></li> -->
+            <li><a href="archives.html" class="nav-link">Archives</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
 
@@ -544,15 +608,19 @@
 
               <!-- Google Maps Embed
                TODO: Replace the placeholder below with the actual Google Maps embed iframe: -->
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d54442.37874117783!2d7.3265770949301325!3d5.814924017191559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sokigwe%20diocese%20cathedral!5e0!3m2!1sen!2sng!4v1780441883398!5m2!1sen!2sng"
-                width="600"
-                height="450"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
+              <div
+                class="map-responsive"
+                role="region"
+                aria-label="Diocese location map"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d54442.37874117783!2d7.3265770949301325!3d5.814924017191559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sokigwe%20diocese%20cathedral!5e0!3m2!1sen!2sng!4v1780441883398!5m2!1sen!2sng"
+                  title="Catholic Diocese of Okigwe location map"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                ></iframe>
+              </div>
               <!-- <div
                 class="map-embed"
                 role="region"
@@ -596,9 +664,7 @@
                     reflections, news, and event updates.
                   </p>
                   <!-- TODO: Replace # with actual social media profile URLs -->
-                  <div
-                    style="display: flex; flex-wrap: wrap; gap: var(--space-sm)"
-                  >
+                  <div class="contact-social-buttons">
                     <a
                       href="https://web.facebook.com/profile.php?id=61557403089364"
                       class="btn btn--secondary"
@@ -1159,9 +1225,9 @@
                   vocation to priesthood or religious life. Please contact the
                   Diocesan Vocations Director at
                   <a
-                    href="mailto:vocations@dioceseofokigwe.org"
+                    href="mailto:jnwokeocha@gmail.com"
                     style="color: var(--color-gold)"
-                    >vocations@dioceseofokigwe.org</a
+                    >jnwokeocha@gmail.com</a
                   >. You may also speak with your parish priest, who can
                   accompany you in your discernment and put you in contact with
                   the Vocations Director.

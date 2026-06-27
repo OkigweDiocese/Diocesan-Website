@@ -176,6 +176,13 @@ a {
   text-transform: uppercase;
   border: 1px dashed var(--color-gold-light);
   min-height: 220px;
+  overflow: hidden;
+}
+
+.img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ================================================================
@@ -531,7 +538,7 @@ blockquote p + p {
   content: "";
   position: absolute;
   inset: 0;
-  border: 2px solid var(--color-gold);
+  /* border: 2px solid var(--color-gold); */
   border-radius: var(--radius-sm);
 }
 
@@ -837,6 +844,12 @@ blockquote p + p {
   height: 120px;
 }
 
+.portrait-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Decorative gold bar at top of portrait */
 .portrait-frame::before {
   content: "";
@@ -996,7 +1009,7 @@ blockquote p + p {
 
 .stat-card__number {
   font-family: var(--font-display);
-  font-size: var(--text-4xl);
+  font-size: clamp(1.75rem, 6vw, var(--text-4xl));
   font-weight: 700;
   color: var(--color-gold);
   line-height: 1;
@@ -1339,9 +1352,32 @@ blockquote p + p {
   color: var(--color-navy-deep);
 }
 
+.contact__item a,
+.contact__item p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Responsive map / embed wrapper */
+.map-responsive {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-border);
+  background-color: var(--color-gold-pale);
+}
+
+.map-responsive iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 /* Map placeholder */
 .map-placeholder {
-  height: 260px;
+  width: 100%;
   background-color: var(--color-gold-pale);
   border: 1px dashed var(--color-gold-light);
   border-radius: var(--radius-md);
@@ -1683,8 +1719,13 @@ blockquote p + p {
   }
 
   .bishop-message__layout {
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: minmax(220px, 280px) 1fr;
     gap: var(--space-xl);
+  }
+
+  .contact__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
   }
 }
 
@@ -1694,6 +1735,20 @@ blockquote p + p {
     --navbar-height: 68px;
     --space-3xl: 4rem;
     --space-2xl: 3rem;
+    --container-pad: 1.25rem;
+  }
+
+  .section {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 6vw, var(--text-3xl));
   }
 
   /* ---- Navbar: mobile layout ---- */
@@ -1701,8 +1756,19 @@ blockquote p + p {
     display: flex;
   }
 
+  .navbar__brand {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .navbar__title {
+    min-width: 0;
+  }
+
   .navbar__title--main {
     font-size: var(--text-base);
+    white-space: normal;
+    line-height: 1.15;
   }
 
   .navbar__links {
@@ -1747,9 +1813,29 @@ blockquote p + p {
   }
 
   /* ---- Hero ---- */
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__content {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .hero__mission {
+    font-size: var(--text-base);
+  }
+
   .hero__actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
   }
 
   .hero__scroll-cue {
@@ -1760,6 +1846,12 @@ blockquote p + p {
   .bishop-message__layout {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
+  }
+
+  .bishop-message__portrait {
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .portrait-frame {
@@ -1806,6 +1898,10 @@ blockquote p + p {
     gap: var(--space-xl);
   }
 
+  .contact__form-wrapper {
+    padding: var(--space-lg);
+  }
+
   /* ---- Footer ---- */
   .footer__inner {
     grid-template-columns: 1fr 1fr;
@@ -1820,6 +1916,13 @@ blockquote p + p {
     flex-direction: column;
     text-align: center;
   }
+
+  .back-to-top {
+    bottom: var(--space-md);
+    right: var(--space-md);
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* ---- Mobile (up to 480px) ---- */
@@ -1827,14 +1930,57 @@ blockquote p + p {
   :root {
     --text-3xl: 2.2rem;
     --text-4xl: 2.75rem;
+    --container-pad: 1rem;
+  }
+
+  .section {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: clamp(1.65rem, 8vw, 2rem);
   }
 
   .hero__headline {
-    font-size: 2.4rem;
+    font-size: clamp(1.85rem, 9vw, 2.4rem);
+  }
+
+  .hero__eyebrow {
+    letter-spacing: 0.12em;
+    line-height: 1.5;
+  }
+
+  .navbar__logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .navbar__title--main {
+    font-size: 0.8125rem;
+  }
+
+  .navbar__title--sub {
+    font-size: 0.65rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    white-space: normal;
+  }
+
+  .stat-card {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .stat-card__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  blockquote {
+    font-size: var(--text-base);
+    padding-left: var(--space-md);
   }
 
   /* ---- Parishes ---- */
@@ -1845,6 +1991,7 @@ blockquote p + p {
   /* ---- Stats ---- */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
   }
 
   /* ---- Gallery ---- */
@@ -1862,9 +2009,19 @@ blockquote p + p {
     grid-template-columns: 1fr;
   }
 
+  .site-footer {
+    padding-top: var(--space-2xl);
+  }
+
   /* ---- Contact Form ---- */
   .contact__form-wrapper {
     padding: var(--space-md);
+  }
+
+  .contact__item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
   }
 }
 
@@ -2511,6 +2668,13 @@ blockquote p + p {
   .page-hero {
     padding: 3.5rem 0 3rem;
   }
+  .page-hero__subtitle {
+    font-size: var(--text-base);
+    max-width: 100%;
+  }
+  .page-hero__breadcrumb {
+    flex-wrap: wrap;
+  }
   .lightbox__nav {
     display: none;
   }
@@ -2526,5 +2690,11 @@ blockquote p + p {
 @media (max-width: 480px) {
   .team-grid {
     grid-template-columns: 1fr;
+  }
+  .page-hero {
+    padding: 2.75rem 0 2.25rem;
+  }
+  .page-hero__title {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
   }
 }
