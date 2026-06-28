@@ -1,0 +1,1261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The complete history of bishops who have led the Catholic Diocese of Okigwe — biographies, achievements, and legacies."
+    />
+    <meta
+      property="og:title"
+      content="History of Bishops — Catholic Diocese of Okigwe"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <style>
+      /* ================================================================
+       BISHOPS HISTORY PAGE — SPECIFIC STYLES
+    ================================================================ */
+
+      /* ---- Succession bar ---- */
+      .succession-bar {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        overflow-x: auto;
+        padding: var(--space-md) 0;
+        scrollbar-width: none;
+      }
+      .succession-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .succession-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        flex-shrink: 0;
+        padding: var(--space-sm) var(--space-md);
+        cursor: pointer;
+        text-align: center;
+        transition: transform var(--transition-base);
+      }
+      .succession-item:hover {
+        transform: translateY(-3px);
+      }
+
+      .succession-item__number {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--color-navy-deep);
+        color: var(--color-gold);
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--color-gold);
+      }
+
+      .succession-item__name {
+        font-size: var(--text-xs);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        max-width: 100px;
+        line-height: 1.3;
+      }
+
+      .succession-item__years {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+      }
+
+      .succession-arrow {
+        color: var(--color-gold);
+        font-size: var(--text-xl);
+        flex-shrink: 0;
+        margin-top: -1.5rem;
+      }
+
+      /* ================================================================
+       BISHOP PROFILE SECTION
+       HOW TO ADD A NEW BISHOP:
+       Copy the entire .bishop-profile-section block and paste it below
+       the existing ones. Update all [placeholder] text and the section id.
+    ================================================================ */
+
+      .bishop-profile-section {
+        padding: var(--space-3xl) 0;
+        border-bottom: 2px solid var(--color-gray-border);
+        scroll-margin-top: calc(var(--navbar-height) + 1rem);
+      }
+      .bishop-profile-section:last-of-type {
+        border-bottom: none;
+      }
+
+      /* Ordinal badge at top */
+      .bishop-ordinal {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-lg);
+      }
+      .bishop-ordinal__num {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--color-navy-deep);
+        color: var(--color-gold);
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--color-gold);
+      }
+      .bishop-ordinal__label {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+      }
+
+      /* Two-col layout: portrait + content */
+      .bishop-full-layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: var(--space-2xl);
+        align-items: start;
+      }
+
+      /* Portrait column */
+      .bishop-portrait-col {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+
+      .bishop-portrait-frame {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: linear-gradient(
+          160deg,
+          var(--color-navy-mid),
+          var(--color-navy-deep)
+        );
+        border-radius: var(--radius-md);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-sm);
+        color: rgba(255, 255, 255, 0.35);
+        font-size: var(--text-xs);
+        letter-spacing: 0.1em;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        /* TODO: Replace with actual bishop portrait:
+         background-image: url('../images/bishop-[name].jpg');
+         background-size: cover; background-position: center top; */
+      }
+      .bishop-portrait-frame::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: var(--space-lg);
+        right: var(--space-lg);
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--color-gold),
+          var(--color-gold-light)
+        );
+      }
+      .bishop-portrait-frame__icon {
+        font-size: 3.5rem;
+        opacity: 0.3;
+      }
+
+      /* Coat of arms placeholder */
+      .bishop-coat-of-arms {
+        background: var(--color-navy-deep);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        text-align: center;
+      }
+      .bishop-coat-of-arms__img {
+        width: 110px;
+        height: 140px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px dashed rgba(184, 148, 46, 0.4);
+        border-radius: var(--radius-sm);
+        margin: 0 auto var(--space-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--text-xs);
+        color: rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.1em;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .bishop-coat-of-arms__img span {
+        font-size: 1.75rem;
+        opacity: 0.4;
+      }
+      .bishop-coat-of-arms h4 {
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        color: var(--color-gold-light);
+        margin-bottom: 0.25rem;
+      }
+      .bishop-coat-of-arms p {
+        font-size: var(--text-xs);
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0;
+      }
+
+      /* Info / vitals table */
+      .bishop-vitals {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+      .bishop-vitals table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .bishop-vitals td {
+        padding: 0.6rem var(--space-md);
+        font-size: var(--text-xs);
+        border-bottom: 1px solid var(--color-gray-border);
+        vertical-align: top;
+        line-height: 1.5;
+      }
+      .bishop-vitals tr:last-child td {
+        border-bottom: none;
+      }
+      .bishop-vitals td:first-child {
+        font-weight: 700;
+        color: var(--color-navy-deep);
+        width: 46%;
+        white-space: nowrap;
+      }
+      .bishop-vitals td:last-child {
+        color: var(--color-text-muted);
+      }
+
+      /* Right content column */
+      .bishop-content-col h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        line-height: 1.15;
+        margin-bottom: var(--space-xs);
+      }
+      .bishop-content-col h2 em {
+        color: var(--color-gold);
+      }
+
+      .bishop-content-col .role-title {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        display: block;
+        margin-bottom: var(--space-lg);
+      }
+
+      .bishop-content-col p {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        line-height: 1.9;
+        margin-bottom: var(--space-sm);
+      }
+
+      /* Achievements / Legacy sub-sections */
+      .bishop-sub-section {
+        margin-top: var(--space-xl);
+        padding-top: var(--space-lg);
+        border-top: 1px solid var(--color-gray-border);
+      }
+      .bishop-sub-section h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        margin-bottom: var(--space-sm);
+      }
+      .bishop-achievements-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .bishop-achievements-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.625rem;
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        line-height: 1.6;
+      }
+      .bishop-achievements-list li::before {
+        content: "✦";
+        color: var(--color-gold);
+        font-size: 0.65rem;
+        margin-top: 0.25rem;
+        flex-shrink: 0;
+      }
+
+      /* Legacy quote */
+      .bishop-legacy-quote {
+        background: var(--color-gold-pale);
+        border-left: 4px solid var(--color-gold);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: var(--space-md) var(--space-lg);
+        margin-top: var(--space-md);
+      }
+      .bishop-legacy-quote p {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-style: italic;
+        color: var(--color-navy-mid);
+        margin: 0;
+      }
+      .bishop-legacy-quote cite {
+        display: block;
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        font-style: normal;
+        margin-top: var(--space-xs);
+      }
+
+      /* Section divider used between bishops */
+      .bishop-divider {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        margin: 0;
+      }
+      .bishop-divider::before,
+      .bishop-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--color-gray-border);
+      }
+      .bishop-divider__cross {
+        color: var(--color-gold);
+        font-size: var(--text-xl);
+      }
+
+      /* ---- Responsive ---- */
+      @media (max-width: 900px) {
+        .bishop-full-layout {
+          grid-template-columns: 1fr;
+        }
+        .bishop-portrait-col {
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          gap: var(--space-md);
+        }
+        .bishop-portrait-frame {
+          width: 200px;
+          aspect-ratio: 3/4;
+        }
+        .bishop-coat-of-arms,
+        .bishop-vitals {
+          flex: 1;
+          min-width: 200px;
+        }
+      }
+
+      @media (max-width: 580px) {
+        .bishop-portrait-col {
+          flex-direction: column;
+        }
+        .bishop-portrait-frame {
+          width: 100%;
+          aspect-ratio: 3/4;
+          max-width: 280px;
+        }
+      }
+    </style>
+
+    <title>History of Bishops — Catholic Diocese of Okigwe</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar__inner">
+          <a href="../index.html" class="navbar__brand">
+            <div class="navbar__logo" aria-hidden="true">
+              <div class="logo-cross">
+                <span class="cross-v"></span><span class="cross-h"></span>
+              </div>
+            </div>
+            <div class="navbar__title">
+              <span class="navbar__title--main">Diocese of Okigwe</span>
+              <span class="navbar__title--sub">Catholic Diocese</span>
+            </div>
+          </a>
+          <ul class="navbar__links" id="navbar-links" role="list">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link active">About</a></li>
+            <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
+            <li><a href="ministries.html" class="nav-link">Ministries</a></li>
+            <li><a href="news.html" class="nav-link">News</a></li>
+            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navbar-links"
+          >
+            <span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-label="Bishops history hero">
+        <div class="container page-hero__inner">
+          <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a> <span>›</span>
+            <a href="about.html">About</a> <span>›</span>
+            <span>History of Bishops</span>
+          </nav>
+          <h1 class="page-hero__title">History of <em>Our Bishops</em></h1>
+          <p class="page-hero__subtitle">
+            A tribute to the shepherds who have led the Catholic Diocese of
+            Okigwe — their lives, ministries, achievements, and lasting
+            legacies.
+          </p>
+        </div>
+      </section>
+
+      <!-- EPISCOPAL SUCCESSION BAR -->
+      <section
+        class="section"
+        style="padding-top: var(--space-xl); padding-bottom: var(--space-xl)"
+        aria-label="Episcopal succession overview"
+      >
+        <div class="container">
+          <div
+            class="section-header reveal-up"
+            style="margin-bottom: var(--space-lg)"
+          >
+            <div class="section-label">Episcopal Succession</div>
+            <h2 class="section-title">The Bishops of <em>Okigwe</em></h2>
+          </div>
+          <div
+            class="succession-bar reveal-up"
+            role="list"
+            aria-label="List of bishops in order"
+          >
+            <!-- TODO: Update names and years from diocesan records -->
+            <div
+              class="succession-item"
+              role="listitem"
+              onclick="
+                document
+                  .getElementById('bishop-1')
+                  .scrollIntoView({ behavior: 'smooth' })
+              "
+            >
+              <div class="succession-item__number">I</div>
+              <span class="succession-item__name">[First Bishop]</span>
+              <span class="succession-item__years">[Year]–[Year]</span>
+            </div>
+
+            <div class="succession-arrow" aria-hidden="true">→</div>
+
+            <div
+              class="succession-item"
+              role="listitem"
+              onclick="
+                document
+                  .getElementById('bishop-2')
+                  .scrollIntoView({ behavior: 'smooth' })
+              "
+            >
+              <div class="succession-item__number">II</div>
+              <span class="succession-item__name">[Second Bishop]</span>
+              <span class="succession-item__years">[Year]–[Year]</span>
+            </div>
+
+            <div class="succession-arrow" aria-hidden="true">→</div>
+
+            <div
+              class="succession-item"
+              role="listitem"
+              onclick="
+                document
+                  .getElementById('bishop-3')
+                  .scrollIntoView({ behavior: 'smooth' })
+              "
+            >
+              <div class="succession-item__number">III</div>
+              <span class="succession-item__name">[Third Bishop]</span>
+              <span class="succession-item__years">[Year]–Present</span>
+            </div>
+
+            <!--
+            HOW TO ADD A NEW BISHOP TO THE SUCCESSION BAR:
+            Copy one succession-item and succession-arrow pair, paste after the last one,
+            update the Roman numeral, name, and years.
+          --></div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+         BISHOP PROFILES
+         ============================================================
+         HOW TO ADD A NEW BISHOP:
+         1. Copy the entire .bishop-profile-section block.
+         2. Give it a unique id="bishop-N" (e.g. id="bishop-4").
+         3. Update the ordinal number in .bishop-ordinal__num.
+         4. Fill in all [placeholder] values with real data.
+         5. The section will automatically appear below the existing ones.
+    ============================================================ -->
+
+      <section class="section section--cream" aria-label="All bishop profiles">
+        <div class="container">
+          <!-- ======================================================
+             BISHOP 1
+        ====================================================== -->
+          <div
+            class="bishop-profile-section reveal-up"
+            id="bishop-1"
+            aria-labelledby="bishop-1-name"
+          >
+            <div class="bishop-ordinal">
+              <div class="bishop-ordinal__num" aria-hidden="true">I</div>
+              <span class="bishop-ordinal__label"
+                >First Bishop of Okigwe Diocese</span
+              >
+            </div>
+
+            <div class="bishop-full-layout">
+              <!-- Portrait & Coat of Arms Column -->
+              <div class="bishop-portrait-col">
+                <!-- Portrait -->
+                <!-- TODO: Replace background with actual bishop portrait image -->
+                <div
+                  class="bishop-portrait-frame"
+                  role="img"
+                  aria-label="Portrait of the First Bishop — placeholder"
+                >
+                  <span class="bishop-portrait-frame__icon" aria-hidden="true"
+                    >👤</span
+                  >
+                  <span>Official Portrait</span>
+                </div>
+
+                <!-- Coat of Arms -->
+                <div class="bishop-coat-of-arms">
+                  <!-- TODO: Replace with actual coat of arms image -->
+                  <div
+                    class="bishop-coat-of-arms__img"
+                    aria-label="Coat of arms placeholder"
+                  >
+                    <span>✦</span>
+                    <span>Coat of Arms</span>
+                  </div>
+                  <h4>Episcopal Coat of Arms</h4>
+                  <!-- TODO: Insert actual episcopal motto in Latin -->
+                  <p>"[Episcopal Motto in Latin]"</p>
+                </div>
+
+                <!-- Vitals / Quick Data -->
+                <div class="bishop-vitals">
+                  <table>
+                    <tbody>
+                      <!-- TODO: Replace all [placeholder] values with verified data -->
+                      <tr>
+                        <td>Full Name</td>
+                        <td>Most Rev. [Full Name]</td>
+                      </tr>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td>[Date of Birth]</td>
+                      </tr>
+                      <tr>
+                        <td>Place of Birth</td>
+                        <td>[Place of Birth]</td>
+                      </tr>
+                      <tr>
+                        <td>Ordained Priest</td>
+                        <td>[Date of Priestly Ordination]</td>
+                      </tr>
+                      <tr>
+                        <td>Ordained Bishop</td>
+                        <td>[Date of Episcopal Ordination]</td>
+                      </tr>
+                      <tr>
+                        <td>Ordaining Bishop</td>
+                        <td>[Name of Ordaining Bishop]</td>
+                      </tr>
+                      <tr>
+                        <td>Installed</td>
+                        <td>[Date of Installation]</td>
+                      </tr>
+                      <tr>
+                        <td>Years Served</td>
+                        <td>[Year]–[Year] ([N] years)</td>
+                      </tr>
+                      <tr>
+                        <td>Died / Retired</td>
+                        <td>[Date of Death or Retirement]</td>
+                      </tr>
+                      <tr>
+                        <td>Buried At</td>
+                        <td>[Location of Burial / if applicable]</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Biography & Achievements Column -->
+              <div class="bishop-content-col">
+                <span class="role-title"
+                  >Most Rev. &bull; 1st Bishop of Okigwe</span
+                >
+                <!-- TODO: Replace with actual bishop's full name -->
+                <h2 id="bishop-1-name">
+                  [First Bishop's<br /><em>Full Name]</em>
+                </h2>
+
+                <p>
+                  Most Reverend [First Bishop's Full Name] holds the distinction
+                  of being the founding Bishop of the Catholic Diocese of Okigwe
+                  — the shepherd who received the newly established local Church
+                  and laid the foundations upon which all subsequent bishops
+                  would build. His appointment was a historic moment not only
+                  for Okigwe but for the entire Ecclesiastical Province of
+                  Owerri.
+                </p>
+                <p>
+                  Born in [Place of Birth] on [Date of Birth], he pursued his
+                  early education at [School] before entering [Seminary] for his
+                  priestly formation. He was ordained a priest on [Date], and
+                  after years of fruitful parish and academic ministry, was
+                  appointed by the Holy Father as the first Bishop of Okigwe
+                  Diocese.
+                </p>
+                <p>
+                  During his episcopate from [Year] to [Year], Bishop [Name]
+                  established the diocesan Curia, defined the territorial
+                  boundaries of the diocese's deaneries and parishes, oversaw
+                  the construction or renovation of numerous parish churches,
+                  and gave a distinctive pastoral identity to the young Diocese.
+                  He was known for his [pastoral qualities — e.g. deep
+                  spirituality, commitment to Catholic education, care for the
+                  poor].
+                </p>
+                <!-- TODO: Expand biography with fully researched historical narrative from diocesan archives -->
+
+                <!-- Achievements -->
+                <div class="bishop-sub-section">
+                  <h3>Major Achievements</h3>
+                  <ul class="bishop-achievements-list">
+                    <!-- TODO: Replace all items with verified achievements from diocesan records -->
+                    <li>
+                      Founded the Diocesan Curia and established all major
+                      offices of the Diocese.
+                    </li>
+                    <li>
+                      Erected [N] new parishes and [N] new mission stations
+                      across the Diocese.
+                    </li>
+                    <li>
+                      Established the Catholic Schools Board and formally
+                      organised Catholic education in the Diocese.
+                    </li>
+                    <li>
+                      Founded Caritas Okigwe and launched the Diocese's first
+                      social outreach programmes.
+                    </li>
+                    <li>
+                      Oversaw the construction and dedication of the Cathedral
+                      of the Sacred Heart.
+                    </li>
+                    <li>
+                      [Additional achievement — to be filled from diocesan
+                      archives]
+                    </li>
+                    <li>
+                      [Additional achievement — to be filled from diocesan
+                      archives]
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Legacy -->
+                <div class="bishop-sub-section">
+                  <h3>Legacy</h3>
+                  <p>
+                    The legacy of Bishop [Name] endures in every parish, school,
+                    and institution that bears the mark of his pastoral vision.
+                    He is remembered as [descriptive legacy statement — e.g.
+                    "the builder of the Church in Okigwe," "a father to his
+                    priests and a servant of the poor"]. His memory is honoured
+                    in the annual celebrations of the Diocese, and his portrait
+                    hangs in the Bishop's House as a permanent reminder of the
+                    faith and sacrifice of the first shepherd of Okigwe.
+                  </p>
+                  <!-- TODO: Add verified legacy description from diocesan memory and records -->
+                  <div class="bishop-legacy-quote">
+                    <p>
+                      "[An authentic quote from or about the bishop — to be
+                      sourced from diocesan archives, pastoral letters, or
+                      tributes given at the time of his death or retirement.]"
+                    </p>
+                    <!-- TODO: Insert actual source of quote -->
+                    <cite
+                      >— [Source: e.g. Tribute at his Funeral Mass, Cathedral of
+                      the Sacred Heart, [Year]]</cite
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative cross divider between bishops -->
+          <div class="bishop-divider" aria-hidden="true">
+            <span class="bishop-divider__cross">✝</span>
+          </div>
+
+          <!-- ======================================================
+             BISHOP 2
+        ====================================================== -->
+          <div
+            class="bishop-profile-section reveal-up"
+            id="bishop-2"
+            aria-labelledby="bishop-2-name"
+          >
+            <div class="bishop-ordinal">
+              <div class="bishop-ordinal__num" aria-hidden="true">II</div>
+              <span class="bishop-ordinal__label"
+                >Second Bishop of Okigwe Diocese</span
+              >
+            </div>
+
+            <div class="bishop-full-layout">
+              <div class="bishop-portrait-col">
+                <div
+                  class="bishop-portrait-frame"
+                  role="img"
+                  aria-label="Portrait of the Second Bishop — placeholder"
+                >
+                  <span class="bishop-portrait-frame__icon" aria-hidden="true"
+                    >👤</span
+                  >
+                  <span>Official Portrait</span>
+                </div>
+                <div class="bishop-coat-of-arms">
+                  <div
+                    class="bishop-coat-of-arms__img"
+                    aria-label="Coat of arms placeholder"
+                  >
+                    <span>✦</span><span>Coat of Arms</span>
+                  </div>
+                  <h4>Episcopal Coat of Arms</h4>
+                  <p>"[Episcopal Motto]"</p>
+                </div>
+                <div class="bishop-vitals">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Full Name</td>
+                        <td>Most Rev. [Full Name]</td>
+                      </tr>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td>[Date of Birth]</td>
+                      </tr>
+                      <tr>
+                        <td>Place of Birth</td>
+                        <td>[Place of Birth]</td>
+                      </tr>
+                      <tr>
+                        <td>Ordained Priest</td>
+                        <td>[Date of Priestly Ordination]</td>
+                      </tr>
+                      <tr>
+                        <td>Ordained Bishop</td>
+                        <td>[Date of Episcopal Ordination]</td>
+                      </tr>
+                      <tr>
+                        <td>Ordaining Bishop</td>
+                        <td>[Name of Ordaining Bishop]</td>
+                      </tr>
+                      <tr>
+                        <td>Installed</td>
+                        <td>[Date of Installation]</td>
+                      </tr>
+                      <tr>
+                        <td>Years Served</td>
+                        <td>[Year]–[Year] ([N] years)</td>
+                      </tr>
+                      <tr>
+                        <td>Died / Retired</td>
+                        <td>[Date]</td>
+                      </tr>
+                      <tr>
+                        <td>Buried At</td>
+                        <td>[Location]</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="bishop-content-col">
+                <span class="role-title"
+                  >Most Rev. &bull; 2nd Bishop of Okigwe</span
+                >
+                <h2 id="bishop-2-name">
+                  [Second Bishop's<br /><em>Full Name]</em>
+                </h2>
+                <p>
+                  Most Reverend [Second Bishop's Full Name] succeeded the
+                  founding bishop and continued the work of building the Diocese
+                  of Okigwe. Appointed by His Holiness Pope [Name], he was
+                  installed on [Date] and served the Diocese with [pastoral
+                  characteristic] until [Year].
+                </p>
+                <p>
+                  During his tenure, the Diocese expanded significantly — new
+                  parishes were established, the seminary was strengthened, and
+                  the Diocese deepened its commitment to integral human
+                  development through Caritas and Catholic education.
+                </p>
+                <p>
+                  [Additional biographical paragraph — to be filled from
+                  diocesan archives and records.]
+                </p>
+                <!-- TODO: Expand with fully researched biography from the Diocesan Chancery -->
+
+                <div class="bishop-sub-section">
+                  <h3>Major Achievements</h3>
+                  <ul class="bishop-achievements-list">
+                    <li>
+                      [Achievement 1 — to be filled from diocesan archives]
+                    </li>
+                    <li>
+                      [Achievement 2 — to be filled from diocesan archives]
+                    </li>
+                    <li>
+                      [Achievement 3 — to be filled from diocesan archives]
+                    </li>
+                    <li>
+                      [Achievement 4 — to be filled from diocesan archives]
+                    </li>
+                    <li>
+                      [Achievement 5 — to be filled from diocesan archives]
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="bishop-sub-section">
+                  <h3>Legacy</h3>
+                  <p>
+                    [Legacy description — to be sourced from diocesan archives,
+                    tribute addresses, and pastoral records. Describe the
+                    lasting impact of this bishop's tenure on the Diocese of
+                    Okigwe.]
+                  </p>
+                  <div class="bishop-legacy-quote">
+                    <p>
+                      "[Authentic quote from or about the bishop — source from
+                      archives]"
+                    </p>
+                    <cite>— [Source]</cite>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bishop-divider" aria-hidden="true">
+            <span class="bishop-divider__cross">✝</span>
+          </div>
+
+          <!-- ======================================================
+             BISHOP 3 — CURRENT (highlight with navy background)
+        ====================================================== -->
+          <div
+            class="bishop-profile-section reveal-up"
+            id="bishop-3"
+            aria-labelledby="bishop-3-name"
+          >
+            <div class="bishop-ordinal">
+              <div class="bishop-ordinal__num" aria-hidden="true">III</div>
+              <span class="bishop-ordinal__label"
+                >Current Bishop of Okigwe Diocese</span
+              >
+              <span
+                style="
+                  font-size: var(--text-xs);
+                  font-weight: 700;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  background: var(--color-gold);
+                  color: var(--color-white);
+                  padding: 0.2rem 0.75rem;
+                  border-radius: 2px;
+                  margin-left: var(--space-sm);
+                "
+                >In Office</span
+              >
+            </div>
+
+            <div class="bishop-full-layout">
+              <div class="bishop-portrait-col">
+                <div
+                  class="bishop-portrait-frame"
+                  role="img"
+                  aria-label="Portrait of the current Bishop — placeholder"
+                >
+                  <span class="bishop-portrait-frame__icon" aria-hidden="true"
+                    >👤</span
+                  >
+                  <span>Official Portrait</span>
+                </div>
+                <div class="bishop-coat-of-arms">
+                  <div
+                    class="bishop-coat-of-arms__img"
+                    aria-label="Coat of arms placeholder"
+                  >
+                    <span>✦</span><span>Coat of Arms</span>
+                  </div>
+                  <h4>Episcopal Coat of Arms</h4>
+                  <p>"[Episcopal Motto]"</p>
+                </div>
+                <div class="bishop-vitals">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Full Name</td>
+                        <td>Most Rev. [Full Name]</td>
+                      </tr>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td>[Date of Birth]</td>
+                      </tr>
+                      <tr>
+                        <td>Place of Birth</td>
+                        <td>[Place of Birth]</td>
+                      </tr>
+                      <tr>
+                        <td>Ordained Priest</td>
+                        <td>[Date of Priestly Ordination]</td>
+                      </tr>
+                      <tr>
+                        <td>Ordained Bishop</td>
+                        <td>[Date of Episcopal Ordination]</td>
+                      </tr>
+                      <tr>
+                        <td>Ordaining Bishop</td>
+                        <td>[Name of Ordaining Bishop]</td>
+                      </tr>
+                      <tr>
+                        <td>Installed</td>
+                        <td>[Date of Installation]</td>
+                      </tr>
+                      <tr>
+                        <td>In Office Since</td>
+                        <td>[Year] – Present</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <a
+                  href="bishop.html"
+                  class="btn btn--primary"
+                  style="text-align: center"
+                  >Full Profile &amp; Letters →</a
+                >
+              </div>
+
+              <div class="bishop-content-col">
+                <span class="role-title"
+                  >Most Rev. &bull; 3rd Bishop of Okigwe · In Office</span
+                >
+                <h2 id="bishop-3-name">
+                  [Current Bishop's<br /><em>Full Name]</em>
+                </h2>
+                <p>
+                  Most Reverend [Current Bishop's Full Name] is the third and
+                  current Bishop of the Catholic Diocese of Okigwe. Appointed by
+                  His Holiness Pope [Name] on [Date], he was ordained Bishop and
+                  installed at the Cathedral of the Sacred Heart on [Date].
+                </p>
+                <p>
+                  Under his leadership, the Diocese has pursued an ambitious
+                  programme of pastoral renewal, institutional development, and
+                  new evangelisation. He has prioritised [key pastoral themes —
+                  e.g. synodality, youth formation, Caritas, Catholic schools],
+                  and his episcopal motto "[Motto]" encapsulates his pastoral
+                  vision.
+                </p>
+                <p>
+                  [Additional biographical paragraph — to be filled from
+                  official diocesan sources.]
+                </p>
+                <!-- TODO: Sync content with bishop.html for consistency -->
+
+                <div class="bishop-sub-section">
+                  <h3>Pastoral Priorities &amp; Achievements to Date</h3>
+                  <ul class="bishop-achievements-list">
+                    <li>
+                      [Achievement / priority 1 — to be filled from official
+                      diocesan communications]
+                    </li>
+                    <li>[Achievement / priority 2]</li>
+                    <li>[Achievement / priority 3]</li>
+                    <li>[Achievement / priority 4]</li>
+                    <li>[Achievement / priority 5]</li>
+                  </ul>
+                </div>
+
+                <div class="bishop-sub-section">
+                  <h3>His Vision for the Diocese</h3>
+                  <div class="bishop-legacy-quote">
+                    <p>
+                      "[A key quote from the current bishop's pastoral letter or
+                      installation address — to be sourced from official
+                      diocesan communications.]"
+                    </p>
+                    <cite
+                      >— Most Rev. [Name], [Source — e.g. Installation Homily,
+                      Cathedral of the Sacred Heart, [Year]]</cite
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--
+          ============================================================
+          HOW TO ADD A FUTURE BISHOP:
+          1. Add a new .succession-item and .succession-arrow to the succession bar above.
+          2. Copy the bishop-profile-section block below and paste after bishop-3.
+          3. Update the id to "bishop-4", the ordinal, and all [placeholder] values.
+          ============================================================
+        --></div>
+      </section>
+
+      <!-- CTA -->
+      <section
+        style="
+          background: var(--color-navy-deep);
+          padding: var(--space-2xl) 0;
+          text-align: center;
+        "
+      >
+        <div class="container">
+          <div class="section-label" style="color: var(--color-gold)">
+            Our Current Shepherd
+          </div>
+          <h2
+            style="
+              font-family: var(--font-display);
+              font-size: var(--text-3xl);
+              color: var(--color-white);
+              margin-bottom: var(--space-sm);
+            "
+          >
+            Read the Bishop's
+            <em style="color: var(--color-gold-light)">Latest Letters</em>
+          </h2>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.65);
+              max-width: 520px;
+              margin: 0 auto var(--space-lg);
+              font-size: var(--text-sm);
+            "
+          >
+            Pastoral letters, homilies, addresses, and news from the current
+            Bishop of Okigwe Diocese.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: var(--space-sm);
+              justify-content: center;
+              flex-wrap: wrap;
+            "
+          >
+            <a href="bishop.html" class="btn btn--primary"
+              >Current Bishop's Page</a
+            >
+            <a href="history.html" class="btn btn--outline">Diocesan History</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="navbar__logo footer__logo" aria-hidden="true">
+            <div class="logo-cross logo-cross--light">
+              <span class="cross-v"></span><span class="cross-h"></span>
+            </div>
+          </div>
+          <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
+          <p class="footer__tagline">
+            "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
+          </p>
+          <div class="footer__social">
+            <a href="#" class="social-link" aria-label="Facebook"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="Twitter"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="YouTube"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                />
+                <polygon
+                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                  fill="var(--color-navy-deep)"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="Instagram"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                width="20"
+                height="20"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                /></svg
+            ></a>
+          </div>
+        </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h3 class="footer__links-title">Quick Links</h3>
+          <ul role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About the Diocese</a></li>
+            <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="parishes.html">Parish Directory</a></li>
+            <li><a href="news.html">News &amp; Events</a></li>
+            <li><a href="gallery.html">Media Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer__links">
+          <h3 class="footer__links-title">Archives</h3>
+          <ul role="list">
+            <li><a href="history.html">Diocesan History</a></li>
+            <li><a href="bishops-history.html">History of Bishops</a></li>
+            <li><a href="priest.html">Departed Priests</a></li>
+            <li><a href="functionaries.html">Diocesan Functionaries</a></li>
+          </ul>
+        </div>
+        <address class="footer__address">
+          <h3 class="footer__links-title">Contact</h3>
+          <p>Bishop's House, Okigwe<br />Imo State, Nigeria</p>
+          <p><a href="tel:+2340000000000">+234 (0) 000 000 0000</a></p>
+          <p>
+            <a href="mailto:info@dioceseofokigwe.org"
+              >info@dioceseofokigwe.org</a
+            >
+          </p>
+        </address>
+      </div>
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copyright">
+            &copy; <span id="footer-year"></span> Catholic Diocese of Okigwe.
+            All rights reserved.
+          </p>
+          <p class="footer__legal">
+            <a href="#">Privacy Policy</a> &nbsp;&bull;&nbsp;
+            <a href="#">Terms of Use</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="../script.js"></script>
+  </body>
+</html>

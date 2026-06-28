@@ -1,0 +1,1477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore the rich history of the Catholic Diocese of Okigwe — from the first missionaries to the present day, with a full historical timeline."
+    />
+    <meta
+      property="og:title"
+      content="History of the Diocese — Catholic Diocese of Okigwe"
+    />
+    <meta
+      property="og:description"
+      content="The official historical record and timeline of the Catholic Diocese of Okigwe."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <style>
+      /* ================================================================
+       HISTORY PAGE — PAGE-SPECIFIC STYLES
+       All tokens, fonts, spacing etc. inherit from ../style.css
+    ================================================================ */
+
+      /* ---- Pull-quote / intro paragraph ---- */
+      .history-intro {
+        max-width: 820px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .history-intro__quote {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-style: italic;
+        color: var(--color-navy-mid);
+        line-height: 1.55;
+        margin-bottom: var(--space-md);
+        position: relative;
+        padding: var(--space-lg) var(--space-xl);
+      }
+
+      .history-intro__quote::before,
+      .history-intro__quote::after {
+        content: '"';
+        font-size: 6rem;
+        line-height: 0;
+        position: absolute;
+        color: var(--color-gold-pale);
+        font-style: normal;
+      }
+      .history-intro__quote::before {
+        top: 2.5rem;
+        left: 0;
+      }
+      .history-intro__quote::after {
+        content: '"';
+        bottom: 0;
+        right: 0;
+      }
+
+      .history-intro__source {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+      }
+
+      /* ---- History narrative columns ---- */
+      .history-narrative {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: var(--space-3xl);
+        align-items: start;
+      }
+
+      /* Sticky sidebar image/fact box */
+      .history-sidebar {
+        position: sticky;
+        top: calc(var(--navbar-height) + 2rem);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+
+      .history-sidebar__image {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: linear-gradient(
+          160deg,
+          var(--color-navy-mid),
+          var(--color-navy-deep)
+        );
+        border-radius: var(--radius-md);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-xs);
+        color: rgba(255, 255, 255, 0.35);
+        font-size: var(--text-xs);
+        letter-spacing: 0.1em;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+        /* TODO: Replace with actual cathedral photograph:
+         background-image: url('../images/cathedral-exterior.jpg');
+         background-size: cover; background-position: center; */
+      }
+
+      .history-sidebar__image::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: var(--space-lg);
+        right: var(--space-lg);
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--color-gold),
+          var(--color-gold-light)
+        );
+      }
+
+      .history-sidebar__image-icon {
+        font-size: 3rem;
+        opacity: 0.4;
+      }
+
+      .history-sidebar__fact-box {
+        background: var(--color-navy-deep);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        border-left: 4px solid var(--color-gold);
+      }
+
+      .history-sidebar__fact-box h3 {
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        margin-bottom: var(--space-sm);
+      }
+
+      .fact-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: var(--space-xs);
+        padding: 0.45rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: var(--text-xs);
+      }
+      .fact-row:last-child {
+        border-bottom: none;
+      }
+      .fact-row__label {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .fact-row__value {
+        color: var(--color-white);
+        font-weight: 600;
+        text-align: right;
+      }
+
+      /* Narrative body text area */
+      .history-body {
+        max-width: 720px;
+      }
+
+      .history-body h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        margin: var(--space-xl) 0 var(--space-sm);
+        padding-bottom: var(--space-xs);
+        border-bottom: 2px solid var(--color-gold-pale);
+      }
+
+      .history-body h3:first-child {
+        margin-top: 0;
+      }
+
+      .history-body p {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        line-height: 1.9;
+        margin-bottom: var(--space-sm);
+      }
+
+      .history-body p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Pull-out highlight box inside narrative */
+      .history-highlight {
+        background: var(--color-gold-pale);
+        border-left: 4px solid var(--color-gold);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: var(--space-md) var(--space-lg);
+        margin: var(--space-lg) 0;
+      }
+
+      .history-highlight p {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-style: italic;
+        color: var(--color-navy-mid);
+        margin: 0;
+      }
+
+      /* ================================================================
+       ADVANCED TIMELINE — DUAL-SIDED (desktop) / SINGLE (mobile)
+    ================================================================ */
+
+      .timeline-section {
+        position: relative;
+        padding: var(--space-xl) 0;
+      }
+
+      /* Central spine */
+      .timeline-spine {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--color-gold),
+          var(--color-navy-light),
+          var(--color-gold)
+        );
+        transform: translateX(-50%);
+      }
+
+      /* Each timeline entry */
+      .tl-entry {
+        display: grid;
+        grid-template-columns: 1fr 60px 1fr;
+        align-items: start;
+        gap: 0;
+        margin-bottom: var(--space-xl);
+        position: relative;
+      }
+
+      /* Alternate left/right */
+      .tl-entry--left .tl-card {
+        grid-column: 1;
+        text-align: right;
+        padding-right: var(--space-xl);
+      }
+      .tl-entry--left .tl-node {
+        grid-column: 2;
+      }
+      .tl-entry--left .tl-empty {
+        grid-column: 3;
+      }
+
+      .tl-entry--right .tl-empty {
+        grid-column: 1;
+      }
+      .tl-entry--right .tl-node {
+        grid-column: 2;
+      }
+      .tl-entry--right .tl-card {
+        grid-column: 3;
+        text-align: left;
+        padding-left: var(--space-xl);
+      }
+
+      /* The dot node */
+      .tl-node {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: var(--space-xs);
+        z-index: 2;
+      }
+
+      .tl-node__dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--color-gold);
+        border: 3px solid var(--color-white);
+        box-shadow: 0 0 0 2px var(--color-gold);
+        flex-shrink: 0;
+      }
+
+      .tl-node__year {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-navy-deep);
+        background: var(--color-gold-pale);
+        padding: 0.2rem 0.5rem;
+        border-radius: var(--radius-sm);
+        margin-top: 0.4rem;
+        white-space: nowrap;
+        text-align: center;
+      }
+
+      /* The event card */
+      .tl-card {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-md) var(--space-lg);
+        box-shadow: var(--shadow-sm);
+        transition:
+          box-shadow var(--transition-base),
+          transform var(--transition-base);
+      }
+
+      .tl-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-3px);
+      }
+
+      /* Arrow pointing to spine — left card points right, right card points left */
+      .tl-entry--left .tl-card::after {
+        content: "";
+        position: absolute;
+        top: var(--space-sm);
+        right: calc(var(--space-xl) - 8px);
+        border: 8px solid transparent;
+        border-left-color: var(--color-white);
+        filter: drop-shadow(1px 0 0 var(--color-gray-border));
+      }
+
+      .tl-entry--right .tl-card::before {
+        content: "";
+        position: absolute;
+        top: var(--space-sm);
+        left: calc(var(--space-xl) - 8px);
+        border: 8px solid transparent;
+        border-right-color: var(--color-white);
+        filter: drop-shadow(-1px 0 0 var(--color-gray-border));
+      }
+
+      /* Card internals */
+      .tl-card__tag {
+        display: inline-block;
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.15rem 0.625rem;
+        border-radius: 2px;
+        margin-bottom: 0.4rem;
+      }
+
+      /* Tag colours by event type */
+      .tl-card__tag--episcopal {
+        background: rgba(15, 29, 59, 0.1);
+        color: var(--color-navy-deep);
+      }
+      .tl-card__tag--founding {
+        background: rgba(184, 148, 46, 0.15);
+        color: var(--color-gold);
+      }
+      .tl-card__tag--pastoral {
+        background: rgba(35, 64, 128, 0.1);
+        color: var(--color-navy-light);
+      }
+      .tl-card__tag--jubilee {
+        background: rgba(212, 175, 90, 0.2);
+        color: #8a6c0a;
+      }
+      .tl-card__tag--education {
+        background: rgba(46, 125, 50, 0.1);
+        color: #2e7d32;
+      }
+      .tl-card__tag--caritas {
+        background: rgba(183, 28, 28, 0.1);
+        color: #b71c1c;
+      }
+
+      .tl-card__title {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        margin-bottom: 0.35rem;
+        line-height: 1.3;
+      }
+
+      .tl-card__desc {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        line-height: 1.75;
+        margin: 0;
+      }
+
+      /* ---- Archive documents section ---- */
+      .archive-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-md);
+      }
+
+      .archive-card {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg) var(--space-md);
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition:
+          box-shadow var(--transition-base),
+          transform var(--transition-base);
+        cursor: pointer;
+      }
+
+      .archive-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-4px);
+      }
+
+      .archive-card__icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--space-sm);
+        display: block;
+      }
+
+      .archive-card__title {
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        margin-bottom: 0.25rem;
+      }
+
+      .archive-card__count {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+      }
+
+      /* ================================================================
+       RESPONSIVE
+    ================================================================ */
+      @media (max-width: 1024px) {
+        .history-narrative {
+          grid-template-columns: 1fr;
+        }
+        .history-sidebar {
+          position: static;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        .history-sidebar__image {
+          width: 220px;
+          aspect-ratio: 3/4;
+        }
+        .history-sidebar__fact-box {
+          flex: 1;
+          min-width: 200px;
+        }
+        .archive-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        /* Collapse dual-sided timeline to single-sided */
+        .timeline-spine {
+          left: 24px;
+        }
+
+        .tl-entry {
+          grid-template-columns: 48px 1fr;
+          margin-bottom: var(--space-lg);
+        }
+
+        .tl-entry--left .tl-card,
+        .tl-entry--right .tl-card {
+          grid-column: 2;
+          text-align: left;
+          padding: var(--space-md);
+          padding-left: var(--space-md);
+        }
+        .tl-entry--left .tl-node,
+        .tl-entry--right .tl-node {
+          grid-column: 1;
+        }
+        .tl-entry--left .tl-empty,
+        .tl-entry--right .tl-empty {
+          display: none;
+        }
+
+        .tl-entry--left .tl-card::after,
+        .tl-entry--right .tl-card::before {
+          display: none;
+        }
+
+        .history-intro__quote {
+          font-size: var(--text-xl);
+          padding: var(--space-md);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .history-sidebar {
+          flex-direction: column;
+        }
+        .history-sidebar__image {
+          width: 100%;
+          aspect-ratio: 16/9;
+        }
+        .archive-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+
+    <title>History of the Diocese — Catholic Diocese of Okigwe</title>
+  </head>
+  <body>
+    <!-- ============================================================
+       HEADER / NAVBAR
+  ============================================================ -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar__inner">
+          <a
+            href="../index.html"
+            class="navbar__brand"
+            aria-label="Catholic Diocese of Okigwe Homepage"
+          >
+            <div class="navbar__logo" aria-hidden="true">
+              <div class="logo-cross">
+                <span class="cross-v"></span><span class="cross-h"></span>
+              </div>
+            </div>
+            <div class="navbar__title">
+              <span class="navbar__title--main">Diocese of Okigwe</span>
+              <span class="navbar__title--sub">Catholic Diocese</span>
+            </div>
+          </a>
+
+          <ul class="navbar__links" id="navbar-links" role="list">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link active">About</a></li>
+            <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
+            <li><a href="ministries.html" class="nav-link">Ministries</a></li>
+            <li><a href="news.html" class="nav-link">News</a></li>
+            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navbar-links"
+          >
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- ============================================================
+         PAGE HERO — Cathedral imagery
+    ============================================================ -->
+      <section class="page-hero" aria-label="History page hero">
+        <div class="container page-hero__inner">
+          <!-- Breadcrumb -->
+          <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span aria-hidden="true">›</span>
+            <a href="about.html">About</a>
+            <span aria-hidden="true">›</span>
+            <span>History</span>
+          </nav>
+
+          <h1 class="page-hero__title">History of the <em>Diocese</em></h1>
+          <p class="page-hero__subtitle">
+            A chronicle of faith, sacrifice, and God's providence — tracing the
+            journey of the Catholic Church in Okigwe from the first missionaries
+            to today.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+         OPENING QUOTE
+    ============================================================ -->
+      <section class="section" aria-label="Introductory quote">
+        <div class="container">
+          <div class="history-intro reveal-up">
+            <div class="history-intro__quote">
+              The Church in Okigwe was not built in a day — it was built on the
+              prayers, the sacrifices, and the faithful witness of generations
+              who came before us.
+            </div>
+            <p class="history-intro__source">
+              — Diocesan Archives, Catholic Diocese of Okigwe
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+         HISTORY NARRATIVE
+    ============================================================ -->
+      <section
+        class="section section--cream"
+        id="narrative"
+        aria-labelledby="narrative-heading"
+      >
+        <div class="container">
+          <div class="section-header reveal-up">
+            <div class="section-label">Our Story</div>
+            <h2 class="section-title" id="narrative-heading">
+              The History of the <em>Diocese of Okigwe</em>
+            </h2>
+          </div>
+
+          <div class="history-narrative">
+            <!-- Sticky sidebar: image + quick facts -->
+            <aside class="history-sidebar reveal-left">
+              <!-- Cathedral image placeholder -->
+              <div
+                class="history-sidebar__image"
+                role="img"
+                aria-label="Cathedral of the Sacred Heart, Okigwe — placeholder"
+              >
+                <!-- TODO: Replace with: background-image: url('../images/cathedral-okigwe.jpg') -->
+                <span class="history-sidebar__image-icon" aria-hidden="true"
+                  >⛪</span
+                >
+                <span>Cathedral of the<br />Sacred Heart, Okigwe</span>
+              </div>
+
+              <!-- Quick facts box -->
+              <div class="history-sidebar__fact-box">
+                <h3>Diocese at a Glance</h3>
+                <!-- TODO: Update all values with verified data from the Diocesan Chancery -->
+                <div class="fact-row">
+                  <span class="fact-row__label">Province</span>
+                  <span class="fact-row__value">Owerri</span>
+                </div>
+                <div class="fact-row">
+                  <span class="fact-row__label">Country</span>
+                  <span class="fact-row__value">Nigeria</span>
+                </div>
+                <div class="fact-row">
+                  <span class="fact-row__label">Established</span>
+                  <span class="fact-row__value">[Year]</span>
+                </div>
+                <div class="fact-row">
+                  <span class="fact-row__label">Cathedral</span>
+                  <span class="fact-row__value">Sacred Heart</span>
+                </div>
+                <div class="fact-row">
+                  <span class="fact-row__label">1st Bishop</span>
+                  <span class="fact-row__value">[Name]</span>
+                </div>
+                <div class="fact-row">
+                  <span class="fact-row__label">Current Bishop</span>
+                  <span class="fact-row__value">[Name]</span>
+                </div>
+                <div class="fact-row">
+                  <span class="fact-row__label">Parishes</span>
+                  <span class="fact-row__value">48</span>
+                </div>
+                <div class="fact-row">
+                  <span class="fact-row__label">Deaneries</span>
+                  <span class="fact-row__value">8</span>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Main history text -->
+            <article class="history-body reveal-right">
+              <h3>The Dawn of the Faith: The Spiritan Missionaries</h3>
+              <p>
+                The story of Catholicism in the Okigwe region begins with the
+                arrival of the Holy Ghost Fathers — the Congregation of the Holy
+                Spirit (Spiritans) — who first brought the light of the Gospel
+                to south-eastern Nigeria in the late nineteenth and early
+                twentieth centuries. These courageous missionaries traversed
+                difficult terrain, learnt local languages, and established the
+                first mission stations, schools, and health posts that would
+                become the seedbeds of the local Church.
+              </p>
+              <p>
+                In the Okigwe area, early mission outposts were established at
+                strategic locations, and the first generations of local Catholic
+                converts were formed in faith, literacy, and Christian values.
+                The Church was not merely a spiritual institution — it was also
+                a catalyst for education and social transformation in
+                communities that had long yearned for development and dignity.
+              </p>
+              <!-- TODO: Insert confirmed dates and locations of first mission stations from diocesan archives -->
+
+              <div class="history-highlight">
+                <p>
+                  "Where the missionary planted the Cross, the school soon
+                  followed — and where the school was built, a generation of
+                  believers arose to carry the faith forward."
+                </p>
+              </div>
+
+              <h3>Growth Under the Diocese of Owerri</h3>
+              <p>
+                For many decades, the parishes and mission stations of the
+                Okigwe region were governed under the Diocese of Owerri, which
+                had jurisdiction over a vast territory in south-eastern Nigeria.
+                During this period, the Church grew steadily — new parishes were
+                established, local priests were ordained, and religious
+                congregations of men and women took root in the communities.
+              </p>
+              <p>
+                The establishment of Catholic schools across the region during
+                this era produced a generation of educated Catholics who would
+                later become the backbone of the local Church and civil society.
+                Catholic education in the Okigwe area built hospitals, trained
+                teachers, and formed leaders who shaped the region long after
+                independence.
+              </p>
+              <!-- TODO: Document specific parishes established under the Diocese of Owerri in this area -->
+
+              <h3>The Birth of the Diocese of Okigwe</h3>
+              <p>
+                As the Catholic population of the Okigwe region grew
+                substantially, it became evident to Church leadership that a new
+                diocese was necessary to better serve the faithful. After years
+                of preparation and consultation with the Holy See, the Diocese
+                of Okigwe was officially established by a Papal Bull, separating
+                it from the Diocese of Owerri and constituting it as a suffragan
+                diocese of the Ecclesiastical Province of Owerri.
+              </p>
+              <p>
+                The first Bishop of Okigwe Diocese was appointed and duly
+                ordained, taking up residence at the Bishop's House in Okigwe
+                town and beginning the work of organising the new diocese —
+                establishing its curia, defining its deaneries, building its
+                institutions, and fostering a unique local Church identity among
+                the faithful.
+              </p>
+              <!-- TODO: Insert exact date of diocese establishment and founding bishop's name from Papal Bull records -->
+
+              <div class="history-highlight">
+                <p>
+                  The establishment of the Diocese of Okigwe was not merely an
+                  administrative act — it was a recognition of the depth, the
+                  vitality, and the maturity of the local Church.
+                </p>
+              </div>
+
+              <h3>Episcopal Succession and Pastoral Development</h3>
+              <p>
+                Since its establishment, the Diocese of Okigwe has been served
+                by a succession of bishops who have each contributed uniquely to
+                its growth. Each bishop brought his own vision, gifts, and
+                pastoral priorities, building upon the work of his predecessors
+                and responding to the particular needs of the Church and society
+                in their time.
+              </p>
+              <p>
+                Under successive bishops, the Diocese expanded its parish
+                network, multiplied its schools and health facilities,
+                strengthened its seminary formation, and deepened its commitment
+                to Catholic Social Teaching through Caritas and community
+                development initiatives. The Diocese became known in the
+                Province of Owerri for its vibrant liturgical life, its strong
+                commitment to education, and its active lay movements.
+              </p>
+              <!-- TODO: Add details of each bishop's tenure from diocesan records — see bishops.html for profiles -->
+
+              <h3>The Diocese Today</h3>
+              <p>
+                Today, the Catholic Diocese of Okigwe is a mature, dynamic, and
+                growing local Church. With 48 parishes spread across 8
+                deaneries, over 120 active priests, 35 Catholic schools, and a
+                faithful community of more than 200,000 Catholics, the Diocese
+                stands as a powerful witness to the transforming power of the
+                Gospel in south-eastern Nigeria.
+              </p>
+              <p>
+                The Diocese continues to invest in evangelisation, quality
+                Catholic education, healthcare, and integral human development
+                through Caritas Okigwe. Its seminary continues to form the next
+                generation of priests, and its vibrant lay movements ensure that
+                the faith permeates every level of society. As it looks toward
+                the future, the Diocese of Okigwe remains anchored in its rich
+                history — a history of faith, sacrifice, and God's faithful
+                providence through every generation.
+              </p>
+              <!-- TODO: Update statistics annually and link to Chancery annual report when published -->
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+         DIOCESAN TIMELINE
+    ============================================================ -->
+      <section class="section" id="timeline" aria-labelledby="timeline-heading">
+        <div class="container">
+          <div class="section-header reveal-up">
+            <div class="section-label">A Chronicle of Faith</div>
+            <h2 class="section-title" id="timeline-heading">
+              Historical <em>Timeline</em>
+            </h2>
+            <p class="section-subtitle">
+              Key milestones in the history of the Catholic Diocese of Okigwe.
+              <!-- TODO: Add additional events as they are confirmed from diocesan archives -->
+            </p>
+          </div>
+
+          <!-- Timeline legend -->
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.625rem;
+              justify-content: center;
+              margin-bottom: var(--space-2xl);
+            "
+            class="reveal-up"
+            aria-label="Timeline legend"
+          >
+            <span class="tl-card__tag tl-card__tag--founding"
+              >Founding Event</span
+            >
+            <span class="tl-card__tag tl-card__tag--episcopal">Episcopal</span>
+            <span class="tl-card__tag tl-card__tag--pastoral">Pastoral</span>
+            <span class="tl-card__tag tl-card__tag--jubilee">Jubilee</span>
+            <span class="tl-card__tag tl-card__tag--education">Education</span>
+            <span class="tl-card__tag tl-card__tag--caritas">Caritas</span>
+          </div>
+
+          <!-- The timeline -->
+          <!-- HOW TO ADD A NEW EVENT:
+             1. Copy one of the .tl-entry blocks below.
+             2. Alternate between class="tl-entry tl-entry--left" and class="tl-entry tl-entry--right".
+             3. Update the year in .tl-node__year.
+             4. Choose the appropriate .tl-card__tag-- class for the event type.
+             5. Update the title and description.
+             Timeline events should be placed in chronological order (oldest to newest).
+        -->
+          <div
+            class="timeline-section reveal-up"
+            aria-label="Diocesan timeline"
+          >
+            <div class="timeline-spine" aria-hidden="true"></div>
+
+            <!-- Event 1 -->
+            <div class="tl-entry tl-entry--right">
+              <div class="tl-empty"></div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">Early 1900s</div>
+              </div>
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--founding"
+                  >Founding Event</span
+                >
+                <h3 class="tl-card__title">
+                  Arrival of Holy Ghost Missionaries
+                </h3>
+                <p class="tl-card__desc">
+                  The Spiritan Fathers (Holy Ghost Fathers) first established
+                  Catholic mission stations in the Okigwe region, beginning the
+                  evangelisation of the area and founding the first mission
+                  schools.
+                  <!-- TODO: Insert confirmed year and names of first missionaries from archives -->
+                </p>
+              </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="tl-entry tl-entry--left">
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--education"
+                  >Education</span
+                >
+                <h3 class="tl-card__title">
+                  First Catholic Schools Established
+                </h3>
+                <p class="tl-card__desc">
+                  The Holy Ghost Fathers opened the first Catholic primary
+                  schools in the Okigwe region, bringing literacy and Catholic
+                  formation to thousands of children and their families for the
+                  first time.
+                  <!-- TODO: Insert confirmed school names and founding dates -->
+                </p>
+              </div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">1920s–1940s</div>
+              </div>
+              <div class="tl-empty"></div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="tl-entry tl-entry--right">
+              <div class="tl-empty"></div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">1950s</div>
+              </div>
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--pastoral"
+                  >Pastoral</span
+                >
+                <h3 class="tl-card__title">
+                  First Local Catholic Priests Ordained
+                </h3>
+                <p class="tl-card__desc">
+                  The ordination of the first local sons of the Okigwe soil to
+                  the Catholic priesthood marks a decisive moment — the faith
+                  was no longer only brought from outside, but was now nurtured
+                  from within the local community.
+                  <!-- TODO: Insert names and dates of first local ordinations -->
+                </p>
+              </div>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="tl-entry tl-entry--left">
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--founding"
+                  >Founding Event</span
+                >
+                <h3 class="tl-card__title">
+                  Diocese of Okigwe Established by Papal Bull
+                </h3>
+                <p class="tl-card__desc">
+                  The Holy See officially established the Diocese of Okigwe as a
+                  suffragan diocese of the Ecclesiastical Province of Owerri.
+                  The first Bishop was appointed and the Diocesan Curia was
+                  constituted, marking the birth of the local Church as an
+                  independent ecclesiastical unit.
+                  <!-- TODO: Insert confirmed date and Papal Bull reference number from Vatican archives -->
+                </p>
+              </div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">[Year]</div>
+              </div>
+              <div class="tl-empty"></div>
+            </div>
+
+            <!-- Event 5 -->
+            <div class="tl-entry tl-entry--right">
+              <div class="tl-empty"></div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">[Year]</div>
+              </div>
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--episcopal"
+                  >Episcopal</span
+                >
+                <h3 class="tl-card__title">
+                  Episcopal Ordination and Installation of the First Bishop
+                </h3>
+                <p class="tl-card__desc">
+                  Most Rev. [First Bishop's Name] was ordained Bishop and
+                  solemnly installed as the first Bishop of Okigwe Diocese in a
+                  ceremony attended by bishops from across Nigeria, priests,
+                  religious, and thousands of faithful from all parishes of the
+                  new Diocese.
+                  <!-- TODO: Insert correct name, date, and presiding bishop from diocesan records -->
+                </p>
+              </div>
+            </div>
+
+            <!-- Event 6 -->
+            <div class="tl-entry tl-entry--left">
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--pastoral"
+                  >Pastoral</span
+                >
+                <h3 class="tl-card__title">
+                  Cathedral of the Sacred Heart Dedicated
+                </h3>
+                <p class="tl-card__desc">
+                  The Cathedral Church of the Sacred Heart of Jesus in Okigwe
+                  was formally dedicated and consecrated as the mother church
+                  and seat of the Bishop of the new Diocese, becoming the
+                  spiritual heart of the local Church.
+                  <!-- TODO: Insert confirmed dedication date and presiding celebrant -->
+                </p>
+              </div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">[Year]</div>
+              </div>
+              <div class="tl-empty"></div>
+            </div>
+
+            <!-- Event 7 -->
+            <div class="tl-entry tl-entry--right">
+              <div class="tl-empty"></div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">[Year]</div>
+              </div>
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--caritas">Caritas</span>
+                <h3 class="tl-card__title">Caritas Okigwe Founded</h3>
+                <p class="tl-card__desc">
+                  The diocesan Caritas office was established to coordinate the
+                  Church's social outreach — including food distribution,
+                  healthcare, education support, and emergency relief — bringing
+                  the love of Christ to the poorest members of the Diocese.
+                  <!-- TODO: Insert confirmed founding year and first Caritas director's name -->
+                </p>
+              </div>
+            </div>
+
+            <!-- Event 8 -->
+            <div class="tl-entry tl-entry--left">
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--jubilee">Jubilee</span>
+                <h3 class="tl-card__title">Silver Jubilee of the Diocese</h3>
+                <p class="tl-card__desc">
+                  The Diocese celebrated its 25th anniversary with a series of
+                  Eucharistic celebrations, pastoral events, and thanksgiving
+                  Masses across all parishes — giving thanks to God for 25 years
+                  of growth, mission, and grace in the Church of Okigwe.
+                  <!-- TODO: Insert confirmed Silver Jubilee year and celebration programme details -->
+                </p>
+              </div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">[Year]</div>
+              </div>
+              <div class="tl-empty"></div>
+            </div>
+
+            <!-- Event 9 -->
+            <div class="tl-entry tl-entry--right">
+              <div class="tl-empty"></div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">[Year]</div>
+              </div>
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--episcopal"
+                  >Episcopal</span
+                >
+                <h3 class="tl-card__title">
+                  Appointment and Installation of the Second Bishop
+                </h3>
+                <p class="tl-card__desc">
+                  Upon the retirement or death of the founding bishop, Most Rev.
+                  [Second Bishop's Name] was appointed and installed as the
+                  second Bishop of Okigwe Diocese, continuing the work of
+                  building the local Church.
+                  <!-- TODO: Insert confirmed name, date, and reason for change of bishop -->
+                </p>
+              </div>
+            </div>
+
+            <!-- Event 10 -->
+            <div class="tl-entry tl-entry--left">
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--education"
+                  >Education</span
+                >
+                <h3 class="tl-card__title">
+                  Diocesan Secondary Schools Board Established
+                </h3>
+                <p class="tl-card__desc">
+                  The Diocese formalised its educational apostolate by
+                  establishing the Catholic Schools Board, bringing all Catholic
+                  primary and secondary schools under a coordinated diocesan
+                  structure and strengthening the quality and Catholic ethos of
+                  its educational institutions.
+                  <!-- TODO: Insert confirmed year and first director of Catholic Schools Board -->
+                </p>
+              </div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">[Year]</div>
+              </div>
+              <div class="tl-empty"></div>
+            </div>
+
+            <!-- Event 11 -->
+            <div class="tl-entry tl-entry--right">
+              <div class="tl-empty"></div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">Present Day</div>
+              </div>
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--pastoral"
+                  >Pastoral</span
+                >
+                <h3 class="tl-card__title">
+                  Diocesan Synod on New Evangelisation Convoked
+                </h3>
+                <p class="tl-card__desc">
+                  The current Bishop convokes a Diocesan Synod on New
+                  Evangelisation, gathering clergy, religious, and lay faithful
+                  from all 48 parishes to discern the pastoral priorities of the
+                  Diocese for the next five years — a landmark moment in the
+                  Diocese's ongoing journey of faith.
+                </p>
+              </div>
+            </div>
+
+            <!-- 
+            ============================================================
+            HOW TO ADD MORE TIMELINE EVENTS:
+            Copy the block below and paste after the last .tl-entry.
+            Alternate between tl-entry--left and tl-entry--right.
+            ============================================================
+            <div class="tl-entry tl-entry--right">
+              <div class="tl-empty"></div>
+              <div class="tl-node" aria-hidden="true">
+                <div class="tl-node__dot"></div>
+                <div class="tl-node__year">YEAR</div>
+              </div>
+              <div class="tl-card" role="article">
+                <span class="tl-card__tag tl-card__tag--pastoral">Category</span>
+                <h3 class="tl-card__title">Event Title</h3>
+                <p class="tl-card__desc">Event description here.</p>
+              </div>
+            </div>
+          --></div>
+          <!-- End timeline -->
+        </div>
+      </section>
+
+      <!-- ============================================================
+         DIOCESAN ARCHIVES
+    ============================================================ -->
+      <section
+        class="section section--cream"
+        aria-labelledby="archives-heading"
+      >
+        <div class="container">
+          <div class="section-header reveal-up">
+            <div class="section-label">Historical Records</div>
+            <h2 class="section-title" id="archives-heading">
+              Diocesan <em>Archives</em>
+            </h2>
+            <p class="section-subtitle">
+              Official documents, photographs, and records preserved for the
+              memory of the Church.
+              <!-- TODO: Link each archive category to its actual document repository when digitised -->
+            </p>
+          </div>
+
+          <div class="archive-grid reveal-up">
+            <div
+              class="archive-card"
+              role="button"
+              tabindex="0"
+              aria-label="Papal Documents archive"
+            >
+              <span class="archive-card__icon" aria-hidden="true">📜</span>
+              <p class="archive-card__title">Papal Documents</p>
+              <p class="archive-card__count">Coming Soon</p>
+            </div>
+
+            <div
+              class="archive-card"
+              role="button"
+              tabindex="0"
+              aria-label="Episcopal Letters archive"
+            >
+              <span class="archive-card__icon" aria-hidden="true">✉</span>
+              <p class="archive-card__title">Episcopal Letters</p>
+              <p class="archive-card__count">Coming Soon</p>
+            </div>
+
+            <div
+              class="archive-card"
+              role="button"
+              tabindex="0"
+              aria-label="Historical Photographs archive"
+            >
+              <span class="archive-card__icon" aria-hidden="true">📷</span>
+              <p class="archive-card__title">Historical Photos</p>
+              <p class="archive-card__count">Coming Soon</p>
+            </div>
+
+            <div
+              class="archive-card"
+              role="button"
+              tabindex="0"
+              aria-label="Parish Records archive"
+            >
+              <span class="archive-card__icon" aria-hidden="true">📚</span>
+              <p class="archive-card__title">Parish Records</p>
+              <p class="archive-card__count">Coming Soon</p>
+            </div>
+
+            <div
+              class="archive-card"
+              role="button"
+              tabindex="0"
+              aria-label="Ordination Records archive"
+            >
+              <span class="archive-card__icon" aria-hidden="true">✝</span>
+              <p class="archive-card__title">Ordination Records</p>
+              <p class="archive-card__count">Coming Soon</p>
+            </div>
+
+            <div
+              class="archive-card"
+              role="button"
+              tabindex="0"
+              aria-label="Synodal Documents archive"
+            >
+              <span class="archive-card__icon" aria-hidden="true">🏛</span>
+              <p class="archive-card__title">Synodal Documents</p>
+              <p class="archive-card__count">Coming Soon</p>
+            </div>
+
+            <div
+              class="archive-card"
+              role="button"
+              tabindex="0"
+              aria-label="Annual Reports archive"
+            >
+              <span class="archive-card__icon" aria-hidden="true">📊</span>
+              <p class="archive-card__title">Annual Reports</p>
+              <p class="archive-card__count">Coming Soon</p>
+            </div>
+
+            <div
+              class="archive-card"
+              role="button"
+              tabindex="0"
+              aria-label="Missionary Records archive"
+            >
+              <span class="archive-card__icon" aria-hidden="true">🌍</span>
+              <p class="archive-card__title">Missionary Records</p>
+              <p class="archive-card__count">Coming Soon</p>
+            </div>
+          </div>
+
+          <div
+            class="section-cta reveal-up"
+            style="margin-top: var(--space-xl)"
+          >
+            <p
+              style="
+                font-size: var(--text-sm);
+                color: var(--color-text-muted);
+                margin-bottom: var(--space-sm);
+              "
+            >
+              Do you hold historical documents, photographs, or records related
+              to the Diocese of Okigwe?
+            </p>
+            <a href="contact.html" class="btn btn--primary"
+              >Donate to the Archive</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Banner -->
+      <section
+        style="
+          background: var(--color-navy-deep);
+          padding: var(--space-2xl) 0;
+          text-align: center;
+        "
+      >
+        <div class="container">
+          <div class="section-label" style="color: var(--color-gold)">
+            Continue Exploring
+          </div>
+          <h2
+            style="
+              font-family: var(--font-display);
+              font-size: var(--text-3xl);
+              color: var(--color-white);
+              margin-bottom: var(--space-sm);
+            "
+          >
+            Meet Our <em style="color: var(--color-gold-light)">Bishops</em>
+          </h2>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.65);
+              max-width: 520px;
+              margin: 0 auto var(--space-lg);
+              font-size: var(--text-sm);
+            "
+          >
+            Learn about the shepherds who have led the Diocese of Okigwe through
+            every chapter of its history.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: var(--space-sm);
+              justify-content: center;
+              flex-wrap: wrap;
+            "
+          >
+            <a href="bishops-history.html" class="btn btn--primary"
+              >History of Bishops</a
+            >
+            <a href="about.html" class="btn btn--outline">About the Diocese</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================ FOOTER ============================================================ -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="navbar__logo footer__logo" aria-hidden="true">
+            <div class="logo-cross logo-cross--light">
+              <span class="cross-v"></span><span class="cross-h"></span>
+            </div>
+          </div>
+          <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
+          <p class="footer__tagline">
+            "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
+          </p>
+          <div class="footer__social">
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Facebook"
+              rel="noopener noreferrer"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                /></svg
+            ></a>
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Twitter"
+              rel="noopener noreferrer"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                /></svg
+            ></a>
+            <a
+              href="#"
+              class="social-link"
+              aria-label="YouTube"
+              rel="noopener noreferrer"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                />
+                <polygon
+                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                  fill="var(--color-navy-deep)"
+                /></svg
+            ></a>
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Instagram"
+              rel="noopener noreferrer"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                width="20"
+                height="20"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                /></svg
+            ></a>
+          </div>
+        </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h3 class="footer__links-title">Quick Links</h3>
+          <ul role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About the Diocese</a></li>
+            <li><a href="history.html">Diocesan History</a></li>
+            <li><a href="bishops-history.html">History of Bishops</a></li>
+            <li><a href="parishes.html">Parish Directory</a></li>
+            <li><a href="news.html">News &amp; Events</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer__links">
+          <h3 class="footer__links-title">Archives</h3>
+          <ul role="list">
+            <li><a href="history.html#timeline">Historical Timeline</a></li>
+            <li><a href="bishops-history.html">Bishops of Okigwe</a></li>
+            <li><a href="priest.html">Departed Priests</a></li>
+            <li><a href="functionaries.html">Diocesan Functionaries</a></li>
+            <li><a href="history.html#archives">Document Archives</a></li>
+          </ul>
+        </div>
+        <address class="footer__address">
+          <h3 class="footer__links-title">Contact</h3>
+          <p>Bishop's House, Okigwe<br />Imo State, Nigeria</p>
+          <p><a href="tel:+2340000000000">+234 (0) 000 000 0000</a></p>
+          <p>
+            <a href="mailto:info@dioceseofokigwe.org"
+              >info@dioceseofokigwe.org</a
+            >
+          </p>
+        </address>
+      </div>
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copyright">
+            &copy; <span id="footer-year"></span> Catholic Diocese of Okigwe.
+            All rights reserved.
+          </p>
+          <p class="footer__legal">
+            <a href="#">Privacy Policy</a> &nbsp;&bull;&nbsp;
+            <a href="#">Terms of Use</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="../script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A memorial archive of priests who served and died in the Catholic Diocese of Okigwe — names, ordination dates, and years of service."
+    />
+    <meta
+      property="og:title"
+      content="Archive of Departed Priests — Catholic Diocese of Okigwe"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <style>
+      /* ================================================================
+       PRIEST ARCHIVE PAGE — SPECIFIC STYLES
+    ================================================================ */
+
+      /* ---- Memorial banner ---- */
+      .memorial-banner {
+        background: var(--color-navy-deep);
+        border-left: 4px solid var(--color-gold);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg) var(--space-xl);
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        margin-bottom: var(--space-2xl);
+      }
+      .memorial-banner__cross {
+        font-size: 2rem;
+        color: var(--color-gold);
+        flex-shrink: 0;
+      }
+      .memorial-banner__text h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        color: var(--color-white);
+        margin-bottom: 0.25rem;
+      }
+      .memorial-banner__text p {
+        font-size: var(--text-sm);
+        color: rgba(255, 255, 255, 0.65);
+        margin: 0;
+        font-style: italic;
+      }
+
+      /* ---- Table toolbar (search + controls) ---- */
+      .table-toolbar {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+        margin-bottom: var(--space-lg);
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-md) var(--space-lg);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .table-search {
+        flex: 1;
+        min-width: 240px;
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        background: var(--color-cream);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-sm);
+        padding: 0.625rem var(--space-sm);
+      }
+      .table-search__icon {
+        color: var(--color-gray-light);
+        font-size: var(--text-base);
+        flex-shrink: 0;
+      }
+      .table-search input {
+        border: none;
+        background: transparent;
+        outline: none;
+        width: 100%;
+        font-size: var(--text-sm);
+        color: var(--color-text-main);
+        font-family: var(--font-body);
+      }
+      .table-search input::placeholder {
+        color: var(--color-gray-light);
+      }
+
+      .table-result-count {
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--color-text-muted);
+        white-space: nowrap;
+      }
+      .table-result-count strong {
+        color: var(--color-navy-deep);
+      }
+
+      /* ---- Main table ---- */
+      .priest-table-wrap {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .priest-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--text-sm);
+      }
+
+      /* Responsive scroll wrapper */
+      .priest-table-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .priest-table thead {
+        background: var(--color-navy-deep);
+        color: var(--color-white);
+      }
+
+      .priest-table thead th {
+        padding: var(--space-sm) var(--space-md);
+        text-align: left;
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-gold-light);
+        white-space: nowrap;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        transition: background var(--transition-base);
+      }
+
+      .priest-table thead th:hover {
+        background: var(--color-navy-mid);
+      }
+
+      /* Sort indicator */
+      .priest-table thead th::after {
+        content: " ⇅";
+        font-size: 0.65rem;
+        opacity: 0.4;
+      }
+      .priest-table thead th.sort-asc::after {
+        content: " ↑";
+        opacity: 1;
+        color: var(--color-gold);
+      }
+      .priest-table thead th.sort-desc::after {
+        content: " ↓";
+        opacity: 1;
+        color: var(--color-gold);
+      }
+
+      /* Not sortable (S/N) */
+      .priest-table thead th.no-sort {
+        cursor: default;
+      }
+      .priest-table thead th.no-sort::after {
+        content: "";
+      }
+
+      .priest-table tbody tr {
+        border-bottom: 1px solid var(--color-gray-border);
+        transition: background var(--transition-fast);
+      }
+      .priest-table tbody tr:last-child {
+        border-bottom: none;
+      }
+      .priest-table tbody tr:hover {
+        background: var(--color-gold-pale);
+      }
+
+      /* Row hidden by search */
+      .priest-table tbody tr.is-hidden {
+        display: none;
+      }
+
+      .priest-table tbody td {
+        padding: var(--space-sm) var(--space-md);
+        color: var(--color-text-muted);
+        vertical-align: middle;
+        line-height: 1.5;
+      }
+
+      /* S/N column */
+      .priest-table tbody td:first-child {
+        color: var(--color-gold);
+        font-weight: 700;
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        min-width: 48px;
+      }
+
+      /* Priest name — emphasis */
+      .priest-table tbody td.name-cell {
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        min-width: 200px;
+      }
+
+      /* RIP badge */
+      .rip-badge {
+        display: inline-block;
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--color-navy-mid);
+        background: var(--color-gold-pale);
+        border: 1px solid var(--color-gold-light);
+        border-radius: 2px;
+        padding: 0.1rem 0.5rem;
+        margin-left: 0.4rem;
+        vertical-align: middle;
+      }
+
+      /* Empty state */
+      .table-empty {
+        text-align: center;
+        padding: var(--space-2xl) var(--space-lg);
+        color: var(--color-text-muted);
+        font-size: var(--text-md);
+      }
+      .table-empty span {
+        display: block;
+        font-size: 2.5rem;
+        margin-bottom: var(--space-sm);
+      }
+
+      /* ---- Pagination ---- */
+      .table-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        padding: var(--space-md) var(--space-lg);
+        border-top: 1px solid var(--color-gray-border);
+        background: var(--color-cream);
+      }
+
+      .table-pagination__info {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+      }
+
+      .table-pagination__pages {
+        display: flex;
+        gap: 0.35rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .pg-btn {
+        min-width: 36px;
+        height: 36px;
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-sm);
+        background: var(--color-white);
+        color: var(--color-text-muted);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0.625rem;
+        transition:
+          background var(--transition-base),
+          color var(--transition-base),
+          border-color var(--transition-base);
+        font-family: var(--font-body);
+      }
+      .pg-btn:hover {
+        border-color: var(--color-navy-mid);
+        color: var(--color-navy-deep);
+      }
+      .pg-btn.is-active {
+        background: var(--color-navy-deep);
+        border-color: var(--color-navy-deep);
+        color: var(--color-white);
+      }
+      .pg-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .pg-ellipsis {
+        font-size: var(--text-xs);
+        color: var(--color-gray-light);
+        padding: 0 0.25rem;
+      }
+
+      /* ---- Notes box ---- */
+      .archive-note {
+        background: var(--color-gold-pale);
+        border: 1px solid var(--color-gold-light);
+        border-radius: var(--radius-md);
+        padding: var(--space-md) var(--space-lg);
+        margin-top: var(--space-xl);
+        font-size: var(--text-sm);
+        color: var(--color-navy-mid);
+        line-height: 1.7;
+      }
+      .archive-note strong {
+        color: var(--color-navy-deep);
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      /* ---- Responsive ---- */
+      @media (max-width: 768px) {
+        .table-toolbar {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .table-search {
+          min-width: unset;
+        }
+        .memorial-banner {
+          flex-direction: column;
+          text-align: center;
+        }
+        .table-pagination {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+
+    <title>Archive of Departed Priests — Catholic Diocese of Okigwe</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar__inner">
+          <a href="../index.html" class="navbar__brand">
+            <div class="navbar__logo" aria-hidden="true">
+              <div class="logo-cross">
+                <span class="cross-v"></span><span class="cross-h"></span>
+              </div>
+            </div>
+            <div class="navbar__title">
+              <span class="navbar__title--main">Diocese of Okigwe</span>
+              <span class="navbar__title--sub">Catholic Diocese</span>
+            </div>
+          </a>
+          <ul class="navbar__links" id="navbar-links" role="list">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link active">About</a></li>
+            <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
+            <li><a href="ministries.html" class="nav-link">Ministries</a></li>
+            <li><a href="news.html" class="nav-link">News</a></li>
+            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navbar-links"
+          >
+            <span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-label="Departed priests archive hero">
+        <div class="container page-hero__inner">
+          <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a> <span>›</span>
+            <a href="about.html">About</a> <span>›</span>
+            <span>Archive of Departed Priests</span>
+          </nav>
+          <h1 class="page-hero__title">Archive of <em>Departed Priests</em></h1>
+          <p class="page-hero__subtitle">
+            In loving memory of the priests who gave their lives in service to
+            God and the people of the Diocese of Okigwe. May they rest in peace
+            and rise in glory.
+          </p>
+        </div>
+      </section>
+
+      <!-- ARCHIVE SECTION -->
+      <section class="section" aria-labelledby="archive-heading">
+        <div class="container">
+          <!-- Memorial banner -->
+          <div
+            class="memorial-banner reveal-up"
+            role="note"
+            aria-label="Memorial notice"
+          >
+            <span class="memorial-banner__cross" aria-hidden="true">✝</span>
+            <div class="memorial-banner__text">
+              <h3>Eternal Rest Grant unto Them, O Lord</h3>
+              <p>
+                "I am the resurrection and the life. Whoever believes in me,
+                though he die, yet shall he live." — John 11:25
+              </p>
+            </div>
+          </div>
+
+          <div class="section-header reveal-up">
+            <div class="section-label">Memorial Record</div>
+            <h2 class="section-title" id="archive-heading">
+              Priests Who Have <em>Gone Before Us</em>
+            </h2>
+            <p class="section-subtitle">
+              A searchable archive of priests who served the Diocese of Okigwe
+              and have gone to their eternal reward.
+            </p>
+          </div>
+
+          <!-- TABLE TOOLBAR -->
+          <div class="table-toolbar reveal-up">
+            <div class="table-search" role="search" aria-label="Search priests">
+              <span class="table-search__icon" aria-hidden="true">🔍</span>
+              <input
+                type="text"
+                id="priest-search"
+                placeholder="Search by name, date, or cause of death…"
+                aria-label="Search the priest archive"
+              />
+            </div>
+            <div
+              class="table-result-count"
+              role="status"
+              aria-live="polite"
+              id="result-count"
+            >
+              Showing <strong id="visible-count">20</strong> of
+              <strong id="total-count">0</strong> records
+            </div>
+          </div>
+
+          <!-- TABLE WRAPPER -->
+          <div class="priest-table-wrap reveal-up">
+            <div class="priest-table-scroll">
+              <table
+                class="priest-table"
+                id="priest-table"
+                aria-label="Archive of departed priests"
+                aria-describedby="table-description"
+              >
+                <caption
+                  id="table-description"
+                  class="sr-only"
+                  style="
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    overflow: hidden;
+                  "
+                >
+                  A sortable and searchable table listing priests of the Diocese
+                  of Okigwe who have died. Columns: Serial number, Name, Date of
+                  Birth, Date of Ordination, Date of Death, Cause of Death,
+                  Years Served.
+                </caption>
+                <thead>
+                  <tr>
+                    <th
+                      scope="col"
+                      class="no-sort"
+                      data-col="sn"
+                      aria-label="Serial number"
+                    >
+                      #
+                    </th>
+                    <th scope="col" data-col="name">Name of Priest</th>
+                    <th scope="col" data-col="dob">Date of Birth</th>
+                    <th scope="col" data-col="ordination">Ordained</th>
+                    <th scope="col" data-col="death">Date of Death</th>
+                    <th scope="col" data-col="cause">Cause of Death</th>
+                    <th scope="col" data-col="years">Yrs. Served</th>
+                  </tr>
+                </thead>
+                <tbody id="priest-tbody">
+                  <!-- Rows are rendered by JavaScript from the DATA array below -->
+                  <!-- ADDING RECORDS: Add a new object to the PRIESTS array in the <script> section.
+                     Do NOT add HTML rows directly — the JS handles pagination and search automatically. -->
+                </tbody>
+              </table>
+              <!-- Empty state message -->
+              <div
+                class="table-empty"
+                id="table-empty"
+                style="display: none"
+                role="status"
+                aria-live="polite"
+              >
+                <span>✝</span>
+                No records found matching your search. Please try different
+                terms.
+              </div>
+            </div>
+
+            <!-- PAGINATION -->
+            <div
+              class="table-pagination"
+              id="table-pagination"
+              aria-label="Table pagination"
+            >
+              <div class="table-pagination__info" id="pagination-info">
+                Showing 1–20 of 0 records
+              </div>
+              <div
+                class="table-pagination__pages"
+                id="pagination-pages"
+                role="navigation"
+                aria-label="Page navigation"
+              >
+                <!-- Rendered by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Archive submission note -->
+          <div class="archive-note reveal-up">
+            <strong>Maintaining the Archive</strong>
+            If you have information about a departed priest not listed here —
+            including name, ordination date, date of death, or other details —
+            please contact the Diocesan Chancery so that the record can be
+            updated. This archive is a living memorial and will grow as records
+            are confirmed.
+            <br /><br />
+            <!-- TODO: Link to dedicated archive submission form when built -->
+            <a
+              href="contact.html"
+              style="color: var(--color-gold); font-weight: 600"
+              >Submit a Record → Contact the Chancery</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section
+        style="
+          background: var(--color-navy-deep);
+          padding: var(--space-xl) 0;
+          text-align: center;
+        "
+      >
+        <div class="container">
+          <p
+            style="
+              font-family: var(--font-display);
+              font-size: var(--text-xl);
+              color: rgba(255, 255, 255, 0.8);
+              font-style: italic;
+              margin-bottom: var(--space-sm);
+            "
+          >
+            "Blessed are the dead who die in the Lord…<br />they will rest from
+            their labour, for their deeds follow them." — Rev 14:13
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: var(--space-sm);
+              justify-content: center;
+              flex-wrap: wrap;
+              margin-top: var(--space-lg);
+            "
+          >
+            <a href="history.html" class="btn btn--primary">Diocesan History</a>
+            <a href="functionaries.html" class="btn btn--outline"
+              >Diocesan Functionaries</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="navbar__logo footer__logo" aria-hidden="true">
+            <div class="logo-cross logo-cross--light">
+              <span class="cross-v"></span><span class="cross-h"></span>
+            </div>
+          </div>
+          <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
+          <p class="footer__tagline">
+            "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
+          </p>
+          <div class="footer__social">
+            <a href="#" class="social-link" aria-label="Facebook"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="Twitter"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="YouTube"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                />
+                <polygon
+                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                  fill="var(--color-navy-deep)"
+                /></svg
+            ></a>
+            <a href="#" class="social-link" aria-label="Instagram"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                width="20"
+                height="20"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                /></svg
+            ></a>
+          </div>
+        </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h3 class="footer__links-title">Quick Links</h3>
+          <ul role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About the Diocese</a></li>
+            <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="parishes.html">Parish Directory</a></li>
+            <li><a href="news.html">News &amp; Events</a></li>
+            <li><a href="gallery.html">Media Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer__links">
+          <h3 class="footer__links-title">Archives</h3>
+          <ul role="list">
+            <li><a href="history.html">Diocesan History</a></li>
+            <li><a href="bishops-history.html">History of Bishops</a></li>
+            <li><a href="priest.html">Departed Priests</a></li>
+            <li><a href="functionaries.html">Diocesan Functionaries</a></li>
+          </ul>
+        </div>
+        <address class="footer__address">
+          <h3 class="footer__links-title">Contact</h3>
+          <p>Bishop's House, Okigwe<br />Imo State, Nigeria</p>
+          <p><a href="tel:+2340000000000">+234 (0) 000 000 0000</a></p>
+          <p>
+            <a href="mailto:info@dioceseofokigwe.org"
+              >info@dioceseofokigwe.org</a
+            >
+          </p>
+        </address>
+      </div>
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copyright">
+            &copy; <span id="footer-year"></span> Catholic Diocese of Okigwe.
+            All rights reserved.
+          </p>
+          <p class="footer__legal">
+            <a href="#">Privacy Policy</a> &nbsp;&bull;&nbsp;
+            <a href="#">Terms of Use</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="../script.js"></script>
+    <script>
+      /* ============================================================
+       PRIEST ARCHIVE — DATA, SEARCH, SORT & PAGINATION ENGINE
+       ============================================================
+
+       TO ADD A NEW PRIEST RECORD:
+       Add an object to the PRIESTS array below following the same
+       structure. The table will automatically re-number, paginate,
+       and make the record searchable without any further HTML changes.
+
+       Field reference:
+         name:       Full priestly name, including title prefix
+         dob:        Date of birth (string, e.g. "12 Jan 1940" or "N/A")
+         ordination: Date of priestly ordination (string)
+         death:      Date of death (string)
+         cause:      Cause of death (string, or "N/A")
+         years:      Years of priestly service (number or string)
+    ============================================================ */
+
+      const PRIESTS = [
+        /* ── TODO: Replace all placeholder entries with verified records from diocesan archives ── */
+        {
+          name: "Rev. Fr. [Priest Name 01]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "[Cause of Death]",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 02]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 03]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Illness",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 04]",
+          dob: "N/A",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "[Cause of Death]",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 05]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 06]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "N/A",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 07]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Illness",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 08]",
+          dob: "N/A",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 09]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "[Cause of Death]",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 10]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 11]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "N/A",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 12]",
+          dob: "N/A",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Illness",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 13]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 14]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "[Cause of Death]",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 15]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 16]",
+          dob: "N/A",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "N/A",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 17]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Illness",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 18]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 19]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "[Cause of Death]",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 20]",
+          dob: "N/A",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 21]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Illness",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 22]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "N/A",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 23]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 24]",
+          dob: "N/A",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "[Cause of Death]",
+          years: "[N]",
+        },
+        {
+          name: "Rev. Fr. [Priest Name 25]",
+          dob: "[Date of Birth]",
+          ordination: "[Date of Ordination]",
+          death: "[Date of Death]",
+          cause: "Natural causes",
+          years: "[N]",
+        },
+      ];
+
+      /* ============================================================
+       TABLE ENGINE
+    ============================================================ */
+      const ROWS_PER_PAGE = 10;
+      let filteredData = [...PRIESTS];
+      let sortCol = null;
+      let sortDir = "asc";
+      let currentPage = 1;
+
+      const tbody = document.getElementById("priest-tbody");
+      const searchInput = document.getElementById("priest-search");
+      const visibleCount = document.getElementById("visible-count");
+      const totalCount = document.getElementById("total-count");
+      const emptyState = document.getElementById("table-empty");
+      const paginationInfo = document.getElementById("pagination-info");
+      const paginationPages = document.getElementById("pagination-pages");
+
+      /* ---- Render rows for the current page ---- */
+      function renderTable() {
+        tbody.innerHTML = "";
+
+        const start = (currentPage - 1) * ROWS_PER_PAGE;
+        const end = Math.min(start + ROWS_PER_PAGE, filteredData.length);
+        const page = filteredData.slice(start, end);
+
+        if (!page.length) {
+          emptyState.style.display = "block";
+        } else {
+          emptyState.style.display = "none";
+          page.forEach((priest, idx) => {
+            const sn = start + idx + 1;
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+            <td>${sn}</td>
+            <td class="name-cell">${escapeHtml(priest.name)} <span class="rip-badge" aria-label="Rest in Peace">R.I.P.</span></td>
+            <td>${escapeHtml(priest.dob)}</td>
+            <td>${escapeHtml(priest.ordination)}</td>
+            <td>${escapeHtml(priest.death)}</td>
+            <td>${escapeHtml(priest.cause)}</td>
+            <td>${escapeHtml(String(priest.years))}</td>
+          `;
+            tbody.appendChild(tr);
+          });
+        }
+
+        /* Update counts */
+        visibleCount.textContent = filteredData.length;
+        totalCount.textContent = PRIESTS.length;
+
+        /* Pagination info */
+        paginationInfo.textContent = filteredData.length
+          ? `Showing ${start + 1}–${end} of ${filteredData.length} records`
+          : "No records to display";
+
+        renderPagination();
+      }
+
+      /* ---- Render pagination buttons ---- */
+      function renderPagination() {
+        paginationPages.innerHTML = "";
+        const totalPages = Math.ceil(filteredData.length / ROWS_PER_PAGE);
+        if (totalPages <= 1) return;
+
+        /* Prev button */
+        const prevBtn = makePgBtn("‹", currentPage === 1, () => {
+          currentPage--;
+          renderTable();
+        });
+        prevBtn.setAttribute("aria-label", "Previous page");
+        paginationPages.appendChild(prevBtn);
+
+        /* Page number buttons — show up to 7 with ellipsis */
+        const pages = getPageRange(currentPage, totalPages);
+        pages.forEach((p) => {
+          if (p === "…") {
+            const el = document.createElement("span");
+            el.className = "pg-ellipsis";
+            el.textContent = "…";
+            el.setAttribute("aria-hidden", "true");
+            paginationPages.appendChild(el);
+          } else {
+            const btn = makePgBtn(String(p), false, () => {
+              currentPage = p;
+              renderTable();
+            });
+            if (p === currentPage) {
+              btn.classList.add("is-active");
+              btn.setAttribute("aria-current", "page");
+            }
+            btn.setAttribute("aria-label", `Page ${p}`);
+            paginationPages.appendChild(btn);
+          }
+        });
+
+        /* Next button */
+        const nextBtn = makePgBtn("›", currentPage === totalPages, () => {
+          currentPage++;
+          renderTable();
+        });
+        nextBtn.setAttribute("aria-label", "Next page");
+        paginationPages.appendChild(nextBtn);
+      }
+
+      function makePgBtn(label, disabled, handler) {
+        const btn = document.createElement("button");
+        btn.className = "pg-btn";
+        btn.textContent = label;
+        btn.disabled = disabled;
+        btn.addEventListener("click", handler);
+        return btn;
+      }
+
+      /* Generate a smart page range with ellipses */
+      function getPageRange(current, total) {
+        if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+        if (current <= 4) return [1, 2, 3, 4, 5, "…", total];
+        if (current >= total - 3)
+          return [1, "…", total - 4, total - 3, total - 2, total - 1, total];
+        return [1, "…", current - 1, current, current + 1, "…", total];
+      }
+
+      /* ---- Search ---- */
+      searchInput.addEventListener("input", () => {
+        const q = searchInput.value.trim().toLowerCase();
+        filteredData = q
+          ? PRIESTS.filter(
+              (p) =>
+                p.name.toLowerCase().includes(q) ||
+                p.dob.toLowerCase().includes(q) ||
+                p.ordination.toLowerCase().includes(q) ||
+                p.death.toLowerCase().includes(q) ||
+                p.cause.toLowerCase().includes(q),
+            )
+          : [...PRIESTS];
+
+        /* Apply current sort to filtered data */
+        if (sortCol) applySortToData();
+        currentPage = 1;
+        renderTable();
+      });
+
+      /* ---- Column sort ---- */
+      const colMap = {
+        name: "name",
+        dob: "dob",
+        ordination: "ordination",
+        death: "death",
+        cause: "cause",
+        years: "years",
+      };
+
+      document
+        .querySelectorAll(".priest-table thead th[data-col]")
+        .forEach((th) => {
+          if (th.classList.contains("no-sort")) return;
+          th.addEventListener("click", () => {
+            const col = th.dataset.col;
+            if (sortCol === col) {
+              sortDir = sortDir === "asc" ? "desc" : "asc";
+            } else {
+              sortCol = col;
+              sortDir = "asc";
+            }
+            applySortToData();
+            currentPage = 1;
+            renderTable();
+            /* Update header classes */
+            document
+              .querySelectorAll(".priest-table thead th")
+              .forEach((h) => h.classList.remove("sort-asc", "sort-desc"));
+            th.classList.add(sortDir === "asc" ? "sort-asc" : "sort-desc");
+            th.setAttribute(
+              "aria-sort",
+              sortDir === "asc" ? "ascending" : "descending",
+            );
+          });
+        });
+
+      function applySortToData() {
+        const field = colMap[sortCol] || "name";
+        filteredData.sort((a, b) => {
+          const va = String(a[field]).toLowerCase();
+          const vb = String(b[field]).toLowerCase();
+          if (va < vb) return sortDir === "asc" ? -1 : 1;
+          if (va > vb) return sortDir === "asc" ? 1 : -1;
+          return 0;
+        });
+      }
+
+      /* ---- Safety: escape HTML to prevent XSS ---- */
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      /* ---- Initial render ---- */
+      filteredData = [...PRIESTS];
+      renderTable();
+    </script>
+  </body>
+</html>
