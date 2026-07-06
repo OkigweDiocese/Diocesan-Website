@@ -51,14 +51,40 @@ function initNavbar() {
   });
 
   /**
-   * Close the mobile menu when a nav link is clicked
-   * (smooth scroll handles the actual scrolling).
+   * Close the mobile menu (and any open dropdowns).
+   */
+  function closeMobileMenu() {
+    hamburger.classList.remove("is-open");
+    navLinks.classList.remove("is-open");
+    hamburger.setAttribute("aria-expanded", "false");
+    document.querySelectorAll(".dropdown").forEach((d) => d.classList.remove("is-open"));
+  }
+
+  /**
+   * Close the mobile menu when a nav link is clicked.
+   * Skip the dropdown trigger li — that should toggle the submenu, not close the menu.
    */
   navLinks.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", () => {
-      hamburger.classList.remove("is-open");
-      navLinks.classList.remove("is-open");
-      hamburger.setAttribute("aria-expanded", "false");
+      if (link.classList.contains("dropdown")) return;
+      closeMobileMenu();
+    });
+  });
+
+  /**
+   * Archives dropdown: toggle open/closed on click/tap.
+   * stopPropagation prevents the event reaching the li close-handler above.
+   */
+  document.querySelectorAll(".dropbtn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const dropdown = btn.closest(".dropdown");
+      const isOpen = dropdown.classList.toggle("is-open");
+      // Close any other open dropdowns
+      document.querySelectorAll(".dropdown").forEach((d) => {
+        if (d !== dropdown) d.classList.remove("is-open");
+      });
     });
   });
 
@@ -67,9 +93,11 @@ function initNavbar() {
    */
   document.addEventListener("click", (e) => {
     if (!header.contains(e.target)) {
-      hamburger.classList.remove("is-open");
-      navLinks.classList.remove("is-open");
-      hamburger.setAttribute("aria-expanded", "false");
+      closeMobileMenu();
+    }
+    // Close desktop dropdown when clicking outside it
+    if (!e.target.closest(".dropdown")) {
+      document.querySelectorAll(".dropdown").forEach((d) => d.classList.remove("is-open"));
     }
   });
 

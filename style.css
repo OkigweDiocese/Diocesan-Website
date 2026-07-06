@@ -658,23 +658,56 @@ blockquote p + p {
   display: inline-block;
 }
 
+.dropbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropbtn::after {
+  content: "▾";
+  font-size: 0.7em;
+  display: inline-block;
+  transition: transform var(--transition-base);
+}
+
+.dropdown.is-open .dropbtn::after {
+  transform: rotate(180deg);
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 30px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  top: 100%;
+  left: 0;
+  background-color: var(--color-white);
+  min-width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-sm);
 }
 
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
+  color: var(--color-gray-dark);
+  padding: 10px 16px;
   text-decoration: none;
   display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-content a:hover {
+  background-color: var(--color-cream);
+  color: var(--color-navy-deep);
+}
+
+/* Show on hover (desktop) or when JS toggles it open (all screen sizes) */
+.dropdown:hover .dropdown-content,
+.dropdown.is-open .dropdown-content {
   display: block;
 }
 
@@ -1835,6 +1868,51 @@ blockquote p + p {
 
   .nav-link::after {
     display: none;
+  }
+
+  /* ---- Archives dropdown: mobile layout ---- */
+  .dropdown {
+    display: block;
+    width: 100%;
+  }
+
+  .dropdown.is-open {
+    border-bottom: none;
+  }
+
+  .dropbtn {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Revert to static flow so dropdown expands within the mobile menu panel */
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    background-color: var(--color-cream);
+    border: none;
+    border-left: 3px solid var(--color-gold);
+    border-radius: 0;
+    min-width: unset;
+  }
+
+  .dropdown-content a {
+    padding: 0.625rem 1.25rem;
+    border-bottom: 1px solid var(--color-gray-border);
+  }
+
+  .dropdown-content a:last-child {
+    border-bottom: none;
+  }
+
+  /* Disable CSS hover on touch screens — JS toggle only */
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  .dropdown.is-open .dropdown-content {
+    display: block;
   }
 
   /* ---- Hero ---- */
