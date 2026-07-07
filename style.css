@@ -724,11 +724,12 @@ blockquote p + p {
   background-color: var(--color-navy-deep);
 }
 
-/* Background — replace with actual image via inline style or JS */
+/* Background — the cathedral photo, cropped to cover and centered
+   at every screen size. The gradients underneath are a fallback tint
+   that shows if the image fails to load. */
 .hero__background {
   position: absolute;
   inset: 0;
-  /* TODO: Replace with: background-image: url('images/hero-bg.jpg'); */
   background-color: var(--color-navy-deep);
   background-image:
     radial-gradient(
@@ -740,7 +741,11 @@ blockquote p + p {
       ellipse at 80% 20%,
       rgba(184, 148, 46, 0.15) 0%,
       transparent 50%
-    );
+    ),
+    url("images/Cathedral symbol.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Subtle cross/grid pattern overlay */
@@ -1918,6 +1923,12 @@ blockquote p + p {
   /* ---- Hero ---- */
   .hero {
     min-height: auto;
+  }
+
+  .hero__background {
+    /* Favor the upper portion of the photo on narrow screens, where
+       cover-cropping otherwise tends to cut off the cathedral itself */
+    background-position: top center;
   }
 
   .hero__content {
