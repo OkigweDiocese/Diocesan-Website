@@ -2145,11 +2145,13 @@ blockquote p + p {
 
 .page-hero {
   background-color: var(--color-navy-deep);
+  /* Cathedral photo behind a dark navy tint (for text readability) and
+     the decorative gold pattern. Same image/treatment as the homepage hero. */
   background-image:
     linear-gradient(
       135deg,
-      rgba(15, 29, 59, 0.97) 0%,
-      rgba(27, 47, 92, 0.92) 100%
+      rgba(15, 29, 59, 0.9) 0%,
+      rgba(27, 47, 92, 0.82) 100%
     ),
     repeating-linear-gradient(
       45deg,
@@ -2157,7 +2159,11 @@ blockquote p + p {
       transparent 30px,
       rgba(184, 148, 46, 0.03) 30px,
       rgba(184, 148, 46, 0.03) 60px
-    );
+    ),
+    url("images/Cathedral symbol.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 5rem 0 4rem;
   position: relative;
   overflow: hidden;
@@ -2781,6 +2787,7 @@ blockquote p + p {
   }
   .page-hero {
     padding: 3.5rem 0 3rem;
+    background-position: top center;
   }
   .page-hero__subtitle {
     font-size: var(--text-base);
