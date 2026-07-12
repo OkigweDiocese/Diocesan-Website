@@ -2,6 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -49,6 +60,7 @@
             <li><a href="../index.html" class="nav-link">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="priests.html" class="nav-link">Priests</a></li>
             <li><a href="parishes.html" class="nav-link">Parishes</a></li>
             <!-- <li>
               <a href="pages/ministries.html" class="nav-link">Ministries</a>
@@ -68,6 +80,44 @@
           </ul>
 
           <!-- Mobile Hamburger Toggle -->
+          <!-- Dark Mode Toggle -->
+          <button
+            class="theme-toggle"
+            id="theme-toggle-btn"
+            type="button"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+          >
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="12" y1="2" x2="12" y2="4"></line>
+              <line x1="12" y1="20" x2="12" y2="22"></line>
+              <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+              <line x1="2" y1="12" x2="4" y2="12"></line>
+              <line x1="20" y1="12" x2="22" y2="12"></line>
+              <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+              <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+            </svg>
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--moon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
           <button
             class="navbar__hamburger"
             id="hamburger-btn"
@@ -435,7 +485,7 @@
               text-align: center;
             "
           >
-            Diocesan Curia
+            DIOCESAN OFFICIALS
           </h3>
           <div class="team-grid">
             <div class="team-card">
@@ -443,9 +493,9 @@
                 <!-- TODO: Portrait photo --><span>Photo</span>
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Priests' Welfare, Seminary and Biblical Commision</p>
+                <p class="team-card__role">Vicar General I</p>
                 <h4 class="team-card__name">Very Rev. Msgr. John C. Iwe</h4>
-                <p class="team-card__parish">Vicar General I</p>
+                <p class="team-card__parish">St. Benedict's Parish Amaraku <br>08134077144, 07038446056</p>
               </div>
             </div>
 
@@ -457,7 +507,7 @@
               <div class="team-card__body">
                 <p class="team-card__role">Vicar General II</p>
                 <h4 class="team-card__name">Very Rev. Fr. Bartholomew Nnaemedo</h4>
-                <p class="team-card__parish">Vicar General II</p>
+                <p class="team-card__parish">St. Mary's Pro-Cathedral Parish, Okigwe <br>09069098866</p>
               </div>
             </div>
 
@@ -466,9 +516,9 @@
                 <!-- TODO: Portrait photo --><span>Photo</span>
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Pastoral Commission</p>
+                <p class="team-card__role">Episcopal Vicar, Okigwe Zone</p>
                 <h4 class="team-card__name">Very Rev. Fr. Josephat Nwankwo</h4>
-                <p class="team-card__parish">Episcopal Vicar, Okigwe Zone</p>
+                <p class="team-card__parish">All Saints Parish, Ogii <br>08033602181</p>
               </div>
             </div>
 
@@ -477,9 +527,9 @@
                 <!-- TODO: Portrait photo --><span>Photo</span>
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Ecumenical Commission</p>
+                <p class="team-card__role">Episcopal Vicar for Clergy</p>
                 <h4 class="team-card__name">Very Rev. Msgr. Simon O. Anyanwu</h4>
-                <p class="team-card__parish">Episcopal Vicar for CLergy</p>
+                <p class="team-card__parish">St. Mary's Pro-Cathedral Parish, Okigwe <br>08063897006</p>
               </div>
             </div>
 
@@ -491,7 +541,8 @@
               <div class="team-card__body">
                 <p class="team-card__role">Chancellor/Secretary</p>
                 <h4 class="team-card__name">Very Rev. Fr. Samuel Obinnaya Okoli</h4>
-                <!-- <p class="team-card__parish">Diocesan Curia, Okigwe</p> -->
+                <p class="team-card__parish">Bishop's House, Villa Lourdes, Okigwe <br>08133807134 <br><a href="mailto:obinnayanoble1@gmail.com">obinnayanoble1@gmail.com</a></p>
+                
               </div>
             </div>
 
@@ -500,9 +551,9 @@
                 <!-- TODO: Portrait photo --><span>Photo</span>
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Judicial Vicar and Medical Commission</p>
+                <p class="team-card__role">Judicial Vicar</p>
                 <h4 class="team-card__name">Very Rev. Fr. Michael Agbayi</h4>
-                <!-- <p class="team-card__parish">Diocesan Tribunal</p> -->
+                <p class="team-card__parish">Christ the King Parish, Umunchi <br>08038751950, 08069689968</p>
               </div>
             </div>
 
@@ -511,9 +562,9 @@
                 <!-- TODO: Portrait photo --><span>Photo</span>
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Diocesan Financial Administrator</p>
-                <h4 class="team-card__name">Rev. Fr. Livinus Iroh</h4>
-                <!-- <p class="team-card__parish">Diocesan Curia, Okigwe</p> -->
+                <p class="team-card__role">Financial Administrator</p>
+                <h4 class="team-card__name">Very Rev. Fr. Livinus Iroh</h4>
+                <p class="team-card__parish">Bishop's House, Villa Lourdes, Okigwe <br>09047713873</p>
               </div>
             </div>
 
@@ -522,31 +573,22 @@
                 <!-- TODO: Portrait photo --><span>Photo</span>
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Pontifical Mission Societies</p>
-                <h4 class="team-card__name">Rev. Fr. Christian Egwuekwe</h4>
-                <!-- <p class="team-card__parish">Diocesan Curia, Okigwe</p> -->
+                <p class="team-card__role">Cathedral Administrator</p>
+                <h4 class="team-card__name">Very Rev. Fr. Michael Ohanete</h4>
+                <p class="team-card__parish">St. Mary's Pro-Cathedral Parish, Okigwe <br>08060077261</p>
               </div>
             </div>
+
+            
 
             <div class="team-card">
               <div class="team-card__photo">
                 <!-- TODO: Portrait photo --><span>Photo</span>
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Liturgical Commision</p>
-                <h4 class="team-card__name">Rev. Fr. Patrick Ugwaka</h4>
-                <!-- <p class="team-card__parish">Internal Forum</p> -->
-              </div>
-            </div>
-
-            <div class="team-card">
-              <div class="team-card__photo">
-                <!-- TODO: Portrait photo --><span>Photo</span>
-              </div>
-              <div class="team-card__body">
-                <p class="team-card__role">Land/Legal Commission</p>
+                <p class="team-card__role">Diocesan Legal Adviser</p>
                 <h4 class="team-card__name">Very Rev. Fr. Oliver Mbagwu</h4>
-                <!-- <p class="team-card__parish">Internal Forum</p> -->
+                <p class="team-card__parish">St. Mary's Pro-Cathedral Parish, Okigwe <br>08037923252</p>
               </div>
             </div>
 
@@ -555,67 +597,15 @@
                 <!-- TODO: Portrait photo --><span>Photo</span>
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Family and Human Life Commission</p>
-                <h4 class="team-card__name">Rev. Fr. Prof. Clement Uche</h4>
-                <!-- <p class="team-card__parish">Internal Forum</p> -->
+                <p class="team-card__role">Diocesan Legal Adviser</p>
+                <h4 class="team-card__name">Very Rev. Fr. Anthony Onyenagada</h4>
+                <p class="team-card__parish">Christ the King Parish, Ikperejere Uboma <br>07032427384</p>
               </div>
             </div>
 
-            <div class="team-card">
-              <div class="portrait-placeholder team-card__photo">
-                <img src="../images/fr_isaac_ogu.jpg" alt="">
-                <!-- TODO: Portrait photo<span>Photo</span> -->
-              </div>
-              <div class="team-card__body">
-                <p class="team-card__role">Education Commission</p>
-                <h4 class="team-card__name">Rev. Fr. Isaac Ogu</h4>
-                <!-- <p class="team-card__parish">Internal Forum</p> -->
-              </div>
-            </div>
+            
 
-            <div class="team-card">
-              <div class="team-card__photo">
-                <!-- TODO: Portrait photo --><span>Photo</span>
-              </div>
-              <div class="team-card__body">
-                <p class="team-card__role">Sacred Music Commission</p>
-                <h4 class="team-card__name">Rev. Fr. Anthony Dieme</h4>
-                <!-- <p class="team-card__parish">Internal Forum</p> -->
-              </div>
-            </div>
-
-            <div class="team-card">
-              <div class="team-card__photo">
-                <!-- TODO: Portrait photo --><span>Photo</span>
-              </div>
-              <div class="team-card__body">
-                <p class="team-card__role">Justice, Dev. & Peace Commission</p>
-                <h4 class="team-card__name">Rev. Fr. Anthony Jiwuba</h4>
-                <!-- <p class="team-card__parish">Internal Forum</p> -->
-              </div>
-            </div>
-
-            <div class="team-card">
-              <div class="team-card__photo">
-                <!-- TODO: Portrait photo --><span>Photo</span>
-              </div>
-              <div class="team-card__body">
-                <p class="team-card__role">Catechetical Commission</p>
-                <h4 class="team-card__name">Rev. Fr. Michael Nwosu (II)</h4>
-                <!-- <p class="team-card__parish">Internal Forum</p> -->
-              </div>
-            </div>
-
-            <div class="team-card">
-              <div class="team-card__photo">
-                <!-- TODO: Portrait photo --><span>Photo</span>
-              </div>
-              <div class="team-card__body">
-                <p class="team-card__role">Inculturation/Inter-religious Dialogue Commission</p>
-                <h4 class="team-card__name">Rev. Fr. Vitalis Ekemmiri</h4>
-                <!-- <p class="team-card__parish">Internal Forum</p> -->
-              </div>
-            </div>
+            
           </div>
 
           <!-- The Deans of our various Deaneries -->

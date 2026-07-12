@@ -1,0 +1,1618 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Meet the priests currently serving the Catholic Diocese of Okigwe — names, ordination dates, and parish or ministry locations."
+    />
+    <meta
+      property="og:title"
+      content="Priests in Active Ministry — Catholic Diocese of Okigwe"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <style>
+      /* ================================================================
+       PRIESTS DIRECTORY PAGE — SPECIFIC STYLES
+    ================================================================ */
+
+      /* ---- Info banner ---- */
+      .info-banner {
+        background: var(--color-navy-deep);
+        border-left: 4px solid var(--color-gold);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg) var(--space-xl);
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        margin-bottom: var(--space-2xl);
+      }
+      .info-banner__cross {
+        font-size: 2rem;
+        color: var(--color-gold);
+        flex-shrink: 0;
+      }
+      .info-banner__text h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        color: var(--color-white);
+        margin-bottom: 0.25rem;
+      }
+      .info-banner__text p {
+        font-size: var(--text-sm);
+        color: rgba(255, 255, 255, 0.65);
+        margin: 0;
+        font-style: italic;
+      }
+
+      /* ---- Table toolbar (search + controls) ---- */
+      .table-toolbar {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+        margin-bottom: var(--space-lg);
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-md) var(--space-lg);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .table-search {
+        flex: 1;
+        min-width: 240px;
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        background: var(--color-cream);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-sm);
+        padding: 0.625rem var(--space-sm);
+      }
+      .table-search__icon {
+        color: var(--color-gray-light);
+        font-size: var(--text-base);
+        flex-shrink: 0;
+      }
+      .table-search input {
+        border: none;
+        background: transparent;
+        outline: none;
+        width: 100%;
+        font-size: var(--text-sm);
+        color: var(--color-text-main);
+        font-family: var(--font-body);
+      }
+      .table-search input::placeholder {
+        color: var(--color-gray-light);
+      }
+
+      .table-result-count {
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--color-text-muted);
+        white-space: nowrap;
+      }
+      .table-result-count strong {
+        color: var(--color-navy-deep);
+      }
+
+      /* ---- Main table ---- */
+      .priest-table-wrap {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .priest-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--text-sm);
+      }
+
+      /* Responsive scroll wrapper */
+      .priest-table-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .priest-table thead {
+        background: var(--color-navy-deep);
+        color: var(--color-white);
+      }
+
+      .priest-table thead th {
+        padding: var(--space-sm) var(--space-md);
+        text-align: left;
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-gold-light);
+        white-space: nowrap;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        transition: background var(--transition-base);
+      }
+
+      .priest-table thead th:hover {
+        background: var(--color-navy-mid);
+      }
+
+      /* Sort indicator */
+      .priest-table thead th::after {
+        content: " ⇅";
+        font-size: 0.65rem;
+        opacity: 0.4;
+      }
+      .priest-table thead th.sort-asc::after {
+        content: " ↑";
+        opacity: 1;
+        color: var(--color-gold);
+      }
+      .priest-table thead th.sort-desc::after {
+        content: " ↓";
+        opacity: 1;
+        color: var(--color-gold);
+      }
+
+      /* Not sortable (S/N) */
+      .priest-table thead th.no-sort {
+        cursor: default;
+      }
+      .priest-table thead th.no-sort::after {
+        content: "";
+      }
+
+      .priest-table tbody tr {
+        border-bottom: 1px solid var(--color-gray-border);
+        transition: background var(--transition-fast);
+      }
+      .priest-table tbody tr:last-child {
+        border-bottom: none;
+      }
+      .priest-table tbody tr:hover {
+        background: var(--color-gold-pale);
+      }
+
+      /* Row hidden by search */
+      .priest-table tbody tr.is-hidden {
+        display: none;
+      }
+
+      .priest-table tbody td {
+        padding: var(--space-sm) var(--space-md);
+        color: var(--color-text-muted);
+        vertical-align: middle;
+        line-height: 1.5;
+      }
+
+      /* S/N column */
+      .priest-table tbody td:first-child {
+        color: var(--color-gold);
+        font-weight: 700;
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        min-width: 48px;
+      }
+
+      /* Priest name — emphasis */
+      .priest-table tbody td.name-cell {
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        min-width: 200px;
+      }
+
+      /* Empty state */
+      .table-empty {
+        text-align: center;
+        padding: var(--space-2xl) var(--space-lg);
+        color: var(--color-text-muted);
+        font-size: var(--text-md);
+      }
+      .table-empty span {
+        display: block;
+        font-size: 2.5rem;
+        margin-bottom: var(--space-sm);
+      }
+
+      /* ---- Pagination ---- */
+      .table-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        padding: var(--space-md) var(--space-lg);
+        border-top: 1px solid var(--color-gray-border);
+        background: var(--color-cream);
+      }
+
+      .table-pagination__info {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+      }
+
+      .table-pagination__pages {
+        display: flex;
+        gap: 0.35rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .pg-btn {
+        min-width: 36px;
+        height: 36px;
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-sm);
+        background: var(--color-white);
+        color: var(--color-text-muted);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0.625rem;
+        transition:
+          background var(--transition-base),
+          color var(--transition-base),
+          border-color var(--transition-base);
+        font-family: var(--font-body);
+      }
+      .pg-btn:hover {
+        border-color: var(--color-navy-mid);
+        color: var(--color-navy-deep);
+      }
+      .pg-btn.is-active {
+        background: var(--color-navy-deep);
+        border-color: var(--color-navy-deep);
+        color: var(--color-white);
+      }
+      .pg-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .pg-ellipsis {
+        font-size: var(--text-xs);
+        color: var(--color-gray-light);
+        padding: 0 0.25rem;
+      }
+
+      /* ---- Notes box ---- */
+      .directory-note {
+        background: var(--color-gold-pale);
+        border: 1px solid var(--color-gold-light);
+        border-radius: var(--radius-md);
+        padding: var(--space-md) var(--space-lg);
+        margin-top: var(--space-xl);
+        font-size: var(--text-sm);
+        color: var(--color-navy-mid);
+        line-height: 1.7;
+      }
+      .directory-note strong {
+        color: var(--color-navy-deep);
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      /* ---- Responsive ---- */
+      @media (max-width: 768px) {
+        .table-toolbar {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .table-search {
+          min-width: unset;
+        }
+        .info-banner {
+          flex-direction: column;
+          text-align: center;
+        }
+        .table-pagination {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* ---- Card layout for small screens (phones) ---- */
+      @media (max-width: 640px) {
+        .priest-table thead {
+          display: none;
+        }
+        .priest-table,
+        .priest-table tbody,
+        .priest-table tbody tr,
+        .priest-table tbody td {
+          display: block;
+          width: 100%;
+        }
+        .priest-table tbody tr {
+          padding: var(--space-sm) var(--space-md);
+        }
+        .priest-table tbody td {
+          padding: 0.3rem 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--space-sm);
+        }
+        .priest-table tbody td[data-label]::before {
+          content: attr(data-label);
+          font-size: var(--text-xs);
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(--color-navy-mid);
+          flex-shrink: 0;
+        }
+        .priest-table tbody td:first-child {
+          display: none;
+        }
+        .priest-table tbody td.name-cell {
+          justify-content: flex-start;
+          font-size: var(--text-md);
+        }
+        .priest-table tbody td.name-cell::before {
+          display: none;
+        }
+      }
+    </style>
+
+    <title>Catholic Diocese of Okigwe</title>
+  </head>
+  <body>
+    <!-- ============================================================
+       HEADER & NAVBAR
+       ============================================================ -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar__inner">
+          <!-- Logo + Diocese Name -->
+          <a
+            href="../index.html"
+            class="navbar__brand"
+            aria-label="Catholic Diocese of Okigwe Homepage"
+          >
+            <!-- TODO: Replace with actual diocesan logo image -->
+            <div class="navbar__logo" aria-hidden="true">
+              <img src="../images/logo-transperent.png" alt="" />
+            </div>
+            <div class="navbar__title">
+              <span class="navbar__title--main">OKIGWE CATHOLIC</span>
+              <span class="navbar__title--sub">Diocese</span>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <ul class="navbar__links" id="navbar-links" role="list">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="priests.html" class="nav-link">Priests</a></li>
+            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
+            <!-- <li>
+              <a href="pages/ministries.html" class="nav-link">Ministries</a>
+            </li>
+            <li><a href="pages/news.html" class="nav-link">News</a></li>
+            <li><a href="pages/gallery.html" class="nav-link">Gallery</a></li> -->
+            <li class="nav-link dropdown">
+              <a href="#" class="dropbtn">Archives</a>
+              <div class="dropdown-content">
+                <a href="#" class="nav-link">History</a>
+                <a href="#" class="nav-link">Bishops</a>
+                <a href="ar_functionaries.html" class="nav-link"
+                  >Functionaries</a
+                >
+                <a href="ar_priests.html" class="nav-link">Priests</a>
+              </div>
+            </li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+
+          <!-- Mobile Hamburger Toggle -->
+          <!-- Dark Mode Toggle -->
+          <button
+            class="theme-toggle"
+            id="theme-toggle-btn"
+            type="button"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+          >
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="12" y1="2" x2="12" y2="4"></line>
+              <line x1="12" y1="20" x2="12" y2="22"></line>
+              <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+              <line x1="2" y1="12" x2="4" y2="12"></line>
+              <line x1="20" y1="12" x2="22" y2="12"></line>
+              <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+              <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+            </svg>
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--moon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="navbar-links"
+          >
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-label="Priests in active ministry hero">
+        <div class="container page-hero__inner">
+          <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a> <span aria-hidden="true">›</span>
+            <span>Priests</span>
+          </nav>
+          <h1 class="page-hero__title">Priests <em>in Active Ministry</em></h1>
+          <p class="page-hero__subtitle">
+            Meet the priests currently serving the Catholic Diocese of Okigwe in
+            parishes, schools, diocesan ministries and in diaspora.
+          </p>
+        </div>
+      </section>
+
+      <!-- PRIESTS DIRECTORY SECTION -->
+      <section class="section" aria-labelledby="directory-heading">
+        <div class="container">
+          <!-- Info banner -->
+          <div
+            class="info-banner reveal-up"
+            role="note"
+            aria-label="Ministry notice"
+          >
+            <span class="info-banner__cross" aria-hidden="true">✝</span>
+            <div class="info-banner__text">
+              <h3>Labourers in the Lord's Vineyard</h3>
+              <p>
+                "The harvest is plentiful, but the labourers are few; pray
+                therefore the Lord of the harvest to send out labourers into his
+                harvest." — Luke 10:2
+              </p>
+            </div>
+          </div>
+
+          <div class="section-header reveal-up">
+            <div class="section-label">Diocesan Roll</div>
+            <h2 class="section-title" id="directory-heading">
+              Priests <em>Serving the Diocese</em>
+            </h2>
+            <p class="section-subtitle">
+              A searchable roll of priests currently in active ministry within
+              the Diocese of Okigwe.
+            </p>
+          </div>
+
+          <!-- TABLE TOOLBAR -->
+          <div class="table-toolbar reveal-up">
+            <div class="table-search" role="search" aria-label="Search priests">
+              <span class="table-search__icon" aria-hidden="true">🔍</span>
+              <input
+                type="text"
+                id="priest-search"
+                placeholder="Search by name or location…"
+                aria-label="Search the priests directory"
+              />
+            </div>
+            <div
+              class="table-result-count"
+              role="status"
+              aria-live="polite"
+              id="result-count"
+            >
+              Showing <strong id="visible-count">0</strong> of
+              <strong id="total-count">0</strong> records
+            </div>
+          </div>
+
+          <!-- TABLE WRAPPER -->
+          <div class="priest-table-wrap reveal-up">
+            <div class="priest-table-scroll">
+              <table
+                class="priest-table"
+                id="priest-table"
+                aria-label="Directory of priests in active ministry"
+                aria-describedby="table-description"
+              >
+                <caption
+                  id="table-description"
+                  class="sr-only"
+                  style="
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    overflow: hidden;
+                  "
+                >
+                  A sortable and searchable table listing priests of the Diocese
+                  of Okigwe currently in active ministry. Columns: Serial
+                  number, Names, Date of Ordination, Location.
+                </caption>
+                <thead>
+                  <tr>
+                    <th
+                      scope="col"
+                      class="no-sort"
+                      data-col="sn"
+                      aria-label="Serial number"
+                    >
+                      S/N
+                    </th>
+                    <th scope="col" data-col="name">Names</th>
+                    <th scope="col" data-col="ordination">
+                      Date of Ordination
+                    </th>
+                    <th scope="col" data-col="location">Location</th>
+                  </tr>
+                </thead>
+                <tbody id="priest-tbody">
+                  <!-- Rows are rendered by JavaScript from the PRIESTS array below -->
+                  <!-- ADDING RECORDS: Add a new object to the PRIESTS array in the <script> section.
+                     Do NOT add HTML rows directly — the JS handles pagination and search automatically. -->
+                </tbody>
+              </table>
+              <!-- Empty state message -->
+              <div
+                class="table-empty"
+                id="table-empty"
+                style="display: none"
+                role="status"
+                aria-live="polite"
+              >
+                <span>✝</span>
+                <span id="table-empty-text"
+                  >No priest records have been added yet.</span
+                >
+              </div>
+            </div>
+
+            <!-- PAGINATION -->
+            <div
+              class="table-pagination"
+              id="table-pagination"
+              aria-label="Table pagination"
+            >
+              <div class="table-pagination__info" id="pagination-info">
+                No records to display
+              </div>
+              <div
+                class="table-pagination__pages"
+                id="pagination-pages"
+                role="navigation"
+                aria-label="Page navigation"
+              >
+                <!-- Rendered by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Directory maintenance note -->
+          <div class="directory-note reveal-up">
+            <strong>Maintaining the Directory</strong>
+            If a priest's name, ordination date, or parish/location assignment
+            is missing, outdated, or incorrect, please contact the Diocesan
+            Chancery so that the record can be updated.
+            <br /><br />
+            <a
+              href="contact.html"
+              style="color: var(--color-gold); font-weight: 600"
+              >Report an Update → Contact the Chancery</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section
+        style="
+          background: var(--color-navy-deep);
+          padding: var(--space-xl) 0;
+          text-align: center;
+        "
+      >
+        <div class="container">
+          <p
+            style="
+              font-family: var(--font-display);
+              font-size: var(--text-xl);
+              color: rgba(255, 255, 255, 0.8);
+              font-style: italic;
+              margin-bottom: var(--space-sm);
+            "
+          >
+            "Pray for us, that the message of the Lord may speed on and be
+            glorified." — 2 Thessalonians 3:1
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: var(--space-sm);
+              justify-content: center;
+              flex-wrap: wrap;
+              margin-top: var(--space-lg);
+            "
+          >
+            <a href="parishes.html" class="btn btn--primary">Our Parishes</a>
+            <a href="ar_priests.html" class="btn btn--outline"
+              >In Memoriam: Departed Priests</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer__inner">
+        <!-- Footer Brand -->
+        <div class="footer__brand">
+          <!-- TODO: Replace with actual diocesan logo (light/white version) -->
+          <div class="navbar__logo footer__logo" aria-hidden="true">
+            <img src="../images/logo-transperent.png" alt="Diocesan Logo" />
+          </div>
+          <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
+          <p class="footer__tagline">
+            "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
+          </p>
+          <!-- Social Media Links -->
+          <!-- TODO: Replace # with actual social media URLs -->
+          <div class="footer__social" aria-label="Diocese social media links">
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese Facebook page"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese YouTube channel"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                />
+                <polygon
+                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                  fill="var(--color-navy-deep)"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese Instagram page"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h3 class="footer__links-title">Quick Links</h3>
+          <ul role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About the Diocese</a></li>
+            <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="parishes.html">Parish Directory</a></li>
+            <!-- <li><a href="pages/news.html">News &amp; Events</a></li>
+            <li><a href="pages/gallery.html">Media Gallery</a></li> -->
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Ministries Links -->
+        <!-- <div class="footer__links">
+          <h3 class="footer__links-title">Ministries</h3>
+          <ul role="list">
+            <li>
+              <a href="pages/ministries.html#caritas"
+                >Caritas &amp; Development</a
+              >
+            </li>
+            <li><a href="pages/ministries.html#youth">Youth Ministry</a></li>
+            <li>
+              <a href="pages/ministries.html#cwo"
+                >Catholic Women Organisation</a
+              >
+            </li>
+            <li>
+              <a href="pages/ministries.html#cmo">Catholic Men Organisation</a>
+            </li>
+            <li>
+              <a href="pages/ministries.html#schools">Catholic Schools</a>
+            </li>
+            <li>
+              <a href="pages/ministries.html#liturgy">Liturgy &amp; Worship</a>
+            </li>
+          </ul>
+        </div> -->
+
+        <!-- Contact Info -->
+        <address class="footer__address">
+          <h3 class="footer__links-title">Contact</h3>
+          <!-- TODO: Replace with verified diocesan contact details -->
+          <p>
+            Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
+            <br />Imo State, <br />
+            Nigeria
+          </p>
+          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
+          <p>
+            <a href="mailto:okigwecathdiocese@yahoo.com"
+              >okigwecathdiocese@yahoo.com</a
+            >
+          </p>
+        </address>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copyright">
+            &copy; <span id="footer-year"></span> Catholic Diocese of Okigwe.
+            All rights reserved.
+          </p>
+          <p class="footer__legal">
+            <!-- TODO: Add Privacy Policy and Terms of Use pages when built -->
+            <!-- <a href="#">Privacy Policy</a> &nbsp;&bull;&nbsp; -->
+            <!-- <a href="#">Terms of Use</a> -->
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      class="back-to-top"
+      id="back-to-top"
+      aria-label="Back to top of page"
+    >
+      ↑
+    </button>
+    <script src="../script.js"></script>
+    <script>
+      /* ============================================================
+       PRIESTS DIRECTORY — DATA, SEARCH, SORT & PAGINATION ENGINE
+       ============================================================
+       TO ADD A NEW PRIEST RECORD:
+       Add an object to the PRIESTS array below in this exact shape:
+         { name: "Rev. Fr. Full Name", ordination: "DD/MM/YY", location: "Parish or Ministry" }
+       The table automatically re-numbers, paginates, and makes the
+       record searchable/sortable — no HTML editing required.
+
+       Date format: DD/MM/YY or DD/MM/YYYY. Use "—" for unknown dates.
+       ============================================================ */
+
+      const PRIESTS = [
+        { name: "Most Rev. Solomon A. Amatu", ordination: "07/10/78", location: "—" },
+        { name: "Rev. Msgr. Francis Nwachukwu", ordination: "11/12/66", location: "—" },
+        { name: "Rev. Msgr. Celestine Nwokocha", ordination: "16/12/66", location: "—" },
+        { name: "Rev. Fr. Kevin Madu", ordination: "09/04/72", location: "—" },
+        { name: "Rev. Msgr. Gregory Ohagwu", ordination: "29/04/73", location: "—" },
+        { name: "Rev. Msgr. Wilfred Nwoke", ordination: "05/05/73", location: "—" },
+        { name: "Rev. Fr. Edwin Njoku", ordination: "20/04/74", location: "—" },
+        { name: "Rev. Msgr. Simon O. Anyanwu", ordination: "24/04/76", location: "—" },
+        { name: "Rev. Fr. Emmanuel Osuji", ordination: "16/04/77", location: "—" },
+        { name: "Rev. Fr. Cletus Madu", ordination: "01/07/78", location: "—" },
+        { name: "Rev. Fr. Felix Okonkwo", ordination: "08/07/78", location: "—" },
+        { name: "Rev. Fr. Robert Michael Chukwu", ordination: "09/12/78", location: "—" },
+        { name: "Rev. Fr. William Onu", ordination: "08/07/79", location: "—" },
+        { name: "Rev. Fr. Oliver Chanama", ordination: "05/07/80", location: "—" },
+        { name: "Rev. Fr. Christopher Chukwu", ordination: "05/07/80", location: "—" },
+        { name: "Rev. Fr. Edwin Nwachukwu", ordination: "12/07/80", location: "—" },
+        { name: "Rev. Fr. Michael Diochi", ordination: "26/07/80", location: "—" },
+        { name: "Rev. Fr. Reginald Nnamdi", ordination: "08/07/81", location: "—" },
+        { name: "Rev. Fr. Ngozi Ignatius Osuji", ordination: "11/07/81", location: "—" },
+        { name: "Rev. Fr. Fidelis Ekemgba", ordination: "18/07/81", location: "—" },
+        { name: "Rev. Fr. Jerome Okonkwo", ordination: "08/11/81", location: "—" },
+        { name: "Rev. Fr. Marcellinus Uwandu", ordination: "14/02/82", location: "—" },
+        { name: "Rev. Fr. Cyprian Onyeihe", ordination: "14/02/82", location: "—" },
+        { name: "Rev. Fr. Oliver Nwachukwu", ordination: "14/02/82", location: "—" },
+        { name: "Rev. Fr. Bernard Iheoha", ordination: "14/02/82", location: "—" },
+        { name: "Rev. Msgr. John C. Iwe", ordination: "14/08/82", location: "—" },
+        { name: "Rev. Fr. Martin Onyebuchi", ordination: "02/07/83", location: "—" },
+        { name: "Rev. Fr. Michael Eboh", ordination: "02/07/83", location: "—" },
+        { name: "Rev. Fr. Linus Lwuanyanwu", ordination: "09/07/83", location: "—" },
+        { name: "Rev. Fr. Donatus Ekenachi", ordination: "15/07/83", location: "—" },
+        { name: "Rev. Msgr. Cyriacus Uzoma", ordination: "16/07/83", location: "—" },
+        { name: "Rev. Fr. Oliver Mbagwu", ordination: "07/07/84", location: "—" },
+        { name: "Rev. Fr. Athanatius Owunna", ordination: "07/07/84", location: "—" },
+        { name: "Rev. Fr. Desmond Obi", ordination: "14/07/84", location: "—" },
+        { name: "Rev. Fr. Maurice Jiwike", ordination: "21/07/84", location: "—" },
+        { name: "Rev. Msgr. Jeremiah Ofoegbu", ordination: "21/07/84", location: "—" },
+        { name: "Rev. Msgr. Cletus Ehiem", ordination: "08/12/84", location: "—" },
+        { name: "Rev. Fr. Josephat Nwankwo", ordination: "08/12/84", location: "—" },
+        { name: "Rev. Fr. Sebastian Onyeabor", ordination: "23/08/85", location: "—" },
+        { name: "Rev. Fr. Bernard Okafor", ordination: "21/09/85", location: "—" },
+        { name: "Rev. Fr. Hilary Ihedioha", ordination: "05/10/85", location: "—" },
+        { name: "Rev. Fr. Clement Uche", ordination: "20/09/86", location: "—" },
+        { name: "Rev. Fr. Cajetan Ehiem", ordination: "21/06/87", location: "—" },
+        { name: "Rev. Fr. Charles Okorougo", ordination: "01/08/87", location: "—" },
+        { name: "Rev. Fr. Lawrence Chukwu", ordination: "22/08/87", location: "—" },
+        { name: "Rev. Fr. Cyril Nwakamma", ordination: "09/01/88", location: "—" },
+        { name: "Rev. Fr. Ephraim Nwachukwu", ordination: "09/01/88", location: "—" },
+        { name: "Rev. Fr. Christopher Ogu", ordination: "09/01/88", location: "—" },
+        { name: "Rev. Fr. Cyriacus Ajaelu", ordination: "10/01/88", location: "—" },
+        { name: "Rev. Fr. Joseph Ukwu", ordination: "23/01/88", location: "—" },
+        { name: "Rev. Fr. Samuel Onwuchekwe", ordination: "10/07/88", location: "—" },
+        { name: "Rev. Fr. John Enyinnaya", ordination: "04/08/89", location: "—" },
+        { name: "Rev. Fr. Nathaniel Okafor", ordination: "07/10/89", location: "—" },
+        { name: "Rev. Fr. Evaristus Ekweke", ordination: "07/10/89", location: "—" },
+        { name: "Rev. Fr. Emmanuel Chukwu", ordination: "18/08/90", location: "—" },
+        { name: "Rev. Fr. Romanus Otuonye", ordination: "24/02/91", location: "—" },
+        { name: "Rev. Fr. Raymond Iwuji", ordination: "27/07/91", location: "—" },
+        { name: "Rev. Fr. Isidore Nwanaju", ordination: "03/08/91", location: "—" },
+        { name: "Rev. Fr. Kenneth Ekeugo", ordination: "10/08/91", location: "—" },
+        { name: "Rev. Fr. Sabinus Nwachukwu", ordination: "17/08/91", location: "—" },
+        { name: "Rev. Fr. Joseph Nwoha", ordination: "31/08/91", location: "—" },
+        { name: "Rev. Fr. Ozioma Nwachukwu", ordination: "14/06/92", location: "—" },
+        { name: "Rev. Fr. John Ify Okoro", ordination: "17/04/93", location: "—" },
+        { name: "Rev. Fr. Anthony Nwohiri", ordination: "24/07/93", location: "—" },
+        { name: "Rev. Fr. Tobias Okoro", ordination: "30/07/93", location: "—" },
+        { name: "Rev. Fr. Patrick Iwuchukwu", ordination: "31/07/93", location: "—" },
+        { name: "Rev. Fr. Ignatius Ijere", ordination: "31/07/93", location: "—" },
+        { name: "Rev. Fr. Jacob Okafor", ordination: "07/08/93", location: "—" },
+        { name: "Rev. Fr. Kilian U. Maduka", ordination: "14/08/93", location: "—" },
+        { name: "Rev. Fr. Emmanuel Chinaka", ordination: "21/08/93", location: "—" },
+        { name: "Rev. Fr. Fidelis Lemchi", ordination: "21/08/93", location: "—" },
+        { name: "Rev. Fr. Emmanuel Iwuagwu", ordination: "03/09/93", location: "—" },
+        { name: "Rev. Fr. Vitalis Abiamiri", ordination: "03/09/93", location: "—" },
+        { name: "Rev. Fr. Kenneth Obiekwe", ordination: "18/09/93", location: "—" },
+        { name: "Rev. Fr. Paul Ogoke", ordination: "24/12/93", location: "—" },
+        { name: "Rev. Fr. Bede Nwadinobi", ordination: "22/07/94", location: "—" },
+        { name: "Rev. Fr. Michael Agbayi", ordination: "05/08/94", location: "—" },
+        { name: "Rev. Fr. Paul Nwaeze", ordination: "20/08/94", location: "—" },
+        { name: "Rev. Fr. Peter Anyanwu", ordination: "02/09/94", location: "—" },
+        { name: "Rev. Fr. George Okoro", ordination: "02/09/94", location: "—" },
+        { name: "Rev. Fr. Roberto M. Ike", ordination: "10/09/94", location: "—" },
+        { name: "Rev. Fr. Benedict Ejeh", ordination: "19/11/94", location: "—" },
+        { name: "Rev. Fr. Cyprian Okoronkwo", ordination: "25/02/95", location: "—" },
+        { name: "Rev. Fr. Patrick Ugwaka", ordination: "25/02/95", location: "—" },
+        { name: "Rev. Fr. John C. Okoro", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Jude Igwe", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Reginald Ejikeme", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Kenneth Chukwu", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Louis Nwokeafor", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Vincent Amusuo", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Bede Inekwere", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Anthony Iromenu", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Christian Eze", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Kenneth Kurumeh", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. Patrick Okoro", ordination: "09/09/95", location: "—" },
+        { name: "Rev. Fr. John Ekeogu", ordination: "20/07/96", location: "—" },
+        { name: "Rev. Fr. Cajetan Ebuziem", ordination: "27/07/96", location: "—" },
+        { name: "Rev. Fr. Michael Ohanete", ordination: "03/08/96", location: "—" },
+        { name: "Rev. Fr. Anthony Onyenagada", ordination: "09/08/96", location: "—" },
+        { name: "Rev. Fr. Damian Ikejiama", ordination: "10/08/96", location: "—" },
+        { name: "Rev. Fr. Paul Obiji", ordination: "15/08/96", location: "—" },
+        { name: "Rev. Fr. Kenneth Okpara", ordination: "16/08/96", location: "—" },
+        { name: "Rev. Fr. Francis Nwachukwu", ordination: "17/08/96", location: "—" },
+        { name: "Rev. Fr. Onyedikachi Agoawike", ordination: "17/08/96", location: "—" },
+        { name: "Rev. Fr. Donatus Ihekwoaba", ordination: "23/08/96", location: "—" },
+        { name: "Rev. Fr. Simon Udemgba", ordination: "24/08/96", location: "—" },
+        { name: "Rev. Fr. Callistus Ogu", ordination: "31/08/96", location: "—" },
+        { name: "Rev. Fr. Cletus Okoye", ordination: "06/09/96", location: "—" },
+        { name: "Rev. Fr. Paschal Nnadozie", ordination: "05/07/97", location: "—" },
+        { name: "Rev. Fr. Modestus Adimekwe", ordination: "19/07/97", location: "—" },
+        { name: "Rev. Fr. Anthony Chimaka", ordination: "19/07/97", location: "—" },
+        { name: "Rev. Fr. Hippolytus Duru", ordination: "26/07/97", location: "—" },
+        { name: "Rev. Fr. Rowland Nwokocha", ordination: "02/08/97", location: "—" },
+        { name: "Rev. Fr. Anthony Abiamiri", ordination: "02/08/97", location: "—" },
+        { name: "Rev. Fr. Anthony Jiwuba", ordination: "06/08/97", location: "—" },
+        { name: "Rev. Fr. Paul Odoeme", ordination: "08/08/97", location: "—" },
+        { name: "Rev. Fr. Daniel Ukaegbu", ordination: "15/08/97", location: "—" },
+        { name: "Rev. Fr. Michael Nwosu A.", ordination: "16/08/97", location: "—" },
+        { name: "Rev. Fr. Emmanuel Uchendu", ordination: "23/08/97", location: "—" },
+        { name: "Rev. Fr. Temple Okoro", ordination: "30/08/97", location: "—" },
+        { name: "Rev. Fr. Uzoma G. Aligwekwe", ordination: "13/09/97", location: "—" },
+        { name: "Rev. Fr. Cyriacus Onyenucheya", ordination: "13/09/97", location: "—" },
+        { name: "Rev. Fr. Francis Nwosu", ordination: "11/07/98", location: "—" },
+        { name: "Rev. Fr. Bonaventure Ukeh", ordination: "24/07/98", location: "—" },
+        { name: "Rev. Fr. Bartholomew Ibe", ordination: "31/07/98", location: "—" },
+        { name: "Rev. Fr. Julian Ibemere", ordination: "06/08/98", location: "—" },
+        { name: "Rev. Fr. Jasper Onugha", ordination: "06/08/98", location: "—" },
+        { name: "Rev. Fr. Nicholas Nwagwu", ordination: "07/08/98", location: "—" },
+        { name: "Rev. Fr. Michael Chukwu", ordination: "14/08/98", location: "—" },
+        { name: "Rev. Fr. Andrew Okeke", ordination: "04/09/98", location: "—" },
+        { name: "Rev. Fr. Ambrose Alisa", ordination: "04/09/98", location: "—" },
+        { name: "Rev. Fr. Geoffrey Eboh", ordination: "05/09/98", location: "—" },
+        { name: "Rev. Fr. Sabinus Iweadighi", ordination: "05/09/98", location: "—" },
+        { name: "Rev. Fr. John Agim", ordination: "24/07/99", location: "—" },
+        { name: "Rev. Fr. Emeka Emeakaraoha", ordination: "24/07/99", location: "—" },
+        { name: "Rev. Fr. Michael Nwosu", ordination: "24/07/99", location: "—" },
+        { name: "Rev. Fr. Vitalis Ekemiri", ordination: "31/07/99", location: "—" },
+        { name: "Rev. Fr. Jude Ogoke", ordination: "31/07/99", location: "—" },
+        { name: "Rev. Fr. Patrick Orji", ordination: "07/08/99", location: "—" },
+        { name: "Rev. Fr. Paul Ogujiofor", ordination: "07/08/99", location: "—" },
+        { name: "Rev. Fr. Isaac Ogu", ordination: "14/08/99", location: "—" },
+        { name: "Rev. Fr. Alphonsus Iwuji", ordination: "21/08/99", location: "—" },
+        { name: "Rev. Fr. Chukwuemeka Okafor", ordination: "28/08/99", location: "—" },
+        { name: "Rev. Fr. Michael Nwokocha", ordination: "28/08/99", location: "—" },
+        { name: "Rev. Fr. Francis Okoro", ordination: "03/09/99", location: "—" },
+        { name: "Rev. Fr. Lawrence Ejiofo", ordination: "18/12/99", location: "—" },
+        { name: "Rev. Fr. Matthew Anyanwu", ordination: "29/07/00", location: "—" },
+        { name: "Rev. Fr. Peter Onyema", ordination: "04/08/00", location: "—" },
+        { name: "Rev. Fr. Martin Osorobi", ordination: "04/08/00", location: "—" },
+        { name: "Rev. Fr. Francis Okoli", ordination: "11/08/00", location: "—" },
+        { name: "Rev. Fr. Christian Nwaigwe", ordination: "18/08/00", location: "—" },
+        { name: "Rev. Fr. Sylvester Ihebuike", ordination: "18/08/00", location: "—" },
+        { name: "Rev. Fr. Martin Uwakwe", ordination: "19/08/00", location: "—" },
+        { name: "Rev. Fr. Cyprian Ukanwa", ordination: "19/08/00", location: "—" },
+        { name: "Rev. Fr. Kevin Okpala", ordination: "26/08/00", location: "—" },
+        { name: "Rev. Fr. Michael Ebo", ordination: "21/07/01", location: "—" },
+        { name: "Rev. Fr. Thaddeus I. Okafor", ordination: "27/07/01", location: "—" },
+        { name: "Rev. Fr. Saviour Nwaiwu", ordination: "28/07/01", location: "—" },
+        { name: "Rev. Fr. Gabriel Uzondu", ordination: "28/07/01", location: "—" },
+        { name: "Rev. Fr. Boniface Osuafor", ordination: "04/08/01", location: "—" },
+        { name: "Rev. Fr. Isidore Ochiabuto", ordination: "04/08/01", location: "—" },
+        { name: "Rev. Fr. Benjamin Nwosu", ordination: "10/08/01", location: "—" },
+        { name: "Rev. Fr. Leonard Lemchi", ordination: "15/08/01", location: "—" },
+        { name: "Rev. Fr. Isidore Orjikwe", ordination: "18/08/01", location: "—" },
+        { name: "Rev. Fr. Joseph Uchenwa", ordination: "18/08/01", location: "—" },
+        { name: "Rev. Fr. Mark Nnopu", ordination: "25/08/01", location: "—" },
+        { name: "Rev. Fr. Anthony Umeora", ordination: "25/08/01", location: "—" },
+        { name: "Rev. Fr. Alphonsus Onu", ordination: "20/07/02", location: "—" },
+        { name: "Rev. Fr. Bartholomew Nnaemedo", ordination: "02/08/02", location: "—" },
+        { name: "Rev. Fr. Chidubem Nwachukwu", ordination: "08/08/02", location: "—" },
+        { name: "Rev. Fr. Callistus Okoroji", ordination: "08/08/02", location: "—" },
+        { name: "Rev. Fr. Felix Edomobi", ordination: "15/08/02", location: "—" },
+        { name: "Rev. Fr. Joachim Lechukwu", ordination: "17/08/02", location: "—" },
+        { name: "Rev. Fr. Daniel Nnawulezi", ordination: "23/08/02", location: "—" },
+        { name: "Rev. Fr. Stephen Ubah", ordination: "23/08/02", location: "—" },
+        { name: "Rev. Fr. Charles Okereke", ordination: "31/08/02", location: "—" },
+        { name: "Rev. Fr. Innocent Ukaegbu", ordination: "05/09/02", location: "—" },
+        { name: "Rev. Fr. Paulinus Anyanwu", ordination: "05/12/03", location: "—" },
+        { name: "Rev. Fr. Emmanuel Onwu", ordination: "05/12/03", location: "—" },
+        { name: "Rev. Fr. Eustace Abazie", ordination: "05/12/03", location: "—" },
+        { name: "Rev. Fr. Lawrence Eze", ordination: "05/12/03", location: "—" },
+        { name: "Rev. Fr. Alphonsus Ngwaogu", ordination: "06/12/03", location: "—" },
+        { name: "Rev. Fr. Anthony Umeobika", ordination: "12/12/03", location: "—" },
+        { name: "Rev. Fr. Elesius Uju", ordination: "12/12/03", location: "—" },
+        { name: "Rev. Fr. Valentine Njoku", ordination: "12/12/03", location: "—" },
+        { name: "Rev. Fr. Simon Osuchukwu", ordination: "13/12/03", location: "—" },
+        { name: "Rev. Fr. Francis Opara", ordination: "13/12/03", location: "—" },
+        { name: "Rev. Fr. Joseph Ikeh", ordination: "20/12/03", location: "—" },
+        { name: "Rev. Fr. Angelo Unegbu", ordination: "20/12/03", location: "—" },
+        { name: "Rev. Fr. Paschal Ukaegbu", ordination: "20/12/03", location: "—" },
+        { name: "Rev. Fr. Kenneth Nwosu", ordination: "22/12/03", location: "—" },
+        { name: "Rev. Fr. Cyprian Osuegbu", ordination: "22/12/03", location: "—" },
+        { name: "Rev. Fr. Patrick Obeleagu", ordination: "20/08/05", location: "—" },
+        { name: "Rev. Fr. Albert Ezeanya", ordination: "02/09/05", location: "—" },
+        { name: "Rev. Fr. Louis Agim", ordination: "09/09/05", location: "—" },
+        { name: "Rev. Fr. Culbert Okeke", ordination: "09/09/05", location: "—" },
+        { name: "Rev. Fr. Francis Onwu", ordination: "09/09/05", location: "—" },
+        { name: "Rev. Fr. Stanley Ofoegbu", ordination: "10/09/05", location: "—" },
+        { name: "Rev. Fr. Charles Offor", ordination: "17/09/05", location: "—" },
+        { name: "Rev. Fr. Gregory Ihezie", ordination: "21/09/05", location: "—" },
+        { name: "Rev. Fr. Gabriel Offor", ordination: "28/09/05", location: "—" },
+        { name: "Rev. Fr. Chales Osunwa", ordination: "29/09/05", location: "—" },
+        { name: "Rev. Fr. Vitus Echedo", ordination: "29/09/05", location: "—" },
+        { name: "Rev. Fr. Eugene Ucheoma", ordination: "30/09/05", location: "—" },
+        { name: "Rev. Fr. Alexander Onyemata", ordination: "30/09/05", location: "—" },
+        { name: "Rev. Fr. Daniel Odoh", ordination: "08/07/06", location: "—" },
+        { name: "Rev. Fr. Innocent Okenagba", ordination: "02/09/06", location: "—" },
+        { name: "Rev. Fr. Charles Ekwonwune", ordination: "02/09/06", location: "—" },
+        { name: "Rev. Fr. Thaddeus Odueze", ordination: "02/09/06", location: "—" },
+        { name: "Rev. Fr. Paschal Ihediohamma", ordination: "02/09/06", location: "—" },
+        { name: "Rev. Fr. Gregory Osuji", ordination: "02/09/06", location: "—" },
+        { name: "Rev. Fr. Francis Ihemeneke", ordination: "02/09/06", location: "—" },
+        { name: "Rev. Fr. Cyriacus Nwaka", ordination: "02/09/06", location: "—" },
+        { name: "Rev. Fr. Mark Okoro", ordination: "02/09/06", location: "—" },
+        { name: "Rev. Fr. Jude Okonkwo", ordination: "09/09/06", location: "—" },
+        { name: "Rev. Fr. Camillus Ekedobe", ordination: "16/09/06", location: "—" },
+        { name: "Rev. Fr. Joseph Nwokenkwo", ordination: "16/09/06", location: "—" },
+        { name: "Rev. Fr. Innocent Agoha", ordination: "16/09/06", location: "—" },
+        { name: "Rev. Fr. Joseph Uwah", ordination: "16/09/06", location: "—" },
+        { name: "Rev. Fr. Kenneth Osuchukwu", ordination: "16/09/06", location: "—" },
+        { name: "Rev. Fr. Charles Ohuabunwa", ordination: "11/08/07", location: "—" },
+        { name: "Rev. Fr. Christian Mbara", ordination: "11/08/07", location: "—" },
+        { name: "Rev. Fr. Edwin Ewuzie", ordination: "11/08/07", location: "—" },
+        { name: "Rev. Fr. Augustine Odoemena", ordination: "11/08/07", location: "—" },
+        { name: "Rev. Fr. Innocent Madu", ordination: "12/08/07", location: "—" },
+        { name: "Rev. Fr. Patrick Okeke", ordination: "17/08/07", location: "—" },
+        { name: "Rev. Fr. Kenneth Okoroudo", ordination: "17/08/07", location: "—" },
+        { name: "Rev. Fr. Felix Ekemgba", ordination: "30/08/07", location: "—" },
+        { name: "Rev. Fr. Bartholomew Okorie", ordination: "30/08/07", location: "—" },
+        { name: "Rev. Fr. Kingsley Uzor", ordination: "30/08/07", location: "—" },
+        { name: "Rev. Fr. Christian Ejiofor", ordination: "11/09/07", location: "—" },
+        { name: "Rev. Fr. Chukwuma C. Chukwuma", ordination: "16/08/08", location: "—" },
+        { name: "Rev. Fr. Justin C. Nwokeocha", ordination: "16/08/08", location: "—" },
+        { name: "Rev. Fr. Vincent I. Emezue", ordination: "16/08/08", location: "—" },
+        { name: "Rev. Fr. Cyriacus Okereke", ordination: "16/08/08", location: "—" },
+        { name: "Rev. Fr. Michael Uzoagba", ordination: "16/08/08", location: "—" },
+        { name: "Rev. Fr. Henry O. Ukaegbu", ordination: "23/08/08", location: "—" },
+        { name: "Rev. Fr. Gerald C. Osuagwu", ordination: "23/08/08", location: "—" },
+        { name: "Rev. Fr. Godwin O. Okoye", ordination: "30/08/08", location: "—" },
+        { name: "Rev. Fr. Joseph U. Duru", ordination: "15/08/09", location: "—" },
+        { name: "Rev. Fr. Patrick Njoku. Njoku", ordination: "15/08/09", location: "—" },
+        { name: "Rev. Fr. Daniel Kelechi Ibemere", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Leonard S. Ewuzie", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Joseph A. Ogbuagu", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Thankgod E. Okoroafor", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Kelechi M. Uzuegbu", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Cyril C. Agodi", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Damian Iwundu", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Henry Ezeonuogu", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Innocent Obasi", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Gregory Nduka", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Romanus Okoli", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Basil Onyejuruwa", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Joseph Anumnu", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Anthony Nwankwo", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Godwin Eke", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Jude Okeoma", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Ambrose Kela", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Hilary Ubah", ordination: "22/08/09", location: "—" },
+        { name: "Rev. Fr. Anthony Dieme", ordination: "30/08/09", location: "—" },
+        { name: "Rev. Fr. John Ifebigbo", ordination: "05/09/09", location: "—" },
+        { name: "Rev. Fr. Augustine Obilor", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Emmanuel Okoro U.", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Peter Ekwebelem", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Cyriacus Okoro", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Ephraim Nwohiri", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Fitzgerald Nwadike", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Emmanuel Okoro C.", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Donald Obi", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Richard Nwagwu", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Christian Ogu", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Charles Uchendu", ordination: "21/08/10", location: "—" },
+        { name: "Rev. Fr. Paul Ukomadu", ordination: "09/07/11", location: "—" },
+        { name: "Rev. Fr. Francis Onwuegbuchulam", ordination: "09/07/11", location: "—" },
+        { name: "Rev. Fr. Kingsley Nwanwa", ordination: "09/07/11", location: "—" },
+        { name: "Rev. Fr. Augustine Okeke", ordination: "20/08/11", location: "—" },
+        { name: "Rev. Fr. Lucius Kwekwe", ordination: "27/08/11", location: "—" },
+        { name: "Rev. Fr. Maximilian Chilaka", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Elias Nwodu", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Stanley Ibeh", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Emmanuel Esiagu", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Macdonald U. Ibe", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Peter IK. Ibe", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Augustine Eziefule", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. James Onyenani", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Christian Egwuekwe", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Charles Ukachukwu", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. John Ukaha", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Michael Uzoma Chukwu", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Innocent Okoronkwo", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Kingsley Nwankwo", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Livinus Iroh", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Canice Ofoegbu", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Evans Igbudu", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Justus Oruh", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Jonas Uwaezuoke", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Colman Nwokoro", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Daniel Abazie", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Paschal Onyemelusi", ordination: "24/09/11", location: "—" },
+        { name: "Rev. Fr. Bernard Chukwuma", ordination: "16/07/12", location: "—" },
+        { name: "Rev. Fr. Thaddeus Nnebedum", ordination: "16/07/12", location: "—" },
+        { name: "Rev. Fr. Anyanwu Columbus", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Anthony Eziefule", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Valentine Ezisi", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Christopher Iloha", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Jude Kingsley Maduka", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Paschal Ndukwu", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Johnbosco Ikeji", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Stanislaus Ogu", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Valentine Ojiegbe", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Michael Okafor", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Celestine Okezie", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Vincent Okpara", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Andrew Ononiwu", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. John Onwumere", ordination: "22/09/12", location: "—" },
+        { name: "Rev. Fr. Joseph Anabi", ordination: "18/05/13", location: "—" },
+        { name: "Rev. Fr. Raphael Nzekwe", ordination: "18/05/13", location: "—" },
+        { name: "Rev. Fr. Stephen Iheakandu", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Moses Ezeji", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Cosmas Onuegbu", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Gregory Ugwunwanne", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Chibulke N. Okeagu", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Adolphus Ofokpara", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Charles Nwachukwu", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Precious Osuji", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Franklin Okoro", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Leonard Nwosu", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Stanley Nnedu", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Marcel Obasi", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Innocent Chukwunyere", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Ikedi Obikonu", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Anthony Ukaegbu", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Chidiebere Obiodu", ordination: "26/09/13", location: "—" },
+        { name: "Rev. Fr. Samuel Igwe", ordination: "26/07/14", location: "—" },
+        { name: "Rev. Fr. Vincent Onwukwe", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Emmanuel Awah", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Reginald Uzoho", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Joseph Iroka", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Christian Obioha", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Charles Madubuike", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Linus Oforma", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Henry Obi", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Raphael Madu", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Anthony Nwordu", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Callistus Ogu", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Benneth Ike", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Eric-Davis Muoneke", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Anthony Onyeihe", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Paulinus Okwuolise", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Theophilus Okafor", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Emmanuel Azubuike", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Paul Nwagwu", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Kevin Ohalete", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Callistus Zulike", ordination: "27/09/14", location: "—" },
+        { name: "Rev. Fr. Magnus Nwankwo", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Michael Ikem", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Stanley Alajemba", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Stanley Mmadubuike", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Henry Ofojindu", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Collins Okoro", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. James Okoronkwo", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Christogonus Uzoigwe", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Chrisantus Onuoha", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Louis Uwaezuoke", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. James Anyanwu", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Finbarr Chukwu", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Emmanuel Ekeoma", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Gerald Ibeawuchi", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Kingsley Maduka", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Marcellinus Nwoda", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Emmanuel Obi", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Ambrose Onuoha", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Anthony Omegara", ordination: "26/09/15", location: "—" },
+        { name: "Rev. Fr. Desmond Uzor", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Francis Umeh", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Ignatius Namodo", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Isaac Eleweke", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Victor Onyebuchi", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Princewill Iwuanyanwu", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Remigius Emedobi", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Chukwuemeka Ejiogu", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Kenneth Opara", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Godwin Oba", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Christian Udeabam", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Patrick Nwoha", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Christopher Okoli", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Paul Onozie", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Samson Okonkwo", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Oliver Okeka", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Austin Uchegbu", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Herbert Ekpe", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Francis Eze", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Moses Okeke", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Gregory Chilekezie", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Remigius Ogu", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Kingsley Ijeoma", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Emmanuel Chukwujike", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Anthony Okafor", ordination: "24/09/16", location: "—" },
+        { name: "Rev. Fr. Samuel Okereke", ordination: "28/09/16", location: "—" },
+        { name: "Rev. Fr. Nwankwo George", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Basil Ajaero", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Adolphus Amaechi", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Boniface Edomobi", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Raymond Egwim", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Emmanuel Eke", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Emmanuel Ekejiuba", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Kingsley Eze", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Kennedy Ibe", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Alexander Ibezim", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Kingsley Ibezim", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Donatus Iwu", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Modestus Nwanyanwu", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Chidiebere Obi", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Joseph Obialor", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Magnus Oguama", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Johnpaul Ogueri", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Charles Onuh", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Chimezie Onwuzurike", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Charles Onyekwere", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Bruno Songonye", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Okenna Ugwuibe", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Peter Okolie", ordination: "30/09/17", location: "—" },
+        { name: "Rev. Fr. Dennis Eze", ordination: "05/04/18", location: "—" },
+        { name: "Rev. Fr. Joseph Ikeka", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Cornelius Nwoye", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Anthony Osigwe", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Basil Ozor", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Edward Onwueme", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Michael Nnaji", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Policarp Ndu", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Martin Ohazurike", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Paul Omekara", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Ignatius Ihejirika", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Athanasius Agbawo", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Patrick Uchego", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Thaddeus Obasi", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Johnpaul Igbo", ordination: "22/09/18", location: "—" },
+        { name: "Rev. Fr. Theodore Nwaigbe", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Canice Amajuoyi", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Lucian Chilagorom", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Callistus Chimezie", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Henry Egbe", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Augustine Ezeonyiwara", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Celestine Ibeawuchi", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Modestus Ikwuegbu", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Anthony Iwuagwu", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Bede Ndubuisi", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Joseph Obijiofor", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Ben-Nicholas Obike", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Ernest Odoh", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Emmanuel Ohageria", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Paschal Okafor", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Livinus Okereke", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Stanislaus I. Onwuka", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Victor C. Onyenanu", ordination: "21/09/19", location: "—" },
+        { name: "Rev. Fr. Anthony Okafor", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Nelson Agwuncha", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Christian Ajomiwe", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Kingsley Eboh", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Jude Ireonu", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Augustine Nwachukwu", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. John Okafor", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. David Okolie", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Nelson Uche", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Chibuike C. Uwakwe", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Mark Okocha", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Francis Ihezie", ordination: "26/09/20", location: "—" },
+        { name: "Rev. Fr. Callistus Ude", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Princewill Agbarakwe", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Lawrence Agu", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Kizito Ajonuma", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Christian Asika", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Michael Asomugha", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Martin Ekeawuotu", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Emmanuel Igbokwe", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Stanley Ike", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Stanley Iwu", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Ambrose Iwuagwu", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Eustace Kekeocha", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Franklin Lebechi", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Longinus Madu", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. George Nwadike", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Samuel Obiefule", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Stephen Ohanele", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Emmanuel Onuoha", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Joshua Orji", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Fidelis Osuagwu", ordination: "18/09/21", location: "—" },
+        { name: "Rev. Fr. Kingsley Nwanonaku", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Chamberlain Anyanele", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Paschal Atunalu", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Gerald Awah", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Sabinus Ebi", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Paul Ekeocha", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Donatus Eze", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Nicholas Ibeh", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Adolphus Muojeke", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Alexander Njoku", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Stanislaus Nwachukwu", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Lawrence Nwankwo", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Paschal Nwosu", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Valentine Obianyanwu", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Casimir Obidiaku", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Emmanuel C. Okafor", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Johnkingsley Okoye", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Justin Okeke", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Emmanuel O. Okafor", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Hope Onyemaechi", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Michael Ukaji", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Cosmas Uzegbu", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Felix Uzukwu", ordination: "17/09/22", location: "—" },
+        { name: "Rev. Fr. Paschal Ebirim", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Victor Nwangwu", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Christian Egbu", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Hilary Mmeru", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Victor Nnorom", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Innocent Nwanne", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Bright Ofomezie", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Vicus Ohagwu", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Anthony Nwokorie", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Zachary Nwabekee", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Franklin Okafor", ordination: "23/09/23", location: "—" },
+        { name: "Rev. Fr. Francis Amah", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Samuel Okoli", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Placid Agbamoro", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Emmanuel Anyanwu", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Perez Iwuchukwu", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Cosmas Okorie", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Theophilus Obioha", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Samuel Obi", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Innocent Omumatu", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. John Onyejekwe", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Augustine Umuibe", ordination: "20/09/24", location: "—" },
+        { name: "Rev. Fr. Felix Uwaleme", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Johnbosco Ahaneku", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Christian Alozie", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Henry Amadiobi", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Fredrick Aryeetey", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Emmanuel Iheanacho", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Raphael Iheanetu", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Theodore Iheme", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Morgan Odimma", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Christian Okoli", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Vincent Okoli", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Stephen Okoro", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Johnkennedy Onyechere", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Felix Osunkwo", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Canice Owunna", ordination: "20/09/25", location: "—" },
+        { name: "Rev. Fr. Silas Nwoke", ordination: "20/12/14", location: "—" },
+      ];
+
+      /* ============================================================
+       TABLE ENGINE
+      ============================================================ */
+      const ROWS_PER_PAGE = 25;
+      let filteredData = [...PRIESTS];
+      let sortCol = null;
+      let sortDir = "asc";
+      let currentPage = 1;
+
+      const tbody = document.getElementById("priest-tbody");
+      const searchInput = document.getElementById("priest-search");
+      const visibleCount = document.getElementById("visible-count");
+      const totalCount = document.getElementById("total-count");
+      const emptyState = document.getElementById("table-empty");
+      const emptyStateText = document.getElementById("table-empty-text");
+      const paginationInfo = document.getElementById("pagination-info");
+      const paginationPages = document.getElementById("pagination-pages");
+
+      /* ---- Render rows for the current page ---- */
+      function renderTable() {
+        tbody.innerHTML = "";
+
+        const start = (currentPage - 1) * ROWS_PER_PAGE;
+        const end = Math.min(start + ROWS_PER_PAGE, filteredData.length);
+        const page = filteredData.slice(start, end);
+
+        if (!page.length) {
+          emptyState.style.display = "block";
+          emptyStateText.textContent = PRIESTS.length
+            ? "No records found matching your search. Please try different terms."
+            : "No priest records have been added yet.";
+        } else {
+          emptyState.style.display = "none";
+          page.forEach((priest, idx) => {
+            const sn = start + idx + 1;
+            const tr = document.createElement("tr");
+            tr.innerHTML =
+              `<td data-label="S/N">${sn}</td>` +
+              `<td class="name-cell" data-label="Names">${escapeHtml(priest.name)}</td>` +
+              `<td data-label="Date of Ordination">${escapeHtml(priest.ordination)}</td>` +
+              `<td data-label="Location">${escapeHtml(priest.location)}</td>`;
+            tbody.appendChild(tr);
+          });
+        }
+
+        visibleCount.textContent = filteredData.length;
+        totalCount.textContent = PRIESTS.length;
+
+        paginationInfo.textContent = filteredData.length
+          ? `Showing ${start + 1}–${end} of ${filteredData.length} records`
+          : "No records to display";
+
+        renderPagination();
+      }
+
+      /* ---- Render pagination buttons ---- */
+      function renderPagination() {
+        paginationPages.innerHTML = "";
+        const totalPages = Math.ceil(filteredData.length / ROWS_PER_PAGE);
+        if (totalPages <= 1) return;
+
+        const prevBtn = makePgBtn("‹", currentPage === 1, () => {
+          currentPage--;
+          renderTable();
+        });
+        prevBtn.setAttribute("aria-label", "Previous page");
+        paginationPages.appendChild(prevBtn);
+
+        getPageRange(currentPage, totalPages).forEach((p) => {
+          if (p === "…") {
+            const el = document.createElement("span");
+            el.className = "pg-ellipsis";
+            el.textContent = "…";
+            el.setAttribute("aria-hidden", "true");
+            paginationPages.appendChild(el);
+          } else {
+            const btn = makePgBtn(String(p), false, () => {
+              currentPage = p;
+              renderTable();
+            });
+            if (p === currentPage) {
+              btn.classList.add("is-active");
+              btn.setAttribute("aria-current", "page");
+            }
+            btn.setAttribute("aria-label", `Page ${p}`);
+            paginationPages.appendChild(btn);
+          }
+        });
+
+        const nextBtn = makePgBtn("›", currentPage === totalPages, () => {
+          currentPage++;
+          renderTable();
+        });
+        nextBtn.setAttribute("aria-label", "Next page");
+        paginationPages.appendChild(nextBtn);
+      }
+
+      function makePgBtn(label, disabled, handler) {
+        const btn = document.createElement("button");
+        btn.className = "pg-btn";
+        btn.textContent = label;
+        btn.disabled = disabled;
+        btn.addEventListener("click", handler);
+        return btn;
+      }
+
+      function getPageRange(current, total) {
+        if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+        if (current <= 4) return [1, 2, 3, 4, 5, "…", total];
+        if (current >= total - 3)
+          return [1, "…", total - 4, total - 3, total - 2, total - 1, total];
+        return [1, "…", current - 1, current, current + 1, "…", total];
+      }
+
+      /* ---- Search ---- */
+      searchInput.addEventListener("input", () => {
+        const q = searchInput.value.trim().toLowerCase();
+        filteredData = q
+          ? PRIESTS.filter(
+              (p) =>
+                p.name.toLowerCase().includes(q) ||
+                p.ordination.toLowerCase().includes(q) ||
+                p.location.toLowerCase().includes(q),
+            )
+          : [...PRIESTS];
+        if (sortCol) applySortToData();
+        currentPage = 1;
+        renderTable();
+      });
+
+      /* ---- Column sort ---- */
+      document
+        .querySelectorAll(".priest-table thead th[data-col]")
+        .forEach((th) => {
+          if (th.classList.contains("no-sort")) return;
+          th.addEventListener("click", () => {
+            const col = th.dataset.col;
+            if (sortCol === col) {
+              sortDir = sortDir === "asc" ? "desc" : "asc";
+            } else {
+              sortCol = col;
+              sortDir = "asc";
+            }
+            applySortToData();
+            currentPage = 1;
+            renderTable();
+            document
+              .querySelectorAll(".priest-table thead th")
+              .forEach((h) => h.classList.remove("sort-asc", "sort-desc"));
+            th.classList.add(sortDir === "asc" ? "sort-asc" : "sort-desc");
+            th.setAttribute(
+              "aria-sort",
+              sortDir === "asc" ? "ascending" : "descending",
+            );
+          });
+        });
+
+      function applySortToData() {
+        filteredData.sort((a, b) => {
+          const va = String(a[sortCol] || "").toLowerCase();
+          const vb = String(b[sortCol] || "").toLowerCase();
+          if (va < vb) return sortDir === "asc" ? -1 : 1;
+          if (va > vb) return sortDir === "asc" ? 1 : -1;
+          return 0;
+        });
+      }
+
+      /* ---- Safety: escape HTML to prevent XSS ---- */
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      /* ---- Initial render ---- */
+      filteredData = [...PRIESTS];
+      renderTable();
+    </script>
+  </body>
+</html>

@@ -2,6 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -423,13 +434,57 @@
             <li><a href="../index.html" class="nav-link">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="priests.html" class="nav-link">Priests</a></li>
             <li><a href="parishes.html" class="nav-link">Parishes</a></li>
-            <li><a href="ministries.html" class="nav-link">Ministries</a></li>
-            <li><a href="news.html" class="nav-link">News</a></li>
-            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-            <li><a href="archives.html" class="nav-link">Archives</a></li>
+            <li class="nav-link dropdown">
+              <a href="#" class="dropbtn">Archives</a>
+              <div class="dropdown-content">
+                <a href="#" class="nav-link">History</a>
+                <a href="#" class="nav-link">Bishops</a>
+                <a href="ar_functionaries.html" class="nav-link">Functionaries</a>
+                <a href="ar_priests.html" class="nav-link">Priests</a>
+              </div>
+            </li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
+          <!-- Dark Mode Toggle -->
+          <button
+            class="theme-toggle"
+            id="theme-toggle-btn"
+            type="button"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+          >
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="12" y1="2" x2="12" y2="4"></line>
+              <line x1="12" y1="20" x2="12" y2="22"></line>
+              <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+              <line x1="2" y1="12" x2="4" y2="12"></line>
+              <line x1="20" y1="12" x2="22" y2="12"></line>
+              <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+              <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+            </svg>
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--moon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
           <button
             class="navbar__hamburger"
             id="hamburger-btn"

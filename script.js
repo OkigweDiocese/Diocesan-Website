@@ -13,6 +13,8 @@
  *  7. Contact Form Validation & Feedback
  *  8. Back to Top Button
  *  9. Footer Year Update
+ *  10. Dark Mode Toggle
+ *  11. Navbar Logo Rotation
  * ================================================================
  */
 
@@ -29,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initContactForm();
   initBackToTop();
   initFooterYear();
+  initThemeToggle();
+  initNavbarLogoRotation();
 });
 
 /* ============================================================
@@ -462,4 +466,62 @@ function initFooterYear() {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+}
+
+/* ============================================================
+   10. DARK MODE TOGGLE
+   The <html data-theme="..."> attribute is what style.css keys
+   off of. An inline script in each page's <head> already sets it
+   before first paint (to avoid a light/dark flash); this just
+   wires up the button and keeps localStorage in sync.
+   ============================================================ */
+function initThemeToggle() {
+  const btn = document.getElementById("theme-toggle-btn");
+  if (!btn) return;
+
+  const root = document.documentElement;
+
+  const reflectTheme = (theme) => {
+    btn.setAttribute("aria-pressed", String(theme === "dark"));
+    btn.setAttribute(
+      "aria-label",
+      theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+    );
+  };
+
+  reflectTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+
+  btn.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    reflectTheme(next);
+  });
+}
+
+/* ============================================================
+   11. NAVBAR LOGO ROTATION
+   Picks one image at random, on every page load, for the small
+   logo in the top-left of the navbar.
+
+   To add more diocesan logo/crest images to the rotation: drop the
+   image files into the images/ folder and list their filenames
+   below (no path — the correct "images/" or "../images/" prefix is
+   worked out automatically from the current logo's src). Only one
+   file is listed by default, so nothing changes until more are
+   added here.
+   ============================================================ */
+function initNavbarLogoRotation() {
+  const LOGO_FILES = ["logo-transperent.png"];
+
+  if (LOGO_FILES.length <= 1) return;
+
+  const logoImg = document.querySelector(".navbar__brand .navbar__logo img");
+  if (!logoImg) return;
+
+  const currentSrc = logoImg.getAttribute("src");
+  const basePath = currentSrc.slice(0, currentSrc.lastIndexOf("/") + 1);
+  const pick = LOGO_FILES[Math.floor(Math.random() * LOGO_FILES.length)];
+
+  logoImg.src = basePath + pick;
 }
