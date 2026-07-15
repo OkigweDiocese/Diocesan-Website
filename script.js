@@ -15,6 +15,7 @@
  *  9. Footer Year Update
  *  10. Dark Mode Toggle
  *  11. Navbar Logo Rotation
+ *  12. Upcoming Events (date-filtered renderer)
  * ================================================================
  */
 
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFooterYear();
   initThemeToggle();
   initNavbarLogoRotation();
+  initUpcomingEvents();
 });
 
 /* ============================================================
@@ -524,4 +526,129 @@ function initNavbarLogoRotation() {
   const pick = LOGO_FILES[Math.floor(Math.random() * LOGO_FILES.length)];
 
   logoImg.src = basePath + pick;
+}
+
+/* ============================================================
+   12. UPCOMING EVENTS
+   Renders the "Upcoming Events" section on the homepage from the
+   EVENTS list below. An event automatically stops showing once its
+   date has passed — no manual removal needed.
+
+   To add a new event: add an entry to the EVENTS array with a date
+   in "YYYY-MM-DD" format. To remove one, delete its entry (or just
+   let its date pass). Only the 5 soonest, not-yet-passed events are
+   shown, soonest first.
+   ============================================================ */
+function initUpcomingEvents() {
+  const EVENTS = [
+    {
+      date: "2026-07-25",
+      time: "9:00 AM",
+      event: "Annual Diocesan Youth Convention",
+      location: "St. Mary's Pro-Cathedral, Okigwe",
+      title: "Youth",
+    },
+    {
+      date: "2026-08-06",
+      time: "10:00 AM",
+      event: "Priests' Monthly Recollection",
+      location: "Bishop's Court, Okigwe",
+      title: "Clergy",
+    },
+    {
+      date: "2026-08-15",
+      time: "8:00 AM",
+      event: "Feast of the Assumption of Mary",
+      location: "All Parishes, Diocese of Okigwe",
+      title: "Liturgical",
+    },
+    {
+      date: "2026-09-12",
+      time: "10:00 AM",
+      event: "Catholic Women Organisation Diocesan Convention",
+      location: "St. Mary's Pro-Cathedral, Okigwe",
+      title: "CWO",
+    },
+    {
+      date: "2026-09-26",
+      time: "10:00 AM",
+      event: "Diaconate Ordination",
+      location: "St. Mary's Pro-Cathedral, Okigwe",
+      title: "Ordination",
+    },
+    {
+      date: "2026-10-18",
+      time: "9:00 AM",
+      event: "Harvest &amp; Thanksgiving Celebration",
+      location: "St. Mary's Pro-Cathedral, Okigwe",
+      title: "Parish",
+    },
+    {
+      date: "2026-11-08",
+      time: "9:00 AM",
+      event: "Diocesan Marian Congress",
+      location: "St. Mary's Pro-Cathedral, Okigwe",
+      title: "Liturgical",
+    },
+  ];
+
+  const MAX_EVENTS_SHOWN = 5;
+  const MONTH_LABELS = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  ];
+
+  const grid = document.getElementById("events-grid");
+  const emptyMsg = document.getElementById("events-empty");
+  if (!grid) return;
+
+  /**
+   * Parse an event's "YYYY-MM-DD" string as a local-time date so
+   * comparisons aren't shifted by timezone offsets.
+   */
+  const parseEventDate = (dateStr) => new Date(`${dateStr}T00:00:00`);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const upcoming = EVENTS.filter((event) => parseEventDate(event.date) >= today)
+    .sort((a, b) => parseEventDate(a.date) - parseEventDate(b.date))
+    .slice(0, MAX_EVENTS_SHOWN);
+
+  if (!upcoming.length) {
+    grid.hidden = true;
+    if (emptyMsg) emptyMsg.hidden = false;
+    return;
+  }
+
+  grid.innerHTML = upcoming
+    .map((event) => {
+      const eventDate = parseEventDate(event.date);
+      const fullDate = eventDate.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      });
+
+      return `
+        <article class="event-card">
+          <div class="event-card__date" aria-hidden="true">
+            <span class="event-card__date-month">${MONTH_LABELS[eventDate.getMonth()]}</span>
+            <span class="event-card__date-day">${eventDate.getDate()}</span>
+          </div>
+          <div class="event-card__body">
+            <span class="event-card__category">${event.title}</span>
+            <h3 class="event-card__title">${event.event}</h3>
+            <div class="event-card__meta">
+              <span class="event-card__meta-item">
+                <time datetime="${event.date}">${fullDate}</time>${event.time ? ` · ${event.time}` : ""}
+              </span>
+              ${event.location ? `<span class="event-card__meta-item">📍 ${event.location}</span>` : ""}
+            </div>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
 }

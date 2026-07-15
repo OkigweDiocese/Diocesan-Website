@@ -569,7 +569,16 @@
 
           <ul class="navbar__links" id="navbar-links" role="list">
             <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-link dropdown">
+              <a href="#" class="dropbtn">About</a>
+              <div class="dropdown-content">
+                <a href="about_history.html" class="nav-link">History</a>
+                <a href="about_statistics.html" class="nav-link"
+                  >Statistics</a
+                >
+                <a href="about_officials.html" class="nav-link">Officials</a>
+              </div>
+            </li>
             <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
             <li><a href="priests.html" class="nav-link">Priests</a></li>
             <li><a href="parishes.html" class="nav-link">Parishes</a></li>
@@ -648,7 +657,7 @@
           <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
             <a href="../index.html">Home</a>
             <span aria-hidden="true">›</span>
-            <a href="about.html">About</a>
+            <a href="about_history.html">About</a>
             <span aria-hidden="true">›</span>
             <span>History</span>
           </nav>
@@ -1343,7 +1352,7 @@
       <!-- CTA Banner -->
       <section
         style="
-          background: var(--color-navy-deep);
+          background: var(--color-navy-mid);
           padding: var(--space-2xl) 0;
           text-align: center;
         "
@@ -1384,7 +1393,7 @@
             <a href="bishops-history.html" class="btn btn--primary"
               >History of Bishops</a
             >
-            <a href="about.html" class="btn btn--outline">About the Diocese</a>
+            <a href="about_history.html" class="btn btn--outline">About the Diocese</a>
           </div>
         </div>
       </section>
@@ -1482,7 +1491,7 @@
           <h3 class="footer__links-title">Quick Links</h3>
           <ul role="list">
             <li><a href="../index.html">Home</a></li>
-            <li><a href="about.html">About the Diocese</a></li>
+            <li><a href="about_history.html">About the Diocese</a></li>
             <li><a href="history.html">Diocesan History</a></li>
             <li><a href="bishops-history.html">History of Bishops</a></li>
             <li><a href="parishes.html">Parish Directory</a></li>

@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn about the history, mission, vision, and core values of the Catholic Diocese of Okigwe."
+    />
+    <meta
+      property="og:title"
+      content="History, Mission &amp; Values — Catholic Diocese of Okigwe"
+    />
+    <meta
+      property="og:description"
+      content="Our history, mission, vision, and core values."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <title>History, Mission &amp; Values — Catholic Diocese of Okigwe</title>
+  </head>
+  <body>
+    <!-- ============================================================ HEADER ============================================================ -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar__inner">
+          <!-- Logo + Diocese Name -->
+          <a
+            href="../index.html"
+            class="navbar__brand"
+            aria-label="Catholic Diocese of Okigwe Homepage"
+          >
+            <!-- TODO: Replace with actual diocesan logo image -->
+            <div class="navbar__logo" aria-hidden="true">
+              <img src="../images/logo-transperent.png" alt="" />
+            </div>
+            <div class="navbar__title">
+              <span class="navbar__title--main">OKIGWE CATHOLIC</span>
+              <span class="navbar__title--sub">Diocese</span>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <ul class="navbar__links" id="navbar-links" role="list">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li class="nav-link dropdown">
+              <a href="#" class="dropbtn">About</a>
+              <div class="dropdown-content">
+                <a href="about_history.html" class="nav-link">History</a>
+                <a href="about_statistics.html" class="nav-link"
+                  >Statistics</a
+                >
+                <a href="about_officials.html" class="nav-link">Officials</a>
+              </div>
+            </li>
+            <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="priests.html" class="nav-link">Priests</a></li>
+            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
+            <li class="nav-link dropdown">
+              <a href="#" class="dropbtn">Archives</a>
+              <div class="dropdown-content">
+                <a href="#" class="nav-link">History</a>
+                <a href="#" class="nav-link">Bishops</a>
+                <a href="ar_functionaries.html" class="nav-link">Functionaries</a>
+                <a href="ar_priests.html" class="nav-link">Priests</a>
+              </div>
+            </li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+
+          <!-- Mobile Hamburger Toggle -->
+          <!-- Dark Mode Toggle -->
+          <button
+            class="theme-toggle"
+            id="theme-toggle-btn"
+            type="button"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+          >
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="12" y1="2" x2="12" y2="4"></line>
+              <line x1="12" y1="20" x2="12" y2="22"></line>
+              <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+              <line x1="2" y1="12" x2="4" y2="12"></line>
+              <line x1="20" y1="12" x2="22" y2="12"></line>
+              <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+              <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+            </svg>
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--moon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="navbar-links"
+          >
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-label="About: History page hero">
+        <div class="container page-hero__inner">
+          <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a> <span aria-hidden="true">›</span>
+            <span>About</span> <span aria-hidden="true">›</span>
+            <span>History</span>
+          </nav>
+          <h1 class="page-hero__title">
+            Our History, <em>Mission &amp; Values</em>
+          </h1>
+          <p class="page-hero__subtitle">
+            The story of our Diocese, and the mission, vision, and values
+            that guide our community of faith.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+         DIOCESAN OVERVIEW
+         ============================================================ -->
+      <section class="section" aria-labelledby="overview-heading">
+        <div class="container">
+          <div class="about__content reveal-up">
+            <div class="about__history">
+              <div class="section-label">Who We Are</div>
+              <h2 class="section-title" id="overview-heading">
+                A Brief History <em>of Our Diocese</em>
+              </h2>
+              <p>
+                Okigwe Catholic Diocese was evangelized by the missionaries from
+                two wings namely: Adazi in Anambra State and Emekuku in Owerri
+                (Imo state). While Okigwe North was evangelized from Adazi,
+                Okigwe South was taken care of from Emekuku. Consequently, they
+                created two Missions: Holy Cross Mission, Uturu (1912) and St.
+                Columbas' Mission Nsu (1917). From these two Missions, the
+                Catholic faith sprouted and began to grow into what we have
+                today as Okigwe Diocese. The Church in the zone continued to
+                grow from strength to strength under the able leadership of
+                Bishop A. G. Nwedo of Umuahia Diocese.
+              </p>
+              <p>
+                On January 24, 1981, His Holiness Pope John Paul II carved out
+                Okigwe zone from Umuahia Diocese and elevated it into a diocese
+                of its own. Most Rev. Anthony Ekezia Ilonu who was appointed by
+                the Holy Father as the pioneer bishop was consecrated on March
+                29, 1981. Bishop A. E. Ilonu diligently pastured this diocese
+                for 25 years. Briefly before his retirement, the then Auxiliary
+                Bishop of Awka, Most Rev. Solomon Amanchukwu Amatu was appointed
+                the Coadjutor Bishop of Okigwe Diocese on July 16, 2005. Bishop
+                S. A. Amatu took over as the diocesan Bishop of the diocese at
+                the retirement of Bishop Ilonu on April 22, 2006 and was
+                installed on July 1, 2006.
+              </p>
+              <p>
+                The Diocese is currently blessed with 134 parishes, 19
+                parishes-in-building and 9 chaplaincies. She has 550 priests,
+                128 major seminarians and 507 minor seminarians. Serving in the
+                Diocese are 38 Religious Men and 257 Religious women of
+                different religious congregations. The Diocese is dedicated to
+                Our Lady, Immaculate Conception.
+              </p>
+              <!-- TODO: Expand with fully researched diocesan historical narrative -->
+            </div>
+            <div class="about__mission-vision">
+              <div class="about__card about__card--mission">
+                <div class="about__card-icon">✦</div>
+                <h3>Our Mission</h3>
+                <p>
+                  To proclaim the Gospel of Jesus Christ, administer the
+                  Sacraments faithfully, and build a community of disciples who
+                  serve God and humanity with justice, compassion, and integrity
+                  — leaving no soul behind.
+                </p>
+              </div>
+              <div class="about__card about__card--vision">
+                <div class="about__card-icon">✦</div>
+                <h3>Our Vision</h3>
+                <p>
+                  A Diocese fully alive in faith — where every Catholic is an
+                  active witness of Christ's love, the poor are uplifted,
+                  families are strengthened, and all people encounter the saving
+                  grace of God.
+                </p>
+              </div>
+              <div
+                class="about__card"
+                style="border-left-color: var(--color-navy-mid)"
+              >
+                <div
+                  class="about__card-icon"
+                  style="color: var(--color-navy-mid)"
+                >
+                  ✦
+                </div>
+                <h3>Core Values</h3>
+                <p>
+                  Faith &bull; Service &bull; Compassion &bull;
+                  Stewardship &bull; True Leadership &bull; Community &bull; Excellence
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section
+        class="section"
+        style="
+          background: var(--color-navy-mid);
+          text-align: center;
+          padding: var(--space-2xl) 0;
+        "
+      >
+        <div class="container">
+          <div class="section-label" style="color: var(--color-gold)">
+            Be Part of Our Story
+          </div>
+          <h2
+            style="
+              font-family: var(--font-display);
+              font-size: var(--text-3xl);
+              color: var(--color-white);
+              margin-bottom: var(--space-md);
+            "
+          >
+            Find Your
+            <em style="color: var(--color-gold-light)">Parish Family</em>
+          </h2>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.65);
+              max-width: 540px;
+              margin: 0 auto var(--space-lg);
+            "
+          >
+            Discover a parish community near you and begin or deepen your
+            journey of faith.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: 1rem;
+              justify-content: center;
+              flex-wrap: wrap;
+            "
+          >
+            <a href="parishes.html" class="btn btn--primary">Find a Parish</a>
+            <a href="contact.html" class="btn btn--outline"
+              >Contact the Diocese</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================ FOOTER ============================================================ -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer__inner">
+        <!-- Footer Brand -->
+        <div class="footer__brand">
+          <!-- TODO: Replace with actual diocesan logo (light/white version) -->
+          <div class="navbar__logo footer__logo" aria-hidden="true">
+            <img src="../images/logo-transperent.png" alt="Diocesan Logo" />
+          </div>
+          <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
+          <p class="footer__tagline">
+            "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
+          </p>
+          <!-- Social Media Links -->
+          <!-- TODO: Replace # with actual social media URLs -->
+          <div class="footer__social" aria-label="Diocese social media links">
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese Facebook page"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese YouTube channel"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                />
+                <polygon
+                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                  fill="var(--color-navy-deep)"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese Instagram page"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h3 class="footer__links-title">Quick Links</h3>
+          <ul role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about_history.html">About the Diocese</a></li>
+            <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="parishes.html">Parish Directory</a></li>
+            <!-- <li><a href="pages/news.html">News &amp; Events</a></li>
+            <li><a href="pages/gallery.html">Media Gallery</a></li> -->
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Contact Info -->
+        <address class="footer__address">
+          <h3 class="footer__links-title">Contact</h3>
+          <!-- TODO: Replace with verified diocesan contact details -->
+          <p>
+            Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
+            <br />Imo State, <br />
+            Nigeria
+          </p>
+          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
+          <p>
+            <a href="mailto:okigwecathdiocese@yahoo.com"
+              >okigwecathdiocese@yahoo.com</a
+            >
+          </p>
+        </address>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copyright">
+            &copy; <span id="footer-year"></span> Catholic Diocese of Okigwe.
+            All rights reserved.
+          </p>
+          <p class="footer__legal"></p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="../script.js"></script>
+  </body>
+</html>

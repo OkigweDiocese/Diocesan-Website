@@ -77,11 +77,24 @@
           <!-- Desktop Navigation Links -->
           <ul class="navbar__links" id="navbar-links" role="list">
             <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="pages/about.html" class="nav-link">About</a></li>
+            <li class="nav-link dropdown">
+              <a href="#" class="dropbtn">About</a>
+              <div class="dropdown-content">
+                <a href="pages/about_history.html" class="nav-link"
+                  >History</a
+                >
+                <a href="pages/about_statistics.html" class="nav-link"
+                  >Statistics</a
+                >
+                <a href="pages/about_officials.html" class="nav-link"
+                  >Officials</a
+                >
+              </div>
+            </li>
             <li><a href="pages/bishop.html" class="nav-link">Our Bishop</a></li>
             <li><a href="pages/priests.html" class="nav-link">Priests</a></li>
             <li><a href="pages/parishes.html" class="nav-link">Parishes</a></li>
-            
+
             <!-- <li>
               <a href="pages/ministries.html" class="nav-link">Ministries</a>
             </li>
@@ -186,7 +199,9 @@
               Serving God and Humanity Through Faith, Hope &amp; Love
             </p>
             <div class="hero__actions">
-              <a href="pages/about.html" class="btn btn--primary">Learn More</a>
+              <a href="pages/about_history.html" class="btn btn--primary"
+                >Learn More</a
+              >
               <a href="pages/contact.html" class="btn btn--outline"
                 >Contact Us</a
               >
@@ -267,47 +282,8 @@
             </p>
           </div>
 
-          <!-- History & Mission / Vision -->
-          <div class="about__content reveal-up">
-            <div class="about__history">
-              <h2 class="about__history-heading">A BRIEF HISTORY</h2>
-              <h3>of the Catholic Church in Okigwe Diocese</h3>
-              <p>
-                Okigwe Catholic Diocese was evangelized by the missionaries from
-                two wings namely: Adazi in Anambra State and Emekuku in Owerri
-                (Imo state). While Okigwe North was evangelized from Adazi,
-                Okigwe South was taken care of from Emekuku. Consequently, they
-                created two Missions: Holy Cross Mission, Uturu (1912) and St.
-                Columbas' Mission Nsu (1917). From these two Missions, the
-                Catholic faith sprouted and began to grow into what we have
-                today as Okigwe Diocese. The Church in the zone continued to
-                grow from strength to strength under the able leadership of
-                Bishop A. G. Nwedo of Umuahia Diocese.
-              </p>
-              <p>
-                On January 24, 1981, His Holiness Pope John Paul II carved out
-                Okigwe zone from Umuahia Diocese and elevated it into a diocese
-                of its own. Most Rev. Anthony Ekezia Ilonu who was appointed by
-                the Holy Father as the pioneer bishop was consecrated on March
-                29, 1981. Bishop A. E. Ilonu diligently pastured this diocese
-                for 25 years. Briefly before his retirement, the then Auxiliary
-                Bishop of Awka, Most Rev. Solomon Amanchukwu Amatu was appointed
-                the Coadjutor Bishop of Okigwe Diocese on July 16, 2005. Bishop
-                S. A. Amatu took over as the diocesan Bishop of the diocese at
-                the retirement of Bishop Ilonu on April 22, 2006 and was
-                installed on July 1, 2006.
-              </p>
-              <p>
-                The Diocese is currently blessed with 134 parishes, 19
-                parishes-in-building and 9 chaplaincies. She has 550 priests,
-                128 major seminarians and 507 minor seminarians. Serving in the
-                Diocese are 38 Religious Men and 257 Religious women of
-                different religious congregations. The Diocese is dedicated to
-                Our Lady, Immaculate Conception.
-              </p>
-              <!-- TODO: Expand with full historical narrative from diocesan archives -->
-            </div>
-
+          <!-- Mission / Vision (history lives on the About page) -->
+          <div class="about__content about__content--no-history reveal-up">
             <div class="about__mission-vision">
               <div class="about__card about__card--mission">
                 <div class="about__card-icon" aria-hidden="true">✦</div>
@@ -577,6 +553,42 @@
               >View All Parishes</a
             >
           </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+         UPCOMING EVENTS SECTION
+         Populated dynamically by script.js (initUpcomingEvents). Only
+         the next 5 events whose date has not yet passed are shown —
+         to add/remove an event, edit the EVENTS array in script.js.
+         ============================================================ -->
+      <section
+        class="events section"
+        id="events"
+        aria-labelledby="events-heading"
+      >
+        <div class="container">
+          <div class="section-header reveal-up">
+            <div class="section-label">Save the Date</div>
+            <h2 class="section-title" id="events-heading">
+              Upcoming <em>Events</em>
+            </h2>
+            <p class="section-subtitle">
+              Join us for these upcoming celebrations, programmes, and
+              diocesan gatherings.
+            </p>
+          </div>
+
+          <div
+            class="events__grid reveal-up"
+            id="events-grid"
+            aria-live="polite"
+          ></div>
+
+          <p class="events__empty" id="events-empty" hidden>
+            There are no upcoming events at this time. Please check back
+            soon.
+          </p>
         </div>
       </section>
 
@@ -1120,7 +1132,7 @@
           <h3 class="footer__links-title">Quick Links</h3>
           <ul role="list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="pages/about.html">About the Diocese</a></li>
+            <li><a href="pages/about_history.html">About the Diocese</a></li>
             <li><a href="pages/bishop.html">Our Bishop</a></li>
             <li><a href="pages/parishes.html">Parish Directory</a></li>
             <!-- <li><a href="pages/news.html">News &amp; Events</a></li>
