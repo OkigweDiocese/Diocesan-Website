@@ -894,6 +894,20 @@
         renderSchoolPagination();
       }
 
+      /* ---- Scroll the table into view when the page changes ---- */
+      function scrollToSchoolTableTop() {
+        const wrap = document.querySelector(".school-table-wrap");
+        if (!wrap) return;
+        const header = document.querySelector(".site-header");
+        const headerHeight = header ? header.offsetHeight : 0;
+        const y =
+          wrap.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight -
+          16;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+
       function renderSchoolPagination() {
         schoolPaginationPages.innerHTML = "";
         const totalPages = Math.ceil(filteredSchools.length / ROWS_PER_PAGE);
@@ -905,6 +919,7 @@
           () => {
             schoolCurrentPage--;
             renderSchools();
+            scrollToSchoolTableTop();
           },
         );
         prevBtn.setAttribute("aria-label", "Previous page");
@@ -921,6 +936,7 @@
             const btn = makeSchoolPgBtn(String(p), false, () => {
               schoolCurrentPage = p;
               renderSchools();
+              scrollToSchoolTableTop();
             });
             if (p === schoolCurrentPage) {
               btn.classList.add("is-active");
@@ -937,6 +953,7 @@
           () => {
             schoolCurrentPage++;
             renderSchools();
+            scrollToSchoolTableTop();
           },
         );
         nextBtn.setAttribute("aria-label", "Next page");

@@ -3485,6 +3485,20 @@
         renderPagination();
       }
 
+      /* ---- Scroll the table into view when the page changes ---- */
+      function scrollToTableTop() {
+        const wrap = document.querySelector(".priest-table-wrap");
+        if (!wrap) return;
+        const header = document.querySelector(".site-header");
+        const headerHeight = header ? header.offsetHeight : 0;
+        const y =
+          wrap.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight -
+          16;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+
       /* ---- Render pagination buttons ---- */
       function renderPagination() {
         paginationPages.innerHTML = "";
@@ -3494,6 +3508,7 @@
         const prevBtn = makePgBtn("‹", currentPage === 1, () => {
           currentPage--;
           renderTable();
+          scrollToTableTop();
         });
         prevBtn.setAttribute("aria-label", "Previous page");
         paginationPages.appendChild(prevBtn);
@@ -3509,6 +3524,7 @@
             const btn = makePgBtn(String(p), false, () => {
               currentPage = p;
               renderTable();
+              scrollToTableTop();
             });
             if (p === currentPage) {
               btn.classList.add("is-active");
@@ -3522,6 +3538,7 @@
         const nextBtn = makePgBtn("›", currentPage === totalPages, () => {
           currentPage++;
           renderTable();
+          scrollToTableTop();
         });
         nextBtn.setAttribute("aria-label", "Next page");
         paginationPages.appendChild(nextBtn);
