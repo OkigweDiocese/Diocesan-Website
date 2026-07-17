@@ -63,7 +63,9 @@ function initNavbar() {
     hamburger.classList.remove("is-open");
     navLinks.classList.remove("is-open");
     hamburger.setAttribute("aria-expanded", "false");
-    document.querySelectorAll(".dropdown").forEach((d) => d.classList.remove("is-open"));
+    document
+      .querySelectorAll(".dropdown")
+      .forEach((d) => d.classList.remove("is-open"));
   }
 
   /**
@@ -103,7 +105,9 @@ function initNavbar() {
     }
     // Close desktop dropdown when clicking outside it
     if (!e.target.closest(".dropdown")) {
-      document.querySelectorAll(".dropdown").forEach((d) => d.classList.remove("is-open"));
+      document
+        .querySelectorAll(".dropdown")
+        .forEach((d) => d.classList.remove("is-open"));
     }
   });
 
@@ -542,60 +546,71 @@ function initNavbarLogoRotation() {
 function initUpcomingEvents() {
   const EVENTS = [
     {
-      date: "2026-07-25",
-      time: "9:00 AM",
-      event: "Annual Diocesan Youth Convention",
-      location: "St. Mary's Pro-Cathedral, Okigwe",
-      title: "Youth",
-    },
-    {
-      date: "2026-08-06",
+      date: "2026-08-20",
       time: "10:00 AM",
-      event: "Priests' Monthly Recollection",
-      location: "Bishop's Court, Okigwe",
-      title: "Clergy",
+      event:
+        "One Year Anniversary Mass of the Death of Frs. Vincent Ogu and Felix Ikpatusi",
+      location: "St. Mary's Pro-Cathedral, Okigwe",
+      title: "Death Anniversary",
     },
     {
       date: "2026-08-15",
-      time: "8:00 AM",
-      event: "Feast of the Assumption of Mary",
-      location: "All Parishes, Diocese of Okigwe",
-      title: "Liturgical",
+      time: "10:00 AM",
+      event: "Family Day Celebration",
+      location: "Immaculate Conception Cathedral Podium, Okigwe",
+      title: "Human Life Commission",
     },
     {
-      date: "2026-09-12",
+      date: "2026-08-29",
       time: "10:00 AM",
-      event: "Catholic Women Organisation Diocesan Convention",
-      location: "St. Mary's Pro-Cathedral, Okigwe",
-      title: "CWO",
+      event: "Catechists' Day Ceromony",
+      location: "St. Thomas Aquinas Seminary, Ihitte",
+      title: "Catechists",
     },
     {
-      date: "2026-09-26",
+      date: "2026-09-18",
       time: "10:00 AM",
-      event: "Diaconate Ordination",
-      location: "St. Mary's Pro-Cathedral, Okigwe",
+      event: "Okigwe Diocesan Priestly Ordination",
+      location: "Immaculate Conception Cathedral, Okigwe",
       title: "Ordination",
     },
     {
-      date: "2026-10-18",
-      time: "9:00 AM",
-      event: "Harvest &amp; Thanksgiving Celebration",
-      location: "St. Mary's Pro-Cathedral, Okigwe",
-      title: "Parish",
+      date: "2026-09-23",
+      time: "10:00 AM",
+      event: "Okigwe Diocesan Plenary Meeting",
+      location: "Bishop Anthony Okezie Ilonu Memorial Retreat Center, Okigwe",
+      title: "Priests' Plenary",
     },
     {
-      date: "2026-11-08",
-      time: "9:00 AM",
-      event: "Diocesan Marian Congress",
-      location: "St. Mary's Pro-Cathedral, Okigwe",
-      title: "Liturgical",
+      date: "2026-10-15",
+      time: "10:00 AM",
+      event: "2nd Theological Conferencefor the Year, 2026",
+      location: "Bishop Anthony Okezie Ilonu Memorial Retreat Center, Okigwe",
+      title: "Theological Conference",
+    },
+    {
+      date: "2026-10-03",
+      time: "10:00 AM",
+      event: "Holy Childhood Celebration",
+      location: "Immaculate Conception Cathedral, Okigwe",
+      title: "Holy Childhood",
     },
   ];
 
   const MAX_EVENTS_SHOWN = 5;
   const MONTH_LABELS = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   const grid = document.getElementById("events-grid");

@@ -35,7 +35,269 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../style.css" />
-    <title>Secondary Schools — Catholic Diocese of Okigwe</title>
+    <style>
+      /* ---- Table toolbar (search + controls) ---- */
+      .table-toolbar {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+        margin-bottom: var(--space-lg);
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-md) var(--space-lg);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .table-search {
+        flex: 1;
+        min-width: 240px;
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        background: var(--color-cream);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-sm);
+        padding: 0.625rem var(--space-sm);
+      }
+      .table-search__icon {
+        color: var(--color-gray-light);
+        font-size: var(--text-base);
+        flex-shrink: 0;
+      }
+      .table-search input {
+        border: none;
+        background: transparent;
+        outline: none;
+        width: 100%;
+        font-size: var(--text-sm);
+        color: var(--color-text-main);
+        font-family: var(--font-body);
+      }
+      .table-search input::placeholder {
+        color: var(--color-gray-light);
+      }
+
+      .table-result-count {
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--color-text-muted);
+        white-space: nowrap;
+      }
+      .table-result-count strong {
+        color: var(--color-navy-deep);
+      }
+
+      .table-empty {
+        text-align: center;
+        padding: var(--space-2xl) var(--space-lg);
+        color: var(--color-text-muted);
+        font-size: var(--text-md);
+      }
+      .table-empty span:first-child {
+        display: block;
+        font-size: 2.5rem;
+        margin-bottom: var(--space-sm);
+      }
+
+      /* ---- Pagination ---- */
+      .table-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        padding: var(--space-md) var(--space-lg);
+        border-top: 1px solid var(--color-gray-border);
+        background: var(--color-cream);
+      }
+
+      .table-pagination__info {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+      }
+
+      .table-pagination__pages {
+        display: flex;
+        gap: 0.35rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .pg-btn {
+        min-width: 36px;
+        height: 36px;
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-sm);
+        background: var(--color-white);
+        color: var(--color-text-muted);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0.625rem;
+        transition:
+          background var(--transition-base),
+          color var(--transition-base),
+          border-color var(--transition-base);
+        font-family: var(--font-body);
+      }
+      .pg-btn:hover {
+        border-color: var(--color-navy-mid);
+        color: var(--color-navy-deep);
+      }
+      .pg-btn.is-active {
+        background: var(--color-navy-deep);
+        border-color: var(--color-navy-deep);
+        color: var(--color-white);
+      }
+      .pg-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .pg-ellipsis {
+        font-size: var(--text-xs);
+        color: var(--color-gray-light);
+        padding: 0 0.25rem;
+      }
+
+      @media (max-width: 768px) {
+        .table-toolbar {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .table-search {
+          min-width: unset;
+        }
+        .table-pagination {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* ---- Secondary Schools table ---- */
+      .school-table-wrap {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .school-table-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .school-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--text-sm);
+      }
+
+      .school-table thead {
+        background: var(--color-navy-deep);
+        color: var(--color-white);
+      }
+
+      .school-table thead th {
+        padding: var(--space-sm) var(--space-md);
+        text-align: left;
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-gold-light);
+        white-space: nowrap;
+      }
+
+      .school-table tbody tr {
+        border-bottom: 1px solid var(--color-gray-border);
+        transition: background var(--transition-fast);
+      }
+      .school-table tbody tr:last-child {
+        border-bottom: none;
+      }
+      .school-table tbody tr:hover {
+        background: var(--color-gold-pale);
+      }
+
+      .school-table tbody td {
+        padding: var(--space-sm) var(--space-md);
+        color: var(--color-text-muted);
+        vertical-align: middle;
+        line-height: 1.5;
+      }
+
+      .school-table tbody td:first-child {
+        color: var(--color-gold);
+        font-weight: 700;
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        min-width: 48px;
+      }
+
+      .school-table tbody td.name-cell {
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--color-navy-deep);
+        min-width: 220px;
+      }
+
+      .school-table__manager {
+        display: block;
+      }
+      .school-table__manager + .school-table__manager {
+        margin-top: 0.2rem;
+      }
+
+      /* ---- Card layout for small screens (phones) ---- */
+      @media (max-width: 640px) {
+        .school-table thead {
+          display: none;
+        }
+        .school-table,
+        .school-table tbody,
+        .school-table tbody tr,
+        .school-table tbody td {
+          display: block;
+          width: 100%;
+        }
+        .school-table tbody tr {
+          padding: var(--space-sm) var(--space-md);
+        }
+        .school-table tbody td {
+          padding: 0.3rem 0;
+        }
+        .school-table tbody td[data-label]::before {
+          content: attr(data-label);
+          display: block;
+          font-size: var(--text-xs);
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(--color-navy-mid);
+          margin-bottom: 0.15rem;
+        }
+        .school-table tbody td:first-child {
+          display: none;
+        }
+        .school-table tbody td.name-cell {
+          font-size: var(--text-md);
+        }
+        .school-table tbody td.name-cell::before {
+          display: none;
+        }
+      }
+    </style>
+    <title>Catholic Diocese of Okigwe</title>
   </head>
   <body>
     <!-- ============================================================ HEADER ============================================================ -->
@@ -50,7 +312,12 @@
           >
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
-              <img src="../images/logo-transperent.png" width="200" height="208" alt="" />
+              <img
+                src="../images/logo-transperent.png"
+                width="200"
+                height="208"
+                alt=""
+              />
             </div>
             <div class="navbar__title">
               <span class="navbar__title--main">OKIGWE CATHOLIC</span>
@@ -65,9 +332,7 @@
               <a href="#" class="dropbtn">About</a>
               <div class="dropdown-content">
                 <a href="about_history.html" class="nav-link">History</a>
-                <a href="about_statistics.html" class="nav-link"
-                  >Statistics</a
-                >
+                <a href="about_statistics.html" class="nav-link">Statistics</a>
                 <a href="about_officials.html" class="nav-link">Officials</a>
               </div>
             </li>
@@ -79,7 +344,9 @@
               <div class="dropdown-content">
                 <a href="ins_seminaries.html" class="nav-link">Seminaries</a>
                 <a href="ins_sec_schools.html" class="nav-link">Sec. Schools</a>
-                <a href="ins_returned_schools.html" class="nav-link">Returned Schools</a>
+                <a href="ins_returned_schools.html" class="nav-link"
+                  >Returned Schools</a
+                >
                 <a href="ins_hospital.html" class="nav-link">Hospitals</a>
                 <a href="ins_press.html" class="nav-link">Press</a>
               </div>
@@ -87,9 +354,11 @@
             <li class="nav-link dropdown">
               <a href="#" class="dropbtn">Archives</a>
               <div class="dropdown-content">
-                <a href="#" class="nav-link">History</a>
-                <a href="#" class="nav-link">Bishops</a>
-                <a href="ar_functionaries.html" class="nav-link">Functionaries</a>
+                <!-- <a href="#" class="nav-link">History</a>
+                <a href="#" class="nav-link">Bishops</a> -->
+                <a href="ar_functionaries.html" class="nav-link"
+                  >Functionaries</a
+                >
                 <a href="ar_priests.html" class="nav-link">Priests</a>
               </div>
             </li>
@@ -161,7 +430,8 @@
           </nav>
           <h1 class="page-hero__title">Secondary <em>Schools</em></h1>
           <p class="page-hero__subtitle">
-            Providing quality, values-based education that forms the whole person — mind, body, and spirit.
+            Providing quality, values-based education that forms the whole
+            person — mind, body, and spirit.
           </p>
         </div>
       </section>
@@ -170,7 +440,7 @@
          SEC. SCHOOLS
          ============================================================ -->
       <section
-        class="section"
+        class="section section--tight"
         id="sec-schools"
         aria-labelledby="sec-schools-heading"
       >
@@ -181,56 +451,82 @@
               Our <em>Secondary Schools</em>
             </h2>
             <p class="section-subtitle">
-              The Diocese is committed to Catholic education, raising young people of sound character, faith, and academic excellence.
+              The Diocese is committed to Catholic education, raising young
+              people of sound character, faith, and academic excellence.
             </p>
           </div>
 
-          <!-- TODO: Replace the placeholder cards below with the Diocese's actual sec. schools — names, locations, photos, and descriptions. -->
-          <div class="parishes__grid reveal-up">
-            <article class="parish-card">
+          <!-- TABLE TOOLBAR -->
+          <div class="table-toolbar reveal-up">
+            <div
+              class="table-search"
+              role="search"
+              aria-label="Search secondary schools"
+            >
+              <span class="table-search__icon" aria-hidden="true">🔍</span>
+              <input
+                type="text"
+                id="school-search"
+                placeholder="Search by school name or manager…"
+                aria-label="Search the secondary schools directory"
+              />
+            </div>
+            <div class="table-result-count" role="status" aria-live="polite">
+              Showing <strong id="school-visible-count">0</strong> of
+              <strong id="school-total-count">0</strong> schools
+            </div>
+          </div>
+
+          <div class="school-table-wrap reveal-up">
+            <div class="school-table-scroll">
+              <table class="school-table">
+                <thead>
+                  <tr>
+                    <th>S/N</th>
+                    <th>School Name</th>
+                    <th>Manager(s)</th>
+                  </tr>
+                </thead>
+                <tbody id="school-tbody">
+                  <!-- Rows are rendered by JavaScript from the SEC_SCHOOLS array below -->
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="table-empty"
+              id="school-empty"
+              style="display: none"
+              role="status"
+              aria-live="polite"
+            >
+              <span aria-hidden="true">🏫</span>
+              <span>No schools found matching your search.</span>
+            </div>
+
+            <!-- PAGINATION -->
+            <div
+              class="table-pagination"
+              id="school-pagination"
+              aria-label="Table pagination"
+            >
+              <div class="table-pagination__info" id="school-pagination-info">
+                No records to display
+              </div>
               <div
-                class="parish-card__image"
-                role="img"
-                aria-label="[Secondary School Name] placeholder image"
+                class="table-pagination__pages"
+                id="school-pagination-pages"
+                role="navigation"
+                aria-label="Page navigation"
               >
-                <div class="img-placeholder">
-                  <span>Photo Coming Soon</span>
-                </div>
+                <!-- Rendered by JavaScript -->
               </div>
-              <div class="parish-card__body">
-                <h3 class="parish-card__name">[Secondary School Name]</h3>
-                <p class="parish-card__location">
-                  <span aria-hidden="true">📍</span> [Location], Imo State
-                </p>
-                <p class="parish-card__desc">
-                  A Catholic secondary school committed to academic excellence and the moral and spiritual formation of its students.
-                </p>
-              </div>
-            </article>
-            <article class="parish-card">
-              <div
-                class="parish-card__image"
-                role="img"
-                aria-label="[Secondary School Name] placeholder image"
-              >
-                <div class="img-placeholder">
-                  <span>Photo Coming Soon</span>
-                </div>
-              </div>
-              <div class="parish-card__body">
-                <h3 class="parish-card__name">[Secondary School Name]</h3>
-                <p class="parish-card__location">
-                  <span aria-hidden="true">📍</span> [Location], Imo State
-                </p>
-                <p class="parish-card__desc">
-                  A Catholic secondary school committed to academic excellence and the moral and spiritual formation of its students.
-                </p>
-              </div>
-            </article>
+            </div>
           </div>
 
           <div class="section-cta reveal-up">
-            <a href="contact.html" class="btn btn--primary">Contact the Diocese</a>
+            <a href="contact.html" class="btn btn--primary"
+              >Contact the Diocese</a
+            >
           </div>
         </div>
       </section>
@@ -243,7 +539,13 @@
         <div class="footer__brand">
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
-            <img src="../images/logo-transperent.png" width="200" height="208" alt="Diocesan Logo" loading="lazy">
+            <img
+              src="../images/logo-transperent.png"
+              width="200"
+              height="208"
+              alt="Diocesan Logo"
+              loading="lazy"
+            />
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
           <p class="footer__tagline">
@@ -328,6 +630,8 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="about_history.html">About the Diocese</a></li>
             <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="priests.html">Priests</a></li>
+            <li><a href="about_officials.html">Officials</a></li>
             <li><a href="parishes.html">Parish Directory</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
@@ -367,5 +671,309 @@
       ↑
     </button>
     <script src="../script.js"></script>
+    <script>
+      /* ============================================================
+       SECONDARY SCHOOLS DIRECTORY — DATA & SEARCH ENGINE
+       ============================================================
+       TO ADD A NEW SCHOOL RECORD:
+       Add an object to the SEC_SCHOOLS array below in this exact shape:
+         { name: "School Name, Location", managers: ["Rev. Fr. Full Name (Role)"] }
+       The table automatically re-numbers and stays searchable — no HTML
+       editing required.
+       ============================================================ */
+
+      const SEC_SCHOOLS = [
+        {
+          name: "Queen of Apostles Boys Secondary School, Ogii",
+          managers: [
+            "Rev. Fr. Charles Madubuike (Principal)",
+            "Rev. Fr. Fidelis Osuagwu (Vice Principal)",
+          ],
+        },
+        {
+          name: "St. Theresa's Secondary Technical School, Alike Obowo",
+          managers: [
+            "Rev. Fr. Ignatius Namodo (Principal)",
+            "Rev. Fr. Perez Iwuchukwu (Vice Principal)",
+          ],
+        },
+        {
+          name: "St. Paul's High School, Osu",
+          managers: [
+            "Rev. Fr. Jasper Onugha (Principal)",
+            "Rev. Fr. Obianyanwu Valentine (Vice Principal)",
+          ],
+        },
+        {
+          name: "Christus Dominus Secondary School, Ezelu Okwe",
+          managers: ["Rev. Fr. Cosmas Onuegbu (Principal)"],
+        },
+        {
+          name: "Fatima Secondary School, Isuikwato",
+          managers: ["Rev. Fr. Charles Ohuabunwa (Principal)"],
+        },
+        {
+          name: "All Saints Secondary School, Uboma",
+          managers: ["Rev. Fr. Paul Ukomadu (Principal)"],
+        },
+        {
+          name: "Immaculate Conception Secondary School, Umuchieze",
+          managers: [
+            "Rev. Fr. Raphael Madu (Principal)",
+            "Rev. Fr. Lebechi Franklin (Vice Principal)",
+          ],
+        },
+        {
+          name: "Sancta Crux Academy, Mbano Headquarters",
+          managers: [
+            "Rev. Fr. Anthony Ukaegbu (Principal)",
+            "Rev. Fr. Stanley Iwu (Vice Principal)",
+          ],
+        },
+        {
+          name: "Sacred Heart Boys Secondary School, Amuzi Obowo",
+          managers: ["Rev. Fr. Donatus Iwu (Principal)"],
+        },
+        {
+          name: "Queen of Fatima International College, Umuakagu Nsu",
+          managers: [
+            "Rev. Fr. Anthony Osuigwe (Principal)",
+            "Rev. Fr. Stephen Ohenele (Vice Principal)",
+          ],
+        },
+        {
+          name: "All Saints Secondary School, Ugwaku",
+          managers: [
+            "Rev. Fr. Basil Ozor (Principal)",
+            "Rev. Fr. David Okolie (Vice Principal)",
+            "Rev. Fr. Christian Ajomiwe (Vice Principal)",
+            "Rev. Fr. Hilary Mmeru (In Residence)",
+          ],
+        },
+        {
+          name: "St. Augustine's Model Secondary School, Amainyi",
+          managers: ["Rev. Fr. Daniel Abazie (Principal)"],
+        },
+        {
+          name: "Mater Christi Academy, Umunneochi",
+          managers: ["Rev. Fr. Kingsley Maduka (Principal)"],
+        },
+        {
+          name: "Maris Model Academy Agbaja, Ehime Mbano",
+          managers: ["Rev. Fr. Collins Okoro (Principal)"],
+        },
+        {
+          name: "Holy Family Secondary School, Amosu Umulolo",
+          managers: ["Rev. Fr. Eric Davis Muoneke (Principal)"],
+        },
+        {
+          name: "Assumption Model Secondary School",
+          managers: ["Rev. Fr. Martin Osorobi (Principal)"],
+        },
+        {
+          name: "Holy Cross Secondary Technical School, Uturu",
+          managers: ["Rev. Fr. George Nwankwo (Principal)"],
+        },
+        {
+          name: "St. Patrick's Secondary School, Ehime",
+          managers: ["Rev. Fr. Michael Chukwu (Principal)"],
+        },
+        {
+          name: "St. Charles International Secondary School, Okwelle",
+          managers: ["Rev. Fr. Adolphus Oforkpara (Principal)"],
+        },
+        {
+          name: "Mater Dei Secondary School, Arondizuogu",
+          managers: ["Rev. Fr. Cornelius Nwoye (Principal)"],
+        },
+        {
+          name: "St. Anthony's Secondary School, Umunkwo",
+          managers: ["Rev. Fr. Marcellinus Nwoda (Principal)"],
+        },
+        {
+          name: "Madonna Comprehensive Secondary School, Ovim",
+          managers: ["Rev. Fr. Joseph Nwokenkwo (Principal)"],
+        },
+        {
+          name: "Christ the Redeemer College, Osuachara",
+          managers: ["Rev. Fr. Joseph Obialor (Principal)"],
+        },
+        {
+          name: "SS. Margaret and Leopold (Magleo) International Secondary School, Nkumeato Ihitte",
+          managers: [
+            "Rev. Fr. Sabinus Iweadighi (Principal)",
+            "Rev. Fr. Modestus Nwanyanwu (Representative)",
+          ],
+        },
+        {
+          name: "St. Augustine's Secondary School, Eziama Nneato",
+          managers: ["Rev. Fr. Christopher Okoli (Principal)"],
+        },
+        {
+          name: "Seat of Wisdom Comprehensive Secondary School, Nkwoagu, Isuochi, Umunneochi",
+          managers: ["Rev. Fr. Leonard Nwosu (Principal)"],
+        },
+        {
+          name: "Assumpta Model Secondary School, Nneato, Umunneochi L.G.A.",
+          managers: ["Rev. Fr. Athanasius Agbanwo (Principal)"],
+        },
+        {
+          name: "Sancta Maria Secondary School, Ogbor Ugiri",
+          managers: ["Rev. Fr. Samuel Okereke (Principal)"],
+        },
+        {
+          name: "Regina Caeli Secondary School, Ogbor Ugiri",
+          managers: ["Rev. Fr. Thaddeus Obasi (Principal)"],
+        },
+        {
+          name: "Queen of Apostles Secondary Technical College, Obulo Eziama Nneato",
+          managers: ["Rev. Fr. Cyprian Ukanwa"],
+        },
+      ];
+
+      const ROWS_PER_PAGE = 12;
+      let filteredSchools = [...SEC_SCHOOLS];
+      let schoolCurrentPage = 1;
+
+      const schoolTbody = document.getElementById("school-tbody");
+      const schoolSearch = document.getElementById("school-search");
+      const schoolVisibleCount = document.getElementById(
+        "school-visible-count",
+      );
+      const schoolTotalCount = document.getElementById("school-total-count");
+      const schoolEmpty = document.getElementById("school-empty");
+      const schoolPaginationInfo = document.getElementById(
+        "school-pagination-info",
+      );
+      const schoolPaginationPages = document.getElementById(
+        "school-pagination-pages",
+      );
+
+      function escapeHtmlSchool(str) {
+        return str
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function renderSchools() {
+        schoolTbody.innerHTML = "";
+
+        const start = (schoolCurrentPage - 1) * ROWS_PER_PAGE;
+        const end = Math.min(start + ROWS_PER_PAGE, filteredSchools.length);
+        const page = filteredSchools.slice(start, end);
+
+        if (!page.length) {
+          schoolEmpty.style.display = "block";
+        } else {
+          schoolEmpty.style.display = "none";
+          page.forEach((school, idx) => {
+            const tr = document.createElement("tr");
+            const managersHtml = school.managers
+              .map(
+                (m) =>
+                  `<span class="school-table__manager">${escapeHtmlSchool(m)}</span>`,
+              )
+              .join("");
+            tr.innerHTML =
+              `<td>${start + idx + 1}</td>` +
+              `<td class="name-cell" data-label="School Name">${escapeHtmlSchool(school.name)}</td>` +
+              `<td data-label="Manager(s)">${managersHtml}</td>`;
+            schoolTbody.appendChild(tr);
+          });
+        }
+
+        schoolVisibleCount.textContent = filteredSchools.length;
+        schoolTotalCount.textContent = SEC_SCHOOLS.length;
+
+        schoolPaginationInfo.textContent = filteredSchools.length
+          ? `Showing ${start + 1}–${end} of ${filteredSchools.length} schools`
+          : "No records to display";
+
+        renderSchoolPagination();
+      }
+
+      function renderSchoolPagination() {
+        schoolPaginationPages.innerHTML = "";
+        const totalPages = Math.ceil(filteredSchools.length / ROWS_PER_PAGE);
+        if (totalPages <= 1) return;
+
+        const prevBtn = makeSchoolPgBtn(
+          "‹",
+          schoolCurrentPage === 1,
+          () => {
+            schoolCurrentPage--;
+            renderSchools();
+          },
+        );
+        prevBtn.setAttribute("aria-label", "Previous page");
+        schoolPaginationPages.appendChild(prevBtn);
+
+        getSchoolPageRange(schoolCurrentPage, totalPages).forEach((p) => {
+          if (p === "…") {
+            const el = document.createElement("span");
+            el.className = "pg-ellipsis";
+            el.textContent = "…";
+            el.setAttribute("aria-hidden", "true");
+            schoolPaginationPages.appendChild(el);
+          } else {
+            const btn = makeSchoolPgBtn(String(p), false, () => {
+              schoolCurrentPage = p;
+              renderSchools();
+            });
+            if (p === schoolCurrentPage) {
+              btn.classList.add("is-active");
+              btn.setAttribute("aria-current", "page");
+            }
+            btn.setAttribute("aria-label", `Page ${p}`);
+            schoolPaginationPages.appendChild(btn);
+          }
+        });
+
+        const nextBtn = makeSchoolPgBtn(
+          "›",
+          schoolCurrentPage === totalPages,
+          () => {
+            schoolCurrentPage++;
+            renderSchools();
+          },
+        );
+        nextBtn.setAttribute("aria-label", "Next page");
+        schoolPaginationPages.appendChild(nextBtn);
+      }
+
+      function makeSchoolPgBtn(label, disabled, handler) {
+        const btn = document.createElement("button");
+        btn.className = "pg-btn";
+        btn.textContent = label;
+        btn.disabled = disabled;
+        btn.addEventListener("click", handler);
+        return btn;
+      }
+
+      function getSchoolPageRange(current, total) {
+        if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+        if (current <= 4) return [1, 2, 3, 4, 5, "…", total];
+        if (current >= total - 3)
+          return [1, "…", total - 4, total - 3, total - 2, total - 1, total];
+        return [1, "…", current - 1, current, current + 1, "…", total];
+      }
+
+      schoolSearch.addEventListener("input", () => {
+        const q = schoolSearch.value.trim().toLowerCase();
+        filteredSchools = q
+          ? SEC_SCHOOLS.filter(
+              (s) =>
+                s.name.toLowerCase().includes(q) ||
+                s.managers.some((m) => m.toLowerCase().includes(q)),
+            )
+          : [...SEC_SCHOOLS];
+        schoolCurrentPage = 1;
+        renderSchools();
+      });
+
+      renderSchools();
+    </script>
   </body>
 </html>

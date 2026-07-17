@@ -329,6 +329,19 @@ blockquote p + p {
   background-color: var(--color-cream);
 }
 
+/* Tight variant — reduced top spacing for sections sitting directly under a page-hero */
+.section--tight {
+  padding-top: var(--space-lg);
+}
+
+.section--tight .section-header {
+  margin-bottom: var(--space-lg);
+  background: var(--color-cream);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
 /* ================================================================
    6. BUTTONS
 ================================================================ */
@@ -583,43 +596,31 @@ blockquote p + p {
 
 .nav-link {
   display: inline-block;
-  padding: 0.5rem 0.875rem;
+  padding: 0.1rem 0.275rem;
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-gray-dark);
   border-radius: var(--radius-sm);
+  border: 1px solid transparent;
   transition:
     color var(--transition-base),
-    background-color var(--transition-base);
+    background-color var(--transition-base),
+    border-color var(--transition-base);
   position: relative;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: 60%;
-  height: 2px;
-  background-color: var(--color-gold);
-  border-radius: 1px;
-  transition: transform var(--transition-base);
 }
 
 .nav-link:hover,
 .nav-link:focus-visible {
   color: var(--color-navy-deep);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-  transform: translateX(-50%) scaleX(1);
+  border-color: var(--color-gold);
+  background-color: var(--color-gold-pale);
 }
 
 .nav-link.active {
   color: var(--color-navy-deep);
   font-weight: 600;
+  border-color: var(--color-gold);
+  background-color: var(--color-gold-pale);
 }
 
 /* ---- Theme Toggle Button ---- */
@@ -733,7 +734,9 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   top: 100%;
   left: 0;
   background-color: var(--color-white);
-  min-width: 170px;
+  min-width: 140px;
+  width: max-content;
+  max-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.15);
   z-index: 1001;
   border: 1px solid var(--color-gray-border);
@@ -742,11 +745,12 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
 
 .dropdown-content a {
   color: var(--color-gray-dark);
-  padding: 10px 16px;
+  padding: 8px 12px;
   text-decoration: none;
   display: block;
   font-size: var(--text-sm);
   font-weight: 500;
+  white-space: normal;
   transition:
     background-color var(--transition-base),
     color var(--transition-base);
@@ -1337,6 +1341,124 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
 .parish-card__link:hover {
   color: var(--color-navy-deep);
   letter-spacing: 0.05em;
+}
+
+/* ================================================================
+   12b. INSTITUTION + STAFF CARD (single unified box)
+================================================================ */
+
+.institution-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-gray-border);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.institution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.institution-card + .institution-card {
+  margin-top: var(--space-xl);
+}
+
+.institution-card__image {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+}
+
+.institution-card__image .img-placeholder {
+  height: 100%;
+  min-height: unset;
+}
+
+.institution-card__body {
+  padding: var(--space-lg);
+}
+
+.institution-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: var(--space-xs);
+  line-height: 1.3;
+}
+
+.institution-card__location {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.institution-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.institution-card__staff {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-gray-border);
+}
+
+.institution-card__staff-title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.institution-card__staff-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg);
+}
+
+.institution-card__staff-item {
+  min-width: 180px;
+}
+
+.institution-card__staff-role {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.institution-card__staff-name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+}
+
+.institution-card__staff-contact {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 720px) {
+  .institution-card {
+    grid-template-columns: 1fr;
+  }
+
+  .institution-card__image {
+    min-height: 180px;
+  }
 }
 
 /* ================================================================
@@ -2150,10 +2272,6 @@ html[data-theme="dark"] .page-hero {
     border-bottom: none;
   }
 
-  .nav-link::after {
-    display: none;
-  }
-
   /* ---- Archives dropdown: mobile layout ---- */
   .dropdown {
     display: block;
@@ -2179,6 +2297,8 @@ html[data-theme="dark"] .page-hero {
     border-left: 3px solid var(--color-gold);
     border-radius: 0;
     min-width: unset;
+    width: auto;
+    max-width: none;
   }
 
   .dropdown-content a {
@@ -2444,13 +2564,20 @@ html[data-theme="dark"] .page-hero {
 
 .page-hero {
   background-color: var(--color-navy-deep);
-  /* Cathedral photo behind a dark navy tint (for text readability) and
-     the decorative gold pattern. Same image/treatment as the homepage hero. */
+  /* Cathedral photo with a dark vignette focused behind the centered
+     text (for guaranteed readability) that fades out toward the edges
+     so the photo itself stays visible around the text. */
   background-image:
+    radial-gradient(
+      ellipse at center,
+      rgba(8, 15, 33, 0.82) 0%,
+      rgba(8, 15, 33, 0.6) 45%,
+      rgba(8, 15, 33, 0.32) 100%
+    ),
     linear-gradient(
       135deg,
-      rgba(15, 29, 59, 0.9) 0%,
-      rgba(27, 47, 92, 0.82) 100%
+      rgba(15, 29, 59, 0.45) 0%,
+      rgba(27, 47, 92, 0.32) 100%
     ),
     repeating-linear-gradient(
       45deg,
@@ -2486,11 +2613,13 @@ html[data-theme="dark"] .page-hero {
 .page-hero__inner {
   position: relative;
   z-index: 2;
+  text-align: center;
 }
 
 .page-hero__breadcrumb {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   font-size: var(--text-xs);
   font-weight: 600;
@@ -2498,6 +2627,9 @@ html[data-theme="dark"] .page-hero {
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: var(--space-md);
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .page-hero__breadcrumb a {
@@ -2520,6 +2652,10 @@ html[data-theme="dark"] .page-hero {
   color: var(--color-white);
   line-height: 1.15;
   margin-bottom: var(--space-sm);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.95),
+    0 3px 10px rgba(0, 0, 0, 0.85),
+    0 6px 24px rgba(0, 0, 0, 0.7);
 }
 
 .page-hero__title em {
@@ -2531,6 +2667,11 @@ html[data-theme="dark"] .page-hero {
   color: rgba(255, 255, 255, 0.65);
   font-weight: 300;
   max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* ================================================================

@@ -126,6 +126,13 @@
       .bishop-profile__content h2.section-title {
         margin-top: 0;
       }
+      .past-bishops-grid {
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(min(260px, 100%), 300px)
+        );
+        justify-content: center;
+      }
       .bishop-message-tabs {
         display: flex;
         gap: var(--space-xs);
@@ -327,8 +334,8 @@
             <li class="nav-link dropdown">
               <a href="#" class="dropbtn">Archives</a>
               <div class="dropdown-content">
-                <a href="#" class="nav-link">History</a>
-                <a href="#" class="nav-link">Bishops</a>
+                <!-- <a href="#" class="nav-link">History</a>
+                <a href="#" class="nav-link">Bishops</a> -->
                 <a href="ar_functionaries.html" class="nav-link">Functionaries</a>
                 <a href="ar_priests.html" class="nav-link">Priests</a>
               </div>
@@ -439,6 +446,12 @@
                 >
                   The Catholic Diocese of Okigwe
                 </p>
+                <div class="bishop-detail-row">
+                  <strong>Born</strong><span>January 17, 1950</span>
+                </div>
+                <div class="bishop-detail-row">
+                  <strong>Ordained Deacon</strong><span>September 03, 1977</span>
+                </div>
                 <div class="bishop-detail-row">
                   <strong>Ordained Priest</strong><span>October 07, 1978</span>
                 </div>
@@ -853,7 +866,7 @@
               The men who built the foundations of faith in our Diocese.
             </p>
           </div>
-          <div class="team-grid reveal-up">
+          <div class="team-grid past-bishops-grid reveal-up">
             <div class="team-card">
               <div class="team-card__photo portrait-placeholder">
                 <img src="../images/bishop_ilonu.jpg" width="900" height="1075" alt="picture of bishop ilonu" loading="lazy">
@@ -979,6 +992,8 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="about_history.html">About the Diocese</a></li>
             <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="priests.html">Priests</a></li>
+            <li><a href="about_officials.html">Officials</a></li>
             <li><a href="parishes.html">Parish Directory</a></li>
             <!-- <li><a href="pages/news.html">News &amp; Events</a></li>
             <li><a href="pages/gallery.html">Media Gallery</a></li> -->
