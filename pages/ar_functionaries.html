@@ -254,7 +254,7 @@
         transform: translateY(-5px);
       }
 
-      /* Portrait area */
+      /* Portrait area — only present when an actual photograph exists */
       .functionary-card__portrait {
         height: 200px;
         background: linear-gradient(
@@ -273,15 +273,13 @@
         position: relative;
         flex-shrink: 0;
         overflow: hidden;
-        /* TODO: Replace with actual portrait photograph:
-         background-image: url('../images/functionaries/[name].jpg');
-         background-size: cover;
-         background-position: center top; */
       }
 
-      .functionary-card__portrait-icon {
-        font-size: 2.5rem;
-        opacity: 0.35;
+      .functionary-card__portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
       }
 
       /* Gold accent bar at bottom of portrait */
@@ -301,15 +299,53 @@
 
       /* "Emeritus" or "Current" ribbon badge */
       .functionary-card__ribbon {
-        position: absolute;
-        top: var(--space-sm);
-        right: var(--space-sm);
+        display: inline-block;
         font-size: var(--text-xs);
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         padding: 0.2rem 0.625rem;
         border-radius: 2px;
+      }
+
+      /* Overlay positioning — used when the ribbon sits on top of a photo */
+      .functionary-card__ribbon--overlay {
+        position: absolute;
+        top: var(--space-sm);
+        right: var(--space-sm);
+      }
+
+      /* ---- Cards with no photograph yet: gold top border + initials badge
+             instead of a picture placeholder ---- */
+      .functionary-card--noimage {
+        border-top: 3px solid var(--color-gold);
+      }
+
+      .functionary-card__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-sm);
+      }
+
+      .functionary-card__initials {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: linear-gradient(
+          160deg,
+          var(--color-navy-mid),
+          var(--color-navy-deep)
+        );
+        color: var(--color-gold-light);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: var(--text-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .functionary-card__ribbon--current {
@@ -672,14 +708,15 @@
                   role="img"
                   aria-label="Portrait of Msgr. Patrick Obike"
                 >
+                  <img
+                    src="../images/msgr_patrick_obike.jpg"
+                    width="399"
+                    height="276"
+                    alt=""
+                    loading="lazy"
+                  />
                   <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
+                    class="functionary-card__ribbon functionary-card__ribbon--past functionary-card__ribbon--overlay"
                     >Past</span
                   >
                 </div>
@@ -700,52 +737,53 @@
               </div>
 
               <!-- 2 -->
-              <div class="functionary-card" role="listitem">
-                <div
-                  class="functionary-card__portrait"
-                  role="img"
-                  aria-label="Portrait of Fr. Chanamma"
-                >
-                  <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
-                    >Past</span
-                  >
-                </div>
+              <div
+                class="functionary-card functionary-card--noimage"
+                role="listitem"
+              >
                 <div class="functionary-card__body">
+                  <div class="functionary-card__top">
+                    <span class="functionary-card__initials" aria-hidden="true"
+                      >OC</span
+                    >
+                    <span
+                      class="functionary-card__ribbon functionary-card__ribbon--past"
+                      >Past</span
+                    >
+                  </div>
                   <p class="functionary-card__office">Chancellor</p>
-                  <h3 class="functionary-card__name">Very Rev. Fr. Chanamma</h3>
+                  <h3 class="functionary-card__name">
+                    Very Rev. Fr. Oliver Chanama
+                  </h3>
                   <p class="functionary-card__years">1982 – 1985</p>
                 </div>
               </div>
 
               <!-- 3 -->
-              <div class="functionary-card" role="listitem">
-                <div
-                  class="functionary-card__portrait"
-                  role="img"
-                  aria-label="Portrait of Fr. Patrick Ikekamma"
-                >
-                  <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
-                    >Past</span
-                  >
-                </div>
+              <div
+                class="functionary-card functionary-card--noimage"
+                role="listitem"
+              >
                 <div class="functionary-card__body">
+                  <div class="functionary-card__top">
+                    <span class="functionary-card__initials" aria-hidden="true"
+                      >PI</span
+                    >
+                    <span
+                      class="functionary-card__ribbon functionary-card__ribbon--past"
+                      >Past</span
+                    >
+                  </div>
                   <p class="functionary-card__office">Chancellor</p>
                   <h3 class="functionary-card__name">
                     Very Rev. Fr. Patrick Ikekamma
+                    <em
+                      style="
+                        font-size: var(--text-xs);
+                        color: var(--color-text-muted);
+                      "
+                      >(Late)</em
+                    >
                   </h3>
                   <p class="functionary-card__years">1985 – 1988</p>
                 </div>
@@ -758,14 +796,15 @@
                   role="img"
                   aria-label="Portrait of Fr. Charles Okorougo"
                 >
+                  <img
+                    src="../images/fr_charles_okorougo.jpg"
+                    width="896"
+                    height="1004"
+                    alt=""
+                    loading="lazy"
+                  />
                   <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
+                    class="functionary-card__ribbon functionary-card__ribbon--past functionary-card__ribbon--overlay"
                     >Past</span
                   >
                 </div>
@@ -779,24 +818,20 @@
               </div>
 
               <!-- 5 -->
-              <div class="functionary-card" role="listitem">
-                <div
-                  class="functionary-card__portrait"
-                  role="img"
-                  aria-label="Portrait of Fr. Dr. Reginald Ejikeme"
-                >
-                  <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
-                    >Past</span
-                  >
-                </div>
+              <div
+                class="functionary-card functionary-card--noimage"
+                role="listitem"
+              >
                 <div class="functionary-card__body">
+                  <div class="functionary-card__top">
+                    <span class="functionary-card__initials" aria-hidden="true"
+                      >RE</span
+                    >
+                    <span
+                      class="functionary-card__ribbon functionary-card__ribbon--past"
+                      >Past</span
+                    >
+                  </div>
                   <p class="functionary-card__office">Chancellor</p>
                   <h3 class="functionary-card__name">
                     Very Rev. Fr. Dr. Reginald Ejikeme
@@ -806,51 +841,50 @@
               </div>
 
               <!-- 6 -->
-              <div class="functionary-card" role="listitem">
-                <div
-                  class="functionary-card__portrait"
-                  role="img"
-                  aria-label="Portrait of Fr. Dr. Patrick Ikekamma"
-                >
-                  <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
-                    >Past</span
-                  >
-                </div>
+              <div
+                class="functionary-card functionary-card--noimage"
+                role="listitem"
+              >
                 <div class="functionary-card__body">
+                  <div class="functionary-card__top">
+                    <span class="functionary-card__initials" aria-hidden="true"
+                      >PI</span
+                    >
+                    <span
+                      class="functionary-card__ribbon functionary-card__ribbon--past"
+                      >Past</span
+                    >
+                  </div>
                   <p class="functionary-card__office">Chancellor</p>
                   <h3 class="functionary-card__name">
                     Very Rev. Fr. Dr. Patrick Ikekamma
+                    <em
+                      style="
+                        font-size: var(--text-xs);
+                        color: var(--color-text-muted);
+                      "
+                      >(Late)</em
+                    >
                   </h3>
                   <p class="functionary-card__years">1998 – 2003</p>
                 </div>
               </div>
 
               <!-- 7 -->
-              <div class="functionary-card" role="listitem">
-                <div
-                  class="functionary-card__portrait"
-                  role="img"
-                  aria-label="Portrait of Fr. Dr. Patrick Ugwaka"
-                >
-                  <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
-                    >Past</span
-                  >
-                </div>
+              <div
+                class="functionary-card functionary-card--noimage"
+                role="listitem"
+              >
                 <div class="functionary-card__body">
+                  <div class="functionary-card__top">
+                    <span class="functionary-card__initials" aria-hidden="true"
+                      >PU</span
+                    >
+                    <span
+                      class="functionary-card__ribbon functionary-card__ribbon--past"
+                      >Past</span
+                    >
+                  </div>
                   <p class="functionary-card__office">Chancellor</p>
                   <h3 class="functionary-card__name">
                     Very Rev. Fr. Dr. Patrick Ugwaka
@@ -864,16 +898,17 @@
                 <div
                   class="functionary-card__portrait"
                   role="img"
-                  aria-label="Portrait of Fr. Prof. Simon O. Anyanwu"
+                  aria-label="Portrait of Fr. (Prof.) Simon O. Anyanwu"
                 >
+                  <img
+                    src="../images/msgr_simon_anyanwu.jpg"
+                    width="896"
+                    height="673"
+                    alt=""
+                    loading="lazy"
+                  />
                   <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
+                    class="functionary-card__ribbon functionary-card__ribbon--past functionary-card__ribbon--overlay"
                     >Past</span
                   >
                 </div>
@@ -893,14 +928,15 @@
                   role="img"
                   aria-label="Portrait of Fr. Chibuike Okeagu"
                 >
+                  <img
+                    src="../images/fr_chibuike_okeagu.jpg"
+                    width="810"
+                    height="903"
+                    alt=""
+                    loading="lazy"
+                  />
                   <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
+                    class="functionary-card__ribbon functionary-card__ribbon--past functionary-card__ribbon--overlay"
                     >Past</span
                   >
                 </div>
@@ -920,14 +956,15 @@
                   role="img"
                   aria-label="Portrait of Fr. Princewill Iwuanyanwu"
                 >
+                  <img
+                    src="../images/fr_princewill_iwuanyanwu.jpg"
+                    width="433"
+                    height="293"
+                    alt=""
+                    loading="lazy"
+                  />
                   <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past"
+                    class="functionary-card__ribbon functionary-card__ribbon--past functionary-card__ribbon--overlay"
                     >Past</span
                   >
                 </div>
@@ -943,7 +980,7 @@
               <!-- 11 — Current -->
               <div class="functionary-card" role="listitem">
                 <div
-                  class="functionary-card__portrait portrait-placeholder2"
+                  class="functionary-card__portrait"
                   role="img"
                   aria-label="Portrait of Fr. Samuel Obinnaya Okoli"
                 >
@@ -955,7 +992,7 @@
                     loading="lazy"
                   />
                   <span
-                    class="functionary-card__ribbon functionary-card__ribbon--current"
+                    class="functionary-card__ribbon functionary-card__ribbon--current functionary-card__ribbon--overlay"
                     >Current</span
                   >
                 </div>
@@ -1002,16 +1039,17 @@
                 <div
                   class="functionary-card__portrait"
                   role="img"
-                  aria-label="Portrait placeholder"
+                  aria-label="Portrait of Fr. Livinus Iroh"
                 >
+                  <img
+                    src="../images/fr_livinus_iroh.jpg"
+                    width="900"
+                    height="675"
+                    alt=""
+                    loading="lazy"
+                  />
                   <span
-                    class="functionary-card__portrait-icon"
-                    aria-hidden="true"
-                    >👤</span
-                  >
-                  <span>Portrait</span>
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--current"
+                    class="functionary-card__ribbon functionary-card__ribbon--current functionary-card__ribbon--overlay"
                     >Current</span
                   >
                 </div>

@@ -130,6 +130,7 @@ body {
   overflow-x: hidden;
   max-width: 100%;
   width: 100%;
+  padding-top: var(--navbar-height);
 }
 
 /* Improve media defaults */
@@ -483,7 +484,7 @@ blockquote p + p {
 ================================================================ */
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -1263,13 +1264,28 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* On the 4-column desktop layout, 10 stat cards leave a trailing row of 2
+   (Health Centres, Seminaries). Center that incomplete row instead of
+   leaving it flush left. Tablet/mobile use 2 columns, where 10 divides
+   evenly, so no override is needed there. */
+@media (min-width: 1025px) {
+  .stats-grid .stat-card:nth-child(9) {
+    grid-column: 2 / 3;
+  }
+
+  .stats-grid .stat-card:nth-child(10) {
+    grid-column: 3 / 4;
+  }
+}
+
 /* ================================================================
    12. PARISH DIRECTORY SECTION
 ================================================================ */
 
 .parishes__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-lg);
 }
 
@@ -1279,6 +1295,7 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--color-gray-border);
+  flex: 0 1 calc(25% - 1.5rem);
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base);
@@ -2181,8 +2198,8 @@ html[data-theme="dark"] .page-hero {
     --space-3xl: 5rem;
   }
 
-  .parishes__grid {
-    grid-template-columns: repeat(2, 1fr);
+  .parish-card {
+    flex-basis: calc(50% - 1rem);
   }
 
   .stats-grid {
@@ -2400,8 +2417,8 @@ html[data-theme="dark"] .page-hero {
   }
 
   /* ---- Parishes ---- */
-  .parishes__grid {
-    grid-template-columns: 1fr 1fr;
+  .parish-card {
+    flex-basis: calc(50% - 1rem);
   }
 
   /* ---- Events ---- */
@@ -2534,8 +2551,8 @@ html[data-theme="dark"] .page-hero {
   }
 
   /* ---- Parishes ---- */
-  .parishes__grid {
-    grid-template-columns: 1fr;
+  .parish-card {
+    flex-basis: 100%;
   }
 
   /* ---- Stats ---- */
@@ -2807,7 +2824,7 @@ html[data-theme="dark"] .page-hero {
 }
 
 .team-card__photo {
-  height: 220px;
+  height: 280px;
   background: linear-gradient(
     160deg,
     var(--color-navy-mid),
