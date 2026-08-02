@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8843/index.html)",
+      "Bash(npx --yes http-server -p 8843 -c-1 --silent)",
+      "Bash(ls -la \"/c/Users/USER/AppData/Local/Temp/claude/c--Users-USER-Desktop-DIOCESAN-WEB/d89ee8a4-30db-4e14-99cf-16efbdab69a2/scratchpad/shots\")",
+      "Read(//c/Users/USER/AppData/Local/Temp/claude/c--Users-USER-Desktop-DIOCESAN-WEB/d89ee8a4-30db-4e14-99cf-16efbdab69a2/scratchpad/shots/**)"
+    ]
+  }
+}

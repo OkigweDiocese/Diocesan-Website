@@ -496,8 +496,8 @@
               <img src="../images/logo-transperent.png" width="200" height="208" alt="" />
             </div>
             <div class="navbar__title">
-              <span class="navbar__title--main">OKIGWE CATHOLIC</span>
-              <span class="navbar__title--sub">Diocese</span>
+              <span class="navbar__title--main">CATHOLIC DIOCESE</span>
+              <span class="navbar__title--sub">of Okigwe</span>
             </div>
           </a>
 
@@ -794,21 +794,24 @@
                 </div>
                 <div class="contact-form-card__body">
                   <!--
-                  TODO: Connect this form to a backend handler on submission, e.g.:
-                  - Node.js / Express + Nodemailer
-                  - PHP mail() or PHPMailer
-                  - Formspree (https://formspree.io)
-                  - EmailJS
-                  - A serverless function (Vercel / Netlify Functions)
-
-                  FUTURE: Add honeypot anti-spam field, CSRF token, and reCAPTCHA v3
+                  Submissions are handled by Netlify Forms — no backend code
+                  required. Netlify detects this form at deploy time because
+                  of the `data-netlify="true"` attribute and the hidden
+                  `form-name` field below. Enable email notifications in the
+                  Netlify dashboard: Site settings → Forms → Form
+                  notifications → Add notification → Email notification.
                 -->
                   <form
                     id="contact-form"
+                    name="contact-form"
+                    method="POST"
                     class="contact-form"
                     novalidate
+                    data-netlify="true"
+                    netlify-honeypot="_honeypot"
                     aria-label="Send a message to the Diocese"
                   >
+                    <input type="hidden" name="form-name" value="contact-form" />
                     <div class="form-row">
                       <div class="form-group">
                         <label for="first-name" class="form-label"

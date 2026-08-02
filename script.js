@@ -363,22 +363,18 @@ function initContactForm() {
   });
 
   /**
-   * Form submission handler.
-   *
-   * TODO: Replace the simulated submission below with a real
-   * backend API call, e.g.:
-   *
-   *   fetch('/api/contact', {
-   *     method: 'POST',
-   *     headers: { 'Content-Type': 'application/json' },
-   *     body: JSON.stringify({ name, email, subject, message }),
-   *   })
-   *   .then(res => res.json())
-   *   .then(data => { ... })
-   *   .catch(err => { ... });
-   *
-   * Or integrate with a service like Formspree, EmailJS, etc.
+   * Form submission handler — submits to Netlify Forms via AJAX so the
+   * page doesn't reload. Netlify parses the static HTML for the
+   * `data-netlify="true"` form at deploy time and stores/emails
+   * submissions; no backend code is needed here.
    */
+  const encodeFormData = (data) =>
+    Object.keys(data)
+      .map(
+        (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`,
+      )
+      .join("&");
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -396,28 +392,37 @@ function initContactForm() {
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending…";
 
-    // --- SIMULATED ASYNC SUBMISSION ---
-    // Remove this simulation when connecting to a real backend.
-    setTimeout(() => {
-      showFormFeedback(
-        "success",
-        "✓ Your message has been sent. We will be in touch shortly.",
-      );
-      form.reset();
-      // Remove validation states after reset
-      form.querySelectorAll(".form-input").forEach((f) => {
-        f.classList.remove("is-invalid");
-      });
-      form.querySelectorAll(".form-error").forEach((e) => {
-        e.textContent = "";
-      });
-    }, 1600);
+    const formData = Object.fromEntries(new FormData(form).entries());
 
-    // Reset button after "send"
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Send Message";
-    }, 1700);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encodeFormData(formData),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Form submission failed (${res.status})`);
+        showFormFeedback(
+          "success",
+          "✓ Your message has been sent. We will be in touch shortly.",
+        );
+        form.reset();
+        form.querySelectorAll(".form-input").forEach((f) => {
+          f.classList.remove("is-invalid");
+        });
+        form.querySelectorAll(".form-error").forEach((e) => {
+          e.textContent = "";
+        });
+      })
+      .catch(() => {
+        showFormFeedback(
+          "error",
+          "✗ Something went wrong sending your message. Please try again or email us directly.",
+        );
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
+      });
   });
 
   /**
