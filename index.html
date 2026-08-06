@@ -1028,15 +1028,30 @@
             </div>
 
             <!-- Contact Form -->
-            <!-- TODO: Connect form to backend email handler (e.g., Node.js/Express, Formspree, or PHP mailer) -->
-            <!-- FUTURE: Add form validation, honeypot anti-spam, and confirmation message -->
+            <!--
+              Submissions are handled by Netlify Forms — no backend code
+              required. Netlify detects this form at deploy time because
+              of the `data-netlify="true"` attribute and the hidden
+              `form-name` field below. Enable email notifications in the
+              Netlify dashboard: Site settings → Forms → Form
+              notifications → Add notification → Email notification.
+            -->
             <div class="contact__form-wrapper">
               <form
                 class="contact-form"
                 id="contact-form"
+                name="home-contact-form"
+                method="POST"
                 novalidate
+                data-netlify="true"
+                netlify-honeypot="_honeypot"
                 aria-label="Contact form"
               >
+                <input
+                  type="hidden"
+                  name="form-name"
+                  value="home-contact-form"
+                />
                 <div class="form-group">
                   <label for="full-name" class="form-label"
                     >Full Name <span aria-hidden="true">*</span></label
@@ -1110,6 +1125,16 @@
                     aria-live="polite"
                   ></span>
                 </div>
+
+                <!-- Honeypot anti-spam field — hidden from users, bots fill it -->
+                <input
+                  type="text"
+                  name="_honeypot"
+                  style="display: none"
+                  tabindex="-1"
+                  autocomplete="off"
+                  aria-hidden="true"
+                />
 
                 <button
                   type="submit"

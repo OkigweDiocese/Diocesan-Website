@@ -352,10 +352,15 @@ function initContactForm() {
   /**
    * Live validation — validate field when user leaves it.
    */
-  form.querySelectorAll(".form-input").forEach((input) => {
+  form.querySelectorAll(".form-input, .form-select").forEach((input) => {
     input.addEventListener("blur", () => validateField(input));
     input.addEventListener("input", () => {
       // Clear error on typing if field was invalid
+      if (input.classList.contains("is-invalid")) {
+        validateField(input);
+      }
+    });
+    input.addEventListener("change", () => {
       if (input.classList.contains("is-invalid")) {
         validateField(input);
       }
@@ -379,12 +384,20 @@ function initContactForm() {
     e.preventDefault();
 
     // Validate all required fields
-    const fields = form.querySelectorAll(".form-input");
+    const fields = form.querySelectorAll(".form-input, .form-select");
     let isValid = true;
 
     fields.forEach((field) => {
       if (!validateField(field)) isValid = false;
     });
+
+    // Consent checkbox (contact page form) has no .form-input/.form-select
+    // class, so it needs its own required check.
+    const consent = form.querySelector("#consent");
+    if (consent && consent.required && !consent.checked) {
+      isValid = false;
+      consent.focus();
+    }
 
     if (!isValid) return;
 
