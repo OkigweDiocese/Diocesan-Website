@@ -73,6 +73,24 @@
         padding: 0.25rem 0.875rem;
         border-radius: 20px;
       }
+      /* Accordion toggle — mobile only; hidden and inert on larger
+         screens, where every deanery already shows expanded. */
+      .deanery-header__toggle {
+        display: none;
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 50%;
+        color: var(--color-white);
+        font-size: 0.9rem;
+        line-height: 1;
+        cursor: pointer;
+        transition: transform var(--transition-base);
+      }
       .parishes-full-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -172,6 +190,32 @@
       @media (max-width: 560px) {
         .parishes-full-grid {
           grid-template-columns: 1fr;
+        }
+      }
+      /* Mobile: each deanery collapses to just its header by default,
+         so the directory reads as a tappable list of 13 deaneries
+         instead of one very long scroll of every parish. */
+      @media (max-width: 768px) {
+        .deanery-header {
+          cursor: pointer;
+          padding: var(--space-sm) var(--space-md);
+          gap: var(--space-sm);
+        }
+        .deanery-header__title {
+          font-size: var(--text-lg);
+        }
+        .deanery-header__toggle {
+          display: flex;
+        }
+        .deanery-section.is-collapsed-mobile .parishes-full-grid,
+        .deanery-section.is-collapsed-mobile .deanery-show-more-wrap {
+          display: none;
+        }
+        .deanery-section.is-collapsed-mobile .deanery-header {
+          margin-bottom: 0;
+        }
+        .deanery-section.is-collapsed-mobile .deanery-header__toggle {
+          transform: rotate(-90deg);
         }
       }
     </style>
@@ -400,7 +444,7 @@
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>St. Mary's Paarish, Arondizuogu</h3>
+                  <h3>St. Mary's Parish, Arondizuogu</h3>
                   <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
                   <!-- <p class="parish-feast">
                     Feast: St. Michael the Archangel · Sept. 29
@@ -632,12 +676,12 @@
               </div>
               <div
                 class="parish-card--list"
-                data-name="St. Francis of Asisi Parish, Okigwe Low Cost"
+                data-name="St. Francis of Assisi Parish, Okigwe Low Cost"
                 data-deanery="okigwe"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>St. Francis of Asisi Parish, Okigwe Low Cost</h3>
+                  <h3>St. Francis of Assisi Parish, Okigwe Low Cost</h3>
                   <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
                   <!-- <p class="parish-feast">Feast: St. Patrick · March 17</p> -->
                 </div>
@@ -2853,7 +2897,9 @@
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
-          <!-- TODO: Replace # with actual social media URLs -->
+          <!-- We only maintain a Facebook page — no YouTube or Instagram
+               accounts exist, so those icons were removed rather than
+               left pointing to the wrong destination. -->
           <div class="footer__social" aria-label="Diocese social media links">
             <a
               href="https://web.facebook.com/profile.php?id=61557403089364"
@@ -2870,54 +2916,6 @@
               >
                 <path
                   d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://web.facebook.com/profile.php?id=61557403089364"
-              class="social-link"
-              aria-label="Diocese YouTube channel"
-              rel="noopener noreferrer"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-                width="20"
-                height="20"
-              >
-                <path
-                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
-                />
-                <polygon
-                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
-                  fill="var(--color-navy-deep)"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://web.facebook.com/profile.php?id=61557403089364"
-              class="social-link"
-              aria-label="Diocese Instagram page"
-              rel="noopener noreferrer"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-                width="20"
-                height="20"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle
-                  cx="17.5"
-                  cy="6.5"
-                  r="1"
-                  fill="currentColor"
-                  stroke="none"
                 />
               </svg>
             </a>
@@ -3014,6 +3012,76 @@
       const parishCards = document.querySelectorAll(".parish-card--list");
       const noResults = document.getElementById("no-results");
       let activeDeanery = "all";
+
+      /* ---- Mobile accordion: each deanery collapses to its header ---- */
+      const MOBILE_QUERY = window.matchMedia("(max-width: 768px)");
+
+      function addDeaneryToggles() {
+        deanerySecs.forEach((sec) => {
+          const header = sec.querySelector(".deanery-header");
+          if (!header) return;
+
+          const grid = sec.querySelector(".parishes-full-grid");
+          if (grid && !grid.id) {
+            grid.id = `deanery-grid-${sec.dataset.deanery}`;
+          }
+
+          const toggle = document.createElement("button");
+          toggle.type = "button";
+          toggle.className = "deanery-header__toggle";
+          toggle.setAttribute(
+            "aria-label",
+            `Toggle ${sec.dataset.deanery} deanery parish list`,
+          );
+          toggle.setAttribute("aria-expanded", "true");
+          if (grid) toggle.setAttribute("aria-controls", grid.id);
+          toggle.textContent = "▾";
+          header.appendChild(toggle);
+
+          // Single listener on the header (not the button) so a tap
+          // anywhere in the header — not just on the small chevron —
+          // toggles the section, without double-firing from bubbling.
+          header.addEventListener("click", () => {
+            if (!MOBILE_QUERY.matches) return;
+            const collapsed = sec.classList.toggle("is-collapsed-mobile");
+            toggle.setAttribute("aria-expanded", String(!collapsed));
+          });
+        });
+      }
+
+      function setMobileCollapse(sec, collapsed) {
+        const toggle = sec.querySelector(".deanery-header__toggle");
+        sec.classList.toggle("is-collapsed-mobile", collapsed);
+        if (toggle) toggle.setAttribute("aria-expanded", String(!collapsed));
+      }
+
+      function applyInitialMobileCollapse() {
+        deanerySecs.forEach((sec) => {
+          setMobileCollapse(sec, MOBILE_QUERY.matches);
+        });
+      }
+
+      // While searching or filtering by deanery, force any matching
+      // section open on mobile so results aren't hidden behind a
+      // collapsed header; restore the collapsed accordion once the
+      // search/filter is cleared.
+      function syncMobileCollapseWithFilters() {
+        if (!MOBILE_QUERY.matches) return;
+        const filtering =
+          searchInput.value.trim().length > 0 || activeDeanery !== "all";
+        deanerySecs.forEach((sec) => {
+          if (sec.style.display === "none") return;
+          setMobileCollapse(sec, !filtering);
+        });
+      }
+
+      MOBILE_QUERY.addEventListener("change", () => {
+        if (MOBILE_QUERY.matches) {
+          syncMobileCollapseWithFilters();
+        } else {
+          deanerySecs.forEach((sec) => setMobileCollapse(sec, false));
+        }
+      });
 
       function initDeaneryShowMore() {
         deanerySecs.forEach((sec) => {
@@ -3115,8 +3183,11 @@
         });
 
         noResults.classList.toggle("is-visible", !any);
+        syncMobileCollapseWithFilters();
       }
 
+      addDeaneryToggles();
+      applyInitialMobileCollapse();
       initDeaneryShowMore();
       applyFilters();
 

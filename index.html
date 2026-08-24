@@ -204,7 +204,10 @@
         <div class="hero__overlay" aria-hidden="true"></div>
 
         <div class="container hero__content">
-          <div class="hero__text reveal-up">
+          <!-- No reveal-up class here on purpose: this content must be
+               visible even if script.js fails to load or CSS animations
+               are unsupported/disabled — see .hero__text in style.css. -->
+          <div class="hero__text">
             <!-- Diocesan logo/seal — save the image as
                  images/diocesan-seal.png (transparent PNG recommended)
                  and it will appear here, scaled to fit every screen size. -->
@@ -225,8 +228,13 @@
               Serving God and Humanity Through Faith, Hope &amp; Love
             </p>
             <div class="hero__actions">
-              <a href="pages/about_history.html" class="btn btn--primary"
-                >Learn More</a
+              <a href="pages/parishes.html" class="btn btn--primary"
+                >Find a Parish</a
+              >
+              <a
+                href="pages/about_statistics.html#diocesan-directory"
+                class="btn btn--secondary"
+                >View Diocesan Calendar</a
               >
               <a href="pages/contact.html" class="btn btn--outline"
                 >Contact Us</a
@@ -253,7 +261,7 @@
                 Felix Ikpatusi: Thursday, August 20, 2026
               </li>
               <li>
-                Okigwe Diocesan Plenary Meeting: Webnesday, September 23, 2026
+                Okigwe Diocesan Plenary Meeting: Wednesday, September 23, 2026
               </li>
             </ul>
             <ul class="hero__ticker-list">
@@ -266,7 +274,7 @@
                 Felix Ikpatusi: Thursday, August 20, 2026
               </li>
               <li>
-                Okigwe Diocesan Plenary Meeting: Webnesday, September 23, 2026
+                Okigwe Diocesan Plenary Meeting: Wednesday, September 23, 2026
               </li>
             </ul>
           </div>
@@ -467,7 +475,7 @@
               <div
                 class="parish-card__image"
                 role="img"
-                aria-label="St. Mary's Pro-Cathdral Okigwe placeholder image"
+                aria-label="Immaculate Conception Cathedral, Okigwe"
               >
                 <div class="img-placeholder">
                   <img
@@ -482,7 +490,7 @@
               </div>
               <div class="parish-card__body">
                 <h3 class="parish-card__name">
-                  Immaculate Conception Cathdral, Okigwe
+                  Immaculate Conception Cathedral, Okigwe
                 </h3>
                 <p class="parish-card__location">
                   <span aria-hidden="true">📍</span> Okigwe, Imo State
@@ -500,7 +508,7 @@
                 <a
                   href="pages/parishes.html"
                   class="parish-card__link"
-                  aria-label="Learn more about Cathedral of the Sacred Heart"
+                  aria-label="Learn more about Immaculate Conception Cathedral"
                 >
                   Visit Parish →
                 </a>
@@ -513,7 +521,7 @@
               <div
                 class="parish-card__image"
                 role="img"
-                aria-label="St. Mary's Pro-Cathdral Okigwe placeholder image"
+                aria-label="St. Mary's Pro-Cathedral, Okigwe"
               >
                 <div class="img-placeholder">
                   <img
@@ -533,7 +541,7 @@
                   <span aria-hidden="true">📍</span> Okigwe, Imo State
                 </p>
                 <p class="parish-card__desc">
-                  St. Mary's Pro-Catheral serves as the Cathedral seat of the
+                  St. Mary's Pro-Cathedral serves as the Cathedral seat of the
                   Diocese. It is a centre of worship, formation, and community
                   life at the heart of Okigwe town. The parish is known for its
                   vibrant liturgical celebrations, strong youth ministry, and
@@ -543,7 +551,7 @@
                 <a
                   href="pages/parishes.html"
                   class="parish-card__link"
-                  aria-label="Learn more about Cathedral of the Sacred Heart"
+                  aria-label="Learn more about St. Mary's Pro-Cathedral Parish"
                 >
                   Visit Parish →
                 </a>
@@ -617,7 +625,7 @@
                 </p>
                 <p class="parish-card__desc">
                   St. Mary's Catholic Parish Obowo is one of our vibrant
-                  parishes in Obowo West Deary, serving a large and active
+                  parishes in Obowo West Deanery, serving a large and active
                   Catholic community. The parish is known for its strong
                   devotion to the Blessed Virgin Mary, dynamic liturgical
                   celebrations, and robust social outreach programs that support
@@ -740,13 +748,6 @@
                   Bishop as he continues to shepherd the people of God with
                   wisdom, humility, and fatherly care.
                 </p>
-                <p
-                  href="#"
-                  class="news-card__link"
-                  aria-label="Read more about Diocesan Retreat"
-                >
-                  Read More →
-                </p>
               </div>
             </article>
 
@@ -762,7 +763,7 @@
                     src="images/bishop_gifts_car.jpg"
                     width="700"
                     height="525"
-                    alt="Bishop Amatu gift to Car to Assumtion Parish Ugwunwangwu"
+                    alt="Bishop Amatu gift to Car to Assumption Parish Ukwunwangwu"
                     loading="lazy"
                   />
                 </div>
@@ -787,13 +788,6 @@
                   a donation of one of his official cars to the parish for the
                   enhancement of the ongoing work of evangelization in the
                   parish.
-                </p>
-                <p
-                  href="#"
-                  class="news-card__link"
-                  aria-label="Read more about Pentecost Sunday"
-                >
-                  Read More →
                 </p>
               </div>
             </article>
@@ -826,30 +820,24 @@
                 <p class="news-card__excerpt">
                   Okigwe Deanery joyfully celebrated the 2026 Cathedraticum with
                   His Lordship, Most Rev. Solomon A. Amatu, at St. Mary's
-                  Pro-Cathdral Parish, Okigwe. The annual celebration brought
+                  Pro-Cathedral Parish, Okigwe. The annual celebration brought
                   together priests, religious, and lay faithful of the deanery
                   in a spirit of thanksgiving, unity, and communion with their
                   Bishop. In his homily, Bishop Amatu encouraged the faithful to
                   remain steadfast in faith and committed to the mission of the
-                  Church. At the end, he empacted the Papal Blessing from Rome
+                  Church. At the end, he imparted the Papal Blessing from Rome
                   on them. The event was marked by vibrant liturgical
                   celebrations and renewed expressions of ecclesial solidarity
                   within the Diocese.
-                </p>
-                <p
-                  href="#"
-                  class="news-card__link"
-                  aria-label="Read more Cathedraticum"
-                >
-                  Read More →
                 </p>
               </div>
             </article>
           </div>
 
           <div class="section-cta reveal-up">
-            <!-- TODO: Link to full News page/blog when built -->
-            <p href="#" class="btn btn--primary">All News &amp; Events</p>
+            <a href="pages/news.html" class="btn btn--primary"
+              >All News &amp; Events</a
+            >
           </div>
         </div>
       </section>
@@ -973,7 +961,7 @@
                     <strong>Address</strong>
                     <!-- TODO: Verify and replace with accurate diocesan address -->
                     <p>
-                      Diocesan Catholic Secretrariat,<br />Villa Lourdes. Box 99
+                      Diocesan Catholic Secretariat,<br />Villa Lourdes. Box 99
                       Okigwe,<br />Imo State, <br />
                       Nigeria.
                     </p>
@@ -1182,7 +1170,9 @@
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
-          <!-- TODO: Replace # with actual social media URLs -->
+          <!-- We only maintain a Facebook page — no YouTube or Instagram
+               accounts exist, so those icons were removed rather than
+               left pointing to the wrong destination. -->
           <div class="footer__social" aria-label="Diocese social media links">
             <a
               href="https://web.facebook.com/profile.php?id=61557403089364"
@@ -1199,54 +1189,6 @@
               >
                 <path
                   d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://web.facebook.com/profile.php?id=61557403089364"
-              class="social-link"
-              aria-label="Diocese YouTube channel"
-              rel="noopener noreferrer"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-                width="20"
-                height="20"
-              >
-                <path
-                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
-                />
-                <polygon
-                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
-                  fill="var(--color-navy-deep)"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://web.facebook.com/profile.php?id=61557403089364"
-              class="social-link"
-              aria-label="Diocese Instagram page"
-              rel="noopener noreferrer"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-                width="20"
-                height="20"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle
-                  cx="17.5"
-                  cy="6.5"
-                  r="1"
-                  fill="currentColor"
-                  stroke="none"
                 />
               </svg>
             </a>

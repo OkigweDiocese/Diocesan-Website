@@ -781,7 +781,9 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
 
 .hero {
   position: relative;
-  min-height: calc(100vh - var(--navbar-height));
+  /* ~75% of the viewport, not the full screen, so the next section is
+     visible without scrolling */
+  min-height: clamp(560px, calc(78vh - var(--navbar-height)), 760px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -822,14 +824,18 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   background-size: 60px 60px;
 }
 
+/* Strong, fairly uniform scrim — the cathedral photo behind it is very
+   bright (pale walls, open sky), so the tint needs to stay dark edge to
+   edge for the headline/buttons to read, not just fade in from one
+   corner. */
 .hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    135deg,
-    rgba(15, 29, 59, 0.92) 0%,
-    rgba(15, 29, 59, 0.75) 60%,
-    rgba(184, 148, 46, 0.08) 100%
+    180deg,
+    rgba(6, 12, 28, 0.85) 0%,
+    rgba(6, 12, 28, 0.8) 45%,
+    rgba(6, 12, 28, 0.88) 100%
   );
 }
 
@@ -838,8 +844,8 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   position: relative;
   z-index: 2;
   min-width: 0;
-  padding-top: var(--space-2xl);
-  padding-bottom: var(--space-2xl);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
 }
 
 .hero__text {
@@ -876,9 +882,12 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
 .hero__headline {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 6vw, var(--text-5xl));
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.1;
   color: var(--color-white);
+  text-shadow:
+    0 2px 16px rgba(0, 0, 0, 0.55),
+    0 1px 3px rgba(0, 0, 0, 0.6);
   margin-bottom: var(--space-md);
   overflow-wrap: break-word;
   max-width: 100%;
@@ -891,8 +900,9 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
 
 .hero__mission {
   font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.78);
-  font-weight: 300;
+  color: rgba(255, 255, 255, 0.94);
+  font-weight: 400;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
   overflow-wrap: break-word;
   max-width: 100%;
   margin-bottom: var(--space-xl);
@@ -903,6 +913,39 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
+}
+
+/* Hero-only button treatment — scoped here so it doesn't affect
+   .btn--secondary/.btn--outline elsewhere on the site. The stock navy
+   .btn--secondary would nearly disappear against this dark overlay, so
+   the second action gets a bright gold fill instead, and the outline
+   button gets a more opaque border/backing for guaranteed contrast
+   against the bright cathedral photo behind it. */
+.hero__actions .btn--secondary {
+  background-color: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  color: var(--color-navy-deep);
+}
+
+.hero__actions .btn--secondary:hover,
+.hero__actions .btn--secondary:focus-visible {
+  background-color: var(--color-navy-mid);
+  border-color: var(--color-navy-mid);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.hero__actions .btn--outline {
+  background-color: rgba(6, 12, 28, 0.35);
+  border-color: rgba(255, 255, 255, 0.85);
+  color: var(--color-white);
+}
+
+.hero__actions .btn--outline:hover,
+.hero__actions .btn--outline:focus-visible {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: var(--color-white);
 }
 
 /* Scrolling announcement ticker */
@@ -973,6 +1016,15 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   }
   .hero__ticker {
     overflow-x: auto;
+  }
+
+  /* Skip straight to the settled state instead of animating in */
+  .hero__text,
+  .hero__seal,
+  .hero__scroll-cue {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 
