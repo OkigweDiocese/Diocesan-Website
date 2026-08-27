@@ -1,0 +1,36 @@
+{
+  "bishopHeroTitle": "Our Bishop",
+  "bishopHeroSubtitle": "Meet the shepherd of the Catholic Diocese of Okigwe — his life, ministry, pastoral letters, and messages to the faithful.",
+  "bishopVitals": {
+    "fullName": "Solomon Amanchukwu Amatu",
+    "born": "January 17, 1950",
+    "ordainedDeacon": "September 03, 1977",
+    "ordainedPriest": "October 07, 1978",
+    "appointedAuxiliary": "December 22, 2000",
+    "consecrated": "April 28, 2001",
+    "coadjutorYear": "2005",
+    "substantiveYear": "2006",
+    "motto": "Adjutorium Nostrum in Nomine Domini",
+    "ordainingBishop": "Francis Cardinal Arinze"
+  },
+  "coatOfArmsImage": "../images/diocesan-seal.png",
+  "coatOfArmsMotto": "\"Adjutorium Nostrum in Nomine Domini\"",
+  "bishopBioParagraphs": [
+    "Most Rev. Dr. Solomon Amanchukwu Amatu was born on 17 January 1950 in Obinagu, Akpu Village, Ukpo, Anambra State, to Mr. and Mrs. Piuss Amatu. Raised in a devout Catholic family, he nurtured his vocation to the priesthood from an early age. He received his priestly formation at Bigard Memorial Seminary, Enugu, and was ordained a deacon on 3 September 1977 by Francis Cardinal Arinze and a priest on 7 October 1978 by Archbishop A. K. Obiefuna.",
+    "Following his ordination, Bishop Amatu served the Diocese of Awka in various pastoral and administrative capacities as Assistant Parish Priest, Parish Priest, Secretary, and Chancellor of the Cathedral. Between 1986 and 1990, he pursued higher studies in Rome, obtaining both Licentiate and Doctorate degrees in Canon Law from the Pontifical Lateran University. Upon his return, he continued his distinguished service as Chancellor, Secretary, and later Vicar General II of the Diocese of Awka. In recognition of his dedicated ministry, he was appointed Papal Chamberlain in 1995.",
+    "His episcopal ministry began when Pope John Paul II appointed him Auxiliary Bishop of Awka on 22 December 2000. He was consecrated bishop on 28 April 2001. In 2005, he was appointed Coadjutor Bishop of Okigwe Diocese and, in 2006, became the substantive Bishop of Okigwe, a position he continues to hold with remarkable pastoral commitment and wisdom.",
+    "As Bishop of Okigwe, he has overseen significant infrastructural and pastoral developments within the Diocese. Among his notable achievements are the construction of the Bishop’s Residence at the Immaculate Conception Cathedral, the completion of the Diocesan Secretariat Complex, the establishment of the Bishop Anthony Okezie Ilonu Memorial Retreat Centre, the construction of a modern home for elderly priests at Ogii, the Okigwe Diocesan Pastoral Centre at Osu, and the building of the Immaculate Conception Cathedral from foundation to roofing.",
+    "Bishop Amatu is widely admired for his warmth, humility, sense of humour, and engaging personality. Known for his rich storytelling and love for his native language, he has endeared himself to clergy and laity alike. Beyond his pastoral responsibilities, he enjoys table tennis, basketball, and playing the organ. His life remains a shining example of faithful service, visionary leadership, and unwavering dedication to the growth of the Church."
+  ],
+  "bishopFeaturedPhoto": "../images/bishop_with_pope_leo_xiv.jpg",
+  "bishopFeaturedPhotoCaption": "Bishop Solomon Amatu with Pope Leo XIV at the Vatican",
+  "pastBishops": [
+    {
+      "photo": "../images/bishop_ilonu.jpg",
+      "name": "Most Rev. Anthony Okezie Ilonu",
+      "years": "1981–2006",
+      "role": "1st Bishop",
+      "description": "Pioneer Bishop of Okigwe Diocese"
+    }
+  ]
+}

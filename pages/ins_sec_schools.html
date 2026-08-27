@@ -304,7 +304,7 @@
     </style>
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,sec-schools">
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -318,6 +318,9 @@
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
               <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
                 src="../images/logo-transperent.png"
                 width="200"
                 height="208"
@@ -434,7 +437,7 @@
             <span>Sec. Schools</span>
           </nav>
           <h1 class="page-hero__title">Secondary <em>Schools</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="sec-schools.secSchoolsHeroSubtitle">
             Providing quality, values-based education that forms the whole
             person — mind, body, and spirit.
           </p>
@@ -545,6 +548,9 @@
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
             <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
               src="../images/logo-transperent.png"
               width="200"
               height="208"
@@ -553,7 +559,7 @@
             />
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -566,6 +572,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -599,15 +607,28 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
+          <p>
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
           <p>
             <a href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -641,7 +662,7 @@
        editing required.
        ============================================================ */
 
-      const SEC_SCHOOLS = [
+      let SEC_SCHOOLS = [
         {
           name: "Queen of Apostles Boys Secondary School, Ogii",
           managers: [
@@ -951,5 +972,16 @@
 
       renderSchools();
     </script>
+    <script>
+      document.addEventListener("cms:data:sec-schools", function (e) {
+        if (e.detail && Array.isArray(e.detail.items) && e.detail.items.length) {
+          SEC_SCHOOLS = e.detail.items;
+          filteredSchools = [...SEC_SCHOOLS];
+          schoolCurrentPage = 1;
+          renderSchools();
+        }
+      });
+    </script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

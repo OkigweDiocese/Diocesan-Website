@@ -53,7 +53,7 @@
 
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,home,stats,events,news,parishes">
     <!-- ============================================================
        HEADER & NAVBAR
        ============================================================ -->
@@ -69,6 +69,8 @@
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
               <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
                 src="images/logo-transperent.png"
                 width="200"
                 height="208"
@@ -213,6 +215,8 @@
                  and it will appear here, scaled to fit every screen size. -->
             <div class="hero__seal">
               <img
+                data-cms-bind
+                data-cms-attr-src="global.diocesanSealImage"
                 src="images/diocesan-seal.png"
                 width="300"
                 height="312"
@@ -224,19 +228,32 @@
               Welcome to the<br />
               <em>Catholic Diocese of Okigwe</em><br />
             </h1>
-            <p class="hero__mission">
+            <p class="hero__mission" data-cms-bind data-cms-text="global.tagline">
               Serving God and Humanity Through Faith, Hope &amp; Love
             </p>
             <div class="hero__actions">
-              <a href="pages/parishes.html" class="btn btn--primary"
+              <a
+                href="pages/parishes.html"
+                class="btn btn--primary"
+                data-cms-bind
+                data-cms-text="home.heroActions.0.label"
+                data-cms-attr-href="home.heroActions.0.link"
                 >Find a Parish</a
               >
               <a
                 href="pages/about_statistics.html#diocesan-directory"
                 class="btn btn--secondary"
+                data-cms-bind
+                data-cms-text="home.heroActions.1.label"
+                data-cms-attr-href="home.heroActions.1.link"
                 >View Directory</a
               >
-              <a href="pages/contact.html" class="btn btn--outline"
+              <a
+                href="pages/contact.html"
+                class="btn btn--outline"
+                data-cms-bind
+                data-cms-text="home.heroActions.2.label"
+                data-cms-attr-href="home.heroActions.2.link"
                 >Contact Us</a
               >
             </div>
@@ -251,8 +268,8 @@
           aria-label="Diocesan announcements"
         >
           <div class="hero__ticker-track">
-            <ul class="hero__ticker-list">
-              <li>
+            <ul class="hero__ticker-list" data-cms-repeat="home.tickerAnnouncements">
+              <li data-cms-item data-cms-fbind data-cms-field=".">
                 Second Diocesan Theological Conference for the year 2026 will be
                 on Thursday, October 15, 2026
               </li>
@@ -264,8 +281,8 @@
                 Okigwe Diocesan Plenary Meeting: Wednesday, September 23, 2026
               </li>
             </ul>
-            <ul class="hero__ticker-list">
-              <li>
+            <ul class="hero__ticker-list" data-cms-repeat="home.tickerAnnouncements">
+              <li data-cms-item data-cms-fbind data-cms-field=".">
                 Second Diocesan Theological Conference for the year 2026 will be
                 on Thursday, October 15, 2026
               </li>
@@ -297,6 +314,8 @@
 
               <div class="portrait-placeholder">
                 <img
+                  data-cms-bind
+                  data-cms-attr-src="home.bishopPortraitImage"
                   src="images/DSC_7056.jpg"
                   width="900"
                   height="1305"
@@ -306,10 +325,9 @@
                 <!-- <span>Bishop's Portrait</span> -->
               </div>
               <div class="bishop-message__name-tag">
-                <p class="bishop-message__title">Most Rev. Dr.</p>
-                <!-- TODO: Insert actual Bishop's name -->
-                <p class="bishop-message__name">Solomon A. Amatu</p>
-                <p class="bishop-message__role">Catholic Bishop of Okigwe</p>
+                <p class="bishop-message__title" data-cms-bind data-cms-text="global.currentBishop.title">Most Rev. Dr.</p>
+                <p class="bishop-message__name" data-cms-bind data-cms-text="global.currentBishop.name">Solomon A. Amatu</p>
+                <p class="bishop-message__role" data-cms-bind data-cms-text="global.currentBishop.role">Catholic Bishop of Okigwe</p>
               </div>
             </div>
 
@@ -320,8 +338,8 @@
                 A Word from<br /><em>Our Shepherd</em>
               </h2>
               <div class="bishop-message__quote">
-                <blockquote>
-                  <p>
+                <blockquote data-cms-repeat="home.bishopMessageQuote">
+                  <p data-cms-item data-cms-fbind data-cms-field=".">
                     "Welcome to the official website of the Catholic Diocese of
                     Okigwe.
                   </p>
@@ -354,7 +372,7 @@
             <h2 class="section-title" id="about-heading">
               About the Diocese <em>of Okigwe</em>
             </h2>
-            <p class="section-subtitle">
+            <p class="section-subtitle" data-cms-bind data-cms-text="home.aboutSubtitle">
               Rooted in faith, guided by tradition, and called to serve.
             </p>
           </div>
@@ -365,7 +383,7 @@
               <div class="about__card about__card--mission">
                 <div class="about__card-icon" aria-hidden="true">✦</div>
                 <h3>Our Mission</h3>
-                <p>
+                <p data-cms-bind data-cms-text="global.missionText">
                   To proclaim the Gospel of Jesus Christ, administer the
                   Sacraments, and build a community of disciples who serve God
                   and humanity with justice, compassion, and integrity.
@@ -374,7 +392,7 @@
               <div class="about__card about__card--vision">
                 <div class="about__card-icon" aria-hidden="true">✦</div>
                 <h3>Our Vision</h3>
-                <p>
+                <p data-cms-bind data-cms-text="global.visionText">
                   A Diocese fully alive in faith — where every Catholic is an
                   active witness of Christ's love, the poor are uplifted, and
                   all people encounter the saving grace of God.
@@ -385,16 +403,25 @@
 
           <!-- Statistics Cards -->
           <!-- TODO: Connect statistics to a live CMS/backend for dynamic data -->
-          <div class="stats-grid reveal-up" aria-label="Diocesan statistics">
-            <div class="stat-card">
+          <div
+            class="stats-grid reveal-up"
+            aria-label="Diocesan statistics"
+            data-cms-repeat="stats.items"
+            data-cms-filter="showOnHome"
+          >
+            <div class="stat-card" data-cms-item>
               <div
                 class="stat-card__number"
                 data-target="153"
                 aria-live="polite"
+                data-cms-fbind
+                data-cms-field="value"
+                data-cms-format="statNumber"
+                data-cms-field-attr-data-target="value"
               >
                 0
               </div>
-              <div class="stat-card__label">Parishes</div>
+              <div class="stat-card__label" data-cms-fbind data-cms-field="label">Parishes</div>
             </div>
             <div class="stat-card">
               <div class="stat-card__number" data-target="9" aria-live="polite">
@@ -468,7 +495,11 @@
 
           <!-- Parish Cards Grid -->
           <!-- TODO: Replace with dynamic data from backend Parish Directory API -->
-          <div class="parishes__grid reveal-up">
+          <div
+            class="parishes__grid reveal-up"
+            data-cms-repeat="parishes.items"
+            data-cms-filter="featured"
+          >
             <!-- Parish Card 1 -->
             <article class="parish-card">
               <!-- TODO: Replace with actual parish photograph -->
@@ -516,12 +547,14 @@
             </article>
 
             <!-- Parish Card 2 -->
-            <article class="parish-card">
+            <article class="parish-card" data-cms-item>
               <!-- TODO: Replace with actual parish photograph -->
               <div
                 class="parish-card__image"
                 role="img"
                 aria-label="St. Mary's Pro-Cathedral, Okigwe"
+                data-cms-fbind
+                data-cms-field-attr-aria-label="name"
               >
                 <div class="img-placeholder">
                   <img
@@ -530,17 +563,26 @@
                     height="468"
                     alt=""
                     loading="lazy"
+                    data-cms-fbind
+                    data-cms-field-attr-src="image"
                   />
                 </div>
+                <div
+                  class="parish-card__badge"
+                  data-cms-fbind
+                  data-cms-field="badge"
+                  hidden
+                ></div>
               </div>
               <div class="parish-card__body">
-                <h3 class="parish-card__name">
+                <h3 class="parish-card__name" data-cms-fbind data-cms-field="name">
                   St. Mary's Pro-Cathedral Parish, Okigwe
                 </h3>
                 <p class="parish-card__location">
-                  <span aria-hidden="true">📍</span> Okigwe, Imo State
+                  <span aria-hidden="true">📍</span>
+                  <span data-cms-fbind data-cms-field="location">Okigwe, Imo State</span>
                 </p>
-                <p class="parish-card__desc">
+                <p class="parish-card__desc" data-cms-fbind data-cms-field="description">
                   St. Mary's Pro-Cathedral serves as the Cathedral seat of the
                   Diocese. It is a centre of worship, formation, and community
                   life at the heart of Okigwe town. The parish is known for its
@@ -706,9 +748,9 @@
           </div>
 
           <!-- TODO: Fetch news articles dynamically from a backend CMS (e.g., WordPress REST API or custom API) -->
-          <div class="news__grid reveal-up">
+          <div class="news__grid reveal-up" data-cms-repeat="news.items">
             <!-- News Card 1 -->
-            <article class="news-card">
+            <article class="news-card" data-cms-item>
               <!-- TODO: Replace with actual event/news featured image -->
               <div
                 class="news-card__image"
@@ -722,19 +764,27 @@
                     height="500"
                     alt="image of the anniversary of the Bishop Amatu"
                     loading="lazy"
+                    data-cms-fbind
+                    data-cms-field-attr-src="image"
                   />
                 </div>
-                <div class="news-card__category">Anniversary</div>
+                <div class="news-card__category" data-cms-fbind data-cms-field="category">Anniversary</div>
               </div>
               <div class="news-card__body">
-                <time class="news-card__date" datetime="2026-04-28"
+                <time
+                  class="news-card__date"
+                  datetime="2026-04-28"
+                  data-cms-fbind
+                  data-cms-field="date"
+                  data-cms-format="dateLong"
+                  data-cms-field-attr-datetime="date"
                   >April 28, 2026</time
                 >
-                <h3 class="news-card__title">
+                <h3 class="news-card__title" data-cms-fbind data-cms-field="title">
                   Bishop Solomon A. Amatu Celebrates his Episcopal Silver
                   Jubilee
                 </h3>
-                <p class="news-card__excerpt">
+                <p class="news-card__excerpt" data-cms-fbind data-cms-field="excerpt">
                   The Catholic Diocese of Okigwe joyfully celebrated the
                   Episcopal Silver Jubilee of her Chief Shepherd, Most Rev.
                   Solomon A. Amatu, marking twenty-five years of faithful and
@@ -945,7 +995,7 @@
             <h2 class="section-title" id="contact-heading">
               Contact <em>the Diocese</em>
             </h2>
-            <p class="section-subtitle">
+            <p class="section-subtitle" data-cms-bind data-cms-text="home.contactSubtitle">
               We would love to hear from you. Reach out to us through any
               channel below.
             </p>
@@ -959,8 +1009,7 @@
                   <div class="contact__icon" aria-hidden="true">✉</div>
                   <div>
                     <strong>Address</strong>
-                    <!-- TODO: Verify and replace with accurate diocesan address -->
-                    <p>
+                    <p data-cms-bind data-cms-text="global.address">
                       Diocesan Catholic Secretariat,<br />Villa Lourdes. Box 99
                       Okigwe,<br />Imo State, <br />
                       Nigeria.
@@ -971,9 +1020,16 @@
                   <div class="contact__icon" aria-hidden="true">✆</div>
                   <div>
                     <strong>Phone</strong>
-                    <!-- TODO: Replace with actual diocesan phone number -->
                     <p>
-                      <a href="tel:+23408133807134">+234 (0) 813 380 7134</a>
+                      <a
+                        href="tel:+2348133807134"
+                        data-cms-bind
+                        data-cms-text="global.phone"
+                        data-cms-format="phoneDisplay"
+                        data-cms-attr-href="global.phone"
+                        data-cms-prefix-href="tel:"
+                        >+234 (0) 813 380 7134</a
+                      >
                     </p>
                   </div>
                 </div>
@@ -981,9 +1037,13 @@
                   <div class="contact__icon" aria-hidden="true">@</div>
                   <div>
                     <strong>Email</strong>
-                    <!-- TODO: Replace with official diocesan email address -->
                     <p>
-                      <a href="mailto:okigwecathdiocese@yahoo.com"
+                      <a
+                        href="mailto:okigwecathdiocese@yahoo.com"
+                        data-cms-bind
+                        data-cms-text="global.email"
+                        data-cms-attr-href="global.email"
+                        data-cms-prefix-href="mailto:"
                         >okigwecathdiocese@yahoo.com</a
                       >
                     </p>
@@ -993,13 +1053,12 @@
                   <div class="contact__icon" aria-hidden="true">◷</div>
                   <div>
                     <strong>Office Hours</strong>
-                    <p>Tuesday & Thursday: 10:00 AM – 2:00 PM</p>
+                    <p data-cms-bind data-cms-text="global.officeHours">Tuesday & Thursday: 10:00 AM – 2:00 PM</p>
                   </div>
                 </div>
               </div>
 
               <!-- Google Maps Embed Placeholder -->
-              <!-- TODO: Replace iframe src with actual Google Maps embed URL for the Diocese -->
               <div
                 class="contact__map"
                 role="region"
@@ -1007,6 +1066,8 @@
               >
                 <div class="map-responsive">
                   <iframe
+                    data-cms-bind
+                    data-cms-attr-src="global.mapEmbedUrl"
                     src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d54442.37874117783!2d7.3265770949301325!3d5.814924017191559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sokigwe%20diocese%20cathedral!5e0!3m2!1sen!2sng!4v1780441883398!5m2!1sen!2sng"
                     title="Catholic Diocese of Okigwe location map"
                     loading="lazy"
@@ -1158,6 +1219,8 @@
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
             <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
               src="images/logo-transperent.png"
               width="200"
               height="208"
@@ -1166,7 +1229,7 @@
             />
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -1179,6 +1242,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -1241,15 +1306,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -1282,5 +1361,13 @@
     </button>
 
     <script src="script.js"></script>
+    <script src="js/cms.js"></script>
+    <script>
+      document.addEventListener("cms:data:events", function (e) {
+        if (e.detail && Array.isArray(e.detail.items) && e.detail.items.length) {
+          renderUpcomingEvents(e.detail.items);
+        }
+      });
+    </script>
   </body>
 </html>

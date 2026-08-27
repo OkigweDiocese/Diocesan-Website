@@ -236,7 +236,7 @@
     </style>
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,returned-schools">
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -249,7 +249,15 @@
           >
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
-              <img src="../images/logo-transperent.png" width="200" height="208" alt="" />
+              <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
+                src="../images/logo-transperent.png"
+                width="200"
+                height="208"
+                alt=""
+              />
             </div>
             <div class="navbar__title">
               <span class="navbar__title--main">CATHOLIC DIOCESE</span>
@@ -359,7 +367,7 @@
             <span>Returned Schools</span>
           </nav>
           <h1 class="page-hero__title">Returned <em>Schools</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="returned-schools.returnedSchoolsHeroSubtitle">
             Mission schools once founded by the Church, and now restored to her care and management.
           </p>
         </div>
@@ -446,10 +454,19 @@
         <div class="footer__brand">
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
-            <img src="../images/logo-transperent.png" width="200" height="208" alt="Diocesan Logo" loading="lazy">
+            <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
+              src="../images/logo-transperent.png"
+              width="200"
+              height="208"
+              alt="Diocesan Logo"
+              loading="lazy"
+            >
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -462,6 +479,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -495,15 +514,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -537,7 +570,7 @@
        editing required.
        ============================================================ */
 
-      const RETURNED_SCHOOLS = [
+      let RETURNED_SCHOOLS = [
         {
           name: "St. Dominic's Secondary School, Ugiri",
           managers: ["Rev. Fr. Finbarr Chukwu (Administrator)"],
@@ -627,6 +660,14 @@
       });
 
       renderSchools(RETURNED_SCHOOLS);
+
+      document.addEventListener("cms:data:returned-schools", function (e) {
+        if (e.detail && Array.isArray(e.detail.items) && e.detail.items.length) {
+          RETURNED_SCHOOLS = e.detail.items;
+          renderSchools(RETURNED_SCHOOLS);
+        }
+      });
     </script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

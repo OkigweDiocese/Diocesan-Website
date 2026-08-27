@@ -1,0 +1,21 @@
+{
+  "pressHeroTitle": "Diocesan Press",
+  "pressHeroSubtitle": "Supporting the mission of evangelization through publishing, printing, and communications.",
+  "pressOffice": {
+    "name": "Sage News Paper and Immaculata Printing Press",
+    "description": "The Diocese's printing and publishing outfit, producing bulletins, catechetical materials, printable works, and other publications in support of the Church's mission.",
+    "contact": "09121879518",
+    "staff": [
+      {
+        "role": "Editor/Director",
+        "name": "Rev. Fr. Bright Oformezie",
+        "contact": "0813 501 4751"
+      },
+      {
+        "role": "Assistant",
+        "name": "Rev. Fr. Henry Amadiobi",
+        "contact": "0706 637 9462"
+      }
+    ]
+  }
+}

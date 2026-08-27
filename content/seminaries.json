@@ -1,0 +1,67 @@
+{
+  "seminariesHeroTitle": "Our Seminaries",
+  "seminariesHeroSubtitle": "Forming men of faith and character for a life of priestly service to God and His people.",
+  "items": [
+    {
+      "name": "St. Thomas Aquinas Seminary, Ihitte",
+      "location": "Ihitte Uboma, Imo State",
+      "description": "Our junior secondary school where students receive spiritual, academic, and human formation in preparation for a life of service in the Church and the society.",
+      "staff": [
+        {
+          "role": "Rector",
+          "name": "Rev. Fr. Mark Okocha",
+          "contact": "0803 504 1197"
+        },
+        {
+          "role": "Vice Rector",
+          "name": "Rev. Fr. Stephen Okoro",
+          "contact": "0703 819 0042"
+        },
+        {
+          "role": "In Residence",
+          "name": "Msgr. Gregory Ohagwu",
+          "contact": "-"
+        }
+      ]
+    },
+    {
+      "name": "St. Peter's Seminary, Okigwe",
+      "location": "Okigwe, Imo State",
+      "description": "Our senior secondary school/Minor Seminary where students receive spiritual, academic, and human formation in preparation for a life of service in the Church and the society.",
+      "staff": [
+        {
+          "role": "Rector",
+          "name": "Rev. Fr. Justin Nwokeocha",
+          "contact": "0903 268 1698"
+        },
+        {
+          "role": "Vice Rector",
+          "name": "Rev. Fr. Augustine Ezeonyiwara",
+          "contact": "0806 858 7915"
+        },
+        {
+          "role": "Vice Rector",
+          "name": "Rev. Fr. Augustine Umeibe",
+          "contact": "0816 624 2783"
+        }
+      ]
+    },
+    {
+      "name": "St. Charles Borromeo Spiritual Year Seminary",
+      "location": "Ehime Mbano, Imo State",
+      "description": "Our Spiritual Year Seminary where aspirants to the priesthood receive spiritual, academic, and human formation in preparation for a life of service in the Church.",
+      "staff": [
+        {
+          "role": "Rector",
+          "name": "Rev. Fr. Vitalis Ekemiri",
+          "contact": "0803 307 6393"
+        },
+        {
+          "role": "Vice Rector",
+          "name": "Rev. Fr. Vitus Ohagwu",
+          "contact": "0703 431 8354"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "functionariesHeroTitle": "Diocesan Functionaries",
+  "functionariesHeroSubtitle": "A tribute to the priests, deacons, and faithful who have served the Catholic Diocese of Okigwe in official leadership roles — building and governing the local Church with dedication and fidelity.",
+  "chancellors": [
+    {
+      "photo": "images/msgr_patrick_obike.jpg",
+      "name": "Very Rev. Msgr. Patrick Obike",
+      "years": "1981 – 1982",
+      "deceased": true
+    },
+    {
+      "photo": "",
+      "name": "Very Rev. Fr. Oliver Chanama",
+      "years": "1982 – 1985",
+      "deceased": false
+    },
+    {
+      "photo": "",
+      "name": "Very Rev. Fr. Patrick Ikekamma",
+      "years": "1985 – 1988",
+      "deceased": true
+    },
+    {
+      "photo": "images/fr_charles_okorougo.jpg",
+      "name": "Very Rev. Fr. Charles Okorougo",
+      "years": "1988 – 1996",
+      "deceased": false
+    },
+    {
+      "photo": "",
+      "name": "Very Rev. Fr. Dr. Reginald Ejikeme",
+      "years": "1996 – 1998",
+      "deceased": false
+    },
+    {
+      "photo": "",
+      "name": "Very Rev. Fr. Dr. Patrick Ikekamma",
+      "years": "1998 – 2003",
+      "deceased": true
+    },
+    {
+      "photo": "",
+      "name": "Very Rev. Fr. Dr. Patrick Ugwaka",
+      "years": "2003 – 2006",
+      "deceased": false
+    },
+    {
+      "photo": "images/msgr_simon_anyanwu.jpg",
+      "name": "Very Rev. Fr. (Prof.) Simon O. Anyanwu",
+      "years": "2006 – 2018",
+      "deceased": false
+    },
+    {
+      "photo": "images/fr_chibuike_okeagu.jpg",
+      "name": "Very Rev. Fr. Chibuike Okeagu",
+      "years": "2018 – 2023",
+      "deceased": false
+    },
+    {
+      "photo": "images/fr_princewill_iwuanyanwu.jpg",
+      "name": "Very Rev. Fr. Princewill Iwuanyanwu",
+      "years": "2023 – 2025",
+      "deceased": false
+    },
+    {
+      "photo": "images/fr_samuel_okoli.jpg",
+      "name": "Very Rev. Fr. Samuel Obinnaya Okoli",
+      "years": "2025 – Present",
+      "deceased": false
+    }
+  ],
+  "financialAdministrators": [
+    {
+      "photo": "images/fr_livinus_iroh.jpg",
+      "name": "Rev. Fr. Livinus Iroh",
+      "years": "2025 – Present"
+    }
+  ]
+}

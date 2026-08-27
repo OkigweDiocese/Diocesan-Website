@@ -400,7 +400,7 @@
 
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,priests">
     <!-- ============================================================
        HEADER & NAVBAR
        ============================================================ -->
@@ -416,6 +416,9 @@
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
               <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
                 src="../images/logo-transperent.png"
                 width="200"
                 height="208"
@@ -536,7 +539,7 @@
             <span>Priests</span>
           </nav>
           <h1 class="page-hero__title">Priests <em>in Active Ministry</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="priests.priestsHeroSubtitle">
             Meet the priests currently serving the Catholic Diocese of Okigwe in
             parishes, schools, diocesan ministries and in diaspora.
           </p>
@@ -554,8 +557,8 @@
           >
             <span class="info-banner__cross" aria-hidden="true">✝</span>
             <div class="info-banner__text">
-              <h3>Labourers in the Lord's Vineyard</h3>
-              <p>
+              <h3 data-cms-bind data-cms-text="priests.priestsBannerTitle">Labourers in the Lord's Vineyard</h3>
+              <p data-cms-bind data-cms-text="priests.priestsBannerQuote">
                 "The harvest is plentiful, but the labourers are few; pray
                 therefore the Lord of the harvest to send out labourers into his
                 harvest." — Luke 10:2
@@ -742,6 +745,9 @@
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
             <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
               src="../images/logo-transperent.png"
               width="200"
               height="208"
@@ -750,7 +756,7 @@
             />
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -763,6 +769,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -825,15 +833,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -878,7 +900,7 @@
        Date format: DD/MM/YY or DD/MM/YYYY. Use "—" for unknown dates.
        ============================================================ */
 
-      const PRIESTS = [
+      let PRIESTS = [
         {
           name: "Most Rev. Solomon A. Amatu",
           ordination: "07/10/78",
@@ -3590,5 +3612,16 @@
       filteredData = [...PRIESTS];
       renderTable();
     </script>
+    <script>
+      document.addEventListener("cms:data:priests", function (e) {
+        if (e.detail && Array.isArray(e.detail.items) && e.detail.items.length) {
+          PRIESTS = e.detail.items;
+          filteredData = [...PRIESTS];
+          currentPage = 1;
+          renderTable();
+        }
+      });
+    </script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

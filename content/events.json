@@ -1,0 +1,53 @@
+{
+  "items": [
+    {
+      "date": "2026-08-20",
+      "time": "10:00 AM",
+      "event": "One Year Anniversary Mass of the Death of Frs. Vincent Ogu and Felix Ikpatusi",
+      "location": "St. Mary's Pro-Cathedral, Okigwe",
+      "title": "Death Anniversary"
+    },
+    {
+      "date": "2026-08-15",
+      "time": "10:00 AM",
+      "event": "Family Day Celebration",
+      "location": "Immaculate Conception Cathedral Podium, Okigwe",
+      "title": "Human Life Commission"
+    },
+    {
+      "date": "2026-08-29",
+      "time": "10:00 AM",
+      "event": "Catechists' Day Ceremony",
+      "location": "St. Thomas Aquinas Seminary, Ihitte",
+      "title": "Catechists"
+    },
+    {
+      "date": "2026-09-18",
+      "time": "10:00 AM",
+      "event": "Okigwe Diocesan Priestly Ordination",
+      "location": "Immaculate Conception Cathedral, Okigwe",
+      "title": "Ordination"
+    },
+    {
+      "date": "2026-09-23",
+      "time": "10:00 AM",
+      "event": "Okigwe Diocesan Plenary Meeting",
+      "location": "Bishop Anthony Okezie Ilonu Memorial Retreat Center, Okigwe",
+      "title": "Priests' Plenary"
+    },
+    {
+      "date": "2026-10-15",
+      "time": "10:00 AM",
+      "event": "2nd Theological Conference for the Year, 2026",
+      "location": "Bishop Anthony Okezie Ilonu Memorial Retreat Center, Okigwe",
+      "title": "Theological Conference"
+    },
+    {
+      "date": "2026-10-03",
+      "time": "10:00 AM",
+      "event": "Holy Childhood Celebration",
+      "location": "Immaculate Conception Cathedral, Okigwe",
+      "title": "Holy Childhood"
+    }
+  ]
+}

@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="../style.css" />
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,press">
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -56,6 +56,9 @@
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
               <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
                 src="../images/logo-transperent.png"
                 width="200"
                 height="208"
@@ -172,7 +175,7 @@
             <span>Press</span>
           </nav>
           <h1 class="page-hero__title">Diocesan <em>Press</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="press.pressHeroSubtitle">
             Supporting the mission of evangelization through publishing,
             printing, and communications.
           </p>
@@ -210,28 +213,26 @@
               </div>
             </div>
             <div class="institution-card__body">
-              <h3 class="institution-card__name">
+              <h3 class="institution-card__name" data-cms-bind data-cms-text="press.pressOffice.name">
                 Sage News Paper and Immaculata Printing Press
               </h3>
 
-              <p class="institution-card__desc">
+              <p class="institution-card__desc" data-cms-bind data-cms-text="press.pressOffice.description">
                 The Diocese's printing and publishing outfit, producing
                 bulletins, catechetical materials, printable works, and other
                 publications in support of the Church's mission.
               </p>
-              <!-- TODO: Replace with verified Press contact details -->
-              <p>Contact: 09121879518</p>
+              <p>Contact: <span data-cms-bind data-cms-text="press.pressOffice.contact">09121879518</span></p>
               <div class="institution-card__staff">
                 <p class="institution-card__staff-title">Leadership</p>
-                <div class="institution-card__staff-list">
-                  <div class="institution-card__staff-item">
-                    <p class="institution-card__staff-role">Editor/Director</p>
-                    <p class="institution-card__staff-name">
+                <div class="institution-card__staff-list" data-cms-repeat="press.pressOffice.staff">
+                  <div class="institution-card__staff-item" data-cms-item>
+                    <p class="institution-card__staff-role" data-cms-fbind data-cms-field="role">Editor/Director</p>
+                    <p class="institution-card__staff-name" data-cms-fbind data-cms-field="name">
                       Rev. Fr. Bright Oformezie
                     </p>
-                    <!-- TODO: Add personal contact -->
                     <p class="institution-card__staff-contact">
-                      Contact: 0813 501 4751
+                      Contact: <span data-cms-fbind data-cms-field="contact">0813 501 4751</span>
                     </p>
                   </div>
                   <div class="institution-card__staff-item">
@@ -239,7 +240,6 @@
                     <p class="institution-card__staff-name">
                       Rev. Fr. Henry Amadiobi
                     </p>
-                    <!-- TODO: Add personal contact -->
                     <p class="institution-card__staff-contact">
                       Contact: 0706 637 9462
                     </p>
@@ -266,6 +266,9 @@
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
             <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
               src="../images/logo-transperent.png"
               width="200"
               height="208"
@@ -274,7 +277,7 @@
             />
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -287,6 +290,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -320,15 +325,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -351,5 +370,6 @@
       ↑
     </button>
     <script src="../script.js"></script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

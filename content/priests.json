@@ -1,0 +1,2748 @@
+{
+    "priestsHeroTitle":  "Priests in Active Ministry",
+    "priestsHeroSubtitle":  "Meet the priests currently serving the Catholic Diocese of Okigwe in parishes, schools, diocesan ministries and in diaspora.",
+    "priestsBannerTitle":  "Labourers in the Lord\u0027s Vineyard",
+    "priestsBannerQuote":  "\"The harvest is plentiful, but the labourers are few; pray therefore the Lord of the harvest to send out labourers into his harvest.\" — Luke 10:2",
+    "items":  [
+                  {
+                      "name":  "Most Rev. Solomon A. Amatu",
+                      "ordination":  "07/10/78",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Msgr. Francis Nwachukwu",
+                      "ordination":  "11/12/66",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Msgr. Celestine Nwokocha",
+                      "ordination":  "16/12/66",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kevin Madu",
+                      "ordination":  "09/04/72",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Msgr. Gregory Ohagwu",
+                      "ordination":  "29/04/73",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Msgr. Wilfred Nwoke",
+                      "ordination":  "05/05/73",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Edwin Njoku",
+                      "ordination":  "20/04/74",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Msgr. Simon O. Anyanwu",
+                      "ordination":  "24/04/76",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Osuji",
+                      "ordination":  "16/04/77",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cletus Madu",
+                      "ordination":  "01/07/78",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Felix Okonkwo",
+                      "ordination":  "08/07/78",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Robert Michael Chukwu",
+                      "ordination":  "09/12/78",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. William Onu",
+                      "ordination":  "08/07/79",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Oliver Chanama",
+                      "ordination":  "05/07/80",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christopher Chukwu",
+                      "ordination":  "07/07/80",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Edwin Nwachukwu",
+                      "ordination":  "12/07/80",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Diochi",
+                      "ordination":  "26/07/80",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Reginald Nnamdi",
+                      "ordination":  "08/07/81",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ngozi Ignatius Osuji",
+                      "ordination":  "11/07/81",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Fidelis Ekemgba",
+                      "ordination":  "18/07/81",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jerome Okonkwo",
+                      "ordination":  "08/11/81",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Marcellinus Uwandu",
+                      "ordination":  "14/02/82",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyprian Onyeihe",
+                      "ordination":  "14/02/82",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Oliver Nwachukwu",
+                      "ordination":  "14/02/82",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bernard Iheoha",
+                      "ordination":  "14/02/82",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Msgr. John C. Iwe",
+                      "ordination":  "14/08/82",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Martin Onyebuchi",
+                      "ordination":  "02/07/83",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Eboh",
+                      "ordination":  "02/07/83",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Linus Lwuanyanwu",
+                      "ordination":  "09/07/83",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Donatus Ekenachi",
+                      "ordination":  "15/07/83",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Msgr. Cyriacus Uzoma",
+                      "ordination":  "16/07/83",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Oliver Mbagwu",
+                      "ordination":  "07/07/84",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Athanatius Owunna",
+                      "ordination":  "07/07/84",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Desmond Obi",
+                      "ordination":  "14/07/84",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Maurice Jiwike",
+                      "ordination":  "21/07/84",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Msgr. Jeremiah Ofoegbu",
+                      "ordination":  "21/07/84",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Msgr. Cletus Ehiem",
+                      "ordination":  "08/12/84",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Josephat Nwankwo",
+                      "ordination":  "08/12/84",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Sebastian Onyeabor",
+                      "ordination":  "23/08/85",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bernard Okafor",
+                      "ordination":  "21/09/85",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Hilary Ihedioha",
+                      "ordination":  "05/10/85",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Clement Uche",
+                      "ordination":  "20/09/86",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cajetan Ehiem",
+                      "ordination":  "21/06/87",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Okorougo",
+                      "ordination":  "01/08/87",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Lawrence Chukwu",
+                      "ordination":  "22/08/87",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyril Nwakamma",
+                      "ordination":  "09/01/88",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ephraim Nwachukwu",
+                      "ordination":  "09/01/88",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christopher Ogu",
+                      "ordination":  "09/01/88",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyriacus Ajaelu",
+                      "ordination":  "10/01/88",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Ukwu",
+                      "ordination":  "23/01/88",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Samuel Onwuchekwe",
+                      "ordination":  "10/12/88",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John Enyinnaya",
+                      "ordination":  "04/08/89",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Nathaniel Okafor",
+                      "ordination":  "07/10/89",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Evaristus Ekweke",
+                      "ordination":  "07/10/89",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Chukwu",
+                      "ordination":  "18/08/90",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Romanus Otuonye",
+                      "ordination":  "24/02/91",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Raymond Iwuji",
+                      "ordination":  "27/07/91",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Isidore Nwanaju",
+                      "ordination":  "03/08/91",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kenneth Ekeugo",
+                      "ordination":  "10/08/91",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Sabinus Nwachukwu",
+                      "ordination":  "17/08/91",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Nwoha",
+                      "ordination":  "31/08/91",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ozioma Nwachukwu",
+                      "ordination":  "14/06/92",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John Ify Okoro",
+                      "ordination":  "17/04/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Nwohiri",
+                      "ordination":  "24/07/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Tobias Okoro",
+                      "ordination":  "30/07/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Patrick Iwuchukwu",
+                      "ordination":  "31/07/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ignatius Ijere",
+                      "ordination":  "31/07/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jacob Okafor",
+                      "ordination":  "07/08/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kilian U. Maduka",
+                      "ordination":  "14/08/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Chinaka",
+                      "ordination":  "21/08/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Fidelis Lemchi",
+                      "ordination":  "21/08/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Iwuagwu",
+                      "ordination":  "03/09/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Vitalis Abiamiri",
+                      "ordination":  "03/09/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kenneth Obiekwe",
+                      "ordination":  "18/09/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Ogoke",
+                      "ordination":  "24/12/93",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bede Nwadinobi",
+                      "ordination":  "22/07/94",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Agbayi",
+                      "ordination":  "05/08/94",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Nwaeze",
+                      "ordination":  "20/08/94",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Peter Anyanwu",
+                      "ordination":  "02/09/94",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. George Okoro",
+                      "ordination":  "02/09/94",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Roberto M. Ike",
+                      "ordination":  "10/09/94",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Benedict Ejeh",
+                      "ordination":  "19/11/94",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyprian Okoronkwo",
+                      "ordination":  "25/02/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Patrick Ugwaka",
+                      "ordination":  "25/02/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John C. Okoro",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jude Igwe",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Reginald Ejikeme",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kenneth Chukwu",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Louis Nwokeafor",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Vincent Amusuo",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bede Inekwere",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Iromenu",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Eze",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kenneth Kurumeh",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Patrick Okoro",
+                      "ordination":  "09/09/95",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John Ekeogu",
+                      "ordination":  "20/07/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cajetan Ebuziem",
+                      "ordination":  "27/07/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Ohanete",
+                      "ordination":  "03/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Onyenagada",
+                      "ordination":  "09/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Damian Ikejiama",
+                      "ordination":  "10/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Obiji",
+                      "ordination":  "15/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kenneth Okpara",
+                      "ordination":  "16/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Nwachukwu",
+                      "ordination":  "17/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Onyedikachi Agoawike",
+                      "ordination":  "17/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Donatus Ihekwoaba",
+                      "ordination":  "23/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Simon Udemgba",
+                      "ordination":  "24/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Callistus Ogu",
+                      "ordination":  "31/08/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cletus Okoye",
+                      "ordination":  "06/09/96",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paschal Nnadozie",
+                      "ordination":  "05/07/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Modestus Adimekwe",
+                      "ordination":  "19/07/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Chimaka",
+                      "ordination":  "19/07/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Hippolytus Duru",
+                      "ordination":  "26/07/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Rowland Nwokocha",
+                      "ordination":  "02/08/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Abiamiri",
+                      "ordination":  "02/08/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Jiwuba",
+                      "ordination":  "06/08/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Odoeme",
+                      "ordination":  "08/08/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Daniel Ukaegbu",
+                      "ordination":  "15/08/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Nwosu A.",
+                      "ordination":  "16/08/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Uchendu",
+                      "ordination":  "23/08/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Temple Okoro",
+                      "ordination":  "30/08/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Uzoma G. Aligwekwe",
+                      "ordination":  "13/09/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyriacus Onyenucheya",
+                      "ordination":  "13/09/97",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Nwosu",
+                      "ordination":  "11/07/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bonaventure Ukeh",
+                      "ordination":  "24/07/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bartholomew Ibe",
+                      "ordination":  "31/07/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Julian Ibemere",
+                      "ordination":  "06/08/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jasper Onugha",
+                      "ordination":  "06/08/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Nicholas Nwagwu",
+                      "ordination":  "07/08/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Chukwu",
+                      "ordination":  "14/08/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Andrew Okeke",
+                      "ordination":  "04/09/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ambrose Alisa",
+                      "ordination":  "04/09/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Geoffrey Eboh",
+                      "ordination":  "05/09/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Sabinus Iweadighi",
+                      "ordination":  "05/09/98",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John Agim",
+                      "ordination":  "24/07/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emeka Emeakaraoha",
+                      "ordination":  "24/07/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Nwosu",
+                      "ordination":  "24/07/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Vitalis Ekemiri",
+                      "ordination":  "31/07/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jude Ogoke",
+                      "ordination":  "31/07/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Patrick Orji",
+                      "ordination":  "07/08/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Ogujiofor",
+                      "ordination":  "07/08/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Isaac Ogu",
+                      "ordination":  "14/08/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Alphonsus Iwuji",
+                      "ordination":  "21/08/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chukwuemeka Okafor",
+                      "ordination":  "28/08/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Nwokocha",
+                      "ordination":  "28/08/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Okoro",
+                      "ordination":  "03/09/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Lawrence Ejiofo",
+                      "ordination":  "18/12/99",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Matthew Anyanwu",
+                      "ordination":  "29/07/00",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Peter Onyema",
+                      "ordination":  "04/08/00",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Martin Osorobi",
+                      "ordination":  "04/08/00",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Okoli",
+                      "ordination":  "11/08/00",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Nwaigwe",
+                      "ordination":  "18/08/00",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Sylvester Ihebuike",
+                      "ordination":  "18/08/00",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Martin Uwakwe",
+                      "ordination":  "19/08/00",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyprian Ukanwa",
+                      "ordination":  "19/08/00",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kevin Okpala",
+                      "ordination":  "26/08/00",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Ebo",
+                      "ordination":  "21/07/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Thaddeus I. Okafor",
+                      "ordination":  "27/07/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Saviour Nwaiwu",
+                      "ordination":  "28/07/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gabriel Uzondu",
+                      "ordination":  "28/07/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Boniface Osuafor",
+                      "ordination":  "04/08/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Isidore Ochiabuto",
+                      "ordination":  "04/08/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Benjamin Nwosu",
+                      "ordination":  "10/08/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Leonard Lemchi",
+                      "ordination":  "15/08/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Isidore Orjikwe",
+                      "ordination":  "18/08/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Uchenwa",
+                      "ordination":  "18/08/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Mark Nnopu",
+                      "ordination":  "25/08/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Umeora",
+                      "ordination":  "25/08/01",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Alphonsus Onu",
+                      "ordination":  "20/07/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bartholomew Nnaemedo",
+                      "ordination":  "02/08/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chidubem Nwachukwu",
+                      "ordination":  "08/08/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Callistus Okoroji",
+                      "ordination":  "08/08/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Felix Edomobi",
+                      "ordination":  "15/08/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joachim Lechukwu",
+                      "ordination":  "17/08/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Daniel Nnawulezi",
+                      "ordination":  "23/08/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stephen Ubah",
+                      "ordination":  "23/08/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Okereke",
+                      "ordination":  "31/08/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Innocent Ukaegbu",
+                      "ordination":  "05/09/02",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paulinus Anyanwu",
+                      "ordination":  "05/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Onwu",
+                      "ordination":  "05/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Eustace Abazie",
+                      "ordination":  "05/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Lawrence Eze",
+                      "ordination":  "05/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Alphonsus Ngwaogu",
+                      "ordination":  "06/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Umeobika",
+                      "ordination":  "12/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Elesius Uju",
+                      "ordination":  "12/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Valentine Njoku",
+                      "ordination":  "12/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Simon Osuchukwu",
+                      "ordination":  "13/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Opara",
+                      "ordination":  "13/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Ikeh",
+                      "ordination":  "20/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Angelo Unegbu",
+                      "ordination":  "20/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paschal Ukaegbu",
+                      "ordination":  "20/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kenneth Nwosu",
+                      "ordination":  "22/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyprian Osuegbu",
+                      "ordination":  "22/12/03",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Patrick Obeleagu",
+                      "ordination":  "20/08/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Albert Ezeanya",
+                      "ordination":  "02/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Louis Agim",
+                      "ordination":  "09/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Culbert Okeke",
+                      "ordination":  "09/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Onwu",
+                      "ordination":  "09/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanley Ofoegbu",
+                      "ordination":  "10/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Offor",
+                      "ordination":  "17/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gregory Ihezie",
+                      "ordination":  "21/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gabriel Offor",
+                      "ordination":  "28/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chales Osunwa",
+                      "ordination":  "29/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Vitus Echedo",
+                      "ordination":  "29/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Eugene Ucheoma",
+                      "ordination":  "30/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Alexander Onyemata",
+                      "ordination":  "30/09/05",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Daniel Odoh",
+                      "ordination":  "08/07/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Innocent Okenagba",
+                      "ordination":  "02/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Ekwonwune",
+                      "ordination":  "02/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Thaddeus Odueze",
+                      "ordination":  "02/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paschal Ihediohamma",
+                      "ordination":  "02/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gregory Osuji",
+                      "ordination":  "02/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Ihemeneke",
+                      "ordination":  "02/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyriacus Nwaka",
+                      "ordination":  "02/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Mark Okoro",
+                      "ordination":  "02/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jude Okonkwo",
+                      "ordination":  "09/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Camillus Ekedobe",
+                      "ordination":  "16/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Nwokenkwo",
+                      "ordination":  "16/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Innocent Agoha",
+                      "ordination":  "16/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Uwah",
+                      "ordination":  "16/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kenneth Osuchukwu",
+                      "ordination":  "16/09/06",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Ohuabunwa",
+                      "ordination":  "11/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Mbara",
+                      "ordination":  "11/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Edwin Ewuzie",
+                      "ordination":  "11/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Augustine Odoemena",
+                      "ordination":  "11/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Innocent Madu",
+                      "ordination":  "12/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Patrick Okeke",
+                      "ordination":  "17/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kenneth Okoroudo",
+                      "ordination":  "17/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Felix Ekemgba",
+                      "ordination":  "30/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bartholomew Okorie",
+                      "ordination":  "30/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kingsley Uzor",
+                      "ordination":  "30/08/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Ejiofor",
+                      "ordination":  "11/09/07",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chukwuma C. Chukwuma",
+                      "ordination":  "16/08/08",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Justin C. Nwokeocha",
+                      "ordination":  "16/08/08",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Vincent I. Emezue",
+                      "ordination":  "16/08/08",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyriacus Okereke",
+                      "ordination":  "16/08/08",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Uzoagba",
+                      "ordination":  "16/08/08",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Henry O. Ukaegbu",
+                      "ordination":  "23/08/08",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gerald C. Osuagwu",
+                      "ordination":  "23/08/08",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Godwin O. Okoye",
+                      "ordination":  "30/08/08",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph U. Duru",
+                      "ordination":  "15/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Patrick Njoku. Njoku",
+                      "ordination":  "15/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Daniel Kelechi Ibemere",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Leonard S. Ewuzie",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph A. Ogbuagu",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Thankgod E. Okoroafor",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kelechi M. Uzuegbu",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyril C. Agodi",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Damian Iwundu",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Henry Ezeonuogu",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Innocent Obasi",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gregory Nduka",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Romanus Okoli",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Basil Onyejuruwa",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Anumnu",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Nwankwo",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Godwin Eke",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jude Okeoma",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ambrose Kela",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Hilary Ubah",
+                      "ordination":  "22/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Dieme",
+                      "ordination":  "30/08/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John Ifebigbo",
+                      "ordination":  "05/09/09",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Augustine Obilor",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Okoro U.",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Peter Ekwebelem",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cyriacus Okoro",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ephraim Nwohiri",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Fitzgerald Nwadike",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Okoro C.",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Donald Obi",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Richard Nwagwu",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Ogu",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Uchendu",
+                      "ordination":  "21/08/10",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Ukomadu",
+                      "ordination":  "09/07/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Onwuegbuchulam",
+                      "ordination":  "09/07/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kingsley Nwanwa",
+                      "ordination":  "09/07/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Augustine Okeke",
+                      "ordination":  "20/08/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Lucius Kwekwe",
+                      "ordination":  "27/08/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Maximilian Chilaka",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Elias Nwodu",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanley Ibeh",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Esiagu",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Macdonald U. Ibe",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Peter IK. Ibe",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Augustine Eziefule",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. James Onyenani",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Egwuekwe",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Ukachukwu",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John Ukaha",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Uzoma Chukwu",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Innocent Okoronkwo",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kingsley Nwankwo",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Livinus Iroh",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Canice Ofoegbu",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Evans Igbudu",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Justus Oruh",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jonas Uwaezuoke",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Colman Nwokoro",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Daniel Abazie",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paschal Onyemelusi",
+                      "ordination":  "24/09/11",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bernard Chukwuma",
+                      "ordination":  "16/07/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Thaddeus Nnebedum",
+                      "ordination":  "16/07/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anyanwu Columbus",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Eziefule",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Valentine Ezisi",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christopher Iloha",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jude Kingsley Maduka",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paschal Ndukwu",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Johnbosco Ikeji",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanislaus Ogu",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Valentine Ojiegbe",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Okafor",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Celestine Okezie",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Vincent Okpara",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Andrew Ononiwu",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John Onwumere",
+                      "ordination":  "22/09/12",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Anabi",
+                      "ordination":  "18/05/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Raphael Nzekwe",
+                      "ordination":  "18/05/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stephen Iheakandu",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Moses Ezeji",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cosmas Onuegbu",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gregory Ugwunwanne",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chibulke N. Okeagu",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Adolphus Ofokpara",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Nwachukwu",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Precious Osuji",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Franklin Okoro",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Leonard Nwosu",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanley Nnedu",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Marcel Obasi",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Innocent Chukwunyere",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ikedi Obikonu",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Ukaegbu",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chidiebere Obiodu",
+                      "ordination":  "26/09/13",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Samuel Igwe",
+                      "ordination":  "26/07/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Vincent Onwukwe",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Awah",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Reginald Uzoho",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Iroka",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Obioha",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Madubuike",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Linus Oforma",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Henry Obi",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Raphael Madu",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Nwordu",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Callistus Ogu",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Benneth Ike",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Eric-Davis Muoneke",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Onyeihe",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paulinus Okwuolise",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Theophilus Okafor",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Azubuike",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Nwagwu",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kevin Ohalete",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Callistus Zulike",
+                      "ordination":  "27/09/14",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Magnus Nwankwo",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Ikem",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanley Alajemba",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanley Mmadubuike",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Henry Ofojindu",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Collins Okoro",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. James Okoronkwo",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christogonus Uzoigwe",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chrisantus Onuoha",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Louis Uwaezuoke",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. James Anyanwu",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Finbarr Chukwu",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Ekeoma",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gerald Ibeawuchi",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kingsley Maduka",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Marcellinus Nwoda",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Obi",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ambrose Onuoha",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Omegara",
+                      "ordination":  "26/09/15",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Desmond Uzor",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Umeh",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ignatius Namodo",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Isaac Eleweke",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Victor Onyebuchi",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Princewill Iwuanyanwu",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Remigius Emedobi",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chukwuemeka Ejiogu",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kenneth Opara",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Godwin Oba",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Udeabam",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Patrick Nwoha",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christopher Okoli",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Onozie",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Samson Okonkwo",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Oliver Okeka",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Austin Uchegbu",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Herbert Ekpe",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Eze",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Moses Okeke",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gregory Chilekezie",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Remigius Ogu",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kingsley Ijeoma",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Chukwujike",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Okafor",
+                      "ordination":  "24/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Samuel Okereke",
+                      "ordination":  "28/09/16",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Nwankwo George",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Basil Ajaero",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Adolphus Amaechi",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Boniface Edomobi",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Raymond Egwim",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Eke",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Ekejiuba",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kingsley Eze",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kennedy Ibe",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Alexander Ibezim",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kingsley Ibezim",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Donatus Iwu",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Modestus Nwanyanwu",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chidiebere Obi",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Obialor",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Magnus Oguama",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Johnpaul Ogueri",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Onuh",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chimezie Onwuzurike",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Charles Onyekwere",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bruno Songonye",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Okenna Ugwuibe",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Peter Okolie",
+                      "ordination":  "30/09/17",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Dennis Eze",
+                      "ordination":  "05/04/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Ikeka",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cornelius Nwoye",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Osigwe",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Basil Ozor",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Edward Onwueme",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Nnaji",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Policarp Ndu",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Martin Ohazurike",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Omekara",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ignatius Ihejirika",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Athanasius Agbawo",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Patrick Uchego",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Thaddeus Obasi",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Johnpaul Igbo",
+                      "ordination":  "22/09/18",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Theodore Nwaigbe",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Canice Amajuoyi",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Lucian Chilagorom",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Callistus Chimezie",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Henry Egbe",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Augustine Ezeonyiwara",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Celestine Ibeawuchi",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Modestus Ikwuegbu",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Iwuagwu",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bede Ndubuisi",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joseph Obijiofor",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ben-Nicholas Obike",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ernest Odoh",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Ohageria",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paschal Okafor",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Livinus Okereke",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanislaus I. Onwuka",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Victor C. Onyenanu",
+                      "ordination":  "21/09/19",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Okafor",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Nelson Agwuncha",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Ajomiwe",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kingsley Eboh",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Jude Ireonu",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Augustine Nwachukwu",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John Okafor",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. David Okolie",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Nelson Uche",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chibuike C. Uwakwe",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Mark Okocha",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Ihezie",
+                      "ordination":  "26/09/20",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Callistus Ude",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Princewill Agbarakwe",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Lawrence Agu",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kizito Ajonuma",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Asika",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Asomugha",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Martin Ekeawuotu",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Igbokwe",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanley Ike",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanley Iwu",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Ambrose Iwuagwu",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Eustace Kekeocha",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Franklin Lebechi",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Longinus Madu",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. George Nwadike",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Samuel Obiefule",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stephen Ohanele",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Onuoha",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Joshua Orji",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Fidelis Osuagwu",
+                      "ordination":  "18/09/21",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Kingsley Nwanonaku",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Chamberlain Anyanele",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paschal Atunalu",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Gerald Awah",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Sabinus Ebi",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paul Ekeocha",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Donatus Eze",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Nicholas Ibeh",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Adolphus Muojeke",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Alexander Njoku",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stanislaus Nwachukwu",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Lawrence Nwankwo",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paschal Nwosu",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Valentine Obianyanwu",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Casimir Obidiaku",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel C. Okafor",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Johnkingsley Okoye",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Justin Okeke",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel O. Okafor",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Hope Onyemaechi",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Michael Ukaji",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cosmas Uzegbu",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Felix Uzukwu",
+                      "ordination":  "17/09/22",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Paschal Ebirim",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Victor Nwangwu",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Egbu",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Hilary Mmeru",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Victor Nnorom",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Innocent Nwanne",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Bright Ofomezie",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Vicus Ohagwu",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Anthony Nwokorie",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Zachary Nwabekee",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Franklin Okafor",
+                      "ordination":  "23/09/23",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Francis Amah",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Samuel Okoli",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Placid Agbamoro",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Anyanwu",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Perez Iwuchukwu",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Cosmas Okorie",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Theophilus Obioha",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Samuel Obi",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Innocent Omumatu",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. John Onyejekwe",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Augustine Umuibe",
+                      "ordination":  "20/09/24",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Felix Uwaleme",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Johnbosco Ahaneku",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Alozie",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Henry Amadiobi",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Fredrick Aryeetey",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Emmanuel Iheanacho",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Raphael Iheanetu",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Theodore Iheme",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Morgan Odimma",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Christian Okoli",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Vincent Okoli",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Stephen Okoro",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Johnkennedy Onyechere",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Felix Osunkwo",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Canice Owunna",
+                      "ordination":  "20/09/25",
+                      "location":  "—"
+                  },
+                  {
+                      "name":  "Rev. Fr. Silas Nwoke",
+                      "ordination":  "20/12/14",
+                      "location":  "—"
+                  }
+              ]
+}

@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="../style.css" />
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,about-history">
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -55,7 +55,15 @@
           >
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
-              <img src="../images/logo-transperent.png" width="200" height="208" alt="" />
+              <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
+                src="../images/logo-transperent.png"
+                width="200"
+                height="208"
+                alt=""
+              />
             </div>
             <div class="navbar__title">
               <span class="navbar__title--main">CATHOLIC DIOCESE</span>
@@ -167,7 +175,7 @@
           <h1 class="page-hero__title">
             Our History, <em>Mission &amp; Values</em>
           </h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="about-history.historyHeroSubtitle">
             The story of our Diocese, and the mission, vision, and values
             that guide our community of faith.
           </p>
@@ -185,7 +193,8 @@
               <h2 class="section-title" id="overview-heading">
                 A Brief History <em>of Our Diocese</em>
               </h2>
-              <p>
+              <div data-cms-repeat="about-history.historyParagraphs">
+              <p data-cms-item data-cms-fbind data-cms-field=".">
                 Catholic Diocese of Okigwe was evangelized by the missionaries from
                 two wings namely: Adazi in Anambra State and Emekuku in Owerri
                 (Imo state). While Okigwe North was evangelized from Adazi,
@@ -211,20 +220,20 @@
                 installed on July 1, 2006.
               </p>
               <p>
-                The Diocese is currently blessed with 134 parishes, 19
-                parishes-in-building and 9 chaplaincies. She has 550 priests,
+                The Diocese is currently blessed with 164 parishes, 19
+                parishes-in-building and 9 chaplaincies. She has 548 priests,
                 128 major seminarians and 507 minor seminarians. Serving in the
                 Diocese are 38 Religious Men and 257 Religious women of
                 different religious congregations. The Diocese is dedicated to
                 Our Lady, Immaculate Conception.
               </p>
-              <!-- TODO: Expand with fully researched diocesan historical narrative -->
+              </div>
             </div>
             <div class="about__mission-vision">
               <div class="about__card about__card--mission">
                 <div class="about__card-icon">✦</div>
                 <h3>Our Mission</h3>
-                <p>
+                <p data-cms-bind data-cms-text="global.missionText">
                   To proclaim the Gospel of Jesus Christ, administer the
                   Sacraments faithfully, and build a community of disciples who
                   serve God and humanity with justice, compassion, and integrity
@@ -234,7 +243,7 @@
               <div class="about__card about__card--vision">
                 <div class="about__card-icon">✦</div>
                 <h3>Our Vision</h3>
-                <p>
+                <p data-cms-bind data-cms-text="global.visionText">
                   A Diocese fully alive in faith — where every Catholic is an
                   active witness of Christ's love, the poor are uplifted,
                   families are strengthened, and all people encounter the saving
@@ -252,7 +261,7 @@
                   ✦
                 </div>
                 <h3>Core Values</h3>
-                <p>
+                <p data-cms-bind data-cms-text="about-history.coreValues">
                   Faith &bull; Service &bull; Compassion &bull;
                   Stewardship &bull; True Leadership &bull; Community &bull; Excellence
                 </p>
@@ -272,6 +281,9 @@
             "
           >
             <img
+              data-cms-bind
+              data-cms-attr-src="about-history.diocesanMapImage"
+              data-cms-prefix-src="../"
               src="../images/map_of_the_diocese.jfif"
               width="944"
               height="1126"
@@ -280,6 +292,8 @@
               style="width: 100%; height: auto; display: block"
             />
             <figcaption
+              data-cms-bind
+              data-cms-text="about-history.diocesanMapCaption"
               style="
                 padding: var(--space-sm) var(--space-md);
                 background: var(--color-navy-deep);
@@ -319,6 +333,8 @@
             <em style="color: var(--color-gold-light)">Parish Family</em>
           </h2>
           <p
+            data-cms-bind
+            data-cms-text="about-history.historyCtaText"
             style="
               color: rgba(255, 255, 255, 0.65);
               max-width: 540px;
@@ -352,10 +368,19 @@
         <div class="footer__brand">
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
-            <img src="../images/logo-transperent.png" width="200" height="208" alt="Diocesan Logo" loading="lazy">
+            <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
+              src="../images/logo-transperent.png"
+              width="200"
+              height="208"
+              alt="Diocesan Logo"
+              loading="lazy"
+            >
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -368,6 +393,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -403,15 +430,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -434,5 +475,6 @@
       ↑
     </button>
     <script src="../script.js"></script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

@@ -499,7 +499,7 @@
 
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,functionaries">
     <!-- ============================================================
        HEADER & NAVBAR
        ============================================================ -->
@@ -515,6 +515,9 @@
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
               <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
                 src="../images/logo-transperent.png"
                 width="200"
                 height="208"
@@ -640,7 +643,7 @@
           </nav>
 
           <h1 class="page-hero__title">Diocesan <em>Functionaries</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="functionaries.functionariesHeroSubtitle">
             A tribute to the priests, deacons, and faithful who have served the
             Catholic Diocese of Okigwe in official leadership roles — building
             and governing the local Church with dedication and fidelity.
@@ -705,39 +708,38 @@
               </div>
             </div>
 
-            <div class="functionaries-grid" role="list">
-              <!-- 1 -->
-              <div class="functionary-card" role="listitem">
+            <div class="functionaries-grid" role="list" data-cms-repeat="functionaries.chancellors">
+              <!-- 1 — also serves as the live-data clone template; note that
+                   the deceased flag and Past/Current ribbon aren't rendered
+                   by the template since cms.js has no conditional-display
+                   directive to pick the right one per item — those stay
+                   correct in this fallback markup, but a live re-render
+                   from functionaries.json omits them. -->
+              <div class="functionary-card" role="listitem" data-cms-item>
                 <div
                   class="functionary-card__portrait"
                   role="img"
                   aria-label="Portrait of Msgr. Patrick Obike"
+                  data-cms-fbind
+                  data-cms-field-attr-aria-label="name"
                 >
                   <img
-                    src="../images/msgr_patrick_obike.jpg"
+                    data-cms-fbind
+                    data-cms-field-attr-src="photo"
+                    data-cms-field-prefix-src="../"
+                    src="../images/diocesan-seal.png"
                     width="399"
                     height="276"
                     alt=""
                     loading="lazy"
                   />
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--past functionary-card__ribbon--overlay"
-                    >Past</span
-                  >
                 </div>
                 <div class="functionary-card__body">
                   <p class="functionary-card__office">Chancellor</p>
-                  <h3 class="functionary-card__name">
+                  <h3 class="functionary-card__name" data-cms-fbind data-cms-field="name">
                     Very Rev. Msgr. Patrick Obike
-                    <em
-                      style="
-                        font-size: var(--text-xs);
-                        color: var(--color-text-muted);
-                      "
-                      >(Late)</em
-                    >
                   </h3>
-                  <p class="functionary-card__years">1981 – 1982</p>
+                  <p class="functionary-card__years" data-cms-fbind data-cms-field="years">1981 – 1982</p>
                 </div>
               </div>
 
@@ -1039,31 +1041,32 @@
               </div>
             </div>
 
-            <div class="functionaries-grid" role="list">
-              <div class="functionary-card" role="listitem">
+            <div class="functionaries-grid" role="list" data-cms-repeat="functionaries.financialAdministrators">
+              <div class="functionary-card" role="listitem" data-cms-item>
                 <div
                   class="functionary-card__portrait"
                   role="img"
                   aria-label="Portrait of Fr. Livinus Iroh"
+                  data-cms-fbind
+                  data-cms-field-attr-aria-label="name"
                 >
                   <img
-                    src="../images/fr_livinus_iroh.jpg"
+                    data-cms-fbind
+                    data-cms-field-attr-src="photo"
+                    data-cms-field-prefix-src="../"
+                    src="../images/diocesan-seal.png"
                     width="900"
                     height="675"
                     alt=""
                     loading="lazy"
                   />
-                  <span
-                    class="functionary-card__ribbon functionary-card__ribbon--current functionary-card__ribbon--overlay"
-                    >Current</span
-                  >
                 </div>
                 <div class="functionary-card__body">
                   <p class="functionary-card__office">
                     Financial Administrator
                   </p>
-                  <h3 class="functionary-card__name">Rev. Fr. Livinus Iroh</h3>
-                  <p class="functionary-card__years">2025 – Present</p>
+                  <h3 class="functionary-card__name" data-cms-fbind data-cms-field="name">Rev. Fr. Livinus Iroh</h3>
+                  <p class="functionary-card__years" data-cms-fbind data-cms-field="years">2025 – Present</p>
                 </div>
               </div>
             </div>
@@ -1155,6 +1158,9 @@
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
             <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
               src="../images/logo-transperent.png"
               width="200"
               height="208"
@@ -1163,7 +1169,7 @@
             />
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -1176,6 +1182,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -1238,15 +1246,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -1278,5 +1300,6 @@
       ↑
     </button>
     <script src="../script.js"></script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

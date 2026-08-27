@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="../style.css" />
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,about-statistics,stats,about-history">
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -55,7 +55,15 @@
           >
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
-              <img src="../images/logo-transperent.png" width="200" height="208" alt="" />
+              <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
+                src="../images/logo-transperent.png"
+                width="200"
+                height="208"
+                alt=""
+              />
             </div>
             <div class="navbar__title">
               <span class="navbar__title--main">CATHOLIC DIOCESE</span>
@@ -165,7 +173,7 @@
             <span>Statistics</span>
           </nav>
           <h1 class="page-hero__title">The Diocese <em>at a Glance</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="about-statistics.statsHeroSubtitle">
             Key facts and figures about the Diocese, and access to our
             official directory.
           </p>
@@ -185,13 +193,20 @@
             <div class="section-label">By the Numbers</div>
             <h2 class="section-title">The Diocese <em>at a Glance</em></h2>
           </div>
-          <div class="stats-grid reveal-up">
-            <div class="stat-card">
-              <div class="stat-card__number" data-target="13">0</div>
-              <div class="stat-card__label">Deaneries</div>
+          <div class="stats-grid reveal-up" data-cms-repeat="stats.items">
+            <div class="stat-card" data-cms-item>
+              <div
+                class="stat-card__number"
+                data-target="13"
+                data-cms-fbind
+                data-cms-field="value"
+                data-cms-format="statNumber"
+                data-cms-field-attr-data-target="value"
+              >0</div>
+              <div class="stat-card__label" data-cms-fbind data-cms-field="label">Deaneries</div>
             </div>
             <div class="stat-card">
-              <div class="stat-card__number" data-target="153">0</div>
+              <div class="stat-card__number" data-target="164">0</div>
               <div class="stat-card__label">Parishes</div>
             </div>
             <div class="stat-card">
@@ -203,7 +218,7 @@
               <div class="stat-card__label">Chaplaincies</div>
             </div>
             <div class="stat-card">
-              <div class="stat-card__number" data-target="547">0</div>
+              <div class="stat-card__number" data-target="548">0</div>
               <div class="stat-card__label">Priests</div>
             </div>
             <div class="stat-card">
@@ -256,6 +271,8 @@
             <em style="color: var(--color-gold-light)">Diocesan Directory</em>
           </h2>
           <p
+            data-cms-bind
+            data-cms-text="about-statistics.directoryCtaText"
             style="
               color: rgba(255, 255, 255, 0.65);
               max-width: 540px;
@@ -272,7 +289,15 @@
               flex-wrap: wrap;
             "
           >
-            <a href="../files/The 2026 Directory_Main.pdf" target="_blank" class="btn btn--primary">Official Directory</a>
+            <a
+              href="../files/The 2026 Directory_Main.pdf"
+              target="_blank"
+              class="btn btn--primary"
+              data-cms-bind
+              data-cms-attr-href="global.officialDirectoryPdf"
+              data-cms-prefix-href="../"
+              >Official Directory</a
+            >
           </div>
         </div>
       </section>
@@ -302,6 +327,8 @@
             <em style="color: var(--color-gold-light)">Parish Family</em>
           </h2>
           <p
+            data-cms-bind
+            data-cms-text="about-history.historyCtaText"
             style="
               color: rgba(255, 255, 255, 0.65);
               max-width: 540px;
@@ -335,10 +362,19 @@
         <div class="footer__brand">
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
-            <img src="../images/logo-transperent.png" width="200" height="208" alt="Diocesan Logo" loading="lazy">
+            <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
+              src="../images/logo-transperent.png"
+              width="200"
+              height="208"
+              alt="Diocesan Logo"
+              loading="lazy"
+            >
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -351,6 +387,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -386,15 +424,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -417,5 +469,6 @@
       ↑
     </button>
     <script src="../script.js"></script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

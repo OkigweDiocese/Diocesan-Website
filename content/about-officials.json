@@ -1,0 +1,157 @@
+{
+  "officialsHeroTitle": "Diocesan Officials",
+  "officialsHeroSubtitle": "The Bishop, priests, and leaders entrusted with shepherding our Diocese.",
+  "bishopBioShort": [
+    "The Bishop of Okigwe Diocese exercises the fullness of the apostolic ministry in the Diocese, teaching, sanctifying, and governing the faithful entrusted to his care. He leads the Diocese in fidelity to the Gospel and in communion with the Holy Father.",
+    "As the chief shepherd of the local Church, the Bishop ordains priests and deacons, confirms the faithful, consecrates churches and sacred spaces, and serves as the principal teacher and pastor of the Diocese."
+  ],
+  "officials": [
+    {
+      "photo": "../images/msgr_john_iwe.jpg",
+      "role": "Vicar General I",
+      "name": "Very Rev. Msgr. John C. Iwe",
+      "parish": "St. Benedict's Parish Amaraku",
+      "phone": ["08134077144", "07038446056"],
+      "email": ""
+    },
+    {
+      "photo": "../images/fr_bartholomew_nnamedo.jpg",
+      "role": "Vicar General II",
+      "name": "Very Rev. Fr. Bartholomew Nnaemedo",
+      "parish": "St. Mary's Pro-Cathedral Parish, Okigwe",
+      "phone": "09069098866",
+      "email": ""
+    },
+    {
+      "photo": "../images/fr_josephat_nwankwo.jpg",
+      "role": "Episcopal Vicar, Okigwe Zone",
+      "name": "Very Rev. Fr. Josephat Nwankwo",
+      "parish": "All Saints Parish, Ogii",
+      "phone": "08033602181",
+      "email": ""
+    },
+    {
+      "photo": "../images/msgr_simon_anyanwu.jpg",
+      "role": "Episcopal Vicar for Clergy",
+      "name": "Very Rev. Msgr. Simon O. Anyanwu",
+      "parish": "St. Mary's Pro-Cathedral Parish, Okigwe",
+      "phone": "08063897006",
+      "email": ""
+    },
+    {
+      "photo": "../images/fr_samuel_okoli.jpg",
+      "role": "Chancellor/Secretary",
+      "name": "Very Rev. Fr. Samuel Obinnaya Okoli",
+      "parish": "Bishop's House, Villa Lourdes, Okigwe",
+      "phone": "08133807134",
+      "email": "obinnayanoble1@gmail.com"
+    },
+    {
+      "photo": "../images/fr_michael_agbayi.jpg",
+      "role": "Judicial Vicar",
+      "name": "Very Rev. Fr. Michael Agbayi",
+      "parish": "Christ the King Parish, Umunchi",
+      "phone": ["08038751950", "08069689968"],
+      "email": ""
+    },
+    {
+      "photo": "../images/fr_livinus_iroh.jpg",
+      "role": "Financial Administrator",
+      "name": "Very Rev. Fr. Livinus Iroh",
+      "parish": "Bishop's House, Villa Lourdes, Okigwe",
+      "phone": "09047713873",
+      "email": ""
+    },
+    {
+      "photo": "../images/fr_michael_ohanete.jpg",
+      "role": "Cathedral Administrator",
+      "name": "Very Rev. Fr. Michael Ohanete",
+      "parish": "St. Mary's Pro-Cathedral Parish, Okigwe",
+      "phone": "08060077261",
+      "email": ""
+    },
+    {
+      "photo": "../images/fr_oliver_mbagwu.jpg",
+      "role": "Diocesan Legal Adviser",
+      "name": "Very Rev. Fr. Oliver Mbagwu",
+      "parish": "St. Mary's Pro-Cathedral Parish, Okigwe",
+      "phone": "08037923252",
+      "email": ""
+    },
+    {
+      "photo": "../images/fr_anthony_onyenagada.jpg",
+      "role": "Diocesan Legal Adviser",
+      "name": "Very Rev. Fr. Anthony Onyenagada",
+      "parish": "Christ the King Parish, Ikperejere Uboma",
+      "phone": "07032427384",
+      "email": ""
+    }
+  ],
+  "deans": [
+    {
+      "photo": "../images/fr_michael_ohanete_ii.jpg",
+      "deanery": "Okigwe",
+      "name": "Rev. Fr. Michael Ohanete"
+    },
+    {
+      "photo": "../images/msgr_jememiah_ofoegbu.jpg",
+      "deanery": "Ehime East",
+      "name": "Msgr. Jeremiah Ofoegbu"
+    },
+    {
+      "photo": "../images/fr_jacob_okafor.jpg",
+      "deanery": "Ugiri/Mbama",
+      "name": "Rev. Fr. Jacob Okafor"
+    },
+    {
+      "photo": "../images/fr_kenneth_ekeugo.jpg",
+      "deanery": "Osu",
+      "name": "Rev. Fr. Kenneth Ekeugo"
+    },
+    {
+      "photo": "../images/fr_judekingsley_maduka.jpg",
+      "deanery": "Obowo East",
+      "name": "Rev. Fr. JudeKingsley Maduka"
+    },
+    {
+      "photo": "../images/fr_michael_okafor.jpg",
+      "deanery": "Obowo West",
+      "name": "Rev. Fr. Michael Okafor"
+    },
+    {
+      "photo": "../images/fr_kelvin_ohalete.jpg",
+      "deanery": "Uboma",
+      "name": "Rev. Fr. Kelvin Ohalete"
+    },
+    {
+      "photo": "../images/fr_cyril_agodi.jpg",
+      "deanery": "Uturu",
+      "name": "Rev. Fr. Cyril Agodi"
+    },
+    {
+      "photo": "../images/fr_michael_nwosu.jpg",
+      "deanery": "Onuimo",
+      "name": "Rev. Fr. Michael Nwosu"
+    },
+    {
+      "photo": "../images/fr_cletus_okoye.jpg",
+      "deanery": "Umunneochi",
+      "name": "Rev. Fr. Cletus Okoye"
+    },
+    {
+      "photo": "../images/fr_daniel_odoh.jpg",
+      "deanery": "Isuikwuato",
+      "name": "Rev. Fr. Daniel Odoh"
+    },
+    {
+      "photo": "../images/fr_fidelis_ekemgba.jpg",
+      "deanery": "Ihitte",
+      "name": "Rev. Fr. Fidelis Ekemgba"
+    },
+    {
+      "photo": "../images/fr_john_ifebigbo.jpg",
+      "deanery": "Ehime West",
+      "name": "Rev. Fr. John Ifebigbo"
+    }
+  ]
+}

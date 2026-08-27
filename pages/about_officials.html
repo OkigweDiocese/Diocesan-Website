@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="../style.css" />
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,about-officials,about-history">
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -56,6 +56,9 @@
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
               <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
                 src="../images/logo-transperent.png"
                 width="200"
                 height="208"
@@ -172,7 +175,7 @@
             <span>Officials</span>
           </nav>
           <h1 class="page-hero__title">Diocesan <em>Officials</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="about-officials.officialsHeroSubtitle">
             The Bishop, priests, and leaders entrusted with shepherding our
             Diocese.
           </p>
@@ -214,9 +217,9 @@
                 </div>
               </div>
               <div class="bishop-message__name-tag">
-                <p class="bishop-message__title">Most Rev. Dr.</p>
-                <p class="bishop-message__name">Solomon A. Amatu</p>
-                <p class="bishop-message__role">Catholic Bishop of Okigwe</p>
+                <p class="bishop-message__title" data-cms-bind data-cms-text="global.currentBishop.title">Most Rev. Dr.</p>
+                <p class="bishop-message__name" data-cms-bind data-cms-text="global.currentBishop.name">Solomon A. Amatu</p>
+                <p class="bishop-message__role" data-cms-bind data-cms-text="global.currentBishop.role">Catholic Bishop of Okigwe</p>
               </div>
             </div>
             <div class="bishop-message__text">
@@ -224,7 +227,8 @@
               <h3 class="section-title">
                 The Shepherd <em>of Our Diocese</em>
               </h3>
-              <p>
+              <div data-cms-repeat="about-officials.bishopBioShort">
+              <p data-cms-item data-cms-fbind data-cms-field=".">
                 The Bishop of Okigwe Diocese exercises the fullness of the
                 apostolic ministry in the Diocese, teaching, sanctifying, and
                 governing the faithful entrusted to his care. He leads the
@@ -237,6 +241,7 @@
                 and sacred spaces, and serves as the principal teacher and
                 pastor of the Diocese.
               </p>
+              </div>
               <a
                 href="bishop.html"
                 class="btn btn--secondary"
@@ -258,10 +263,12 @@
           >
             DIOCESAN OFFICIALS
           </h3>
-          <div class="team-grid">
-            <div class="team-card">
+          <div class="team-grid" data-cms-repeat="about-officials.officials">
+            <div class="team-card" data-cms-item>
               <div class="team-card__photo portrait-placeholder">
                 <img
+                  data-cms-fbind
+                  data-cms-field-attr-src="photo"
                   src="../images/msgr_john_iwe.jpg"
                   width="818"
                   height="613"
@@ -270,10 +277,10 @@
                 />
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Vicar General I</p>
-                <h4 class="team-card__name">Very Rev. Msgr. John C. Iwe</h4>
+                <p class="team-card__role" data-cms-fbind data-cms-field="role">Vicar General I</p>
+                <h4 class="team-card__name" data-cms-fbind data-cms-field="name">Very Rev. Msgr. John C. Iwe</h4>
                 <p class="team-card__parish">
-                  St. Benedict's Parish Amaraku <br />08134077144, 07038446056
+                  <span data-cms-fbind data-cms-field="parish">St. Benedict's Parish Amaraku</span> <br /><span data-cms-fbind data-cms-field="phone">08134077144, 07038446056</span><br /><span data-cms-fbind data-cms-field="email"></span>
                 </p>
               </div>
             </div>
@@ -475,10 +482,12 @@
           >
             Meet the Deans of our <em>Various Deaneries</em>
           </h3>
-          <div class="team-grid">
-            <div class="team-card">
+          <div class="team-grid" data-cms-repeat="about-officials.deans">
+            <div class="team-card" data-cms-item>
               <div class="team-card__photo portrait-placeholder">
                 <img
+                  data-cms-fbind
+                  data-cms-field-attr-src="photo"
                   src="../images/fr_michael_ohanete_ii.jpg"
                   width="576"
                   height="431"
@@ -487,8 +496,8 @@
                 />
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">Dean of Okigwe Deanery</p>
-                <h4 class="team-card__name">Rev. Fr. Michael Ohanete</h4>
+                <p class="team-card__role">Dean of <span data-cms-fbind data-cms-field="deanery">Okigwe</span> Deanery</p>
+                <h4 class="team-card__name" data-cms-fbind data-cms-field="name">Rev. Fr. Michael Ohanete</h4>
               </div>
             </div>
 
@@ -584,7 +593,7 @@
               </div>
               <div class="team-card__body">
                 <p class="team-card__role">Dean of Uboma Deanery</p>
-                <h4 class="team-card__name">Rev. Fr. Kevin Ohalete</h4>
+                <h4 class="team-card__name">Rev. Fr. Kelvin Ohalete</h4>
               </div>
             </div>
 
@@ -712,6 +721,8 @@
             <em style="color: var(--color-gold-light)">Parish Family</em>
           </h2>
           <p
+            data-cms-bind
+            data-cms-text="about-history.historyCtaText"
             style="
               color: rgba(255, 255, 255, 0.65);
               max-width: 540px;
@@ -746,6 +757,9 @@
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
             <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
               src="../images/logo-transperent.png"
               width="200"
               height="208"
@@ -754,7 +768,7 @@
             />
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -767,6 +781,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -802,15 +818,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -833,5 +863,6 @@
       ↑
     </button>
     <script src="../script.js"></script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

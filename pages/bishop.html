@@ -288,7 +288,7 @@
     </style>
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,bishop">
     <!-- HEADER -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -301,7 +301,15 @@
           >
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
-              <img src="../images/logo-transperent.png" width="200" height="208" alt="" />
+              <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
+                src="../images/logo-transperent.png"
+                width="200"
+                height="208"
+                alt=""
+              />
             </div>
             <div class="navbar__title">
               <span class="navbar__title--main">CATHOLIC DIOCESE</span>
@@ -415,7 +423,7 @@
             <span>Our Bishop</span>
           </nav>
           <h1 class="page-hero__title">Our <em>Bishop</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="bishop.bishopHeroSubtitle">
             Meet the shepherd of the Catholic Diocese of Okigwe — his life,
             ministry, pastoral letters, and messages to the faithful.
           </p>
@@ -443,9 +451,8 @@
               </div>
 
               <div class="bishop-profile__info-card">
-                <span class="role-label">Most Rev. Dr.</span>
-                <!-- TODO: Replace with actual Bishop's name -->
-                <h3>Solomon Amanchukwu Amatu</h3>
+                <span class="role-label" data-cms-bind data-cms-text="global.currentBishop.title">Most Rev. Dr.</span>
+                <h3 data-cms-bind data-cms-text="bishop.bishopVitals.fullName">Solomon Amanchukwu Amatu</h3>
                 <p
                   style="
                     font-size: var(--text-sm);
@@ -456,47 +463,51 @@
                   The Catholic Diocese of Okigwe
                 </p>
                 <div class="bishop-detail-row">
-                  <strong>Born</strong><span>January 17, 1950</span>
+                  <strong>Born</strong><span data-cms-bind data-cms-text="bishop.bishopVitals.born">January 17, 1950</span>
                 </div>
                 <div class="bishop-detail-row">
-                  <strong>Ordained Deacon</strong><span>September 03, 1977</span>
+                  <strong>Ordained Deacon</strong><span data-cms-bind data-cms-text="bishop.bishopVitals.ordainedDeacon">September 03, 1977</span>
                 </div>
                 <div class="bishop-detail-row">
-                  <strong>Ordained Priest</strong><span>October 07, 1978</span>
+                  <strong>Ordained Priest</strong><span data-cms-bind data-cms-text="bishop.bishopVitals.ordainedPriest">October 07, 1978</span>
                 </div>
                 <div class="bishop-detail-row">
-                  <strong>Appointed Auxiliary Bishop</strong><span>December 22, 2000</span>
+                  <strong>Appointed Auxiliary Bishop</strong><span data-cms-bind data-cms-text="bishop.bishopVitals.appointedAuxiliary">December 22, 2000</span>
                 </div>
                 <div class="bishop-detail-row">
-                  <strong>Consecrated as a Bishop</strong><span>April 28, 2001</span>
+                  <strong>Consecrated as a Bishop</strong><span data-cms-bind data-cms-text="bishop.bishopVitals.consecrated">April 28, 2001</span>
                 </div>
                 <div class="bishop-detail-row">
-                  <strong>Coadjutor Bishop of Okigwe</strong><span>2005</span>
+                  <strong>Coadjutor Bishop of Okigwe</strong><span data-cms-bind data-cms-text="bishop.bishopVitals.coadjutorYear">2005</span>
                 </div>
                 <div class="bishop-detail-row">
-                  <strong>Substantive Bishop of Okigwe</strong><span>2006</span>
+                  <strong>Substantive Bishop of Okigwe</strong><span data-cms-bind data-cms-text="bishop.bishopVitals.substantiveYear">2006</span>
                 </div>
                 <div class="bishop-detail-row">
                   <strong>Episcopal Motto</strong
-                  ><span style="font-style: italic; color: var(--color-gold)"
+                  ><span
+                    data-cms-bind
+                    data-cms-text="bishop.bishopVitals.motto"
+                    style="font-style: italic; color: var(--color-gold)"
                     >Adjutorium Nostrum in Nomine Domini</span
                   >
                 </div>
                 <div class="bishop-detail-row">
-                  <strong>Ordaining Bishop</strong><span>Francis Cardinal Arinze</span>
+                  <strong>Ordaining Bishop</strong><span data-cms-bind data-cms-text="bishop.bishopVitals.ordainingBishop">Francis Cardinal Arinze</span>
                 </div>
               </div>
 
               <!-- Coat of Arms -->
               <div class="coat-of-arms">
-                <!-- TODO: Replace placeholder with actual Bishop's coat of arms image -->
                 <div class="coat-of-arms__placeholder portrait-placeholder">
                   <img
+                    data-cms-bind
+                    data-cms-attr-src="bishop.coatOfArmsImage"
                     src="../images/diocesan-seal.png" width="300" height="312"
                     alt="Episcopal Coat of Arms" loading="lazy">
                 </div>
                 <h3>Episcopal Coat of Arms</h3>
-                <p>"Adjutorium Nostrum in Nomine Domini"</p>
+                <p data-cms-bind data-cms-text="bishop.coatOfArmsMotto">"Adjutorium Nostrum in Nomine Domini"</p>
               </div>
             </aside>
 
@@ -505,7 +516,8 @@
               <div class="section-label">Shepherd &amp; Teacher</div>
               <h2 class="section-title">Biography of <em>Our Bishop</em></h2>
 
-              <p>
+              <div data-cms-repeat="bishop.bishopBioParagraphs">
+              <p data-cms-item data-cms-fbind data-cms-field=".">
                 Most Rev. Dr. Solomon Amanchukwu Amatu was born on 17 January
                 1950 in Obinagu, Akpu Village, Ukpo, Anambra State, to Mr. and
                 Mrs. Piuss Amatu. Raised in a devout Catholic family, he
@@ -537,11 +549,11 @@
               </p>
               <p>
                 As Bishop of Okigwe, he has overseen significant infrastructural and pastoral developments within the Diocese. Among his notable achievements are the construction of the Bishop’s Residence at the Immaculate Conception Cathedral, the completion of the Diocesan Secretariat Complex, the establishment of the Bishop Anthony Okezie Ilonu Memorial Retreat Centre, the construction of a modern home for elderly priests at Ogii, the Okigwe Diocesan Pastoral Centre at Osu, and the building of the Immaculate Conception Cathedral from foundation to roofing.
-                <p>
-                  Bishop Amatu is widely admired for his warmth, humility, sense of humour, and engaging personality. Known for his rich storytelling and love for his native language, he has endeared himself to clergy and laity alike. Beyond his pastoral responsibilities, he enjoys table tennis, basketball, and playing the organ. His life remains a shining example of faithful service, visionary leadership, and unwavering dedication to the growth of the Church.
-                </p>
-                <!-- TODO: Expand with fully researched official biography from the Diocesan Chancery -->
               </p>
+              <p>
+                Bishop Amatu is widely admired for his warmth, humility, sense of humour, and engaging personality. Known for his rich storytelling and love for his native language, he has endeared himself to clergy and laity alike. Beyond his pastoral responsibilities, he enjoys table tennis, basketball, and playing the organ. His life remains a shining example of faithful service, visionary leadership, and unwavering dedication to the growth of the Church.
+              </p>
+              </div>
 
               <figure
                 style="
@@ -552,6 +564,8 @@
                 "
               >
                 <img
+                  data-cms-bind
+                  data-cms-attr-src="bishop.bishopFeaturedPhoto"
                   src="../images/bishop_with_pope_leo_xiv.jpg"
                   width="1400"
                   height="934"
@@ -560,6 +574,8 @@
                   style="width: 100%; height: auto; display: block"
                 />
                 <figcaption
+                  data-cms-bind
+                  data-cms-text="bishop.bishopFeaturedPhotoCaption"
                   style="
                     padding: var(--space-sm) var(--space-md);
                     background: var(--color-navy-deep);
@@ -904,15 +920,18 @@
               The men who built the foundations of faith in our Diocese.
             </p>
           </div>
-          <div class="team-grid past-bishops-grid reveal-up">
-            <div class="team-card">
+          <div class="team-grid past-bishops-grid reveal-up" data-cms-repeat="bishop.pastBishops">
+            <div class="team-card" data-cms-item>
               <div class="team-card__photo portrait-placeholder">
-                <img src="../images/bishop_ilonu.jpg" width="900" height="1075" alt="picture of bishop ilonu" loading="lazy">
+                <img
+                  data-cms-fbind
+                  data-cms-field-attr-src="photo"
+                  src="../images/bishop_ilonu.jpg" width="900" height="1075" alt="picture of bishop ilonu" loading="lazy">
               </div>
               <div class="team-card__body">
-                <p class="team-card__role">1st Bishop · 1981–2006</p>
-                <h4 class="team-card__name">Most Rev. Anthony Okezie Ilonu</h4>
-                <p class="team-card__parish">
+                <p class="team-card__role"><span data-cms-fbind data-cms-field="role">1st Bishop</span> · <span data-cms-fbind data-cms-field="years">1981–2006</span></p>
+                <h4 class="team-card__name" data-cms-fbind data-cms-field="name">Most Rev. Anthony Okezie Ilonu</h4>
+                <p class="team-card__parish" data-cms-fbind data-cms-field="description">
                   Pioneer Bishop of Okigwe Diocese
                 </p>
               </div>
@@ -945,10 +964,14 @@
         <div class="footer__brand">
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
-            <img src="../images/logo-transperent.png" width="200" height="208" alt="Diocesan Logo" loading="lazy">
+            <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
+              src="../images/logo-transperent.png" width="200" height="208" alt="Diocesan Logo" loading="lazy">
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -961,6 +984,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -1023,15 +1048,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -1058,6 +1097,7 @@
       ↑
     </button>
     <script src="../script.js"></script>
+    <script src="../js/cms.js"></script>
     <script>
       /* Tab switching for Bishop page */
       const tabs = document.querySelectorAll(".msg-tab");

@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="../style.css" />
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,seminaries">
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -56,6 +56,9 @@
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
               <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
                 src="../images/logo-transperent.png"
                 width="200"
                 height="208"
@@ -172,7 +175,7 @@
             <span>Seminaries</span>
           </nav>
           <h1 class="page-hero__title">Our <em>Seminaries</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="seminaries.seminariesHeroSubtitle">
             Forming men of faith and character for a life of priestly service to
             God and His people.
           </p>
@@ -199,40 +202,43 @@
             </p>
           </div>
 
+          <div data-cms-repeat="seminaries.items">
           <!-- St. Thomas Aquinas Seminary, Ihitte -->
-          <article class="institution-card reveal-up">
+          <article class="institution-card reveal-up" data-cms-item>
             <div
               class="institution-card__image"
               role="img"
               aria-label="St. Thomas Aquinas Seminary, Ihitte placeholder image"
+              data-cms-fbind
+              data-cms-field-attr-aria-label="name"
             >
               <div class="img-placeholder">
                 <span>Photo Coming Soon</span>
               </div>
             </div>
             <div class="institution-card__body">
-              <h3 class="institution-card__name">
+              <h3 class="institution-card__name" data-cms-fbind data-cms-field="name">
                 St. Thomas Aquinas Seminary, Ihitte
               </h3>
               <p class="institution-card__location">
-                <span aria-hidden="true">📍</span> Ihitte Uboma, Imo State
+                <span aria-hidden="true">📍</span>
+                <span data-cms-fbind data-cms-field="location">Ihitte Uboma, Imo State</span>
               </p>
-              <p class="institution-card__desc">
+              <p class="institution-card__desc" data-cms-fbind data-cms-field="description">
                 Our junior secondary school where students receive spiritual,
                 academic, and human formation in preparation for a life of
                 service in the Church and the society.
               </p>
               <div class="institution-card__staff">
                 <p class="institution-card__staff-title">Formation Team</p>
-                <div class="institution-card__staff-list">
-                  <div class="institution-card__staff-item">
-                    <p class="institution-card__staff-role">Rector</p>
-                    <p class="institution-card__staff-name">
+                <div class="institution-card__staff-list" data-cms-repeat="staff">
+                  <div class="institution-card__staff-item" data-cms-item>
+                    <p class="institution-card__staff-role" data-cms-fbind data-cms-field="role">Rector</p>
+                    <p class="institution-card__staff-name" data-cms-fbind data-cms-field="name">
                       Rev. Fr. Mark Okocha
                     </p>
-                    <!-- TODO: Add personal contact -->
                     <p class="institution-card__staff-contact">
-                      Contact: 0803 504 1197
+                      Contact: <span data-cms-fbind data-cms-field="contact">0803 504 1197</span>
                     </p>
                   </div>
                   <div class="institution-card__staff-item">
@@ -240,7 +246,6 @@
                     <p class="institution-card__staff-name">
                       Rev. Fr. Stephen Okoro
                     </p>
-                    <!-- TODO: Add personal contact -->
                     <p class="institution-card__staff-contact">
                       Contact: 0703 819 0042
                     </p>
@@ -250,7 +255,6 @@
                     <p class="institution-card__staff-name">
                       Msgr. Gregory Ohagwu
                     </p>
-                    <!-- TODO: Add personal contact -->
                     <p class="institution-card__staff-contact">Contact: -</p>
                   </div>
                 </div>
@@ -369,6 +373,7 @@
               </div>
             </div>
           </article>
+          </div>
 
           <div class="section-cta reveal-up">
             <a href="contact.html" class="btn btn--primary"
@@ -387,6 +392,9 @@
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
             <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
               src="../images/logo-transperent.png"
               width="200"
               height="208"
@@ -395,7 +403,7 @@
             />
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -408,6 +416,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -441,15 +451,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -472,5 +496,6 @@
       ↑
     </button>
     <script src="../script.js"></script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

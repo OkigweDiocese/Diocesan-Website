@@ -1,0 +1,37 @@
+{
+  "returnedSchoolsHeroTitle": "Returned Schools",
+  "returnedSchoolsHeroSubtitle": "Mission schools once founded by the Church, and now restored to her care and management.",
+  "items": [
+    {
+      "name": "St. Dominic's Secondary School, Ugiri",
+      "managers": ["Rev. Fr. Finbarr Chukwu (Administrator)"]
+    },
+    {
+      "name": "Fatima Technical Secondary School, Umuakagu Nsu",
+      "managers": [
+        "Rev. Fr. Canice Ofoegbu (Administrator)",
+        "Rev. Fr. Celestine Ibeawuchi (Ass. Administrator)"
+      ]
+    },
+    {
+      "name": "St. Thomas Aquinas Secondary School, Osu",
+      "managers": ["Rev. Fr. Theophilus Okafor (Administrator)"]
+    },
+    {
+      "name": "St. Paul's Boys Secondary School, Ikenanzizi Obowo",
+      "managers": ["Rev. Fr. Emmanuel Azubuike (Administrator)"]
+    },
+    {
+      "name": "Girls Model Secondary School, Okigwe (Mercy Girls Secondary School)",
+      "managers": ["Rev. Fr. Remigius Ogu (Administrator)"]
+    },
+    {
+      "name": "Girls Secondary School, Ikenanzizi (Asumpta) Amuzi Obowo",
+      "managers": ["Rev. Fr. Anthony Ukaegbu (Administrator)"]
+    },
+    {
+      "name": "Mercy Girls High School, Umuezeala Owerre",
+      "managers": ["Rev. Fr. Francis Eze (Administrator)"]
+    }
+  ]
+}

@@ -221,7 +221,7 @@
     </style>
     <title>Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,parishes">
     <!-- HEADER -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -234,7 +234,15 @@
           >
             <!-- TODO: Replace with actual diocesan logo image -->
             <div class="navbar__logo" aria-hidden="true">
-              <img src="../images/logo-transperent.png" width="200" height="208" alt="" />
+              <img
+                data-cms-bind
+                data-cms-attr-src="global.logoImage"
+                data-cms-prefix-src="../"
+                src="../images/logo-transperent.png"
+                width="200"
+                height="208"
+                alt=""
+              />
             </div>
             <div class="navbar__title">
               <span class="navbar__title--main">CATHOLIC DIOCESE</span>
@@ -350,7 +358,7 @@
             <span>Parishes</span>
           </nav>
           <h1 class="page-hero__title">Parish <em>Directory</em></h1>
-          <p class="page-hero__subtitle">
+          <p class="page-hero__subtitle" data-cms-bind data-cms-text="parishes.parishesHeroSubtitle">
             Find a Catholic parish community across the Diocese of Okigwe —
             organised by deanery and searchable by name or location.
           </p>
@@ -421,16 +429,19 @@
               <span class="deanery-header__count">22 Parishes</span>
             </div>
             <!-- TODO: Populate with verified parish data from diocesan records -->
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:okigwe">
               <div
                 class="parish-card--list"
                 data-name="St. Mary's Pro-Cathedral Parish, Okigwe"
                 data-deanery="okigwe"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>St. Mary's Pro-Cathedral Parish, Okigwe</h3>
-                  <p class="parish-meta">📍 Okigwe LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">St. Mary's Pro-Cathedral Parish, Okigwe</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Okigwe LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Sacred Heart of Jesus · June
                   </p> -->
@@ -708,16 +719,19 @@
               <h2 class="deanery-header__title">Uturu Deanery</h2>
               <span class="deanery-header__count">9 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:uturu">
               <div
                 class="parish-card--list"
                 data-name="Holy Cross Parish, Uturu"
                 data-deanery="uturu"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>Holy Cross Parish, Uturu</h3>
-                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <h3 data-cms-fbind data-cms-field="name">Holy Cross Parish, Uturu</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Isuikwuato LGA, Abia State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Sts. Peter &amp; Paul · June 29
                   </p> -->
@@ -845,16 +859,19 @@
               <h2 class="deanery-header__title">Isuikwuato Deanery</h2>
               <span class="deanery-header__count">8 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:isuikwuato">
               <div
                 class="parish-card--list"
                 data-name="Our Lady of Fatima Parish, Isuikwuato"
                 data-deanery="isuikwuato"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>Our Lady of Fatima Parish, Isuikwuato</h3>
-                  <p class="parish-meta">📍 Isuikwuato LGA, Abia State</p>
+                  <h3 data-cms-fbind data-cms-field="name">Our Lady of Fatima Parish, Isuikwuato</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Isuikwuato LGA, Abia State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -969,16 +986,19 @@
               <h2 class="deanery-header__title">Obowo East Deanery</h2>
               <span class="deanery-header__count">9 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:obowo-east">
               <div
                 class="parish-card--list"
                 data-name="All Saints Parish, Avutu"
                 data-deanery="obowo-east"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>All Saints Parish, Avutu</h3>
-                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">All Saints Parish, Avutu</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Obowo LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -1106,16 +1126,19 @@
               <h2 class="deanery-header__title">Obowo West Deanery</h2>
               <span class="deanery-header__count">11 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:obowo-west">
               <div
                 class="parish-card--list"
                 data-name="Immaculate Heart Parish, Alike Obowo"
                 data-deanery="obowo-west"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>Immaculate Heart Parish, Alike Obowo</h3>
-                  <p class="parish-meta">📍 Obowo LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">Immaculate Heart Parish, Alike Obowo</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Obowo LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -1274,16 +1297,19 @@
               <h2 class="deanery-header__title">Uboma Deanery</h2>
               <span class="deanery-header__count">8 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:uboma">
               <div
                 class="parish-card--list"
                 data-name="St. Anthony's Parish, Uboma"
                 data-deanery="uboma"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>St. Anthony's Parish, Uboma</h3>
-                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">St. Anthony's Parish, Uboma</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Ihitte/Uboma LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">Feast: Uganda Martyrs · June 3</p> -->
                 </div>
               </div>
@@ -1382,16 +1408,19 @@
               <h2 class="deanery-header__title">Ihitte Deanery</h2>
               <span class="deanery-header__count">11 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:ihitte">
               <div
                 class="parish-card--list"
                 data-name="Mater Dolorosa Parish, Ihitte"
                 data-deanery="ihitte"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>Mater Dolorosa Parish, Ihitte</h3>
-                  <p class="parish-meta">📍 Ihitte/Uboma LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">Mater Dolorosa Parish, Ihitte</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Ihitte/Uboma LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -1547,16 +1576,19 @@
               <h2 class="deanery-header__title">Ehime East Deanery</h2>
               <span class="deanery-header__count">15 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:ehime-east">
               <div
                 class="parish-card--list"
                 data-name="St. Columba's Parish, Nsu"
                 data-deanery="ehime-east"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>St. Columba's Parish, Nsu</h3>
-                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">St. Columba's Parish, Nsu</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Ehime Mbano LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -1746,7 +1778,7 @@
               </div>
               <div
                 class="parish-card--list"
-                data-name="St. Columba's Parish, Nsu"
+                data-name="St. Michael's Parish, Umuaro Umunumo"
                 data-deanery="ehime-east"
               >
                 <div class="parish-icon">⛪</div>
@@ -1768,16 +1800,19 @@
               <h2 class="deanery-header__title">Ehime West Deanery</h2>
               <span class="deanery-header__count">15 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:ehime-west">
               <div
                 class="parish-card--list"
                 data-name="St. Patrick's Parish, Umuzezeala Owerre"
                 data-deanery="ehime-west"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>St. Patrick's Parish, Umuzezeala Owerre</h3>
-                  <p class="parish-meta">📍 Ehime Mbano LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">St. Patrick's Parish, Umuzezeala Owerre</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Ehime Mbano LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -1991,16 +2026,19 @@
               <h2 class="deanery-header__title">Ugiri/Mbama Deanery</h2>
               <span class="deanery-header__count">14 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:ugiri-mbama">
               <div
                 class="parish-card--list"
                 data-name="St. Patrick's Parish, Ogbor Ugiri"
                 data-deanery="ugiri-mbama"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>St. Patrick's Parish, Ogbor Ugiri</h3>
-                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">St. Patrick's Parish, Ogbor Ugiri</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Isiala Mbano LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -2198,16 +2236,19 @@
               <h2 class="deanery-header__title">Osu Deanery</h2>
               <span class="deanery-header__count">21 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:osu">
               <div
                 class="parish-card--list"
                 data-name="St. Paul's Parish, Osu"
                 data-deanery="osu"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>St. Paul's Parish, Osu</h3>
-                  <p class="parish-meta">📍 Isiala Mbano LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">St. Paul's Parish, Osu</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Isiala Mbano LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -2509,16 +2550,19 @@
               <h2 class="deanery-header__title">Onuimo Deanery</h2>
               <span class="deanery-header__count">9 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:onuimo">
               <div
                 class="parish-card--list"
                 data-name="Our Lady of Perpetual Succour, Okwe"
                 data-deanery="onuimo"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>Our Lady of Perpetual Succour, Okwe</h3>
-                  <p class="parish-meta">📍 Onuimo LGA, Imo State</p>
+                  <h3 data-cms-fbind data-cms-field="name">Our Lady of Perpetual Succour, Okwe</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Onuimo LGA, Imo State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -2646,16 +2690,19 @@
               <h2 class="deanery-header__title">Umunneochi Deanery</h2>
               <span class="deanery-header__count">12 Parishes</span>
             </div>
-            <div class="parishes-full-grid">
+            <div class="parishes-full-grid" data-cms-repeat="parishes.items" data-cms-filter="deanery:umunneochi">
               <div
                 class="parish-card--list"
                 data-name="Queen of Apostles Parish, Umuchieze"
                 data-deanery="umunneochi"
+                data-cms-item
+                data-cms-fbind
+                data-cms-field-attr-data-name="name"
               >
                 <div class="parish-icon">⛪</div>
                 <div>
-                  <h3>Queen of Apostles Parish, Umuchieze</h3>
-                  <p class="parish-meta">📍 Umunneochi LGA, Abia State</p>
+                  <h3 data-cms-fbind data-cms-field="name">Queen of Apostles Parish, Umuchieze</h3>
+                  <p class="parish-meta">📍 <span data-cms-fbind data-cms-field="location">Umunneochi LGA, Abia State</span></p>
                   <!-- <p class="parish-feast">
                     Feast: Our Lady of Perpetual Help · June 27
                   </p> -->
@@ -2890,10 +2937,19 @@
         <div class="footer__brand">
           <!-- TODO: Replace with actual diocesan logo (light/white version) -->
           <div class="navbar__logo footer__logo" aria-hidden="true">
-            <img src="../images/logo-transperent.png" width="200" height="208" alt="Diocesan Logo" loading="lazy">
+            <img
+              data-cms-bind
+              data-cms-attr-src="global.logoImage"
+              data-cms-prefix-src="../"
+              src="../images/logo-transperent.png"
+              width="200"
+              height="208"
+              alt="Diocesan Logo"
+              loading="lazy"
+            >
           </div>
           <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
-          <p class="footer__tagline">
+          <p class="footer__tagline" data-cms-bind data-cms-text="global.tagline">
             "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
           </p>
           <!-- Social Media Links -->
@@ -2906,6 +2962,8 @@
               class="social-link"
               aria-label="Diocese Facebook page"
               rel="noopener noreferrer"
+              data-cms-bind
+              data-cms-attr-href="global.facebookUrl"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -2968,15 +3026,29 @@
         <!-- Contact Info -->
         <address class="footer__address">
           <h3 class="footer__links-title">Contact</h3>
-          <!-- TODO: Replace with verified diocesan contact details -->
-          <p>
+          <p data-cms-bind data-cms-text="global.address">
             Diocesan Catholic Secretariat, <br />Villa Lourdes, Box 99 Okigwe,
             <br />Imo State, <br />
             Nigeria
           </p>
-          <p><a href="tel:+23408133807134">+234 (0) 813 380 7134</a></p>
           <p>
-            <a href="mailto:okigwecathdiocese@yahoo.com"
+            <a
+              href="tel:+2348133807134"
+              data-cms-bind
+              data-cms-text="global.phone"
+              data-cms-format="phoneDisplay"
+              data-cms-attr-href="global.phone"
+              data-cms-prefix-href="tel:"
+              >+234 (0) 813 380 7134</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:okigwecathdiocese@yahoo.com"
+              data-cms-bind
+              data-cms-text="global.email"
+              data-cms-attr-href="global.email"
+              data-cms-prefix-href="mailto:"
               >okigwecathdiocese@yahoo.com</a
             >
           </p>
@@ -3009,7 +3081,7 @@
       const searchInput = document.getElementById("parish-search");
       const filterTabs = document.querySelectorAll(".filter-tab");
       const deanerySecs = document.querySelectorAll(".deanery-section");
-      const parishCards = document.querySelectorAll(".parish-card--list");
+      let parishCards = document.querySelectorAll(".parish-card--list");
       const noResults = document.getElementById("no-results");
       let activeDeanery = "all";
 
@@ -3201,6 +3273,26 @@
           applyFilters();
         });
       });
+
+      /* ---- CMS live data: cms.js rebuilds each deanery's card grid
+         from content/parishes.json (data-cms-repeat, per grid) before
+         this event fires. Re-sync the cached card list, drop any
+         stale "show more" button/count sized for the fallback cards,
+         and re-run the collapse/search/filter pass on the fresh set. ---- */
+      document.addEventListener("cms:data:parishes", () => {
+        parishCards = document.querySelectorAll(".parish-card--list");
+        deanerySecs.forEach((sec) => {
+          const oldWrap = sec.querySelector(".deanery-show-more-wrap");
+          if (oldWrap) oldWrap.remove();
+          sec.classList.remove("is-expanded");
+          const countEl = sec.querySelector(".deanery-header__count");
+          const n = sec.querySelectorAll(".parish-card--list").length;
+          if (countEl) countEl.textContent = `${n} Parish${n === 1 ? "" : "es"}`;
+        });
+        initDeaneryShowMore();
+        applyFilters();
+      });
     </script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

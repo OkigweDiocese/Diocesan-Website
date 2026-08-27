@@ -1,0 +1,152 @@
+{
+  "secSchoolsHeroTitle": "Secondary Schools",
+  "secSchoolsHeroSubtitle": "Providing quality, values-based education that forms the whole person — mind, body, and spirit.",
+  "items": [
+    {
+      "name": "Queen of Apostles Boys Secondary School, Ogii",
+      "managers": [
+        "Rev. Fr. Charles Madubuike (Principal)",
+        "Rev. Fr. Fidelis Osuagwu (Vice Principal)"
+      ]
+    },
+    {
+      "name": "St. Theresa's Secondary Technical School, Alike Obowo",
+      "managers": [
+        "Rev. Fr. Ignatius Namodo (Principal)",
+        "Rev. Fr. Perez Iwuchukwu (Vice Principal)"
+      ]
+    },
+    {
+      "name": "St. Paul's High School, Osu",
+      "managers": [
+        "Rev. Fr. Jasper Onugha (Principal)",
+        "Rev. Fr. Obianyanwu Valentine (Vice Principal)"
+      ]
+    },
+    {
+      "name": "Christus Dominus Secondary School, Ezelu Okwe",
+      "managers": ["Rev. Fr. Cosmas Onuegbu (Principal)"]
+    },
+    {
+      "name": "Fatima Secondary School, Isuikwuato",
+      "managers": ["Rev. Fr. Charles Ohuabunwa (Principal)"]
+    },
+    {
+      "name": "All Saints Secondary School, Uboma",
+      "managers": ["Rev. Fr. Paul Ukomadu (Principal)"]
+    },
+    {
+      "name": "Immaculate Conception Secondary School, Umuchieze",
+      "managers": [
+        "Rev. Fr. Raphael Madu (Principal)",
+        "Rev. Fr. Lebechi Franklin (Vice Principal)"
+      ]
+    },
+    {
+      "name": "Sancta Crux Academy, Mbano Headquarters",
+      "managers": [
+        "Rev. Fr. Anthony Ukaegbu (Principal)",
+        "Rev. Fr. Stanley Iwu (Vice Principal)"
+      ]
+    },
+    {
+      "name": "Sacred Heart Boys Secondary School, Amuzi Obowo",
+      "managers": ["Rev. Fr. Donatus Iwu (Principal)"]
+    },
+    {
+      "name": "Queen of Fatima International College, Umuakagu Nsu",
+      "managers": [
+        "Rev. Fr. Anthony Osuigwe (Principal)",
+        "Rev. Fr. Stephen Ohenele (Vice Principal)"
+      ]
+    },
+    {
+      "name": "All Saints Secondary School, Ugwaku",
+      "managers": [
+        "Rev. Fr. Basil Ozor (Principal)",
+        "Rev. Fr. David Okolie (Vice Principal)",
+        "Rev. Fr. Christian Ajomiwe (Vice Principal)",
+        "Rev. Fr. Hilary Mmeru (In Residence)"
+      ]
+    },
+    {
+      "name": "St. Augustine's Model Secondary School, Amainyi",
+      "managers": ["Rev. Fr. Daniel Abazie (Principal)"]
+    },
+    {
+      "name": "Mater Christi Academy, Umunneochi",
+      "managers": ["Rev. Fr. Kingsley Maduka (Principal)"]
+    },
+    {
+      "name": "Maris Model Academy Agbaja, Ehime Mbano",
+      "managers": ["Rev. Fr. Collins Okoro (Principal)"]
+    },
+    {
+      "name": "Holy Family Secondary School, Amosu Umulolo",
+      "managers": ["Rev. Fr. Eric Davis Muoneke (Principal)"]
+    },
+    {
+      "name": "Assumption Model Secondary School",
+      "managers": ["Rev. Fr. Martin Osorobi (Principal)"]
+    },
+    {
+      "name": "Holy Cross Secondary Technical School, Uturu",
+      "managers": ["Rev. Fr. George Nwankwo (Principal)"]
+    },
+    {
+      "name": "St. Patrick's Secondary School, Ehime",
+      "managers": ["Rev. Fr. Michael Chukwu (Principal)"]
+    },
+    {
+      "name": "St. Charles International Secondary School, Okwelle",
+      "managers": ["Rev. Fr. Adolphus Oforkpara (Principal)"]
+    },
+    {
+      "name": "Mater Dei Secondary School, Arondizuogu",
+      "managers": ["Rev. Fr. Cornelius Nwoye (Principal)"]
+    },
+    {
+      "name": "St. Anthony's Secondary School, Umunkwo",
+      "managers": ["Rev. Fr. Marcellinus Nwoda (Principal)"]
+    },
+    {
+      "name": "Madonna Comprehensive Secondary School, Ovim",
+      "managers": ["Rev. Fr. Joseph Nwokenkwo (Principal)"]
+    },
+    {
+      "name": "Christ the Redeemer College, Osuachara",
+      "managers": ["Rev. Fr. Joseph Obialor (Principal)"]
+    },
+    {
+      "name": "SS. Margaret and Leopold (Magleo) International Secondary School, Nkumeato Ihitte",
+      "managers": [
+        "Rev. Fr. Sabinus Iweadighi (Principal)",
+        "Rev. Fr. Modestus Nwanyanwu (Representative)"
+      ]
+    },
+    {
+      "name": "St. Augustine's Secondary School, Eziama Nneato",
+      "managers": ["Rev. Fr. Christopher Okoli (Principal)"]
+    },
+    {
+      "name": "Seat of Wisdom Comprehensive Secondary School, Nkwoagu, Isuochi, Umunneochi",
+      "managers": ["Rev. Fr. Leonard Nwosu (Principal)"]
+    },
+    {
+      "name": "Assumpta Model Secondary School, Nneato, Umunneochi L.G.A.",
+      "managers": ["Rev. Fr. Athanasius Agbanwo (Principal)"]
+    },
+    {
+      "name": "Sancta Maria Secondary School, Ogbor Ugiri",
+      "managers": ["Rev. Fr. Samuel Okereke (Principal)"]
+    },
+    {
+      "name": "Regina Caeli Secondary School, Ogbor Ugiri",
+      "managers": ["Rev. Fr. Thaddeus Obasi (Principal)"]
+    },
+    {
+      "name": "Queen of Apostles Secondary Technical College, Obulo Eziama Nneato",
+      "managers": ["Rev. Fr. Cyprian Ukanwa"]
+    }
+  ]
+}

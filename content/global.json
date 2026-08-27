@@ -1,0 +1,20 @@
+{
+  "logoImage": "images/logo-transperent.png",
+  "diocesanSealImage": "images/diocesan-seal.png",
+  "tagline": "Serving God and Humanity Through Faith, Hope & Love",
+  "facebookUrl": "https://web.facebook.com/profile.php?id=61557403089364",
+  "whatsappNumber": "2348133807134",
+  "address": "Diocesan Catholic Secretariat, Villa Lourdes. Box 99 Okigwe, Imo State, Nigeria.",
+  "phone": "+2348133807134",
+  "email": "okigwecathdiocese@yahoo.com",
+  "officeHours": "Tuesday & Thursday: 10:00 AM – 2:00 PM",
+  "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d54442.37874117783!2d7.3265770949301325!3d5.814924017191559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sokigwe%20diocese%20cathedral!5e0!3m2!1sen!2sng!4v1780441883398!5m2!1sen!2sng",
+  "currentBishop": {
+    "title": "Most Rev. Dr.",
+    "name": "Solomon A. Amatu",
+    "role": "Catholic Bishop of Okigwe"
+  },
+  "missionText": "To proclaim the Gospel of Jesus Christ, administer the Sacraments faithfully, and build a community of disciples who serve God and humanity with justice, compassion, and integrity — leaving no soul behind.",
+  "visionText": "A Diocese fully alive in faith — where every Catholic is an active witness of Christ's love, the poor are uplifted, families are strengthened, and all people encounter the saving grace of God.",
+  "officialDirectoryPdf": "files/The 2026 Directory_Main.pdf"
+}
