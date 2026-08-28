@@ -500,52 +500,7 @@
             data-cms-repeat="parishes.items"
             data-cms-filter="featured"
           >
-            <!-- Parish Card 1 -->
-            <article class="parish-card">
-              <!-- TODO: Replace with actual parish photograph -->
-              <div
-                class="parish-card__image"
-                role="img"
-                aria-label="Immaculate Conception Cathedral, Okigwe"
-              >
-                <div class="img-placeholder">
-                  <img
-                    src="images/Cathedral symbol.jpg"
-                    width="655"
-                    height="468"
-                    alt=""
-                    loading="lazy"
-                  />
-                </div>
-                <div class="parish-card__badge">Cathedral</div>
-              </div>
-              <div class="parish-card__body">
-                <h3 class="parish-card__name">
-                  Immaculate Conception Cathedral, Okigwe
-                </h3>
-                <p class="parish-card__location">
-                  <span aria-hidden="true">📍</span> Okigwe, Imo State
-                </p>
-                <p class="parish-card__desc">
-                  Immaculate Conception Cathedral, Okigwe is the Mother Church
-                  of our diocese. It stands as the spiritual heart of the
-                  Diocese, where the faithful gather for the celebration of the
-                  Sacred Liturgy, diocesan events, and major ecclesial
-                  celebrations. Though still under construction, the Cathedral
-                  is a visible testament to the Diocese's faith, unity, and
-                  commitment to building a lasting house of God for future
-                  generations.
-                </p>
-                <a
-                  href="pages/parishes.html"
-                  class="parish-card__link"
-                  aria-label="Learn more about Immaculate Conception Cathedral"
-                >
-                  Visit Parish →
-                </a>
-              </div>
-            </article>
-
+            <!-- Parish Card template — cloned once per featured parish -->
             <!-- Parish Card 2 -->
             <article class="parish-card" data-cms-item>
               <!-- TODO: Replace with actual parish photograph -->
@@ -600,89 +555,11 @@
               </div>
             </article>
 
-            <!-- Parish Card 3 -->
-            <article class="parish-card">
-              <div
-                class="parish-card__image"
-                role="img"
-                aria-label="St. Columbas' Parish placeholder image"
-              >
-                <div class="img-placeholder">
-                  <img
-                    src="images/st_columbas_agbaghara_nsu.jpg"
-                    width="700"
-                    height="525"
-                    alt="St. Columbas' Catholic Parish Agbaghara Nsu"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-              <div class="parish-card__body">
-                <h3 class="parish-card__name">
-                  St. Columbas' Catholic Parish Agbaghara Nsu
-                </h3>
-                <p class="parish-card__location">
-                  <span aria-hidden="true">📍</span> Ehime Mbano, Imo State
-                </p>
-                <p class="parish-card__desc">
-                  St. Columbas' Agbaghara Nsu is a vibrant parish community
-                  located in the heart of Ehime Mbano, which was founded in
-                  1917. The parish serves as a spiritual home for hundreds of
-                  faithful in the area and continues to be a beacon of faith and
-                  service in the Diocese of Okigwe.
-                </p>
-                <a
-                  href="pages/parishes.html"
-                  class="parish-card__link"
-                  aria-label="Learn more about St. Columbas' Parish"
-                >
-                  Visit Parish →
-                </a>
-              </div>
-            </article>
-
-            <!-- Parish Card 4 -->
-            <article class="parish-card">
-              <div
-                class="parish-card__image"
-                role="img"
-                aria-label="St. Mary's Parish Amuzi Obowo Parish placeholder image"
-              >
-                <div class="img-placeholder">
-                  <img
-                    src="images/st_may's_amuzi_obowo.jpg"
-                    width="700"
-                    height="467"
-                    alt="St. Mary's Parish Amuzi Obowo"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-              <div class="parish-card__body">
-                <h3 class="parish-card__name">
-                  St. Mary's Catholic Parish Amuzi Obowo
-                </h3>
-                <p class="parish-card__location">
-                  <span aria-hidden="true">📍</span> Obowo, Imo State
-                </p>
-                <p class="parish-card__desc">
-                  St. Mary's Catholic Parish Obowo is one of our vibrant
-                  parishes in Obowo West Deanery, serving a large and active
-                  Catholic community. The parish is known for its strong
-                  devotion to the Blessed Virgin Mary, dynamic liturgical
-                  celebrations, and robust social outreach programs that support
-                  the local community.
-                </p>
-                <a
-                  href="pages/parishes.html"
-                  class="parish-card__link"
-                  aria-label="Learn more about St. Mary's Parish Amuzi"
-                >
-                  Visit Parish →
-                </a>
-              </div>
-            </article>
           </div>
+
+          <p class="parishes__empty" data-cms-empty="parishes.items" hidden>
+            No featured parishes have been added yet.
+          </p>
 
           <div class="section-cta reveal-up">
             <!-- TODO: Link to full Parish Directory page when built -->
@@ -725,6 +602,25 @@
           <p class="events__empty" id="events-empty" hidden>
             There are no upcoming events at this time. Please check back soon.
           </p>
+
+          <div class="events__archive-toggle reveal-up">
+            <button
+              type="button"
+              class="btn btn--secondary"
+              id="past-events-toggle"
+              aria-expanded="false"
+              aria-controls="past-events-wrap"
+            >
+              View Past Events
+            </button>
+          </div>
+
+          <div class="events__archive-wrap" id="past-events-wrap" hidden>
+            <div class="events__grid" id="past-events-grid" aria-live="polite"></div>
+            <p class="events__empty" id="past-events-empty" hidden>
+              No past events to show yet.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -747,11 +643,16 @@
             </p>
           </div>
 
-          <!-- TODO: Fetch news articles dynamically from a backend CMS (e.g., WordPress REST API or custom API) -->
-          <div class="news__grid reveal-up" data-cms-repeat="news.items">
-            <!-- News Card 1 -->
+          <!-- Shows the 3 most recent items with featured: true in
+               content/news.json — see js/cms.js data-cms-filter/sort/limit. -->
+          <div
+            class="news__grid reveal-up"
+            data-cms-repeat="news.items"
+            data-cms-filter="featured"
+            data-cms-sort="date:desc"
+            data-cms-limit="3"
+          >
             <article class="news-card" data-cms-item>
-              <!-- TODO: Replace with actual event/news featured image -->
               <div
                 class="news-card__image"
                 role="img"
@@ -780,9 +681,15 @@
                   data-cms-field-attr-datetime="date"
                   >April 28, 2026</time
                 >
-                <h3 class="news-card__title" data-cms-fbind data-cms-field="title">
-                  Bishop Solomon A. Amatu Celebrates his Episcopal Silver
-                  Jubilee
+                <h3 class="news-card__title">
+                  <a
+                    data-cms-fbind
+                    data-cms-field="title"
+                    data-cms-field-attr-href="slug"
+                    data-cms-field-prefix-href="pages/news-item.html?slug="
+                    >Bishop Solomon A. Amatu Celebrates his Episcopal Silver
+                    Jubilee</a
+                  >
                 </h3>
                 <p class="news-card__excerpt" data-cms-fbind data-cms-field="excerpt">
                   The Catholic Diocese of Okigwe joyfully celebrated the
@@ -800,89 +707,11 @@
                 </p>
               </div>
             </article>
-
-            <!-- News Card 2 -->
-            <article class="news-card">
-              <div
-                class="news-card__image"
-                role="img"
-                aria-label="News article image placeholder"
-              >
-                <div class="img-placeholder">
-                  <img
-                    src="images/bishop_gifts_car.jpg"
-                    width="700"
-                    height="525"
-                    alt="Bishop Amatu gift to Car to Assumption Parish Ukwunwangwu"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="news-card__category">Event</div>
-              </div>
-              <div class="news-card__body">
-                <time class="news-card__date" datetime="2026-05-24"
-                  >May 24, 2026</time
-                >
-                <h3 class="news-card__title">
-                  Bishop Solomon A. Amatu Gifts Assumption Parish Ukwunwangwu a
-                  Car
-                </h3>
-                <p class="news-card__excerpt">
-                  The parish priest and parishioners of Assumption Parish,
-                  Ukwunwangwu-Uturu celebrated this year's Feast of Pentecost in
-                  grand style, as they welcomed the presence of Most Rev.
-                  Solomon Amatu, the Catholic Bishop of Okigwe. The bishop, who
-                  came on a surprise extraordinary pastoral visit to the parish,
-                  celebrated the holy mass with the faithful. As part of his
-                  extraordinary surprise package for the visit, the bishop made
-                  a donation of one of his official cars to the parish for the
-                  enhancement of the ongoing work of evangelization in the
-                  parish.
-                </p>
-              </div>
-            </article>
-
-            <!-- News Card 3 -->
-            <article class="news-card">
-              <div
-                class="news-card__image"
-                role="img"
-                aria-label="News article image placeholder"
-              >
-                <div class="img-placeholder">
-                  <img
-                    src="images/DSCF0333.JPG"
-                    width="700"
-                    height="393"
-                    alt="Cathedraticum in Okigwe Deanery"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="news-card__category">Cathedraticum</div>
-              </div>
-              <div class="news-card__body">
-                <time class="news-card__date" datetime="2026-04-01"
-                  >April 01, 2026</time
-                >
-                <h3 class="news-card__title">
-                  Okigwe Deanery Celebrates Cathedraticum 2026 with the Bishop
-                </h3>
-                <p class="news-card__excerpt">
-                  Okigwe Deanery joyfully celebrated the 2026 Cathedraticum with
-                  His Lordship, Most Rev. Solomon A. Amatu, at St. Mary's
-                  Pro-Cathedral Parish, Okigwe. The annual celebration brought
-                  together priests, religious, and lay faithful of the deanery
-                  in a spirit of thanksgiving, unity, and communion with their
-                  Bishop. In his homily, Bishop Amatu encouraged the faithful to
-                  remain steadfast in faith and committed to the mission of the
-                  Church. At the end, he imparted the Papal Blessing from Rome
-                  on them. The event was marked by vibrant liturgical
-                  celebrations and renewed expressions of ecclesial solidarity
-                  within the Diocese.
-                </p>
-              </div>
-            </article>
           </div>
+
+          <p class="news__empty" data-cms-empty="news.items" hidden>
+            There are no featured news items at the moment.
+          </p>
 
           <div class="section-cta reveal-up">
             <a href="pages/news.html" class="btn btn--primary"

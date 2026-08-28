@@ -63,7 +63,7 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 | Statistics grid (Parishes, Chaplaincies, Priests, Major Seminarians, Schools, Faithful) | REPEATING | `diocesanStats[].{label, value}` | 6 of the 10 stats also shown on About: Statistics. Recommend **one** shared stats list with a `showOnHome: true/false` flag per item, rather than two separately-edited copies. |
 | Featured Parishes (4 cards: image, badge, name, location, description) | REPEATING | `featuredParishes[].{image, badge, name, location, description}` | All 4 also exist as entries in the full Parish Directory (`parishes.html`). Recommend a `featured: true` flag on the shared parish record instead of duplicate content maintained in two places. |
 | Upcoming Events grid | REPEATING | `events[].{date, time, title, event, location}` | **Currently lives in `script.js`, not in this page** — a hard-coded `EVENTS` array inside `initUpcomingEvents()`, shared code that only renders on this page. Top priority to extract into its own `events.json`/collection since it's the most frequently-changing content on the site. |
-| News & Events section (3 cards: image, category, date, title, excerpt) | REPEATING | `newsItems[].{image, category, date, title, excerpt}` | "Read More" links were removed earlier (led nowhere); excerpts are the full story text today. |
+| Featured News section (3 most recent items flagged `featured`) | REPEATING | *(shared)* `news.items[].{slug, image, category, categorySlug, featured, date, title, excerpt}` | Same source list as `pages/news.html` and `pages/news-item.html` — filtered to `featured`, sorted newest-first, capped at 3 via `data-cms-filter`/`data-cms-sort`/`data-cms-limit`. Each card links to `pages/news-item.html?slug=...`. |
 | "All News & Events" button | FIXED | — | Links to `pages/news.html`. |
 | Media Gallery section | — | — | Entered in markup but **fully commented out** — not rendered. Skip until it's built out. |
 | Contact section heading/subtitle | EDITABLE | `contactHeadingMain`, `contactHeadingEmphasis`, `contactSubtitle` | Heading split into two fields so the "the Diocese" italic survives editing. |
@@ -203,11 +203,10 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 These exist and are reachable by direct URL, but aren't part of the live click-through site today. Recommend deciding whether each becomes a real section (and gets a CMS collection) or stays parked before spending CMS effort on it.
 
+**Update:** `pages/news.html` and the new `pages/news-item.html` are now fully CMS-driven off the shared `news.json` (see §1/§2 above) — moved out of this "not linked" list, since they're reachable from the footer's Quick Links and the homepage's "All News & Events" button on every page (just not yet in the primary navbar, whose "News & Events" link is currently commented out in `index.html`).
+
 ### Ministries — `pages/ministries.html`
 Fully written content (6 ministry overview cards + 6 detailed sections: Caritas, Youth, CWO, CMO, Schools, Liturgy), each with heading, 2 paragraphs, activity list, and contact line. Ready to inventory the same way as the linked pages **if** this page gets activated.
-
-### News & Events — `pages/news.html`
-Generic placeholder articles (not the same stories as Home's News section) plus category filters, newsletter signup, and pagination UI. Would need its content reconciled with — or replacing — Home's `newsItems`.
 
 ### Media Gallery — `pages/gallery.html`
 16 placeholder photo tiles with captions, category filters, lightbox. No real photos yet.

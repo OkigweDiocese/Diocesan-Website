@@ -614,36 +614,88 @@ const EVENTS_FALLBACK = [
   },
 ];
 
-function initUpcomingEvents() {
-  renderUpcomingEvents(EVENTS_FALLBACK);
+const MAX_EVENTS_SHOWN = 5;
+const MAX_PAST_EVENTS_SHOWN = 10;
+const EVENT_MONTH_LABELS = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+/**
+ * Parse an event's "YYYY-MM-DD" string as a local-time date so
+ * comparisons aren't shifted by timezone offsets.
+ */
+function parseEventDate(dateStr) {
+  return new Date(`${dateStr}T00:00:00`);
 }
 
-function renderUpcomingEvents(EVENTS) {
-  const MAX_EVENTS_SHOWN = 5;
-  const MONTH_LABELS = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+function eventCardHtml(event, eventDate) {
+  const fullDate = eventDate.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
-  const grid = document.getElementById("events-grid");
-  const emptyMsg = document.getElementById("events-empty");
+  return `
+    <article class="event-card">
+      <div class="event-card__date" aria-hidden="true">
+        <span class="event-card__date-month">${EVENT_MONTH_LABELS[eventDate.getMonth()]}</span>
+        <span class="event-card__date-day">${eventDate.getDate()}</span>
+      </div>
+      <div class="event-card__body">
+        <span class="event-card__category">${event.title}</span>
+        <h3 class="event-card__title">${event.event}</h3>
+        <div class="event-card__meta">
+          <span class="event-card__meta-item">
+            <time datetime="${event.date}">${fullDate}</time>${event.time ? ` · ${event.time}` : ""}
+          </span>
+          ${event.location ? `<span class="event-card__meta-item">📍 ${event.location}</span>` : ""}
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+/* CURRENT_EVENTS starts as the offline fallback and is replaced with the
+   real content/events.json list the moment cms.js fetches it — same
+   fallback-then-overwrite pattern used for the priest roll on
+   pages/priests.html. Kept in module scope so the "View Past Events"
+   toggle always archives against whatever is currently live. */
+let CURRENT_EVENTS = EVENTS_FALLBACK;
+
+function initUpcomingEvents() {
+  renderUpcomingEvents(CURRENT_EVENTS, "events-grid", "events-empty");
+  renderSidebarEventList(
+    CURRENT_EVENTS,
+    "sidebar-events-list",
+    "sidebar-events-empty",
+  );
+  initPastEventsToggle();
+
+  document.addEventListener("cms:data:events", (e) => {
+    const items =
+      e.detail && Array.isArray(e.detail.items) ? e.detail.items : null;
+    if (!items || !items.length) return;
+    CURRENT_EVENTS = items;
+    renderUpcomingEvents(CURRENT_EVENTS, "events-grid", "events-empty");
+    renderSidebarEventList(
+      CURRENT_EVENTS,
+      "sidebar-events-list",
+      "sidebar-events-empty",
+    );
+  });
+}
+
+/**
+ * Renders the soonest MAX_EVENTS_SHOWN not-yet-passed events, soonest
+ * first, into the grid/empty elements named by gridId/emptyId — reused
+ * for both the homepage widget and the news page's sidebar widget.
+ */
+function renderUpcomingEvents(EVENTS, gridId, emptyId) {
+  const grid = document.getElementById(gridId);
+  const emptyMsg = document.getElementById(emptyId);
   if (!grid) return;
-
-  /**
-   * Parse an event's "YYYY-MM-DD" string as a local-time date so
-   * comparisons aren't shifted by timezone offsets.
-   */
-  const parseEventDate = (dateStr) => new Date(`${dateStr}T00:00:00`);
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -662,33 +714,102 @@ function renderUpcomingEvents(EVENTS) {
   if (emptyMsg) emptyMsg.hidden = true;
 
   grid.innerHTML = upcoming
+    .map((event) => eventCardHtml(event, parseEventDate(event.date)))
+    .join("");
+}
+
+/**
+ * Compact variant of the upcoming-events list, using the ".event-item"
+ * markup styled on pages/news.html's sidebar (a narrower layout than the
+ * homepage's ".event-card" grid). MAX_SIDEBAR_EVENTS_SHOWN keeps it short
+ * since it's a supporting widget, not the main content.
+ */
+const MAX_SIDEBAR_EVENTS_SHOWN = 6;
+const SIDEBAR_MONTH_LABELS = EVENT_MONTH_LABELS;
+
+function renderSidebarEventList(EVENTS, listId, emptyId) {
+  const list = document.getElementById(listId);
+  const emptyMsg = document.getElementById(emptyId);
+  if (!list) return;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const upcoming = EVENTS.filter((event) => parseEventDate(event.date) >= today)
+    .sort((a, b) => parseEventDate(a.date) - parseEventDate(b.date))
+    .slice(0, MAX_SIDEBAR_EVENTS_SHOWN);
+
+  if (!upcoming.length) {
+    list.hidden = true;
+    if (emptyMsg) emptyMsg.hidden = false;
+    return;
+  }
+
+  list.hidden = false;
+  if (emptyMsg) emptyMsg.hidden = true;
+
+  list.innerHTML = upcoming
     .map((event) => {
       const eventDate = parseEventDate(event.date);
-      const fullDate = eventDate.toLocaleDateString("en-US", {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      });
-
       return `
-        <article class="event-card">
-          <div class="event-card__date" aria-hidden="true">
-            <span class="event-card__date-month">${MONTH_LABELS[eventDate.getMonth()]}</span>
-            <span class="event-card__date-day">${eventDate.getDate()}</span>
+        <div class="event-item">
+          <div class="event-item__date">
+            <span class="event-item__date-day">${eventDate.getDate()}</span
+            ><span class="event-item__date-mon">${SIDEBAR_MONTH_LABELS[eventDate.getMonth()]}</span>
           </div>
-          <div class="event-card__body">
-            <span class="event-card__category">${event.title}</span>
-            <h3 class="event-card__title">${event.event}</h3>
-            <div class="event-card__meta">
-              <span class="event-card__meta-item">
-                <time datetime="${event.date}">${fullDate}</time>${event.time ? ` · ${event.time}` : ""}
-              </span>
-              ${event.location ? `<span class="event-card__meta-item">📍 ${event.location}</span>` : ""}
-            </div>
+          <div class="event-item__info">
+            <h4>${event.event}</h4>
+            <p>${event.location || ""}${event.location && event.time ? " · " : ""}${event.time || ""}</p>
           </div>
-        </article>
+        </div>
       `;
     })
     .join("");
+}
+
+/**
+ * "View Past Events" toggle on the homepage — events don't get deleted
+ * once their date passes, they just drop out of the upcoming list above
+ * and become available here, newest-first, on demand.
+ */
+function initPastEventsToggle() {
+  const toggleBtn = document.getElementById("past-events-toggle");
+  const pastWrap = document.getElementById("past-events-wrap");
+  const pastGrid = document.getElementById("past-events-grid");
+  const pastEmpty = document.getElementById("past-events-empty");
+  if (!toggleBtn || !pastWrap || !pastGrid) return;
+
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = !pastWrap.hidden;
+    if (isOpen) {
+      pastWrap.hidden = true;
+      toggleBtn.setAttribute("aria-expanded", "false");
+      toggleBtn.textContent = "View Past Events";
+      return;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const past = CURRENT_EVENTS.filter(
+      (event) => parseEventDate(event.date) < today,
+    )
+      .sort((a, b) => parseEventDate(b.date) - parseEventDate(a.date))
+      .slice(0, MAX_PAST_EVENTS_SHOWN);
+
+    if (!past.length) {
+      pastGrid.hidden = true;
+      if (pastEmpty) pastEmpty.hidden = false;
+    } else {
+      pastGrid.hidden = false;
+      if (pastEmpty) pastEmpty.hidden = true;
+      pastGrid.innerHTML = past
+        .map((event) => eventCardHtml(event, parseEventDate(event.date)))
+        .join("");
+    }
+
+    pastWrap.hidden = false;
+    toggleBtn.setAttribute("aria-expanded", "true");
+    toggleBtn.textContent = "Hide Past Events";
+  });
 }

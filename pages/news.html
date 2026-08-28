@@ -269,6 +269,27 @@
         display: none;
       }
 
+      /* the newest item in the (already newest-first) list gets a
+         featured treatment, driven purely by CSS — no extra data
+         needed just for this page's layout */
+      .news-list-card:first-child {
+        flex-direction: column;
+      }
+      .news-list-card:first-child .news-list-card__image {
+        width: 100%;
+        min-height: 260px;
+      }
+      .news-list-card:first-child .news-list-card__title {
+        font-size: var(--text-xl);
+      }
+
+      .news-list__empty {
+        text-align: center;
+        color: var(--color-text-muted);
+        font-size: var(--text-md);
+        padding: var(--space-xl) 0;
+      }
+
       @media (max-width: 900px) {
         .news-page-grid {
           grid-template-columns: 1fr;
@@ -295,7 +316,7 @@
     </style>
     <title>News &amp; Events — Catholic Diocese of Okigwe</title>
   </head>
-  <body>
+  <body data-cms-pages="global,news,events">
     <!-- HEADER -->
     <header class="site-header" id="site-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -441,224 +462,28 @@
           <div class="news-page-grid">
             <!-- Main content column -->
             <div>
-              <!-- Featured Article -->
-              <div class="news-featured reveal-up" role="article">
-                <!-- TODO: Replace with actual feature article photograph -->
-                <div class="news-featured__image">
-                  <span class="feat-badge">Featured</span>
-                  <span style="text-align: center"
-                    >Featured Image<br />(Placeholder)</span
-                  >
-                </div>
-                <div class="news-featured__body">
-                  <p class="news-featured__cat">Pastoral</p>
-                  <h2 class="news-featured__title">
-                    Bishop Convokes Diocesan Synod on Evangelisation for 2025
-                  </h2>
-                  <div class="news-featured__meta">
-                    <span>🗓 July 1, 2025</span>
-                    <span>✍ Diocesan Communications</span>
-                  </div>
-                  <p class="news-featured__excerpt">
-                    In a landmark pastoral letter addressed to the clergy,
-                    religious, and faithful of the Diocese of Okigwe, the Bishop
-                    has announced the convocation of a Diocesan Synod on the New
-                    Evangelisation, to be held in October 2025. The synodal
-                    process — inspired by the global Synod on Synodality called
-                    by Pope Francis — will gather delegates from all 48 parishes
-                    and 8 deaneries to discern the pastoral priorities of the
-                    Diocese for the next five years.
-                  </p>
-                  <a
-                    href="#"
-                    class="btn btn--secondary"
-                    style="align-self: flex-start"
-                    >Read Full Story</a
-                  >
-                </div>
-              </div>
+              <!-- News list — rendered from content/news.json once cms.js
+                   dispatches "cms:data:news" (see the script block near the
+                   end of this file). The newest item gets the featured
+                   treatment via the .news-list-card:first-child CSS rule
+                   below, so no separate "featured" markup/data is needed
+                   just for this page. -->
+              <div class="news-list reveal-up" id="news-list"></div>
 
-              <!-- News Articles List -->
-              <!-- TODO: Fetch articles dynamically from CMS REST API (WordPress, Sanity, etc.) -->
-              <div class="news-list reveal-up" id="news-list">
-                <article class="news-list-card" data-cat="event">
-                  <div class="news-list-card__image">News Image</div>
-                  <div class="news-list-card__body">
-                    <p class="news-list-card__cat">Event</p>
-                    <h3 class="news-list-card__title">
-                      Corpus Christi Procession Draws Thousands Across All
-                      Deaneries
-                    </h3>
-                    <p class="news-list-card__excerpt">
-                      Parishes across the Diocese celebrated the Solemnity of
-                      Corpus Christi with magnificent Eucharistic processions.
-                      Thousands of faithful lined streets and squares to adore
-                      the Blessed Sacrament carried by their parish priests...
-                    </p>
-                    <p class="news-list-card__meta">🗓 May 28, 2025</p>
-                    <a href="#" class="news-list-card__link">Read More →</a>
-                  </div>
-                </article>
+              <p class="news-list__empty" id="news-list-empty" hidden>
+                <span id="news-list-empty-text"
+                  >There are no news items at the moment.</span
+                >
+              </p>
 
-                <article class="news-list-card" data-cat="caritas">
-                  <div class="news-list-card__image">News Image</div>
-                  <div class="news-list-card__body">
-                    <p class="news-list-card__cat">Caritas</p>
-                    <h3 class="news-list-card__title">
-                      Caritas Okigwe Distributes Relief to 500 Vulnerable
-                      Families in Six Deaneries
-                    </h3>
-                    <p class="news-list-card__excerpt">
-                      In partnership with Catholic Relief Services (CRS)
-                      Nigeria, Caritas Okigwe distributed food packs,
-                      medications, and hygiene kits to over 500 of the most
-                      vulnerable families across the Diocese in a three-day
-                      outreach exercise...
-                    </p>
-                    <p class="news-list-card__meta">🗓 May 10, 2025</p>
-                    <a href="#" class="news-list-card__link">Read More →</a>
-                  </div>
-                </article>
-
-                <article class="news-list-card" data-cat="pastoral">
-                  <div class="news-list-card__image">News Image</div>
-                  <div class="news-list-card__body">
-                    <p class="news-list-card__cat">Pastoral</p>
-                    <h3 class="news-list-card__title">
-                      Annual Clergy Retreat: "Priests as Servants of the
-                      Mystery"
-                    </h3>
-                    <p class="news-list-card__excerpt">
-                      The Bishop led the annual diocesan clergy retreat at the
-                      Bishop's House in Okigwe. Over three days, priests and
-                      seminarians gathered for prayer, the sacrament of
-                      reconciliation, and spiritual conferences on the theology
-                      of the priesthood...
-                    </p>
-                    <p class="news-list-card__meta">🗓 April 22, 2025</p>
-                    <a href="#" class="news-list-card__link">Read More →</a>
-                  </div>
-                </article>
-
-                <article class="news-list-card" data-cat="education">
-                  <div class="news-list-card__image">News Image</div>
-                  <div class="news-list-card__body">
-                    <p class="news-list-card__cat">Education</p>
-                    <h3 class="news-list-card__title">
-                      Diocese Launches New Scholarship Fund for Secondary School
-                      Students
-                    </h3>
-                    <p class="news-list-card__excerpt">
-                      The Diocese of Okigwe has launched the Bishop's
-                      Scholarship Fund, offering full bursaries to 50
-                      academically gifted but financially disadvantaged
-                      secondary school students from Catholic families across
-                      the Diocese...
-                    </p>
-                    <p class="news-list-card__meta">🗓 April 5, 2025</p>
-                    <a href="#" class="news-list-card__link">Read More →</a>
-                  </div>
-                </article>
-
-                <article class="news-list-card" data-cat="event">
-                  <div class="news-list-card__image">News Image</div>
-                  <div class="news-list-card__body">
-                    <p class="news-list-card__cat">Event</p>
-                    <h3 class="news-list-card__title">
-                      Diocesan Youth Rally 2025: "Rise Up — Your Faith Can Move
-                      Mountains"
-                    </h3>
-                    <p class="news-list-card__excerpt">
-                      Over 2,000 young Catholics from all deaneries converged on
-                      the Cathedral grounds for the 2025 Diocesan Youth Rally.
-                      The event featured Mass, praise and worship, testimonies,
-                      skills exhibitions, and a powerful address by the
-                      Bishop...
-                    </p>
-                    <p class="news-list-card__meta">🗓 March 15, 2025</p>
-                    <a href="#" class="news-list-card__link">Read More →</a>
-                  </div>
-                </article>
-
-                <article class="news-list-card" data-cat="announcement">
-                  <div class="news-list-card__image">News Image</div>
-                  <div class="news-list-card__body">
-                    <p class="news-list-card__cat">Announcement</p>
-                    <h3 class="news-list-card__title">
-                      New Pastoral Year Theme Announced: "Rooted in Christ,
-                      Bearing Fruit"
-                    </h3>
-                    <p class="news-list-card__excerpt">
-                      The Bishop has announced the pastoral theme for the
-                      2025–2026 diocesan year as "Rooted in Christ, Bearing
-                      Fruit," drawn from John 15:5. All diocesan programmes and
-                      parish activities for the year will be organised around
-                      this central theme...
-                    </p>
-                    <p class="news-list-card__meta">🗓 January 8, 2025</p>
-                    <a href="#" class="news-list-card__link">Read More →</a>
-                  </div>
-                </article>
-
-                <article class="news-list-card" data-cat="caritas">
-                  <div class="news-list-card__image">News Image</div>
-                  <div class="news-list-card__body">
-                    <p class="news-list-card__cat">Caritas</p>
-                    <h3 class="news-list-card__title">
-                      New Health Centre Opens in Umulolo Deanery, Serving 5,000
-                      Residents
-                    </h3>
-                    <p class="news-list-card__excerpt">
-                      A new Caritas health centre, funded by the Diocese of
-                      Okigwe and a German Catholic development partner, was
-                      formally commissioned by the Bishop in Umulolo. The centre
-                      will provide primary healthcare to over 5,000 rural
-                      residents...
-                    </p>
-                    <p class="news-list-card__meta">🗓 December 10, 2024</p>
-                    <a href="#" class="news-list-card__link">Read More →</a>
-                  </div>
-                </article>
-
-                <article class="news-list-card" data-cat="pastoral">
-                  <div class="news-list-card__image">News Image</div>
-                  <div class="news-list-card__body">
-                    <p class="news-list-card__cat">Pastoral</p>
-                    <h3 class="news-list-card__title">
-                      Ordination Mass: Five New Priests Ordained for the Diocese
-                      of Okigwe
-                    </h3>
-                    <p class="news-list-card__excerpt">
-                      In a solemn and joyful Mass at the Cathedral of the Sacred
-                      Heart, the Bishop ordained five new priests for the
-                      Diocese. Thousands of faithful filled the cathedral to
-                      celebrate the gift of new priests for our local Church...
-                    </p>
-                    <p class="news-list-card__meta">🗓 November 22, 2024</p>
-                    <a href="#" class="news-list-card__link">Read More →</a>
-                  </div>
-                </article>
-              </div>
-
-              <!-- Pagination -->
+              <!-- Pagination — built by renderNewsList() in the script block below -->
               <div
                 class="pagination reveal-up"
+                id="news-pagination"
                 role="navigation"
                 aria-label="News pagination"
-              >
-                <button
-                  class="pagination__btn is-active"
-                  aria-current="page"
-                  aria-label="Page 1"
-                >
-                  1
-                </button>
-                <button class="pagination__btn" aria-label="Page 2">2</button>
-                <button class="pagination__btn" aria-label="Page 3">3</button>
-                <button class="pagination__btn" aria-label="Next page">
-                  ›
-                </button>
-              </div>
+                hidden
+              ></div>
             </div>
 
             <!-- Sidebar -->
@@ -667,71 +492,10 @@
               <div class="sidebar-widget">
                 <div class="sidebar-widget__title">Upcoming Events</div>
                 <div class="sidebar-widget__body">
-                  <div class="event-item">
-                    <div class="event-item__date">
-                      <span class="event-item__date-day">15</span
-                      ><span class="event-item__date-mon">Aug</span>
-                    </div>
-                    <div class="event-item__info">
-                      <h4>Assumption of Mary — Diocesan Mass</h4>
-                      <p>Cathedral of the Sacred Heart, 9:00 AM</p>
-                    </div>
-                  </div>
-
-                  <div class="event-item">
-                    <div class="event-item__date">
-                      <span class="event-item__date-day">8</span
-                      ><span class="event-item__date-mon">Sep</span>
-                    </div>
-                    <div class="event-item__info">
-                      <h4>CWO Diocesan Convention 2025</h4>
-                      <p>Bishop's House, Okigwe</p>
-                    </div>
-                  </div>
-
-                  <div class="event-item">
-                    <div class="event-item__date">
-                      <span class="event-item__date-day">4</span
-                      ><span class="event-item__date-mon">Oct</span>
-                    </div>
-                    <div class="event-item__info">
-                      <h4>St. Francis Day — Creation Care Mass</h4>
-                      <p>All Parishes — 8:00 AM</p>
-                    </div>
-                  </div>
-
-                  <div class="event-item">
-                    <div class="event-item__date">
-                      <span class="event-item__date-day">18</span
-                      ><span class="event-item__date-mon">Oct</span>
-                    </div>
-                    <div class="event-item__info">
-                      <h4>Diocesan Synod Assembly — Opening Session</h4>
-                      <p>Diocesan Pastoral Centre, Okigwe</p>
-                    </div>
-                  </div>
-
-                  <div class="event-item">
-                    <div class="event-item__date">
-                      <span class="event-item__date-day">1</span
-                      ><span class="event-item__date-mon">Nov</span>
-                    </div>
-                    <div class="event-item__info">
-                      <h4>All Saints Day — Solemn Mass</h4>
-                      <p>Cathedral of the Sacred Heart</p>
-                    </div>
-                  </div>
-
-                  <div class="event-item">
-                    <div class="event-item__date">
-                      <span class="event-item__date-day">22</span
-                      ><span class="event-item__date-mon">Nov</span>
-                    </div>
-                    <div class="event-item__info">
-                      <h4>Priestly Ordination Mass 2025</h4>
-                      <p>Cathedral of the Sacred Heart</p>
-                    </div>
-                  </div>
+                  <div id="sidebar-events-list"></div>
+                  <p class="events__empty" id="sidebar-events-empty" hidden>
+                    There are no upcoming events at this time.
+                  </p>
                 </div>
               </div>
 
@@ -896,20 +660,163 @@
     </button>
     <script src="../script.js"></script>
     <script>
-      /* ---- News category filter ---- */
+      /* ============================================================
+         News list: render, category-filter, paginate.
+         NEWS starts empty and is populated once cms.js dispatches
+         "cms:data:news" (content/news.json) — see the listener below.
+         Follows the same custom-render-off-the-cms-event pattern used
+         on pages/priests.html for its (much larger) roster table.
+         ============================================================ */
+      const NEWS_PER_PAGE = 6;
+      let NEWS = [];
+      let newsFilteredData = [];
+      let newsCurrentPage = 1;
+      let activeCategory = "all";
+
+      const newsListEl = document.getElementById("news-list");
+      const newsEmptyEl = document.getElementById("news-list-empty");
+      const newsEmptyTextEl = document.getElementById("news-list-empty-text");
+      const newsPaginationEl = document.getElementById("news-pagination");
       const catTabs = document.querySelectorAll(".filter-tab[data-cat]");
-      const newsCards = document.querySelectorAll(".news-list-card");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function formatNewsDate(dateStr) {
+        const d = new Date(`${dateStr}T00:00:00`);
+        if (isNaN(d.getTime())) return dateStr;
+        return d.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        });
+      }
+
+      function truncateExcerpt(text, max) {
+        if (!text || text.length <= max) return text || "";
+        return text.slice(0, max).replace(/\s+\S*$/, "") + "…";
+      }
+
+      function applyNewsFilter() {
+        newsFilteredData =
+          activeCategory === "all"
+            ? [...NEWS]
+            : NEWS.filter((n) => n.categorySlug === activeCategory);
+        newsCurrentPage = 1;
+        renderNewsList();
+      }
+
+      function renderNewsList() {
+        const start = (newsCurrentPage - 1) * NEWS_PER_PAGE;
+        const end = Math.min(start + NEWS_PER_PAGE, newsFilteredData.length);
+        const page = newsFilteredData.slice(start, end);
+
+        if (!page.length) {
+          newsListEl.hidden = true;
+          newsListEl.innerHTML = "";
+          newsEmptyEl.hidden = false;
+          newsEmptyTextEl.textContent = NEWS.length
+            ? "No news items match this category."
+            : "There are no news items at the moment.";
+          newsPaginationEl.hidden = true;
+          newsPaginationEl.innerHTML = "";
+          return;
+        }
+
+        newsListEl.hidden = false;
+        newsEmptyEl.hidden = true;
+
+        newsListEl.innerHTML = page
+          .map((item) => {
+            const href = "news-item.html?slug=" + encodeURIComponent(item.slug || "");
+            return `
+              <article class="news-list-card" data-cat="${escapeHtml(item.categorySlug || "")}">
+                <div class="news-list-card__image">
+                  ${
+                    item.image
+                      ? `<img src="${escapeHtml(item.image)}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />`
+                      : "News Image"
+                  }
+                </div>
+                <div class="news-list-card__body">
+                  <p class="news-list-card__cat">${escapeHtml(item.category || "")}</p>
+                  <h3 class="news-list-card__title">
+                    <a href="${href}">${escapeHtml(item.title || "")}</a>
+                  </h3>
+                  <p class="news-list-card__excerpt">${escapeHtml(truncateExcerpt(item.excerpt, 220))}</p>
+                  <p class="news-list-card__meta">🗓 ${formatNewsDate(item.date)}</p>
+                  <a href="${href}" class="news-list-card__link">Read More →</a>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+        renderNewsPagination();
+      }
+
+      function renderNewsPagination() {
+        const totalPages = Math.ceil(newsFilteredData.length / NEWS_PER_PAGE);
+        newsPaginationEl.innerHTML = "";
+        if (totalPages <= 1) {
+          newsPaginationEl.hidden = true;
+          return;
+        }
+        newsPaginationEl.hidden = false;
+
+        const makeBtn = (label, page, opts = {}) => {
+          const btn = document.createElement("button");
+          btn.className = "pagination__btn" + (opts.active ? " is-active" : "");
+          btn.textContent = label;
+          btn.setAttribute("aria-label", opts.ariaLabel || `Page ${page}`);
+          if (opts.active) btn.setAttribute("aria-current", "page");
+          btn.addEventListener("click", () => {
+            newsCurrentPage = page;
+            renderNewsList();
+            newsListEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+          return btn;
+        };
+
+        if (newsCurrentPage > 1) {
+          newsPaginationEl.appendChild(
+            makeBtn("‹", newsCurrentPage - 1, { ariaLabel: "Previous page" }),
+          );
+        }
+        for (let p = 1; p <= totalPages; p++) {
+          newsPaginationEl.appendChild(
+            makeBtn(String(p), p, { active: p === newsCurrentPage }),
+          );
+        }
+        if (newsCurrentPage < totalPages) {
+          newsPaginationEl.appendChild(
+            makeBtn("›", newsCurrentPage + 1, { ariaLabel: "Next page" }),
+          );
+        }
+      }
+
       catTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
           catTabs.forEach((t) => t.classList.remove("is-active"));
           tab.classList.add("is-active");
-          const cat = tab.dataset.cat;
-          newsCards.forEach((card) => {
-            const show = cat === "all" || card.dataset.cat === cat;
-            card.classList.toggle("is-hidden", !show);
-          });
+          activeCategory = tab.dataset.cat;
+          applyNewsFilter();
         });
       });
     </script>
+    <script>
+      document.addEventListener("cms:data:news", function (e) {
+        if (e.detail && Array.isArray(e.detail.items)) {
+          NEWS = e.detail.items;
+          applyNewsFilter();
+        }
+      });
+    </script>
+    <script src="../js/cms.js"></script>
   </body>
 </html>

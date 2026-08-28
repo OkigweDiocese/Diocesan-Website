@@ -37,8 +37,23 @@
      data-cms-filter="key:value" keeps only items where item[key] == value
      (string-compared) — e.g. data-cms-filter="deanery:okigwe" to pull just
      one deanery's parishes out of a shared list.
-   - If the array is missing/empty/unfetched, the container's existing
-     fallback children are left completely alone.
+   - data-cms-sort="field:asc|desc" sorts the (filtered) array by that
+     field before rendering — a plain string compare, which sorts
+     "YYYY-MM-DD" dates chronologically with no parsing needed.
+   - data-cms-limit="N" keeps only the first N items after filter+sort —
+     e.g. filter="featured" + sort="date:desc" + limit="3" for a "3 most
+     recent featured items" block.
+   - If the array is missing/unfetched (this file hasn't loaded), the
+     container's existing fallback children are left completely alone.
+   - If the file HAS loaded but the (filtered/sorted/limited) array is
+     genuinely empty, and a sibling element carries
+     data-cms-empty="<same path>", that element is un-hidden and the
+     container is cleared — e.g.
+       <div data-cms-repeat="news.items">...</div>
+       <p data-cms-empty="news.items" hidden>There are no news items
+         at the moment.</p>
+     A data-cms-repeat with no matching data-cms-empty element keeps the
+     old behavior (fallback children left alone) when its array is empty.
    - When data IS available, ALL existing children (including the
      template) are replaced by one clone per array item.
    - Inside the template, fields are relative to the current item:
@@ -184,10 +199,21 @@
     });
   }
 
-  function applyRepeat(container, ctx) {
+  function setEmptyStateVisible(path, visible) {
+    var found = false;
+    document.querySelectorAll("[data-cms-empty]").forEach(function (el) {
+      if (el.getAttribute("data-cms-empty") !== path) return;
+      found = true;
+      if (visible) el.removeAttribute("hidden");
+      else el.setAttribute("hidden", "");
+    });
+    return found;
+  }
+
+  function applyRepeat(container, ctx, topLevel) {
     var path = container.getAttribute("data-cms-repeat");
-    var arr = resolve(path, ctx);
-    if (!Array.isArray(arr) || !arr.length) return;
+    var resolved = resolve(path, ctx);
+    var arr = Array.isArray(resolved) ? resolved.slice() : [];
 
     var filterSpec = container.getAttribute("data-cms-filter");
     if (filterSpec) {
@@ -204,7 +230,33 @@
         });
       }
     }
-    if (!arr.length) return;
+
+    var sortSpec = container.getAttribute("data-cms-sort");
+    if (sortSpec && arr.length) {
+      var sortParts = sortSpec.split(":");
+      var sortKey = sortParts[0];
+      var sortDir = sortParts[1] === "desc" ? -1 : 1;
+      arr.sort(function (a, b) {
+        var av = a && a[sortKey] != null ? String(a[sortKey]) : "";
+        var bv = b && b[sortKey] != null ? String(b[sortKey]) : "";
+        if (av < bv) return -1 * sortDir;
+        if (av > bv) return 1 * sortDir;
+        return 0;
+      });
+    }
+
+    var limitSpec = container.getAttribute("data-cms-limit");
+    if (limitSpec) {
+      var n = parseInt(limitSpec, 10);
+      if (!isNaN(n)) arr = arr.slice(0, n);
+    }
+
+    if (!arr.length) {
+      var hasEmptyEl = topLevel && setEmptyStateVisible(path, true);
+      if (hasEmptyEl) container.innerHTML = "";
+      return;
+    }
+    if (topLevel) setEmptyStateVisible(path, false);
 
     var template = container.querySelector(":scope > [data-cms-item]");
     if (!template) return;
@@ -224,7 +276,7 @@
       if (el.closest("[data-cms-item]")) return; // nested — handled with its parent item
       var path = el.getAttribute("data-cms-repeat");
       if (path.split(".")[0] !== fileName) return;
-      applyRepeat(el, undefined);
+      applyRepeat(el, undefined, true);
     });
   }
 

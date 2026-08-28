@@ -202,7 +202,9 @@
             </p>
           </div>
 
-          <!-- TODO: Replace the placeholder cards below with the Diocese's actual hospitals — names, locations, photos, and descriptions. -->
+          <!-- Hospital/health-centre cards render from content/hospitals.json;
+               "items" is currently empty until the Diocese supplies real
+               entries, so data-cms-empty below is what visitors see. -->
           <div class="parishes__grid reveal-up" data-cms-repeat="hospitals.items">
             <article class="parish-card" data-cms-item>
               <div
@@ -226,29 +228,11 @@
                 </p> -->
               </div>
             </article>
-            <article class="parish-card">
-              <div
-                class="parish-card__image"
-                role="img"
-                aria-label="[Hospital / Health Centre Name] placeholder image"
-              >
-                <div class="img-placeholder">
-                  <span>Coming Soon</span>
-                </div>
-              </div>
-              <div class="parish-card__body">
-                <h3 class="parish-card__name">
-                  [Hospital / Health Centre Name]
-                </h3>
-                <!-- <p class="parish-card__location">
-                  <span aria-hidden="true">📍</span> [Location], Imo State
-                </p>
-                <p class="parish-card__desc">
-                  A Catholic health facility offering compassionate, affordable care to the surrounding community, in keeping with the Church's healing ministry.
-                </p> -->
-              </div>
-            </article>
           </div>
+
+          <p class="institutions__empty" data-cms-empty="hospitals.items" hidden>
+            No hospitals or health centres have been added yet.
+          </p>
 
           <div class="section-cta reveal-up">
             <a href="contact.html" class="btn btn--primary"

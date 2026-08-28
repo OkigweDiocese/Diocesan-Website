@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Latest news, pastoral letters, events, and announcements from the Catholic Diocese of Okigwe."
+    />
+    <!-- Note: this page's article content is rendered client-side after
+         content/news.json loads, so these og: tags stay generic — a
+         shared link's pre-click social-preview card will show Diocese
+         branding rather than this specific article's image/title. The
+         link itself still opens to the correct, fully working article
+         (see the "article not found" state below for bad/stale slugs). -->
+    <meta
+      property="og:title"
+      content="News &amp; Events — Catholic Diocese of Okigwe"
+    />
+    <meta
+      property="og:description"
+      content="The Official website of the Catholic Diocese of Okigwe"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://catholicdioceseofokigwe.org" />
+    <meta
+      property="og:image"
+      content="https://catholicdioceseofokigwe.org/images/Cathedral%20symbol.jpg"
+    />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .news-article__image img {
+        width: 100%;
+        border-radius: var(--radius-md);
+        display: block;
+      }
+      .news-article__body p {
+        color: var(--color-text-muted);
+        line-height: 1.8;
+        margin-bottom: var(--space-md);
+      }
+      .news-article__loading {
+        padding: var(--space-2xl) 0;
+        text-align: center;
+        color: var(--color-text-muted);
+      }
+    </style>
+    <title>News Article — Catholic Diocese of Okigwe</title>
+  </head>
+  <body data-cms-pages="global,news">
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar__inner">
+          <a href="../index.html" class="navbar__brand">
+            <div class="navbar__logo" aria-hidden="true">
+              <div class="logo-cross">
+                <span class="cross-v"></span><span class="cross-h"></span>
+              </div>
+            </div>
+            <div class="navbar__title">
+              <span class="navbar__title--main">CATHOLIC DIOCESE</span>
+              <span class="navbar__title--sub">of Okigwe</span>
+            </div>
+          </a>
+          <ul class="navbar__links" id="navbar-links" role="list">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li class="nav-link dropdown">
+              <a href="#" class="dropbtn">About</a>
+              <div class="dropdown-content">
+                <a href="about_history.html" class="nav-link">History</a>
+                <a href="about_statistics.html" class="nav-link"
+                  >Statistics</a
+                >
+                <a href="about_officials.html" class="nav-link">Officials</a>
+              </div>
+            </li>
+            <li><a href="bishop.html" class="nav-link">Our Bishop</a></li>
+            <li><a href="priests.html" class="nav-link">Priests</a></li>
+            <li><a href="parishes.html" class="nav-link">Parishes</a></li>
+            <li class="nav-link dropdown">
+              <a href="#" class="dropbtn">Institutions</a>
+              <div class="dropdown-content">
+                <a href="ins_seminaries.html" class="nav-link">Seminaries</a>
+                <a href="ins_sec_schools.html" class="nav-link">Sec. Schools</a>
+                <a href="ins_returned_schools.html" class="nav-link">Returned Schools</a>
+                <a href="ins_hospital.html" class="nav-link">Hospitals</a>
+                <a href="ins_press.html" class="nav-link">Press</a>
+              </div>
+            </li>
+            <li class="nav-link dropdown">
+              <a href="#" class="dropbtn">Archives</a>
+              <div class="dropdown-content">
+                <a href="ar_functionaries.html" class="nav-link">Functionaries</a>
+                <a href="ar_priests.html" class="nav-link">Priests</a>
+              </div>
+            </li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+          <!-- Dark Mode Toggle -->
+          <button
+            class="theme-toggle"
+            id="theme-toggle-btn"
+            type="button"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+          >
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="12" y1="2" x2="12" y2="4"></line>
+              <line x1="12" y1="20" x2="12" y2="22"></line>
+              <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+              <line x1="2" y1="12" x2="4" y2="12"></line>
+              <line x1="20" y1="12" x2="22" y2="12"></line>
+              <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+              <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+            </svg>
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--moon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navbar-links"
+          >
+            <span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span
+            ><span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="section" aria-label="News article">
+        <div class="container" style="max-width: 780px">
+          <nav
+            class="page-hero__breadcrumb"
+            aria-label="Breadcrumb"
+            style="margin-bottom: var(--space-lg)"
+          >
+            <a href="../index.html">Home</a> <span>›</span>
+            <a href="news.html">News &amp; Events</a> <span>›</span>
+            <span id="article-breadcrumb-title">Article</span>
+          </nav>
+
+          <p class="news-article__loading" id="article-loading">
+            Loading article…
+          </p>
+
+          <article id="article-content" hidden>
+            <p class="news-list-card__cat" id="article-category"></p>
+            <h1
+              class="page-hero__title"
+              id="article-title"
+              style="margin-bottom: var(--space-sm)"
+            ></h1>
+            <p
+              class="news-list-card__meta"
+              id="article-date"
+              style="margin-bottom: var(--space-lg)"
+            ></p>
+            <div
+              class="news-article__image"
+              id="article-image-wrap"
+              style="margin-bottom: var(--space-lg)"
+            ></div>
+            <div class="news-article__body" id="article-body"></div>
+            <p style="margin-top: var(--space-xl)">
+              <a href="news.html" class="btn btn--secondary"
+                >← Back to News &amp; Events</a
+              >
+            </p>
+          </article>
+
+          <div id="article-not-found" hidden>
+            <h1 class="page-hero__title">Article Not Found</h1>
+            <p class="page-hero__subtitle">
+              This article may have been moved, renamed, or is no longer
+              available.
+            </p>
+            <p>
+              <a href="news.html" class="btn btn--primary"
+                >← Back to News &amp; Events</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="navbar__logo footer__logo" aria-hidden="true">
+            <div class="logo-cross logo-cross--light">
+              <span class="cross-v"></span><span class="cross-h"></span>
+            </div>
+          </div>
+          <h2 class="footer__name">Catholic Diocese<br />of Okigwe</h2>
+          <p class="footer__tagline">
+            "Serving God and Humanity<br />Through Faith, Hope &amp; Love"
+          </p>
+          <div class="footer__social">
+            <a
+              href="https://web.facebook.com/profile.php?id=61557403089364"
+              class="social-link"
+              aria-label="Diocese Facebook page"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                /></svg
+            ></a>
+          </div>
+        </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h3 class="footer__links-title">Quick Links</h3>
+          <ul role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about_history.html">About the Diocese</a></li>
+            <li><a href="bishop.html">Our Bishop</a></li>
+            <li><a href="priests.html">Priests</a></li>
+            <li><a href="about_officials.html">Officials</a></li>
+            <li><a href="parishes.html">Parish Directory</a></li>
+            <li><a href="news.html">News &amp; Events</a></li>
+            <li><a href="gallery.html">Media Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer__links">
+          <h3 class="footer__links-title">Ministries</h3>
+          <ul role="list">
+            <li>
+              <a href="ministries.html#caritas">Caritas &amp; Development</a>
+            </li>
+            <li><a href="ministries.html#youth">Youth Ministry</a></li>
+            <li>
+              <a href="ministries.html#cwo">Catholic Women Organisation</a>
+            </li>
+            <li><a href="ministries.html#cmo">Catholic Men Organisation</a></li>
+            <li><a href="ministries.html#schools">Catholic Schools</a></li>
+            <li><a href="ministries.html#liturgy">Liturgy &amp; Worship</a></li>
+          </ul>
+        </div>
+        <address class="footer__address">
+          <h3 class="footer__links-title">Contact</h3>
+          <p>Bishop's House, Okigwe<br />Imo State, Nigeria</p>
+          <p><a href="tel:+2340000000000">+234 (0) 000 000 0000</a></p>
+          <p>
+            <a href="mailto:info@dioceseofokigwe.org"
+              >info@dioceseofokigwe.org</a
+            >
+          </p>
+        </address>
+      </div>
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copyright">
+            &copy; <span id="footer-year"></span> Catholic Diocese of Okigwe.
+            All rights reserved.
+          </p>
+          <p class="footer__legal">
+            <a href="#">Privacy Policy</a> &nbsp;&bull;&nbsp;
+            <a href="#">Terms of Use</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="../script.js"></script>
+    <script>
+      /* ============================================================
+         Single-article template: every news article renders through
+         this one file, picked by ?slug=... in the URL. content/news.json
+         is fetched by js/cms.js the same as everywhere else; this page
+         just waits for its "cms:data:news" event and looks the slug up.
+         ============================================================ */
+      function getSlugFromUrl() {
+        return new URLSearchParams(window.location.search).get("slug") || "";
+      }
+
+      function formatArticleDate(dateStr) {
+        const d = new Date(`${dateStr}T00:00:00`);
+        if (isNaN(d.getTime())) return dateStr;
+        return d.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        });
+      }
+
+      function renderArticle(item) {
+        document.getElementById("article-loading").hidden = true;
+        document.getElementById("article-not-found").hidden = true;
+        document.getElementById("article-content").hidden = false;
+
+        document.getElementById("article-category").textContent =
+          item.category || "";
+        document.getElementById("article-title").textContent =
+          item.title || "";
+        document.getElementById("article-date").textContent =
+          "🗓 " + formatArticleDate(item.date);
+        document.getElementById("article-breadcrumb-title").textContent =
+          item.title || "Article";
+
+        const imageWrap = document.getElementById("article-image-wrap");
+        imageWrap.innerHTML = "";
+        if (item.image) {
+          const img = document.createElement("img");
+          img.src = item.image;
+          img.alt = "";
+          imageWrap.appendChild(img);
+        }
+
+        const bodyEl = document.getElementById("article-body");
+        bodyEl.innerHTML = "";
+        String(item.excerpt || "")
+          .split(/\n+/)
+          .filter(Boolean)
+          .forEach((para) => {
+            const p = document.createElement("p");
+            p.textContent = para;
+            bodyEl.appendChild(p);
+          });
+
+        if (item.title) {
+          document.title = item.title + " — Catholic Diocese of Okigwe";
+        }
+      }
+
+      function renderNotFound() {
+        document.getElementById("article-loading").hidden = true;
+        document.getElementById("article-content").hidden = true;
+        document.getElementById("article-not-found").hidden = false;
+      }
+
+      const requestedSlug = getSlugFromUrl();
+
+      if (!requestedSlug) {
+        renderNotFound();
+      } else {
+        document.addEventListener("cms:data:news", function (e) {
+          if (!e.detail || !Array.isArray(e.detail.items)) return;
+          const item = e.detail.items.find((n) => n.slug === requestedSlug);
+          if (item) {
+            renderArticle(item);
+          } else {
+            renderNotFound();
+          }
+        });
+      }
+    </script>
+    <script src="../js/cms.js"></script>
+  </body>
+</html>

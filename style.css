@@ -1656,11 +1656,27 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   gap: var(--space-md);
 }
 
-.events__empty {
+.events__empty,
+.news__empty,
+.parishes__empty,
+.institutions__empty,
+.functionaries__empty {
   text-align: center;
   color: var(--color-text-muted);
   font-size: var(--text-md);
   padding: var(--space-lg) 0;
+}
+
+.events__archive-toggle {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-lg);
+}
+
+.events__archive-wrap {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-gray-border);
 }
 
 .event-card {
