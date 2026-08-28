@@ -1,6 +1,8 @@
 {
-  "statsHeroTitle": "The Diocese at a Glance",
+  "statsHeroTitleMain": "The Diocese",
+  "statsHeroTitleEmphasis": "at a Glance",
   "statsHeroSubtitle": "Key facts and figures about the Diocese, and access to our official directory.",
-  "directoryCtaTitle": "A Glance at our Diocesan Directory",
+  "directoryCtaTitleMain": "A Glance at our",
+  "directoryCtaTitleEmphasis": "Diocesan Directory",
   "directoryCtaText": "Explore the life and ministry of the Catholic Diocese of Okigwe through the Official Directory. From our Clergy and Religious to our Parishes, Institutions, and Diocesan Offices."
 }

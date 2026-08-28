@@ -50,14 +50,14 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero headline "Welcome to the Catholic Diocese of Okigwe" | EDITABLE | `heroTitle` | |
+| Hero headline "Welcome to the Catholic Diocese of Okigwe" | EDITABLE | `heroTitleLine1`, `heroTitleEmphasis` | Split into two fields so the line break and italic styling on "Catholic Diocese of Okigwe" survive editing. |
 | Hero mission line | EDITABLE | *(shared)* `tagline` | See Global table — currently a separate copy of the footer tagline. |
 | Hero action buttons (Find a Parish / View Diocesan Calendar / Contact Us) | REPEATING | `heroActions[].{label, link}` | Exactly 3 today; a small list is more future-proof than 3 fixed fields if the Secretariat ever wants a 4th. |
 | Scrolling announcement ticker | REPEATING | `tickerAnnouncements[]` (text) | 3 items today, each duplicated twice in the HTML for the seamless scroll loop — CMS should store 3 items once and let the template render the loop. |
 | Bishop's Message: portrait image | EDITABLE | `bishopPortraitImage` | |
 | Bishop's Message: quote text | EDITABLE | `bishopMessageQuote` | Two paragraphs. |
 | Bishop's Message: "Read More" link | FIXED | — | Anchors to `#about` on the same page. |
-| About section heading/subtitle | EDITABLE | `aboutHeading`, `aboutSubtitle` | |
+| About section heading/subtitle | EDITABLE | `aboutHeadingMain`, `aboutHeadingEmphasis`, `aboutSubtitle` | Heading split into two fields so the "of Okigwe" italic survives editing. |
 | Mission card text | EDITABLE | *(shared)* `missionText` | See duplication note above. |
 | Vision card text | EDITABLE | *(shared)* `visionText` | See duplication note above. |
 | Statistics grid (Parishes, Chaplaincies, Priests, Major Seminarians, Schools, Faithful) | REPEATING | `diocesanStats[].{label, value}` | 6 of the 10 stats also shown on About: Statistics. Recommend **one** shared stats list with a `showOnHome: true/false` flag per item, rather than two separately-edited copies. |
@@ -66,7 +66,7 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 | News & Events section (3 cards: image, category, date, title, excerpt) | REPEATING | `newsItems[].{image, category, date, title, excerpt}` | "Read More" links were removed earlier (led nowhere); excerpts are the full story text today. |
 | "All News & Events" button | FIXED | — | Links to `pages/news.html`. |
 | Media Gallery section | — | — | Entered in markup but **fully commented out** — not rendered. Skip until it's built out. |
-| Contact section heading/subtitle | EDITABLE | `contactHeading`, `contactSubtitle` | |
+| Contact section heading/subtitle | EDITABLE | `contactHeadingMain`, `contactHeadingEmphasis`, `contactSubtitle` | Heading split into two fields so the "the Diocese" italic survives editing. |
 | Contact info (address/phone/email/hours) | EDITABLE | *(shared)* `address`, `phone`, `email`, `officeHours` | Don't duplicate — same global fields as the footer. |
 | Contact form | FIXED | — | Structural (Netlify Forms). Field labels could become EDITABLE later but are low priority. |
 
@@ -74,7 +74,7 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `historyHeroTitle`, `historyHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `historyHeroTitleMain`, `historyHeroTitleEmphasis`, `historyHeroSubtitle` | Title split into two fields to preserve the italic on "Mission & Values". |
 | History narrative | REPEATING | `historyParagraphs[]` | 3 paragraphs today; a list lets the Secretariat add more without a template change. |
 | Mission card text | EDITABLE | *(shared)* `missionText` | Wording differs from Home's copy today — see Global table. |
 | Vision card text | EDITABLE | *(shared)* `visionText` | Same. |
@@ -88,9 +88,9 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `statsHeroTitle`, `statsHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `statsHeroTitleMain`, `statsHeroTitleEmphasis`, `statsHeroSubtitle` | Title split into two fields to preserve the italic on "at a Glance". |
 | Statistics grid (10 items: Deaneries, Parishes, Dedicated Parishes, Chaplaincies, Priests, Major Seminarians, Schools, Faithful, Health Centres, Seminaries) | REPEATING | *(shared)* `diocesanStats[]` | This is the fuller, canonical list — see Home's note about sharing one source. This page's `<section id="diocesan-directory">` is also the anchor target for the homepage's "View Diocesan Calendar" button. |
-| "Diocesan Directory" CTA heading/text | EDITABLE | `directoryCtaTitle`, `directoryCtaText` | |
+| "Diocesan Directory" CTA heading/text | EDITABLE | `directoryCtaTitleMain`, `directoryCtaTitleEmphasis`, `directoryCtaText` | Title split into two fields to preserve the italic on "Diocesan Directory". |
 | Official Directory PDF button | EDITABLE | *(shared)* `officialDirectoryPdf` | See Global table. |
 | "Be Part of Our Story" CTA | EDITABLE | `historyCtaTitle`/`historyCtaText` (shared with About: History) | Identical block to the one on About: History — candidate for a single shared "find a parish" CTA component. |
 
@@ -98,7 +98,7 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `officialsHeroTitle`, `officialsHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `officialsHeroTitleMain`, `officialsHeroTitleEmphasis`, `officialsHeroSubtitle` | Title split into two fields to preserve the italic on "Officials". |
 | Bishop highlight (portrait, name, bio paragraphs, "Meet Our Bishop" link) | EDITABLE | *(shared)* `currentBishop`, `bishopBioShort[]` | Portrait/name shared with global `currentBishop`; the two intro paragraphs here are unique to this page. |
 | Diocesan Officials roster (Vicars General, Chancellor, Episcopal Vicars, Judicial Vicar, Financial Administrator, Cathedral Administrator, Legal Advisers — 11 people) | REPEATING | `officials[].{photo, role, name, parish, phone, email}` | Each entry: photo, role/title, name, parish/base, one or more phone numbers, optional email. |
 | Deans of the Deaneries (13 people) | REPEATING | `deans[].{photo, deanery, name}` | One per deanery. |
@@ -108,7 +108,7 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `bishopHeroTitle`, `bishopHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `bishopHeroTitleMain`, `bishopHeroTitleEmphasis`, `bishopHeroSubtitle` | Title split into two fields to preserve the italic on "Bishop". |
 | Portrait image | EDITABLE | *(shared with)* `currentBishop.portrait` | |
 | Vitals card (full name, born, ordained deacon, ordained priest, appointed auxiliary bishop, consecrated, coadjutor year, substantive year, episcopal motto, ordaining bishop) | EDITABLE | `bishopVitals: { fullName, born, ordainedDeacon, ordainedPriest, appointedAuxiliary, consecrated, coadjutorYear, substantiveYear, motto, ordainingBishop }` | One record — these all change together only when a new bishop is installed, so a single object, not a list. |
 | Coat of Arms image + caption | EDITABLE | `coatOfArmsImage`, `coatOfArmsMotto` | |
@@ -121,7 +121,7 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `priestsHeroTitle`, `priestsHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `priestsHeroTitleMain`, `priestsHeroTitleEmphasis`, `priestsHeroSubtitle` | Title split into two fields to preserve the italic on "in Active Ministry". |
 | Info banner (heading + Scripture quote) | EDITABLE | `priestsBannerTitle`, `priestsBannerQuote` | |
 | Priest roll (searchable table) | REPEATING | `priests[].{name, ordination, location}` | **~500+ entries**, currently a hard-coded `PRIESTS` JS array inside a `<script>` tag on this page (search/pagination logic is also inline here). This is the single biggest content-migration job on the site. |
 
@@ -129,7 +129,7 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `parishesHeroTitle`, `parishesHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `parishesHeroTitleMain`, `parishesHeroTitleEmphasis`, `parishesHeroSubtitle` | Title split into two fields to preserve the italic on "Directory". |
 | Deanery list (13 deaneries: Okigwe, Uturu, Isuikwuato, Obowo East, Obowo West, Uboma, Ihitte, Ehime East, Ehime West, Ugiri/Mbama, Osu, Onuimo, Umunneochi) | REPEATING | `deaneries[].{name, slug}` | Used to drive both the section headers and the filter tabs — should be a single source, not two. |
 | Parish entries within each deanery | REPEATING | `parishes[].{name, deanery, location, feastDay?}` | **~150+ entries** across all 13 deaneries, hand-written as HTML cards (not a JS array like the priest roll). Same `featured: true` flag idea from Home applies here. |
 | Mobile accordion / search / filter UI | FIXED | — | Just-built behavior; not content. |
@@ -138,42 +138,42 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `seminariesHeroTitle`, `seminariesHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `seminariesHeroTitleMain`, `seminariesHeroTitleEmphasis`, `seminariesHeroSubtitle` | Title split into two fields to preserve the italic on "Seminaries". |
 | Seminaries (3: St. Thomas Aquinas Ihitte, St. Peter's Okigwe, St. Charles Borromeo) | REPEATING | `seminaries[].{name, location, description, staff[].{role, name, contact}}` | Each has 2–3 formation-team staff. |
 
 ### Institutions: Secondary Schools — `pages/ins_sec_schools.html`
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `secSchoolsHeroTitle`, `secSchoolsHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `secSchoolsHeroTitleMain`, `secSchoolsHeroTitleEmphasis`, `secSchoolsHeroSubtitle` | Title split into two fields to preserve the italic on "Schools". |
 | School directory (searchable table) | REPEATING | `secSchools[].{name, managers[]}` | ~30 entries, hard-coded `SEC_SCHOOLS` JS array (same pattern as the priest roll, smaller scale). |
 
 ### Institutions: Returned Schools — `pages/ins_returned_schools.html`
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `returnedSchoolsHeroTitle`, `returnedSchoolsHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `returnedSchoolsHeroTitleMain`, `returnedSchoolsHeroTitleEmphasis`, `returnedSchoolsHeroSubtitle` | Title split into two fields to preserve the italic on "Schools". |
 | School directory (searchable table) | REPEATING | `returnedSchools[].{name, managers[]}` | ~8 entries, same `RETURNED_SCHOOLS` JS array pattern. |
 
 ### Institutions: Hospitals — `pages/ins_hospital.html`
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `hospitalsHeroTitle`, `hospitalsHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `hospitalsHeroTitleMain`, `hospitalsHeroTitleEmphasis`, `hospitalsHeroSubtitle` | Title split into two fields to preserve the italic on "Hospitals". |
 | Hospital/health centre entries | REPEATING | `healthCentres[].{name, location, description}` | Currently 2 placeholder "Coming Soon" cards with no real data yet. |
 
 ### Institutions: Press — `pages/ins_press.html`
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `pressHeroTitle`, `pressHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `pressHeroTitleMain`, `pressHeroTitleEmphasis`, `pressHeroSubtitle` | Title split into two fields to preserve the italic on "Press". |
 | Sage News Paper & Immaculata Printing Press (name, description, contact, staff) | EDITABLE | `pressOffice: { name, description, contact, staff[].{role, name, contact} }` | Only one institution — a single record, not a list. |
 
 ### Archives: Functionaries — `pages/ar_functionaries.html`
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `functionariesHeroTitle`, `functionariesHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `functionariesHeroTitleMain`, `functionariesHeroTitleEmphasis`, `functionariesHeroSubtitle` | Title split into two fields to preserve the italic on "Functionaries". |
 | "Jump to Office" nav (5 links) | FIXED | — | **3 of the 5 links are broken** — they point to `#vicars-general`, `#episcopal-vicars`, `#judicial-vicars`, none of which exist on the page (only "Chancellors" and "Financial Administrators" sections are actually built). Flagged in the earlier proofreading pass; still unresolved. |
 | Chancellors (past holders of the office) | REPEATING | `chancellors[].{photo, name, years, deceased?}` | 4 entries. |
 | Financial Administrators | REPEATING | `financialAdministrators[].{photo, name, years}` | |
@@ -183,7 +183,7 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `archivePriestsHeroTitle`, `archivePriestsHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `archivePriestsHeroTitleMain`, `archivePriestsHeroTitleEmphasis`, `archivePriestsHeroSubtitle` | Title split into two fields to preserve the italic on "Our Departed Priests". |
 | Memorial banner text | EDITABLE | `memorialBannerText` | |
 | Departed priests roll (searchable table) | REPEATING | `departedPriests[].{name, ordination, death}` | ~63 entries, hard-coded `PRIESTS` JS array (this page's own copy — different schema from the active-priest roll, which has `location` instead of `death`). |
 
@@ -191,7 +191,7 @@ Anything appearing on more than one page. Edited once, in one shared file (propo
 
 | Section / Element | Verdict | Field name | Notes |
 |---|---|---|---|
-| Hero title/subtitle | EDITABLE | `contactHeroTitle`, `contactHeroSubtitle` | |
+| Hero title/subtitle | EDITABLE | `contactHeroTitleMain`, `contactHeroTitleEmphasis`, `contactHeroSubtitle` | Title split into two fields to preserve the italic on "the Diocese". |
 | Chancery contact card (address/phone/email/hours) | EDITABLE | *(shared)* `address`, `phone`, `email`, `officeHours` | Same global fields as the footer — don't duplicate. |
 | Google Map embed | EDITABLE | *(shared)* `mapEmbedUrl` | |
 | "Follow the Diocese" (Facebook + WhatsApp buttons) | EDITABLE | *(shared)* `facebookUrl`, `whatsappNumber` | |

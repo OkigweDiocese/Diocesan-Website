@@ -1,5 +1,6 @@
 {
-  "parishesHeroTitle": "Parish Directory",
+  "parishesHeroTitleMain": "Parish",
+  "parishesHeroTitleEmphasis": "Directory",
   "parishesHeroSubtitle": "Find a Catholic parish community across the Diocese of Okigwe — organised by deanery and searchable by name or location.",
   "deaneries": [
     { "name": "Okigwe", "slug": "okigwe" },
