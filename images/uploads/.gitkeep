@@ -1,0 +1,3 @@
+# This folder holds photographs and files uploaded by editors through the
+# admin dashboard (/admin). It is kept separate from the site's design
+# assets in /images so an editor can never overwrite the logo or seal.

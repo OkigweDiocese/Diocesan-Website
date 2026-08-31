@@ -1,0 +1,744 @@
+# =============================================================================
+#  Catholic Diocese of Okigwe — Content Manager configuration
+# =============================================================================
+#  This file IS the product, as far as the Secretariat is concerned. Every
+#  label, every hint, and every rule an editor will ever meet is written here.
+#
+#  Conventions used below:
+#   - label ....... plain English, the Secretariat's words, never the field name
+#   - hint ........ added wherever a field has a limit (size, format, length)
+#   - required .... set explicitly on every field (true or false), never assumed
+#   - widget ...... string = one line, text = paragraph, image = photograph, etc.
+#   - summary ..... set on every list so a collapsed row reads
+#                   "20/08/2026 — Catechists' Day" rather than a blank grey bar
+# =============================================================================
+
+# ----- Where changes are saved -----------------------------------------------
+# The site is a GitHub repo deployed by Netlify, so edits are saved as commits.
+# Editors sign in through a hosted auth service (DecapBridge — see content-
+# inventory.md). To finish wiring auth, pick ONE of the options below.
+#
+#  A) DecapBridge (matches the planned stack): uncomment the base_url and
+#     auth_endpoint lines and create the project at https://decapbridge.com,
+#     which links this repo and manages editor invites.
+#
+#  B) Netlify Identity + Git Gateway: leave those two lines commented, then in
+#     the Netlify dashboard enable Identity and Git Gateway, and add the
+#     Netlify Identity widget to admin/index.html.
+#
+backend:
+  name: git-gateway
+  repo: OkigweDiocese/Diocesan-Website
+  branch: main
+  # base_url: https://auth.decapbridge.com   # (A) DecapBridge — confirm on the DecapBridge project page
+  # auth_endpoint: oauth                      # (A) DecapBridge
+  commit_messages:
+    create: "Add {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Remove {{collection}} “{{slug}}”"
+    uploadMedia: "Upload “{{path}}”"
+    deleteMedia: "Delete “{{path}}”"
+
+# Lets a developer run the dashboard against local files with `npx decap-server`.
+local_backend: true
+
+# Changes go through Draft → In review → Ready before they reach the live site.
+# Delete this one line if you want every save to publish immediately.
+publish_mode: editorial_workflow
+
+# ----- Uploaded photos and files -------------------------------------------
+# Kept in their own folder, apart from the site's design assets in /images,
+# so an editor can never overwrite the logo or the seal.
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Set these three to the live domain once it is known. They only affect the
+# "View site" link and the sign-in screen — not where content is saved.
+# site_url: https://your-live-domain
+# display_url: https://your-live-domain
+# logo_url: https://your-live-domain/images/logo-transperent.png
+
+# Every collection below is a fixed page or data file (a "file" collection),
+# because the website stores its content as a handful of JSON files rather
+# than one file per entry.
+collections:
+  # =========================================================================
+  #  SITE-WIDE DETAILS  — content/global.json
+  # =========================================================================
+  - name: "site"
+    label: "Site-Wide Details"
+    description: "Contact details, logos and statements that appear on every page. Change them once here."
+    editor:
+      preview: false
+    files:
+      - name: "global"
+        label: "Site-Wide Details"
+        file: "content/global.json"
+        fields:
+          - { label: "Diocese logo", name: "logoImage", widget: "image", required: true,
+              hint: "Shown in the header and footer of every page. PNG with a see-through (transparent) background, at least 200 pixels wide, under 200 KB." }
+          - { label: "Diocesan coat of arms / seal", name: "diocesanSealImage", widget: "image", required: true,
+              hint: "The round crest on the home page and the Bishop's page. PNG with a transparent background, at least 400 × 400 pixels, under 300 KB." }
+          - { label: "Diocese motto line", name: "tagline", widget: "string", required: true,
+              pattern: ["^.{0,90}$", "Please keep the motto to 90 characters or fewer."],
+              hint: "One short sentence. Appears in the footer of every page and on the home-page banner. 90 characters maximum." }
+          - { label: "Facebook page web address", name: "facebookUrl", widget: "string", required: false,
+              pattern: ["^https?://.+", "Start the address with https://"],
+              hint: "The full link to the Diocese's Facebook page, starting with https://. Leave blank to hide the Facebook links." }
+          - { label: "WhatsApp number", name: "whatsappNumber", widget: "string", required: false,
+              pattern: ["^[0-9]{10,15}$", "Digits only — country code and number, no spaces, no + sign."],
+              hint: "Digits only, including the country code, no plus sign or spaces — for example 2348133807134." }
+          - { label: "Secretariat postal address", name: "address", widget: "text", required: true,
+              hint: "Shown in the footer of every page and on the Contact page. Line breaks are kept." }
+          - { label: "Main telephone number", name: "phone", widget: "string", required: true,
+              hint: "The number people can call. Spaces, brackets and a leading + are fine — for example +234 813 380 7134." }
+          - { label: "General enquiries email address", name: "email", widget: "string", required: true,
+              pattern: ["^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$", "Please enter a valid email address."],
+              hint: "Shown in the footer and on the Contact page." }
+          - { label: "Secretariat opening hours", name: "officeHours", widget: "string", required: true,
+              hint: "For example: Tuesday & Thursday: 10:00 AM – 2:00 PM" }
+          - { label: "Google Maps embed link", name: "mapEmbedUrl", widget: "string", required: false,
+              hint: "In Google Maps choose Share → Embed a map, then paste the link that sits inside src=\"…\". It begins with https://www.google.com/maps/embed" }
+          - label: "Current Bishop (name and title shown across the site)"
+            name: "currentBishop"
+            widget: "object"
+            required: true
+            hint: "Used on the home page, the Officials page and the Bishop page. Change only when a new Bishop is installed."
+            fields:
+              - { label: "Title / honorific", name: "title", widget: "string", required: true, hint: "For example: Most Rev. Dr." }
+              - { label: "Name as displayed", name: "name", widget: "string", required: true, hint: "The short form used on most pages — for example Solomon A. Amatu." }
+              - { label: "Role description", name: "role", widget: "string", required: true, hint: "For example: Catholic Bishop of Okigwe" }
+          - { label: "Mission statement", name: "missionText", widget: "text", required: true,
+              hint: "One paragraph. Shown on the home page and the History page." }
+          - { label: "Vision statement", name: "visionText", widget: "text", required: true,
+              hint: "One paragraph. Shown on the home page and the History page." }
+          - { label: "Official Diocesan Directory (PDF)", name: "officialDirectoryPdf", widget: "file", required: false,
+              hint: "The current year's directory as a single PDF. Replace it once a year. Under 25 MB." }
+
+  # =========================================================================
+  #  HOME PAGE  — content/home.json
+  # =========================================================================
+  - name: "home"
+    label: "Home Page"
+    description: "The welcome banner, the Bishop's message, and the section headings on the front page."
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "content/home.json"
+        fields:
+          - { label: "Welcome banner — first line", name: "heroTitleLine1", widget: "string", required: true,
+              hint: "The smaller text above the big title — for example: Welcome to the" }
+          - { label: "Welcome banner — main title", name: "heroTitleEmphasis", widget: "string", required: true,
+              hint: "The large italic line — for example: Catholic Diocese of Okigwe" }
+          - label: "Welcome banner buttons"
+            name: "heroActions"
+            label_singular: "Button"
+            widget: "list"
+            required: true
+            min: 1
+            max: 4
+            summary: "{{fields.label}} → {{fields.link}}"
+            collapsed: true
+            hint: "The buttons under the welcome banner. Two or three work best; four is the maximum."
+            fields:
+              - { label: "Button text", name: "label", widget: "string", required: true, hint: "A few words — for example: Find a Parish" }
+              - { label: "Button goes to", name: "link", widget: "string", required: true,
+                  hint: "A page on this site (for example pages/parishes.html) or a full https:// link." }
+          - label: "Scrolling announcements strip"
+            name: "tickerAnnouncements"
+            label_singular: "Announcement"
+            widget: "list"
+            required: true
+            hint: "Three or four short notices that scroll across the top of the home page."
+            field: { label: "Announcement", name: "announcement", widget: "string", required: true }
+          - { label: "Bishop's Message — portrait photo", name: "bishopPortraitImage", widget: "image", required: true,
+              hint: "An upright (portrait) photo of the Bishop. At least 600 × 800 pixels. JPG or PNG, under 500 KB." }
+          - label: "Bishop's Message — text"
+            name: "bishopMessageQuote"
+            label_singular: "Paragraph"
+            widget: "list"
+            required: true
+            hint: "The Bishop's welcome message, one paragraph per line. Type the opening and closing quotation marks yourself if you want them shown."
+            field: { label: "Paragraph", name: "paragraph", widget: "text", required: true }
+          - { label: "About section — heading (normal text)", name: "aboutHeadingMain", widget: "string", required: true,
+              hint: "For example: About the Diocese" }
+          - { label: "About section — heading (italic part)", name: "aboutHeadingEmphasis", widget: "string", required: true,
+              hint: "The italic words at the end of the heading — for example: of Okigwe" }
+          - { label: "About section — subtitle", name: "aboutSubtitle", widget: "string", required: true,
+              hint: "One line under the About heading." }
+          - { label: "Contact section — heading (normal text)", name: "contactHeadingMain", widget: "string", required: true }
+          - { label: "Contact section — heading (italic part)", name: "contactHeadingEmphasis", widget: "string", required: true,
+              hint: "The italic words at the end of the heading — for example: the Diocese" }
+          - { label: "Contact section — subtitle", name: "contactSubtitle", widget: "text", required: true,
+              hint: "One or two lines under the Contact heading." }
+
+  # =========================================================================
+  #  DIOCESE IN NUMBERS  — content/stats.json
+  # =========================================================================
+  - name: "figures"
+    label: "Diocese in Numbers"
+    description: "The figures shown on the ‘Diocese at a Glance’ page, and (where ticked) on the home page."
+    files:
+      - name: "stats"
+        label: "Diocese in Numbers"
+        file: "content/stats.json"
+        fields:
+          - label: "Diocesan figures"
+            name: "items"
+            label_singular: "Figure"
+            widget: "list"
+            required: true
+            summary: "{{fields.label}}: {{fields.value}}"
+            collapsed: true
+            hint: "Shown on the ‘Diocese at a Glance’ page. Tick ‘Show on the home page too’ for the few that also belong on the front page."
+            fields:
+              - { label: "What is being counted", name: "label", widget: "string", required: true,
+                  hint: "For example: Parishes, Priests, Faithful" }
+              - { label: "Count", name: "value", widget: "number", required: true, value_type: "int", min: 0,
+                  hint: "Whole number only. It is formatted for you — 905799 is shown as 905,799+." }
+              - { label: "Show on the home page too", name: "showOnHome", widget: "boolean", required: false, default: false,
+                  hint: "The home page shows a shorter list than the full figures page." }
+
+  # =========================================================================
+  #  EVENTS CALENDAR  — content/events.json
+  # =========================================================================
+  - name: "events"
+    label: "Events Calendar"
+    description: "Upcoming events shown on the home page. Past events drop off the list automatically."
+    files:
+      - name: "events"
+        label: "Events Calendar"
+        file: "content/events.json"
+        fields:
+          - label: "Calendar events"
+            name: "items"
+            label_singular: "Event"
+            widget: "list"
+            required: false
+            summary: "{{fields.date | date('DD/MM/YYYY')}} — {{fields.event}}"
+            collapsed: true
+            hint: "Add each upcoming event. Once its date has passed it stops showing on the site — you do not need to delete it."
+            fields:
+              - { label: "Date", name: "date", widget: "datetime", required: true,
+                  date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD",
+                  hint: "The day the event takes place." }
+              - { label: "Start time", name: "time", widget: "string", required: true,
+                  hint: "Written as it should read on the page — for example: 10:00 AM" }
+              - { label: "Event name", name: "event", widget: "string", required: true,
+                  hint: "The full name of the event." }
+              - { label: "Venue", name: "location", widget: "string", required: true,
+                  hint: "Where it takes place." }
+              - { label: "Short category label", name: "title", widget: "string", required: true,
+                  hint: "The small tag on the event card — for example: Ordination, Catechists, Theological Conference." }
+
+  # =========================================================================
+  #  NEWS & ANNOUNCEMENTS  — content/news.json
+  # =========================================================================
+  - name: "news"
+    label: "News & Announcements"
+    description: "News stories. The three most recent ‘highlighted’ stories also appear on the home page."
+    files:
+      - name: "news"
+        label: "News & Announcements"
+        file: "content/news.json"
+        fields:
+          - label: "News stories"
+            name: "items"
+            label_singular: "Story"
+            widget: "list"
+            required: false
+            summary: "{{fields.date | date('DD/MM/YYYY')}} — {{fields.title}}"
+            collapsed: true
+            hint: "Newest stories can go at the top or bottom — the site sorts them by date."
+            fields:
+              - { label: "Web address name", name: "slug", widget: "string", required: true,
+                  pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Lower-case letters, numbers and hyphens only — no spaces or punctuation."],
+                  hint: "Lower-case words joined by hyphens — this becomes the link to the story, for example bishop-visits-uturu. Do NOT change it once a story is published, or existing links will break." }
+              - { label: "Main photo", name: "image", widget: "image", required: true,
+                  hint: "A wide (landscape) photo. At least 1200 × 800 pixels. JPG or PNG, under 800 KB." }
+              - { label: "Category label", name: "category", widget: "string", required: true,
+                  hint: "Shown as a tag on the story card — for example: Anniversary, Event, Cathedraticum." }
+              - { label: "Category filter key", name: "categorySlug", widget: "string", required: true,
+                  pattern: ["^[a-z-]+$", "Lower-case letters and hyphens only."],
+                  hint: "Lower-case, no spaces — for example: event, pastoral. Used by the filter buttons on the News page." }
+              - { label: "Highlight on the home page", name: "featured", widget: "boolean", required: false, default: false,
+                  hint: "The home page shows the three most recent highlighted stories." }
+              - { label: "Date published", name: "date", widget: "datetime", required: true,
+                  date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD",
+                  hint: "The date shown on the story." }
+              - { label: "Headline", name: "title", widget: "string", required: true,
+                  pattern: ["^.{0,110}$", "Please keep the headline to 110 characters or fewer."],
+                  hint: "Keep it under about 90 characters so it fits the card. 110 maximum." }
+              - { label: "Story text", name: "excerpt", widget: "text", required: true,
+                  hint: "The full story. Leave a blank line between paragraphs. The opening sentence or two is also used as the summary on the News list." }
+
+  # =========================================================================
+  #  ‘ABOUT’ SECTION PAGES  — content/about-history.json, about-officials.json,
+  #                           about-statistics.json
+  # =========================================================================
+  - name: "about"
+    label: "‘About’ Section Pages"
+    description: "The History, Officials and Statistics pages under the About menu."
+    files:
+      # ------------------------------------------------------------------ History
+      - name: "about-history"
+        label: "About → History, Mission & Values"
+        file: "content/about-history.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "historyHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "historyHeroTitleEmphasis", widget: "string", required: true,
+              hint: "The italic words at the end of the heading — for example: Mission & Values" }
+          - { label: "Page banner — subtitle", name: "historyHeroSubtitle", widget: "text", required: true }
+          - label: "History narrative"
+            name: "historyParagraphs"
+            label_singular: "Paragraph"
+            widget: "list"
+            required: true
+            hint: "The story of the Diocese, one paragraph per entry. Drag entries to reorder them."
+            field: { label: "Paragraph", name: "paragraph", widget: "text", required: true }
+          - { label: "Mission statement (wording for this page)", name: "missionText", widget: "text", required: true,
+              hint: "This page may carry slightly different wording from the site-wide mission statement. The site-wide one is under ‘Site-Wide Details’." }
+          - { label: "Vision statement (wording for this page)", name: "visionText", widget: "text", required: true,
+              hint: "This page may carry slightly different wording from the site-wide vision statement." }
+          - label: "Core values"
+            name: "coreValues"
+            label_singular: "Value"
+            widget: "list"
+            required: true
+            hint: "One word or short phrase each — for example: Faith, Service, Compassion."
+            field: { label: "Value", name: "value", widget: "string", required: true }
+          - { label: "Map of the Diocese — image", name: "diocesanMapImage", widget: "image", required: false,
+              hint: "A map graphic. At least 1000 pixels wide. JPG, PNG or WEBP, under 1 MB." }
+          - { label: "Map of the Diocese — caption", name: "diocesanMapCaption", widget: "string", required: false }
+          - { label: "Closing call-to-action — heading", name: "historyCtaTitle", widget: "string", required: true }
+          - { label: "Closing call-to-action — text", name: "historyCtaText", widget: "text", required: true }
+
+      # ---------------------------------------------------------------- Officials
+      - name: "about-officials"
+        label: "About → Diocesan Officials"
+        file: "content/about-officials.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "officialsHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "officialsHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "officialsHeroSubtitle", widget: "text", required: true }
+          - label: "About the office of Bishop"
+            name: "bishopBioShort"
+            label_singular: "Paragraph"
+            widget: "list"
+            required: true
+            hint: "Two short paragraphs about the role of the Bishop, one per entry."
+            field: { label: "Paragraph", name: "paragraph", widget: "text", required: true }
+          - label: "Diocesan officials"
+            name: "officials"
+            label_singular: "Official"
+            widget: "list"
+            required: true
+            summary: "{{fields.role}} — {{fields.name}}"
+            collapsed: true
+            hint: "The Vicars General, Chancellor, Episcopal Vicars, and so on."
+            fields:
+              - { label: "Photo", name: "photo", widget: "image", required: false,
+                  hint: "Head-and-shoulders portrait, upright. At least 400 × 400 pixels. JPG or PNG, under 400 KB. Leave blank if there is no photo." }
+              - { label: "Office / title", name: "role", widget: "string", required: true,
+                  hint: "For example: Vicar General I, Chancellor/Secretary" }
+              - { label: "Full name (with title)", name: "name", widget: "string", required: true }
+              - { label: "Parish / base", name: "parish", widget: "string", required: true }
+              - { label: "Phone number(s)", name: "phone", widget: "string", required: false,
+                  hint: "If there is more than one number, separate them with a comma. Leave blank if none." }
+              - { label: "Email address", name: "email", widget: "string", required: false,
+                  hint: "Leave blank if there is none." }
+          - label: "Deans of the deaneries"
+            name: "deans"
+            label_singular: "Dean"
+            widget: "list"
+            required: true
+            summary: "{{fields.deanery}} — {{fields.name}}"
+            collapsed: true
+            hint: "One dean per deanery."
+            fields:
+              - { label: "Photo", name: "photo", widget: "image", required: false,
+                  hint: "Head-and-shoulders portrait, upright. At least 400 × 400 pixels. JPG or PNG, under 400 KB." }
+              - { label: "Deanery", name: "deanery", widget: "string", required: true }
+              - { label: "Full name (with title)", name: "name", widget: "string", required: true }
+
+      # --------------------------------------------------------------- Statistics
+      - name: "about-statistics"
+        label: "About → The Diocese at a Glance"
+        file: "content/about-statistics.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "statsHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "statsHeroTitleEmphasis", widget: "string", required: true,
+              hint: "The italic words at the end of the heading — for example: at a Glance" }
+          - { label: "Page banner — subtitle", name: "statsHeroSubtitle", widget: "text", required: true }
+          - { label: "Directory call-to-action — heading (normal text)", name: "directoryCtaTitleMain", widget: "string", required: true }
+          - { label: "Directory call-to-action — heading (italic part)", name: "directoryCtaTitleEmphasis", widget: "string", required: true }
+          - { label: "Directory call-to-action — text", name: "directoryCtaText", widget: "text", required: true,
+              hint: "The figures themselves are edited under ‘Diocese in Numbers’. The downloadable directory PDF is under ‘Site-Wide Details’." }
+
+  # =========================================================================
+  #  OUR BISHOP PAGE  — content/bishop.json
+  # =========================================================================
+  - name: "bishop"
+    label: "Our Bishop Page"
+    description: "The dedicated page about the current Bishop — his dates, biography, coat of arms and predecessors."
+    files:
+      - name: "bishop"
+        label: "Our Bishop Page"
+        file: "content/bishop.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "bishopHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "bishopHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "bishopHeroSubtitle", widget: "text", required: true }
+          - label: "Key dates and facts"
+            name: "bishopVitals"
+            widget: "object"
+            required: true
+            hint: "These change only when a new Bishop is installed."
+            fields:
+              - { label: "Full name", name: "fullName", widget: "string", required: true }
+              - { label: "Date of birth", name: "born", widget: "string", required: true, hint: "Written out — for example: January 17, 1950" }
+              - { label: "Ordained deacon", name: "ordainedDeacon", widget: "string", required: true, hint: "Written-out date — for example: September 03, 1977" }
+              - { label: "Ordained priest", name: "ordainedPriest", widget: "string", required: true, hint: "Written-out date." }
+              - { label: "Appointed Auxiliary Bishop", name: "appointedAuxiliary", widget: "string", required: true, hint: "Written-out date." }
+              - { label: "Episcopal consecration", name: "consecrated", widget: "string", required: true, hint: "Written-out date." }
+              - { label: "Year he became Coadjutor Bishop of Okigwe", name: "coadjutorYear", widget: "string", required: true, hint: "Year only — for example: 2005" }
+              - { label: "Year he became Bishop of Okigwe", name: "substantiveYear", widget: "string", required: true, hint: "Year only — for example: 2006" }
+              - { label: "Episcopal motto", name: "motto", widget: "string", required: true }
+              - { label: "Principal consecrator", name: "ordainingBishop", widget: "string", required: true, hint: "The bishop who ordained him — for example: Francis Cardinal Arinze" }
+          - { label: "Coat of arms — image", name: "coatOfArmsImage", widget: "image", required: true,
+              hint: "PNG with a see-through (transparent) background. At least 400 × 400 pixels, under 300 KB." }
+          - { label: "Coat of arms — caption", name: "coatOfArmsMotto", widget: "string", required: true }
+          - label: "Biography"
+            name: "bishopBioParagraphs"
+            label_singular: "Paragraph"
+            widget: "list"
+            required: true
+            hint: "The Bishop's life story, one paragraph per entry. Drag to reorder."
+            field: { label: "Paragraph", name: "paragraph", widget: "text", required: true }
+          - { label: "Featured photo", name: "bishopFeaturedPhoto", widget: "image", required: false,
+              hint: "A notable photo of the Bishop. Wide (landscape). At least 1200 pixels wide. JPG or PNG, under 800 KB." }
+          - { label: "Featured photo — caption", name: "bishopFeaturedPhotoCaption", widget: "string", required: false }
+          - label: "Past bishops"
+            name: "pastBishops"
+            label_singular: "Past bishop"
+            widget: "list"
+            required: false
+            summary: "{{fields.name}} ({{fields.years}})"
+            collapsed: true
+            hint: "The Bishop's predecessors."
+            fields:
+              - { label: "Photo", name: "photo", widget: "image", required: false,
+                  hint: "Portrait. At least 400 × 400 pixels. JPG or PNG, under 400 KB." }
+              - { label: "Name (with title)", name: "name", widget: "string", required: true }
+              - { label: "Years in office", name: "years", widget: "string", required: true, hint: "For example: 1981–2006" }
+              - { label: "Order / position", name: "role", widget: "string", required: true, hint: "For example: 1st Bishop" }
+              - { label: "Short description", name: "description", widget: "string", required: false }
+
+  # =========================================================================
+  #  PARISH DIRECTORY  — content/parishes.json
+  # =========================================================================
+  - name: "parishes"
+    label: "Parish Directory"
+    description: "Every parish and chaplaincy, grouped by deanery. Four parishes are also featured on the home page."
+    files:
+      - name: "parishes"
+        label: "Parish Directory"
+        file: "content/parishes.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "parishesHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "parishesHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "parishesHeroSubtitle", widget: "text", required: true }
+          - label: "Deaneries"
+            name: "deaneries"
+            label_singular: "Deanery"
+            widget: "list"
+            required: true
+            summary: "{{fields.name}}  ({{fields.slug}})"
+            collapsed: true
+            hint: "The 13 deaneries. These drive the section headings AND the filter buttons. Each parish below must carry the exact ‘filter key’ of its deanery."
+            fields:
+              - { label: "Deanery name", name: "name", widget: "string", required: true, hint: "As shown on the page — for example: Obowo East" }
+              - { label: "Filter key", name: "slug", widget: "string", required: true,
+                  pattern: ["^[a-z0-9-]+$", "Lower-case letters, numbers and hyphens only — no spaces."],
+                  hint: "Lower-case, hyphens for spaces — for example: obowo-east. Must match the ‘Deanery (filter key)’ box on every parish in this deanery." }
+          - label: "Parishes"
+            name: "items"
+            label_singular: "Parish"
+            widget: "list"
+            required: true
+            summary: "{{fields.name}}"
+            collapsed: true
+            hint: "This list is long. The last four fields are only needed for parishes featured on the home page."
+            fields:
+              - { label: "Parish name", name: "name", widget: "string", required: true,
+                  hint: "Include the town — for example: St. Mary's Parish, Amuzi Obowo" }
+              - { label: "Deanery (filter key)", name: "deanery", widget: "string", required: true,
+                  pattern: ["^[a-z0-9-]+$", "Lower-case letters, numbers and hyphens only."],
+                  hint: "Must exactly match a deanery ‘Filter key’ above — for example: okigwe, obowo-east." }
+              - { label: "Civil location", name: "location", widget: "string", required: true,
+                  hint: "LGA and State — for example: Obowo LGA, Imo State" }
+              - { label: "Feature on the home page", name: "featured", widget: "boolean", required: false, default: false,
+                  hint: "Featured parishes appear as cards on the home page and need the photo and description below." }
+              - { label: "Card badge (featured only)", name: "badge", widget: "string", required: false,
+                  hint: "A short word on the home-page card — for example: Cathedral. Used only when featured." }
+              - { label: "Photo (featured only)", name: "image", widget: "image", required: false,
+                  hint: "Wide (landscape). At least 1000 × 700 pixels. JPG or PNG, under 800 KB. Needed only if ‘Feature on the home page’ is ticked." }
+              - { label: "Description (featured only)", name: "description", widget: "text", required: false,
+                  hint: "Two or three sentences on the home-page card. Needed only if featured." }
+
+  # =========================================================================
+  #  PRIESTS IN ACTIVE MINISTRY  — content/priests.json
+  # =========================================================================
+  - name: "priests_active"
+    label: "Priests in Active Ministry"
+    description: "The full roll of serving priests shown in the searchable table on the Priests page."
+    files:
+      - name: "priests"
+        label: "Priests in Active Ministry"
+        file: "content/priests.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "priestsHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "priestsHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "priestsHeroSubtitle", widget: "text", required: true }
+          - { label: "Info banner — heading", name: "priestsBannerTitle", widget: "string", required: true }
+          - { label: "Info banner — Scripture quote", name: "priestsBannerQuote", widget: "text", required: true }
+          - label: "Priests"
+            name: "items"
+            label_singular: "Priest"
+            widget: "list"
+            required: true
+            summary: "{{fields.name}} — ord. {{fields.ordination}}"
+            collapsed: true
+            hint: "A long list. Use the search box at the top of the editor to find an entry."
+            fields:
+              - { label: "Name (with title)", name: "name", widget: "string", required: true, hint: "For example: Rev. Fr. Kevin Madu" }
+              - { label: "Ordination date", name: "ordination", widget: "string", required: true,
+                  hint: "Two digits each — day/month/year — for example: 09/04/72. Type a dash ( — ) if it is not known." }
+              - { label: "Current posting", name: "location", widget: "string", required: true,
+                  hint: "Type a dash ( — ) if it is not recorded." }
+
+  # =========================================================================
+  #  DEPARTED PRIESTS ARCHIVE  — content/archive-priests.json
+  # =========================================================================
+  - name: "priests_departed"
+    label: "Departed Priests Archive"
+    description: "In memoriam roll on the Archives → Departed Priests page."
+    files:
+      - name: "archive-priests"
+        label: "Departed Priests Archive"
+        file: "content/archive-priests.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "archivePriestsHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "archivePriestsHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "archivePriestsHeroSubtitle", widget: "text", required: true }
+          - { label: "Memorial banner text", name: "memorialBannerText", widget: "text", required: true,
+              hint: "The Scripture verse shown in the banner." }
+          - label: "Departed priests"
+            name: "items"
+            label_singular: "Departed priest"
+            widget: "list"
+            required: true
+            summary: "{{fields.name}}  (d. {{fields.death}})"
+            collapsed: true
+            fields:
+              - { label: "Name (with title)", name: "name", widget: "string", required: true }
+              - { label: "Ordination date", name: "ordination", widget: "string", required: true,
+                  hint: "For example: 19/12/64. Type a dash ( — ) if unknown." }
+              - { label: "Date of death", name: "death", widget: "string", required: true,
+                  hint: "For example: 15/06/12. Type a dash ( — ) if unknown." }
+
+  # =========================================================================
+  #  PAST OFFICE-HOLDERS ARCHIVE  — content/functionaries.json
+  # =========================================================================
+  - name: "archives"
+    label: "Past Office-Holders Archive"
+    description: "The Archives → Functionaries page: past Chancellors and Financial Administrators."
+    files:
+      - name: "functionaries"
+        label: "Past Office-Holders Archive"
+        file: "content/functionaries.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "functionariesHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "functionariesHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "functionariesHeroSubtitle", widget: "text", required: true }
+          - label: "Chancellors (past and present)"
+            name: "chancellors"
+            label_singular: "Chancellor"
+            widget: "list"
+            required: true
+            summary: "{{fields.name}}  ({{fields.years}})"
+            collapsed: true
+            hint: "Listed oldest first."
+            fields:
+              - { label: "Photo", name: "photo", widget: "image", required: false,
+                  hint: "Portrait. At least 400 × 400 pixels. JPG or PNG, under 400 KB. Leave blank if there is no photo." }
+              - { label: "Name (with title)", name: "name", widget: "string", required: true }
+              - { label: "Years in office", name: "years", widget: "string", required: true, hint: "For example: 1981 – 1982, or 2025 – Present" }
+              - { label: "Deceased", name: "deceased", widget: "boolean", required: false, default: false,
+                  hint: "Tick if the person is late. Adds a small mark beside the name." }
+          - label: "Financial Administrators (past and present)"
+            name: "financialAdministrators"
+            label_singular: "Financial Administrator"
+            widget: "list"
+            required: true
+            summary: "{{fields.name}}  ({{fields.years}})"
+            collapsed: true
+            fields:
+              - { label: "Photo", name: "photo", widget: "image", required: false,
+                  hint: "Portrait. At least 400 × 400 pixels. JPG or PNG, under 400 KB." }
+              - { label: "Name (with title)", name: "name", widget: "string", required: true }
+              - { label: "Years in office", name: "years", widget: "string", required: true, hint: "For example: 2025 – Present" }
+
+  # =========================================================================
+  #  INSTITUTIONS  — content/seminaries.json, sec-schools.json,
+  #                  returned-schools.json, hospitals.json, press.json
+  # =========================================================================
+  - name: "institutions"
+    label: "Institutions"
+    description: "Seminaries, schools, health centres and the Diocesan press office."
+    files:
+      # --------------------------------------------------------------- Seminaries
+      - name: "seminaries"
+        label: "Institutions → Seminaries"
+        file: "content/seminaries.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "seminariesHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "seminariesHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "seminariesHeroSubtitle", widget: "text", required: true }
+          - label: "Seminaries"
+            name: "items"
+            label_singular: "Seminary"
+            widget: "list"
+            required: true
+            summary: "{{fields.name}}"
+            collapsed: true
+            fields:
+              - { label: "Name", name: "name", widget: "string", required: true }
+              - { label: "Location", name: "location", widget: "string", required: true }
+              - { label: "Description", name: "description", widget: "text", required: true, hint: "One or two sentences about the seminary." }
+              - label: "Formation team"
+                name: "staff"
+                label_singular: "Staff member"
+                widget: "list"
+                required: false
+                summary: "{{fields.role}} — {{fields.name}}"
+                collapsed: true
+                fields:
+                  - { label: "Role", name: "role", widget: "string", required: true, hint: "For example: Rector, Vice Rector, In Residence" }
+                  - { label: "Name (with title)", name: "name", widget: "string", required: true }
+                  - { label: "Phone number", name: "contact", widget: "string", required: true, hint: "Type a dash ( - ) if not listed." }
+
+      # ---------------------------------------------------------- Secondary schools
+      - name: "sec-schools"
+        label: "Institutions → Secondary Schools"
+        file: "content/sec-schools.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "secSchoolsHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "secSchoolsHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "secSchoolsHeroSubtitle", widget: "text", required: true }
+          - label: "Secondary schools"
+            name: "items"
+            label_singular: "School"
+            widget: "list"
+            required: true
+            summary: "{{fields.name}}"
+            collapsed: true
+            fields:
+              - { label: "School name (with location)", name: "name", widget: "string", required: true }
+              - label: "Management team"
+                name: "managers"
+                label_singular: "Manager"
+                widget: "list"
+                required: true
+                hint: "One person per entry, with their role in brackets — for example: Rev. Fr. Jasper Onugha (Principal)"
+                field: { label: "Manager", name: "manager", widget: "string", required: true }
+
+      # ----------------------------------------------------------- Returned schools
+      - name: "returned-schools"
+        label: "Institutions → Returned Schools"
+        file: "content/returned-schools.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "returnedSchoolsHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "returnedSchoolsHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "returnedSchoolsHeroSubtitle", widget: "text", required: true }
+          - label: "Returned schools"
+            name: "items"
+            label_singular: "School"
+            widget: "list"
+            required: true
+            summary: "{{fields.name}}"
+            collapsed: true
+            fields:
+              - { label: "School name (with location)", name: "name", widget: "string", required: true }
+              - label: "Management team"
+                name: "managers"
+                label_singular: "Manager"
+                widget: "list"
+                required: true
+                hint: "One person per entry, with their role in brackets — for example: Rev. Fr. Finbarr Chukwu (Administrator)"
+                field: { label: "Manager", name: "manager", widget: "string", required: true }
+
+      # --------------------------------------------------------- Hospitals / health
+      - name: "hospitals"
+        label: "Institutions → Hospitals & Health Centres"
+        file: "content/hospitals.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "hospitalsHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "hospitalsHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "hospitalsHeroSubtitle", widget: "text", required: true }
+          - label: "Hospitals and health centres"
+            name: "items"
+            label_singular: "Health centre"
+            widget: "list"
+            required: false
+            summary: "{{fields.name}}"
+            collapsed: true
+            hint: "This list may be empty until the health centres are ready to publish."
+            fields:
+              - { label: "Name", name: "name", widget: "string", required: true }
+              - { label: "Location", name: "location", widget: "string", required: true }
+              - { label: "Description", name: "description", widget: "text", required: true }
+
+      # -------------------------------------------------------------- Press office
+      - name: "press"
+        label: "Institutions → Diocesan Press"
+        file: "content/press.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "pressHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "pressHeroTitleEmphasis", widget: "string", required: true }
+          - { label: "Page banner — subtitle", name: "pressHeroSubtitle", widget: "text", required: true }
+          - label: "Diocesan press office"
+            name: "pressOffice"
+            widget: "object"
+            required: true
+            fields:
+              - { label: "Name", name: "name", widget: "string", required: true }
+              - { label: "Description", name: "description", widget: "text", required: true }
+              - { label: "Main phone number", name: "contact", widget: "string", required: true }
+              - label: "Staff"
+                name: "staff"
+                label_singular: "Staff member"
+                widget: "list"
+                required: false
+                summary: "{{fields.role}} — {{fields.name}}"
+                collapsed: true
+                fields:
+                  - { label: "Role", name: "role", widget: "string", required: true, hint: "For example: Editor/Director, Assistant" }
+                  - { label: "Name (with title)", name: "name", widget: "string", required: true }
+                  - { label: "Phone number", name: "contact", widget: "string", required: true }
+
+  # =========================================================================
+  #  CONTACT PAGE  — content/contact.json
+  # =========================================================================
+  - name: "contact"
+    label: "Contact Page"
+    description: "Only the banner wording. The address, phone, email, hours and map come from ‘Site-Wide Details’."
+    files:
+      - name: "contact"
+        label: "Contact Page"
+        file: "content/contact.json"
+        fields:
+          - { label: "Page banner — heading (normal text)", name: "contactHeroTitleMain", widget: "string", required: true }
+          - { label: "Page banner — heading (italic part)", name: "contactHeroTitleEmphasis", widget: "string", required: true,
+              hint: "The italic words at the end of the heading — for example: the Diocese" }
+          - { label: "Page banner — subtitle", name: "contactHeroSubtitle", widget: "text", required: true }

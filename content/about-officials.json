@@ -12,7 +12,7 @@
       "role": "Vicar General I",
       "name": "Very Rev. Msgr. John C. Iwe",
       "parish": "St. Benedict's Parish Amaraku",
-      "phone": ["08134077144", "07038446056"],
+      "phone": "08134077144, 07038446056",
       "email": ""
     },
     {
@@ -52,7 +52,7 @@
       "role": "Judicial Vicar",
       "name": "Very Rev. Fr. Michael Agbayi",
       "parish": "Christ the King Parish, Umunchi",
-      "phone": ["08038751950", "08069689968"],
+      "phone": "08038751950, 08069689968",
       "email": ""
     },
     {
