@@ -1,25 +1,34 @@
 {
-  "heroTitleLine1": "Welcome to the",
-  "heroTitleEmphasis": "Catholic Diocese of Okigwe",
-  "heroActions": [
-    { "label": "Find a Parish", "link": "pages/parishes.html" },
-    { "label": "View Directory", "link": "pages/about_statistics.html#diocesan-directory" },
-    { "label": "Contact Us", "link": "pages/contact.html" }
-  ],
   "tickerAnnouncements": [
     "Second Diocesan Theological Conference for the year 2026 will be on Thursday, October 15, 2026",
     "One Year Anniversary Mass of the Death of Frs. Vincent Ogu and Felix Ikpatusi: Thursday, August 20, 2026",
     "Okigwe Diocesan Plenary Meeting: Wednesday, September 23, 2026"
   ],
   "bishopPortraitImage": "images/DSC_7056.jpg",
+  "heroActions": [
+    {
+      "label": "Find a Parish",
+      "link": "pages/parishes.html"
+    },
+    {
+      "label": "View Directory",
+      "link": "pages/about_statistics.html#diocesan-directory"
+    },
+    {
+      "label": "Contact Us",
+      "link": "pages/contact.html"
+    }
+  ],
+  "aboutSubtitle": "Rooted in faith, guided by tradition, and called to serve.",
+  "aboutHeadingMain": "About the Diocese",
+  "aboutHeadingEmphasis": "of Okigwe",
   "bishopMessageQuote": [
     "\"Welcome to the official website of the Catholic Diocese of Okigwe.",
     "We are a community of faith united in the mission of proclaiming the Gospel and serving God’s people in love. Through this platform, we hope to keep you connected with the spiritual, pastoral, and developmental life of the Diocese.\""
   ],
-  "aboutHeadingMain": "About the Diocese",
-  "aboutHeadingEmphasis": "of Okigwe",
-  "aboutSubtitle": "Rooted in faith, guided by tradition, and called to serve.",
+  "contactSubtitle": "We would love to hear from you. Reach out to us through any channel below.",
+  "heroTitleEmphasis": "Catholic Diocese of Okigwe",
   "contactHeadingMain": "Contact",
   "contactHeadingEmphasis": "the Diocese",
-  "contactSubtitle": "We would love to hear from you. Reach out to us through any channel below."
+  "heroTitleLine1": "Welcome to the Catholic TEST"
 }
