@@ -3,196 +3,1052 @@
   "parishesHeroTitleEmphasis": "Directory",
   "parishesHeroSubtitle": "Find a Catholic parish community across the Diocese of Okigwe — organised by deanery and searchable by name or location.",
   "deaneries": [
-    { "name": "Okigwe", "slug": "okigwe" },
-    { "name": "Uturu", "slug": "uturu" },
-    { "name": "Isuikwuato", "slug": "isuikwuato" },
-    { "name": "Obowo East", "slug": "obowo-east" },
-    { "name": "Obowo West", "slug": "obowo-west" },
-    { "name": "Uboma", "slug": "uboma" },
-    { "name": "Ihitte", "slug": "ihitte" },
-    { "name": "Ehime East", "slug": "ehime-east" },
-    { "name": "Ehime West", "slug": "ehime-west" },
-    { "name": "Ugiri/Mbama", "slug": "ugiri-mbama" },
-    { "name": "Osu", "slug": "osu" },
-    { "name": "Onuimo", "slug": "onuimo" },
-    { "name": "Umunneochi", "slug": "umunneochi" }
+    {
+      "name": "Okigwe",
+      "slug": "okigwe"
+    },
+    {
+      "name": "Uturu",
+      "slug": "uturu"
+    },
+    {
+      "name": "Isuikwuato",
+      "slug": "isuikwuato"
+    },
+    {
+      "name": "Obowo East",
+      "slug": "obowo-east"
+    },
+    {
+      "name": "Obowo West",
+      "slug": "obowo-west"
+    },
+    {
+      "name": "Uboma",
+      "slug": "uboma"
+    },
+    {
+      "name": "Ihitte",
+      "slug": "ihitte"
+    },
+    {
+      "name": "Ehime East",
+      "slug": "ehime-east"
+    },
+    {
+      "name": "Ehime West",
+      "slug": "ehime-west"
+    },
+    {
+      "name": "Ugiri/Mbama",
+      "slug": "ugiri-mbama"
+    },
+    {
+      "name": "Osu",
+      "slug": "osu"
+    },
+    {
+      "name": "Onuimo",
+      "slug": "onuimo"
+    },
+    {
+      "name": "Umunneochi",
+      "slug": "umunneochi"
+    }
   ],
   "items": [
-    { "name": "St. Mary's Pro-Cathedral Parish, Okigwe", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": true, "image": "images/st_marys_cathedra_Okigwe.jpeg", "description": "St. Mary's Pro-Cathedral serves as the Cathedral seat of the Diocese. It is a centre of worship, formation, and community life at the heart of Okigwe town. The parish is known for its vibrant liturgical celebrations, strong youth ministry, and active social outreach programs that serve the wider community." },
-    { "name": "St. Mary's Parish, Arondizuogu", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "Good Shepherd Parish, Ibube", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "Holy Family Parish, Mbato Amosu", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "Holy Family Parish, Umualumoke", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Arondizuogu", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "Christ the King Parish, Ezinnachi/Ugwaku", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Anthony's Parish, Umuka Okigwe", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "All Saints Parish, Ogii", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Parish, Ikpaeke Okigwe", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Innocent Parish, Aku", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Parish, Aro-Umuele", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Vincent de Paul Parish, Umuowa Ibu", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. John's Parish, Ikpatu/Ikpaebi/Ndiekwuru", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "Christ the King Parish, Agbobu", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "Immaculate Conception Parish-in-Building, Okigwe", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": true, "badge": "Cathedral", "image": "images/Cathedral symbol.jpg", "description": "Immaculate Conception Cathedral, Okigwe is the Mother Church of our diocese. It stands as the spiritual heart of the Diocese, where the faithful gather for the celebration of the Sacred Liturgy, diocesan events, and major ecclesial celebrations. Though still under construction, the Cathedral is a visible testament to the Diocese's faith, unity, and commitment to building a lasting house of God for future generations." },
-    { "name": "St. Michael's Parish, Aro-Ogii Okigwe", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Peter's Parish-in-Building, Abo-Umulolo", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Peter's Parish-in-Building, Umuokpara Okigwe", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Mary's Chaplaincy Ndinjoku/Ndiakaeme", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Francis of Assisi Parish, Okigwe Low Cost", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-    { "name": "St. Mary's Chaplaincy, Akaeme Umunwizuzu", "deanery": "okigwe", "location": "Okigwe LGA, Imo State", "featured": false },
-
-    { "name": "Holy Cross Parish, Uturu", "deanery": "uturu", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Bridgid's Parish, Uturu", "deanery": "uturu", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "Assumption Parish-in-Building, Ukwunwangwu Uturu", "deanery": "uturu", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Anthony's Parish, Isunabo Uturu", "deanery": "uturu", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Anthony's Parish, Ndundu Uturu", "deanery": "uturu", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Michael's Parish, Achara Uturu", "deanery": "uturu", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Augustine's Chaplaincy, ABSU Uturu", "deanery": "uturu", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "Marist Brothers Chaplaincy, Uturu", "deanery": "uturu", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "Gregory University Chaplaincy, Uturu", "deanery": "uturu", "location": "Isuikwuato LGA, Abia State", "featured": false },
-
-    { "name": "Our Lady of Fatima Parish, Isuikwuato", "deanery": "isuikwuato", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Ann's Parish, Eluama", "deanery": "isuikwuato", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Martin's Parish, Acha", "deanery": "isuikwuato", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Paul's Parish, Nunya", "deanery": "isuikwuato", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Agnes' Parish-in-Building, Ozara Isuikwuato", "deanery": "isuikwuato", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Francis' Parish, Umuobiala Isuikwuato", "deanery": "isuikwuato", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Peter's Parish Ovim", "deanery": "isuikwuato", "location": "Isuikwuato LGA, Abia State", "featured": false },
-    { "name": "St. Michael's Parish, Mgbaelu/ Umunnekwu/ Obilohia", "deanery": "isuikwuato", "location": "Isuikwuato LGA, Abia State", "featured": false },
-
-    { "name": "All Saints Parish, Avutu", "deanery": "obowo-east", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "Queen of Peace Parish, Umuariam Obowo", "deanery": "obowo-east", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "St.Anthony's Parish, Amanze/ Umuagu Obowo", "deanery": "obowo-east", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Parish, Achara Obowo", "deanery": "obowo-east", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "Our Lady of Assumption Parish Umuariam Obowo", "deanery": "obowo-east", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "St. Patrick's Parish, Umunachi Obowo", "deanery": "obowo-east", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "St. Damian Parish, Umungwa Obowo", "deanery": "obowo-east", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "Regina Caeli Parish, Ehume/ Umueze", "deanery": "obowo-east", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "St. Jude's Parish, Umuifem", "deanery": "obowo-east", "location": "Obowo LGA, Imo State", "featured": false },
-
-    { "name": "Immaculate Heart Parish, Alike Obowo", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "SS. Peter & Paul Parish, Amato Alike", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "St. Mary's Parish, Amuzi Obowo", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": true, "image": "images/st_may's_amuzi_obowo.jpg", "description": "St. Mary's Catholic Parish Obowo is one of our vibrant parishes in Obowo West Deanery, serving a large and active Catholic community. The parish is known for its strong devotion to the Blessed Virgin Mary, dynamic liturgical celebrations, and robust social outreach programs that support the local community." },
-    { "name": "St. Peter's Parish, Umulogho", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "Christ the King Parish, Umuokeh, Obowo", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "St. Thomas Aquinas Parish, Umuosochie", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "Holy Trinity Parish, Umukpa Alike Obowo", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "St. Bridget's Parish, Okwohia Obowo", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Odenkume Obowo", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "Christ the King Parish, Umuezigwe Amuzi Obowo", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-    { "name": "Mercy Hospital and College of Nursing Sciences Chaplaincy, Umulogho Obowo", "deanery": "obowo-west", "location": "Obowo LGA, Imo State", "featured": false },
-
-    { "name": "St. Anthony's Parish, Uboma", "deanery": "uboma", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "Holy Trinity Parish, Uboma", "deanery": "uboma", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "Holy Ghost Parish, Abueke Uboma", "deanery": "uboma", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "Corpus Christi Parish, Dimnaeze Uboma", "deanery": "uboma", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "Christ the King Parish, Ikperejere", "deanery": "uboma", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Patrick's Parish, Lowa", "deanery": "uboma", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "Holy Trinity Parish, Uzinomi Uboma", "deanery": "uboma", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "Our Lady of Lourdes Parish, Umuoma Uboma", "deanery": "uboma", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-
-    { "name": "Mater Dolorosa Parish, Ihitte", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Peter's Parish, Umunohu", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Amanyinta", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Mary's Parish, Umuihi Ihitte", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Theresa's Parish, Nkumeato", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Theresa's Parish, Amainyiukwu (Chibugwumba)", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Patrick's Parish Ndiowerre Umuezegwu", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Francis Parish, Umuezegwu", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Peter's Parish, Umuderim Ihitte", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Paul's Parish, Amainyi", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-    { "name": "St. Thomas Aquinas' Seminary Ihitte", "deanery": "ihitte", "location": "Ihitte/Uboma LGA, Imo State", "featured": false },
-
-    { "name": "St. Columba's Parish, Nsu", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": true, "image": "images/st_columbas_agbaghara_nsu.jpg", "description": "St. Columbas' Agbaghara Nsu is a vibrant parish community located in the heart of Ehime Mbano, which was founded in 1917. The parish serves as a spiritual home for hundreds of faithful in the area and continues to be a beacon of faith and service in the Diocese of Okigwe." },
-    { "name": "Our Lady of Fatima Parish, Umuakagu Nsu", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "Holy Ghost Parish, Umuanunu Nsu", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Charles Parish, Umunumo", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Ignatius Parish, Umunumo", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "Holy Trinity Parish, Nzerem", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Lawrence Parish, Umuduru Umuokpara Nsu", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Paul's Parish, Ikpem", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "Holy Rosary Parish, Dioka Nzerem", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Anthony's Parish, Umuezeala Nsu", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "Madonna Parish, Umukabia", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Theresa's Parish, Umuoma Nzerem", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Umukabia (Ode na Ezeala)", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "Holy Rosary Parish, Umunohu Nsu", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Umuaro Umunumo", "deanery": "ehime-east", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-
-    { "name": "St. Patrick's Parish, Umuzezeala Owerre", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Umuezeala Ogwara", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Theresa's Parish, Umunakanu Owerre", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Umueleke", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Umueze I", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Thomas Aquinas' Parish, Ibeowerre Agbaja", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "Our Lady of Victory Parish, Agbaja", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Peter's Parish-in-Building, Umuduruebo Mgbam Agbaja", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Jude's Parish, Umueze II (Omaeke)", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Christopher's Parish, Umueze II", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Paul's Parish, Umuezeala Ama", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "Immaculate Conception Parish, Umunakanu Ama", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Parish, Umualumaku", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "Divine Mercy Chaplaincy, Imo Polytechnic Mbano Campus", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Charles Borromeo Spiritual Year Seminary", "deanery": "ehime-west", "location": "Ehime Mbano LGA, Imo State", "featured": false },
-
-    { "name": "St. Patrick's Parish, Ogbor Ugiri", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Ita's Parish, Ibeme", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "Mater Dei Parish, Amaukwu Obollo", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Anthony's Parish, Mbama Umunkwo", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Benedict's Parish, Amaraku", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Benedict's Parish, Oka Ugiri", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Theresa's Parish, Obollo", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Theresa's Parish, Amauzari", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. John's Parish, Umunkwo", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish-in-Building, Umuopara Ugirinna", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Ugirinna", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "Archangel's Parish, Umuebie", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Anthony's Parish, Umuozu", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Philomena's Parish, Umuneke", "deanery": "ugiri-mbama", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-
-    { "name": "St. Paul's Parish, Osu", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Jude's Parish, Mbano HQ", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Theresa's Parish, Osuachara", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "Christ the King Parish, Osuachara", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "Christ the King Parish, Anara", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Michael's Parish, Umuekebi Umunchi", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Anthony's Parish, Umunachi Osu", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "Holy Rosary Parish, Umuehie Anara", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Parish, Oboh Osuama", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Mary's Parish, Eziama", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Peter's Parish, Mbeke", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "Christ the King Parish, Ezumoha", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Mary's Parish, Isiama Osuowerre", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. John's Parish, Anara", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Christopher's Parish, Umuluwe Ajirija", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Francis Parish, Umuaro II Osu", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Francis Parish, Dikenofeiyi Anara", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Andrew's Parish, Isiebu", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "SS. Patrick and Peter's Parish-in-Building, Obiohuru Osuachara", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Peter's Parish, Umuduru Isiala Mbano", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Chaplaincy, Mbano Joint Hospital and College of Nursing Sciences", "deanery": "osu", "location": "Isiala Mbano LGA, Imo State", "featured": false },
-
-    { "name": "Our Lady of Perpetual Succour, Okwe", "deanery": "onuimo", "location": "Onuimo LGA, Imo State", "featured": false },
-    { "name": "St. Charles Parish, Okwelle", "deanery": "onuimo", "location": "Onuimo LGA, Imo State", "featured": false },
-    { "name": "Sacred Heart Parish, Umuna", "deanery": "onuimo", "location": "Onuimo LGA, Imo State", "featured": false },
-    { "name": "Our Lady of Lourdes Parish, Umuduru Egbeaguru", "deanery": "onuimo", "location": "Onuimo LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Parish, Umucheke Okwe", "deanery": "onuimo", "location": "Onuimo LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Parish, Uwakaonye Aniche/ Akpakwu", "deanery": "onuimo", "location": "Onuimo LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Parish-in-Building, Umuna", "deanery": "onuimo", "location": "Onuimo LGA, Imo State", "featured": false },
-    { "name": "St. Patrick's Parish-in-Building, Ichiribe Okwe", "deanery": "onuimo", "location": "Onuimo LGA, Imo State", "featured": false },
-    { "name": "St. Joseph's Parish-in-Building, Ezelu Okwe", "deanery": "onuimo", "location": "Onuimo LGA, Imo State", "featured": false },
-
-    { "name": "Queen of Apostles Parish, Umuchieze", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "Holy Trinity Parish, Isuochi", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "Maria Assumpta Parish, Nneato", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "Holy Family Parish, Eziama Nneato", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "Sacred Heart Parish, Ngodo Isuochi", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "St. Philip's Parish, Lokpanta", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "Immaculate Heart Parish, Umuaku/ Mbala Isuochi", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "St. Philomena's Parish, Lekwesi", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "St. Gregory's Parish, Ngodo Isuochi", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "St. Peter's Parish, Lomara Isuochi", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "St. Michael's Parish, Obulo Eziama Nneato", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false },
-    { "name": "St. Luke's Parish, Umuelem Isuochi", "deanery": "umunneochi", "location": "Umunneochi LGA, Abia State", "featured": false }
+    {
+      "name": "St. Mary's Pro-Cathedral Parish, Okigwe",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": true,
+      "image": "/images/uploads/chatgpt-image-jun-5-2026-08_43_55-am.png",
+      "description": "St. Mary's Pro-Cathedral serves as the Cathedral seat of the Diocese. It is a centre of worship, formation, and community life at the heart of Okigwe town. The parish is known for its vibrant liturgical celebrations, strong youth ministry, and active social outreach programs that serve the wider community."
+    },
+    {
+      "name": "St. Mary's Parish, Arondizuogu",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Good Shepherd Parish, Ibube",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Family Parish, Mbato Amosu",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Family Parish, Umualumoke",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Arondizuogu",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Christ the King Parish, Ezinnachi/Ugwaku",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Anthony's Parish, Umuka Okigwe",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "All Saints Parish, Ogii",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Parish, Ikpaeke Okigwe",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Innocent Parish, Aku",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Parish, Aro-Umuele",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Vincent de Paul Parish, Umuowa Ibu",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. John's Parish, Ikpatu/Ikpaebi/Ndiekwuru",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Christ the King Parish, Agbobu",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Immaculate Conception Parish-in-Building, Okigwe",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": true,
+      "badge": "Cathedral",
+      "image": "images/Cathedral symbol.jpg",
+      "description": "Immaculate Conception Cathedral, Okigwe is the Mother Church of our diocese. It stands as the spiritual heart of the Diocese, where the faithful gather for the celebration of the Sacred Liturgy, diocesan events, and major ecclesial celebrations. Though still under construction, the Cathedral is a visible testament to the Diocese's faith, unity, and commitment to building a lasting house of God for future generations."
+    },
+    {
+      "name": "St. Michael's Parish, Aro-Ogii Okigwe",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Peter's Parish-in-Building, Abo-Umulolo",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Peter's Parish-in-Building, Umuokpara Okigwe",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Mary's Chaplaincy Ndinjoku/Ndiakaeme",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Francis of Assisi Parish, Okigwe Low Cost",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Mary's Chaplaincy, Akaeme Umunwizuzu",
+      "deanery": "okigwe",
+      "location": "Okigwe LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Cross Parish, Uturu",
+      "deanery": "uturu",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Bridgid's Parish, Uturu",
+      "deanery": "uturu",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "Assumption Parish-in-Building, Ukwunwangwu Uturu",
+      "deanery": "uturu",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Anthony's Parish, Isunabo Uturu",
+      "deanery": "uturu",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Anthony's Parish, Ndundu Uturu",
+      "deanery": "uturu",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Achara Uturu",
+      "deanery": "uturu",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Augustine's Chaplaincy, ABSU Uturu",
+      "deanery": "uturu",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "Marist Brothers Chaplaincy, Uturu",
+      "deanery": "uturu",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "Gregory University Chaplaincy, Uturu",
+      "deanery": "uturu",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "Our Lady of Fatima Parish, Isuikwuato",
+      "deanery": "isuikwuato",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Ann's Parish, Eluama",
+      "deanery": "isuikwuato",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Martin's Parish, Acha",
+      "deanery": "isuikwuato",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Paul's Parish, Nunya",
+      "deanery": "isuikwuato",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Agnes' Parish-in-Building, Ozara Isuikwuato",
+      "deanery": "isuikwuato",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Francis' Parish, Umuobiala Isuikwuato",
+      "deanery": "isuikwuato",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Peter's Parish Ovim",
+      "deanery": "isuikwuato",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Mgbaelu/ Umunnekwu/ Obilohia",
+      "deanery": "isuikwuato",
+      "location": "Isuikwuato LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "All Saints Parish, Avutu",
+      "deanery": "obowo-east",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Queen of Peace Parish, Umuariam Obowo",
+      "deanery": "obowo-east",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St.Anthony's Parish, Amanze/ Umuagu Obowo",
+      "deanery": "obowo-east",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Parish, Achara Obowo",
+      "deanery": "obowo-east",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Our Lady of Assumption Parish Umuariam Obowo",
+      "deanery": "obowo-east",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Patrick's Parish, Umunachi Obowo",
+      "deanery": "obowo-east",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Damian Parish, Umungwa Obowo",
+      "deanery": "obowo-east",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Regina Caeli Parish, Ehume/ Umueze",
+      "deanery": "obowo-east",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Jude's Parish, Umuifem",
+      "deanery": "obowo-east",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Immaculate Heart Parish, Alike Obowo",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "SS. Peter & Paul Parish, Amato Alike",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Mary's Parish, Amuzi Obowo",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": true,
+      "image": "images/st_may's_amuzi_obowo.jpg",
+      "description": "St. Mary's Catholic Parish Obowo is one of our vibrant parishes in Obowo West Deanery, serving a large and active Catholic community. The parish is known for its strong devotion to the Blessed Virgin Mary, dynamic liturgical celebrations, and robust social outreach programs that support the local community."
+    },
+    {
+      "name": "St. Peter's Parish, Umulogho",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Christ the King Parish, Umuokeh, Obowo",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Thomas Aquinas Parish, Umuosochie",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Trinity Parish, Umukpa Alike Obowo",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Bridget's Parish, Okwohia Obowo",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Odenkume Obowo",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Christ the King Parish, Umuezigwe Amuzi Obowo",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Mercy Hospital and College of Nursing Sciences Chaplaincy, Umulogho Obowo",
+      "deanery": "obowo-west",
+      "location": "Obowo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Anthony's Parish, Uboma",
+      "deanery": "uboma",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Trinity Parish, Uboma",
+      "deanery": "uboma",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Ghost Parish, Abueke Uboma",
+      "deanery": "uboma",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Corpus Christi Parish, Dimnaeze Uboma",
+      "deanery": "uboma",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Christ the King Parish, Ikperejere",
+      "deanery": "uboma",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Patrick's Parish, Lowa",
+      "deanery": "uboma",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Trinity Parish, Uzinomi Uboma",
+      "deanery": "uboma",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Our Lady of Lourdes Parish, Umuoma Uboma",
+      "deanery": "uboma",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Mater Dolorosa Parish, Ihitte",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Peter's Parish, Umunohu",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Amanyinta",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Mary's Parish, Umuihi Ihitte",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Theresa's Parish, Nkumeato",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Theresa's Parish, Amainyiukwu (Chibugwumba)",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Patrick's Parish Ndiowerre Umuezegwu",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Francis Parish, Umuezegwu",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Peter's Parish, Umuderim Ihitte",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Paul's Parish, Amainyi",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Thomas Aquinas' Seminary Ihitte",
+      "deanery": "ihitte",
+      "location": "Ihitte/Uboma LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Columba's Parish, Nsu",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": true,
+      "image": "images/st_columbas_agbaghara_nsu.jpg",
+      "description": "St. Columbas' Agbaghara Nsu is a vibrant parish community located in the heart of Ehime Mbano, which was founded in 1917. The parish serves as a spiritual home for hundreds of faithful in the area and continues to be a beacon of faith and service in the Diocese of Okigwe."
+    },
+    {
+      "name": "Our Lady of Fatima Parish, Umuakagu Nsu",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Ghost Parish, Umuanunu Nsu",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Charles Parish, Umunumo",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Ignatius Parish, Umunumo",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Trinity Parish, Nzerem",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Lawrence Parish, Umuduru Umuokpara Nsu",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Paul's Parish, Ikpem",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Rosary Parish, Dioka Nzerem",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Anthony's Parish, Umuezeala Nsu",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Madonna Parish, Umukabia",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Theresa's Parish, Umuoma Nzerem",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Umukabia (Ode na Ezeala)",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Rosary Parish, Umunohu Nsu",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Umuaro Umunumo",
+      "deanery": "ehime-east",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Patrick's Parish, Umuzezeala Owerre",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Umuezeala Ogwara",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Theresa's Parish, Umunakanu Owerre",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Umueleke",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Umueze I",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Thomas Aquinas' Parish, Ibeowerre Agbaja",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Our Lady of Victory Parish, Agbaja",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Peter's Parish-in-Building, Umuduruebo Mgbam Agbaja",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Jude's Parish, Umueze II (Omaeke)",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Christopher's Parish, Umueze II",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Paul's Parish, Umuezeala Ama",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Immaculate Conception Parish, Umunakanu Ama",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Parish, Umualumaku",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Divine Mercy Chaplaincy, Imo Polytechnic Mbano Campus",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Charles Borromeo Spiritual Year Seminary",
+      "deanery": "ehime-west",
+      "location": "Ehime Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Patrick's Parish, Ogbor Ugiri",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Ita's Parish, Ibeme",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Mater Dei Parish, Amaukwu Obollo",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Anthony's Parish, Mbama Umunkwo",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Benedict's Parish, Amaraku",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Benedict's Parish, Oka Ugiri",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Theresa's Parish, Obollo",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Theresa's Parish, Amauzari",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. John's Parish, Umunkwo",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish-in-Building, Umuopara Ugirinna",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Ugirinna",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Archangel's Parish, Umuebie",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Anthony's Parish, Umuozu",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Philomena's Parish, Umuneke",
+      "deanery": "ugiri-mbama",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Paul's Parish, Osu",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Jude's Parish, Mbano HQ",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Theresa's Parish, Osuachara",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Christ the King Parish, Osuachara",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Christ the King Parish, Anara",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Umuekebi Umunchi",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Anthony's Parish, Umunachi Osu",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Holy Rosary Parish, Umuehie Anara",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Parish, Oboh Osuama",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Mary's Parish, Eziama",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Peter's Parish, Mbeke",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Christ the King Parish, Ezumoha",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Mary's Parish, Isiama Osuowerre",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. John's Parish, Anara",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Christopher's Parish, Umuluwe Ajirija",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Francis Parish, Umuaro II Osu",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Francis Parish, Dikenofeiyi Anara",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Andrew's Parish, Isiebu",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "SS. Patrick and Peter's Parish-in-Building, Obiohuru Osuachara",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Peter's Parish, Umuduru Isiala Mbano",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Chaplaincy, Mbano Joint Hospital and College of Nursing Sciences",
+      "deanery": "osu",
+      "location": "Isiala Mbano LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Our Lady of Perpetual Succour, Okwe",
+      "deanery": "onuimo",
+      "location": "Onuimo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Charles Parish, Okwelle",
+      "deanery": "onuimo",
+      "location": "Onuimo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Sacred Heart Parish, Umuna",
+      "deanery": "onuimo",
+      "location": "Onuimo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Our Lady of Lourdes Parish, Umuduru Egbeaguru",
+      "deanery": "onuimo",
+      "location": "Onuimo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Parish, Umucheke Okwe",
+      "deanery": "onuimo",
+      "location": "Onuimo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Parish, Uwakaonye Aniche/ Akpakwu",
+      "deanery": "onuimo",
+      "location": "Onuimo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Parish-in-Building, Umuna",
+      "deanery": "onuimo",
+      "location": "Onuimo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Patrick's Parish-in-Building, Ichiribe Okwe",
+      "deanery": "onuimo",
+      "location": "Onuimo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "St. Joseph's Parish-in-Building, Ezelu Okwe",
+      "deanery": "onuimo",
+      "location": "Onuimo LGA, Imo State",
+      "featured": false
+    },
+    {
+      "name": "Queen of Apostles Parish, Umuchieze",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "Holy Trinity Parish, Isuochi",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "Maria Assumpta Parish, Nneato",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "Holy Family Parish, Eziama Nneato",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "Sacred Heart Parish, Ngodo Isuochi",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Philip's Parish, Lokpanta",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "Immaculate Heart Parish, Umuaku/ Mbala Isuochi",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Philomena's Parish, Lekwesi",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Gregory's Parish, Ngodo Isuochi",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Peter's Parish, Lomara Isuochi",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Michael's Parish, Obulo Eziama Nneato",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    },
+    {
+      "name": "St. Luke's Parish, Umuelem Isuochi",
+      "deanery": "umunneochi",
+      "location": "Umunneochi LGA, Abia State",
+      "featured": false
+    }
   ]
 }
