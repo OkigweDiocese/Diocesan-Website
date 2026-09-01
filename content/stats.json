@@ -1,14 +1,54 @@
 {
   "items": [
-    { "label": "Deaneries", "value": 13, "showOnHome": false },
-    { "label": "Parishes", "value": 164, "showOnHome": true },
-    { "label": "Dedicated Parishes", "value": 25, "showOnHome": false },
-    { "label": "Chaplaincies", "value": 9, "showOnHome": true },
-    { "label": "Priests", "value": 548, "showOnHome": true },
-    { "label": "Major Seminarians", "value": 128, "showOnHome": true },
-    { "label": "Schools", "value": 48, "showOnHome": true },
-    { "label": "Faithful", "value": 905799, "showOnHome": true },
-    { "label": "Health Centres", "value": 4, "showOnHome": false },
-    { "label": "Seminaries", "value": 3, "showOnHome": false }
+    {
+      "label": "Deaneries",
+      "value": 13,
+      "showOnHome": false
+    },
+    {
+      "label": "Parishes",
+      "value": 164,
+      "showOnHome": true
+    },
+    {
+      "label": "Dedicated Parishes",
+      "value": 25,
+      "showOnHome": false
+    },
+    {
+      "label": "Chaplaincies",
+      "value": 9,
+      "showOnHome": true
+    },
+    {
+      "label": "Priests",
+      "value": 547,
+      "showOnHome": true
+    },
+    {
+      "label": "Major Seminarians",
+      "value": 128,
+      "showOnHome": true
+    },
+    {
+      "label": "Schools",
+      "value": 48,
+      "showOnHome": true
+    },
+    {
+      "label": "Faithful",
+      "value": 905799,
+      "showOnHome": true
+    },
+    {
+      "label": "Health Centres",
+      "value": 4,
+      "showOnHome": false
+    },
+    {
+      "label": "Seminaries",
+      "value": 3,
+      "showOnHome": false
+    }
   ]
 }
