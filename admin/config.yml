@@ -29,7 +29,7 @@
 backend:
   name: git-gateway
   repo: OkigweDiocese/Diocesan-Website
-  branch: main
+  branch: feature/cms
   identity_url: https://auth.decapbridge.com/sites/eece7dae-6c25-460c-8401-9633026de6a3
   gateway_url: https://gateway.decapbridge.com
   # base_url: https://auth.decapbridge.com   # (A) DecapBridge — confirm on the DecapBridge project page
