@@ -1,7 +1,7 @@
 {
   "officialsHeroTitleMain": "Diocesan",
   "officialsHeroTitleEmphasis": "Officials",
-  "officialsHeroSubtitle": "The Bishop, priests, and leaders entrusted with shepherding our Diocese.",
+  "officialsHeroSubtitle": "The Bishop, and priest functionaries entrusted with piloting the affairs of the Diocese.",
   "bishopBioShort": [
     "The Bishop of Okigwe Diocese exercises the fullness of the apostolic ministry in the Diocese, teaching, sanctifying, and governing the faithful entrusted to his care. He leads the Diocese in fidelity to the Gospel and in communion with the Holy Father.",
     "As the chief shepherd of the local Church, the Bishop ordains priests and deacons, confirms the faithful, consecrates churches and sacred spaces, and serves as the principal teacher and pastor of the Diocese."
@@ -26,7 +26,7 @@
     {
       "photo": "/images/uploads/507639.jpg",
       "role": "Episcopal Vicar, Okigwe Zone",
-      "name": "Very Rev. Fr. Josephat Nwankwo",
+      "name": "Very Rev. Fr. Dr. Josephat Nwankwo",
       "parish": "All Saints Parish, Ogii",
       "phone": "08033602181",
       "email": ""
