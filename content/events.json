@@ -1,27 +1,6 @@
 {
   "items": [
     {
-      "date": "2026-08-20",
-      "time": "10:00 AM",
-      "event": "One Year Anniversary Mass of the Death of Frs. Vincent Ogu and Felix Ikpatusi",
-      "location": "St. Mary's Pro-Cathedral, Okigwe",
-      "title": "Death Anniversary"
-    },
-    {
-      "date": "2026-08-15",
-      "time": "10:00 AM",
-      "event": "Family Day Celebration",
-      "location": "Immaculate Conception Cathedral Podium, Okigwe",
-      "title": "Human Life Commission"
-    },
-    {
-      "date": "2026-08-29",
-      "time": "10:00 AM",
-      "event": "Catechists' Day Ceremony",
-      "location": "St. Thomas Aquinas Seminary, Ihitte",
-      "title": "Catechists"
-    },
-    {
       "date": "2026-09-18",
       "time": "10:00 AM",
       "event": "Okigwe Diocesan Priestly Ordination",
@@ -48,6 +27,20 @@
       "event": "Holy Childhood Celebration",
       "location": "Immaculate Conception Cathedral, Okigwe",
       "title": "Holy Childhood"
+    },
+    {
+      "date": "2026-09-24",
+      "time": "Lying in state @ 10:00 am ",
+      "event": "Funeral of Very. Rev. Fr. Dr. (Barr.) Anthony Onyenagada ",
+      "location": "St. Mary's Pro-Cathedral Parish, Okigwe ",
+      "title": "Funeral "
+    },
+    {
+      "date": "2026-09-11",
+      "time": "10:00 AM",
+      "event": "Solemn Dedication Ceremony ",
+      "location": "St. Michael’s Parish, Amainyinta, Ihitte/Uboma ",
+      "title": "Church Dedication "
     }
   ]
 }
