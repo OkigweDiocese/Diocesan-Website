@@ -40,20 +40,20 @@
       "email": ""
     },
     {
-      "photo": "../images/fr_samuel_okoli.jpg",
-      "role": "Chancellor/Secretary",
-      "name": "Very Rev. Fr. Samuel Obinnaya Okoli",
-      "parish": "Bishop's House, Villa Lourdes, Okigwe",
-      "phone": "08133807134",
-      "email": "obinnayanoble1@gmail.com"
-    },
-    {
       "photo": "../images/fr_michael_agbayi.jpg",
       "role": "Judicial Vicar",
       "name": "Very Rev. Fr. Michael Agbayi",
       "parish": "Christ the King Parish, Umunchi",
       "phone": "08038751950, 08069689968",
       "email": ""
+    },
+    {
+      "photo": "../images/fr_samuel_okoli.jpg",
+      "role": "Chancellor/Secretary",
+      "name": "Very Rev. Fr. Samuel Obinnaya Okoli",
+      "parish": "Bishop's House, Villa Lourdes, Okigwe",
+      "phone": "08133807134",
+      "email": "obinnayanoble1@gmail.com"
     },
     {
       "photo": "../images/fr_livinus_iroh.jpg",
@@ -78,15 +78,8 @@
       "parish": "St. Mary's Pro-Cathedral Parish, Okigwe",
       "phone": "08037923252",
       "email": ""
-    },
-    {
-      "photo": "../images/fr_anthony_onyenagada.jpg",
-      "role": "Diocesan Legal Adviser",
-      "name": "Very Rev. Fr. Anthony Onyenagada",
-      "parish": "Christ the King Parish, Ikperejere Uboma",
-      "phone": "07032427384",
-      "email": ""
     }
+    
   ],
   "deans": [
     {
