@@ -269,6 +269,17 @@
     });
     container.innerHTML = "";
     container.appendChild(frag);
+
+    // Cloned items are inserted after the page's scroll-reveal observer
+    // (script.js) has already scanned the DOM, so a reveal-up/-left/-right
+    // item added here would never be observed and could stay invisible
+    // (opacity: 0) forever. Make CMS-rendered content visible immediately
+    // rather than relying on that observer to find it.
+    container
+      .querySelectorAll(".reveal-up, .reveal-left, .reveal-right")
+      .forEach(function (el) {
+        el.classList.add("is-visible");
+      });
   }
 
   function applyTopLevelRepeats(fileName) {

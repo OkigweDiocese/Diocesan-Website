@@ -147,10 +147,15 @@ function initActiveNavLink() {
 }
 
 function getNavPageName(pathname) {
+  // The live site serves "pretty" URLs with the .html extension stripped
+  // (e.g. /pages/about_officials), while local/relative hrefs still carry
+  // it (about_officials.html). Normalize both to the same bare filename so
+  // they can be compared — treating every extensionless path as "index"
+  // made every nav link match the current page and appear active at once.
   const parts = pathname.split("/").filter(Boolean);
-  const file = parts[parts.length - 1] || "index.html";
-  if (!file.includes(".")) return "index.html";
-  return file.toLowerCase();
+  const file = parts[parts.length - 1];
+  if (!file) return "index";
+  return file.toLowerCase().replace(/\.html$/, "");
 }
 
 /* ============================================================
